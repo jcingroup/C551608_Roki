@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+
+// type
+// ----------------------------------------------------------------------
+.h1 {
+
+}
+
+.h2 {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 35px;
+
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #8C6231;
+    font-size: em(60px);
+    font-family: $font-family-en;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 3px hsla(0,0,0,0.2);
+
+    &::before, &::after {
+        content: " ";
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        background: #CCB978;
+    }
+
+    &::before {
+        width: 210px;
+        height: 2px;
+        bottom: 2px;
+    }
+
+    &::after {
+        width: 78px;
+        height: 6px;
+        bottom: 0;
+    }
+}
+
+.h3 {
+    margin-bottom: $spacer*1.5;
+    padding-bottom: $spacer;
+    font-size: em(34px);
+    border-bottom: 3px solid #E8E5D3;
+}
+
+.h5 {color: #9E6400;}
+
+.h6 {color: $brand-primary;}
+
+hr {
+    width: 80px;
+    margin: $spacer*2.5 auto;
+    border-top: 2px solid #EADCB0;
+
+    &.sm {
+        width: 100%;
+        margin: $spacer*0.5 0;
+        border-top: 1px solid $gray-lighter;
+    }
+}
+
+
+// type
+// ----------------------------------------------------------------------
+.text-secondary {
+    color: darken($brand-secondary, 10%);
+}
+
+
+// images
+// ----------------------------------------------------------------------
+.img-thumbnail {
+    opacity: 1;
+    transition: opacity 0.35s;
+    
+    &:hover {opacity:0.7;}
+    img {width: 100%;}
+}
+
+
+// table
+// ----------------------------------------------------------------------
+.table {
+    color: #404039;
+    border: 1px solid $table-border-color;
+
+    th {
+        text-align: right;
+        font-weight: normal;
+        background: $thead-bg;
+    }
+
+    tbody tr:nth-of-type(odd) th {background-color: darken($thead-bg,5%);}
+}
+
+
+// buttons
+// ----------------------------------------------------------------------
+.btn {border-radius: $btn-border-radius;}
+
+.btn-primary {
+    background: #E37900;
+
+    &:hover, &.active {}
+}
+
+.btn-secondary {
+
+    &.style2 {
+        background: #fff;
+        border: 1px solid $brand-secondary;
+        border-radius: 0;
+
+        &:active, &.active,
+        &:hover, &:focus, &.focus {
+            background-color: darken($btn-secondary-bg, 10%);
+            border-color: $btn-secondary-border;
+        }
+    }
+}
+
+.btn-danger {
+}
+
+.btn-muted {}
+
+.btn-lg {
+    border-radius: $btn-border-radius-lg;
+    font-size: em(17px);
+}
+
+
+// form
+// ----------------------------------------------------------------------
+.form-inline {
+
+    .form-group {margin: 0 $spacer $spacer 0;}
+    .form-control.center-block {
+        display:block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01a447a071a248cc98e7efc18d22efa7" Name="Diagram1">
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Department" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.i_Currency" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.i_IDX" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.i_Lang" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.i_Parm" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.i_SN" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Menu" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.News" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="C51A0_BuyNowModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="C51A0_BuyNowModel.MenuRole" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Edit" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Matter" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community" Width="1.5" PointX="0.75" PointY="16.875" />
+        <AssociationConnector Association="C51A0_BuyNowModel.FK_Matter_Community" />
+        <EntityTypeShape EntityType="C51A0_BuyNowModel.Community_News" Width="1.5" PointX="3" PointY="22.75" />
+        <AssociationConnector Association="C51A0_BuyNowModel.FK_Community_News_Community" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

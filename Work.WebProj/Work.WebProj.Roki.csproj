@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{821195B6-1744-4E05-B003-7DA64385CFB6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotWeb.WebApp</RootNamespace>
+    <AssemblyName>Proc.MvcWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CKFinder, Version=2.3.1.2492, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Core.Dll\CKFinder.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.3.1, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.3.1\lib\net45\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Web.Administration.7.0.0.0\lib\net20\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Proc.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Core.Dll\Proc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Res.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Res.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\ReactConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
+    <Compile Include="Areas\Active\Controllers\CommunityNewsController.cs" />
+    <Compile Include="Areas\Active\Controllers\MatterController.cs" />
+    <Compile Include="Areas\Active\Controllers\EditController.cs" />
+    <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
+    <Compile Include="Areas\Base\Controllers\LoginController.cs" />
+    <Content Include="app_modules\comm-cmpt\package.js" />
+    <Content Include="app_modules\comm-func\package.js" />
+    <Content Include="app_modules\comm-typeahead\typeahead.css" />
+    <Content Include="app_modules\ImgFileSort\react-sortable-mixin.js" />
+    <Content Include="app_modules\ImgFileSort\Sortable.js" />
+    <Content Include="app_modules\Pikaday\css\pikaday.css" />
+    <Content Include="app_modules\Pikaday\css\site.css" />
+    <Content Include="app_modules\Pikaday\css\theme.css" />
+    <Content Include="app_modules\Pikaday\css\triangle.css" />
+    <Content Include="app_modules\Pikaday\pikaday.js" />
+    <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.js" />
+    <Content Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.min.js" />
+    <Content Include="app_modules\comm-cmpt\package.json" />
+    <Content Include="app_modules\comm-func\package.json" />
+    <Content Include="app_modules\Pikaday\package.json" />
+    <Content Include="app_modules\simple-ajax-uploader\bower.json" />
+    <Content Include="app_modules\simple-ajax-uploader\package.json" />
+    <Content Include="app_modules\dt\package.json" />
+    <Content Include="Areas\Active\Views\Community\Main.cshtml" />
+    <Content Include="app_modules\comm-typeahead\package.json" />
+    <Content Include="Areas\Active\Views\Edit\Main.cshtml" />
+    <Content Include="Areas\Active\Views\Edit\Aboutus.cshtml" />
+    <Content Include="Areas\Active\Views\Edit\Program.cshtml" />
+    <Content Include="Areas\Active\Views\Edit\Recruit.cshtml" />
+    <Content Include="Areas\Active\Views\Edit\VIP.cshtml" />
+    <Content Include="Areas\Active\Views\Matter\Main.cshtml" />
+    <Content Include="Areas\Active\Views\CommunityNews\Main.cshtml" />
+    <Content Include="app_modules\ImgFileSort\package.json" />
+    <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
+    <None Include="Areas\Base\Controllers\ReportChartController.cs" />
+    <Compile Include="Areas\Base\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Base\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Base\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
+    <Content Include="ckeditor\inlineConfig.js" />
+    <Content Include="ckfinder\ckfinder.js" />
+    <Content Include="ckfinder\ckfinder_v1.js" />
+    <Content Include="ckfinder\config.ascx" />
+    <Content Include="ckfinder\config.js" />
+    <Content Include="ckfinder\core\connector\aspx\connector.aspx" />
+    <Content Include="ckfinder\core\connector\aspx\lang\bg.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ca.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\cs.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\cy.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\da.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\de.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\el.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\en.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\eo.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\es-mx.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\es.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\et.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\fa.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\fi.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\fr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\gu.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\he.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\hi.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\hr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\hu.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\it.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ja.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\lt.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\lv.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\nb.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\nl.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\nn.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\no.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\pl.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\pt-br.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ro.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ru.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sk.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sl.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sv.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\tr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\vi.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
+    <Compile Include="Controllers\Api\CommunityNewsController.cs" />
+    <Compile Include="Controllers\Api\MatterController.cs" />
+    <Compile Include="Controllers\Api\EditController.cs" />
+    <Compile Include="Controllers\Api\GetActionController.cs" />
+    <Compile Include="Controllers\Api\MenuController.cs" />
+    <Compile Include="Controllers\Api\RolesController.cs" />
+    <Compile Include="Controllers\Api\CommunityController.cs" />
+    <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\SellController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\RentController.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
+    <Compile Include="Controllers\VIPController.cs" />
+    <Compile Include="Controllers\NeighborController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DotWeb.Controller.cs" />
+    <Compile Include="Models\DotWeb.Api.cs" />
+    <Compile Include="Models\DotWeb.cs" />
+    <Compile Include="Models\DotWeb.Helpers.cs" />
+    <Compile Include="Models\DotWeb.CommSetup.cs" />
+    <Compile Include="Models\DotWeb.CrossMessage.cs" />
+    <Compile Include="Models\DotWeb.WebPageToImage.cs" />
+    <Compile Include="Models\DynamicLibrary.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IFileHandle.cs" />
+    <Compile Include="Models\IGetDetailNewId.cs" />
+    <Compile Include="Models\IGetMasterNewId.cs" />
+    <Compile Include="Models\MenuDef.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="_Code\Ashx\AjaxDownLoadFile.ashx.cs">
+      <DependentUpon>AjaxDownLoadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\Ashx\BaseIHttpHandler.cs" />
+    <Compile Include="_Code\Ashx\ValidateCodeB.ashx.cs">
+      <DependentUpon>ValidateCodeB.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="_Code\Ashx\ValidateCode.ashx.cs">
+      <DependentUpon>ValidateCode.ashx</DependentUpon>
+    </Compile>
+    <Content Include="Content\css\editor.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\page.css" />
+    <Content Include="Content\css\vendor\animate.css" />
+    <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
+    <Content Include="Content\css\vendor\icomoon.css" />
+    <Content Include="Content\css\vendor\jquery.loadmask.css" />
+    <Content Include="Content\css\vendor\mask-load.css" />
+    <Content Include="Content\css\vendor\themify-icons.css" />
+    <Content Include="Content\css\vendor\toastr.css" />
+    <Content Include="Content\css\_admin\page.css" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\Index\banner1.jpg" />
+    <Content Include="Content\images\Index\bannerBg.png" />
+    <Content Include="Content\images\Index\bg.jpg" />
+    <Content Include="Content\images\Index\couple.png" />
+    <Content Include="Content\images\Index\rent.jpg" />
+    <Content Include="Content\images\Index\sell.jpg" />
+    <Content Include="Content\images\logo.gif" />
+    <Content Include="Content\images\logo_s.gif" />
+    <Content Include="Content\images\mainBg.png" />
+    <Content Include="Content\images\menuBg.png" />
+    <Content Include="Content\images\no-pic.gif" />
+    <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
+    <Content Include="Content\images\Partner\dm.jpg" />
+    <Content Include="Content\images\Sell\interior.jpg" />
+    <Content Include="Content\images\Sell\pro1.jpg" />
+    <Content Include="Content\images\VIP\dm.jpg" />
+    <Content Include="Content\js\bootstrap\collapse.js" />
+    <Content Include="Content\js\bootstrap\dropdown.js" />
+    <Content Include="Content\js\bootstrap\util.js" />
+    <Content Include="Content\sass\base\_normalize.scss" />
+    <Content Include="Content\sass\base\_print.scss" />
+    <Content Include="Content\sass\base\_reboot.scss" />
+    <Content Include="Content\sass\core\_bootstrap-flex.scss" />
+    <Content Include="Content\sass\core\_bootstrap-grid.scss" />
+    <Content Include="Content\sass\core\_bootstrap-reboot.scss" />
+    <Content Include="Content\sass\core\_bootstrap.scss" />
+    <Content Include="Content\sass\editor.scss" />
+    <Content Include="Content\sass\element\_buttons.scss" />
+    <Content Include="Content\sass\element\_code.scss" />
+    <Content Include="Content\sass\element\_forms.scss" />
+    <Content Include="Content\sass\element\_images.scss" />
+    <Content Include="Content\sass\element\_tables.scss" />
+    <Content Include="Content\sass\element\_type.scss" />
+    <Content Include="Content\sass\helper\mixins\_alert.scss" />
+    <Content Include="Content\sass\helper\mixins\_background-variant.scss" />
+    <Content Include="Content\sass\helper\mixins\_border-radius.scss" />
+    <Content Include="Content\sass\helper\mixins\_breakpoints.scss" />
+    <Content Include="Content\sass\helper\mixins\_buttons.scss" />
+    <Content Include="Content\sass\helper\mixins\_cards.scss" />
+    <Content Include="Content\sass\helper\mixins\_center-block.scss" />
+    <Content Include="Content\sass\helper\mixins\_clearfix.scss" />
+    <Content Include="Content\sass\helper\mixins\_forms.scss" />
+    <Content Include="Content\sass\helper\mixins\_gradients.scss" />
+    <Content Include="Content\sass\helper\mixins\_grid-framework.scss" />
+    <Content Include="Content\sass\helper\mixins\_grid.scss" />
+    <Content Include="Content\sass\helper\mixins\_hover.scss" />
+    <Content Include="Content\sass\helper\mixins\_image.scss" />
+    <Content Include="Content\sass\helper\mixins\_label.scss" />
+    <Content Include="Content\sass\helper\mixins\_list-group.scss" />
+    <Content Include="Content\sass\helper\mixins\_lists.scss" />
+    <Content Include="Content\sass\helper\mixins\_nav-divider.scss" />
+    <Content Include="Content\sass\helper\mixins\_navbar-align.scss" />
+    <Content Include="Content\sass\helper\mixins\_pagination.scss" />
+    <Content Include="Content\sass\helper\mixins\_progress.scss" />
+    <Content Include="Content\sass\helper\mixins\_pulls.scss" />
+    <Content Include="Content\sass\helper\mixins\_reset-filter.scss" />
+    <Content Include="Content\sass\helper\mixins\_reset-text.scss" />
+    <Content Include="Content\sass\helper\mixins\_resize.scss" />
+    <Content Include="Content\sass\helper\mixins\_screen-reader.scss" />
+    <Content Include="Content\sass\helper\mixins\_size.scss" />
+    <Content Include="Content\sass\helper\mixins\_tab-focus.scss" />
+    <Content Include="Content\sass\helper\mixins\_table-row.scss" />
+    <Content Include="Content\sass\helper\mixins\_text-emphasis.scss" />
+    <Content Include="Content\sass\helper\mixins\_text-hide.scss" />
+    <Content Include="Content\sass\helper\mixins\_text-truncate.scss" />
+    <Content Include="Content\sass\helper\_classes.scss" />
+    <Content Include="Content\sass\helper\_extend.scss" />
+    <Content Include="Content\sass\helper\_function.scss" />
+    <Content Include="Content\sass\helper\_mixins.scss" />
+    <Content Include="Content\sass\helper\_utilities-background.scss" />
+    <Content Include="Content\sass\helper\_utilities-extends.scss" />
+    <Content Include="Content\sass\helper\_utilities-responsive.scss" />
+    <Content Include="Content\sass\helper\_utilities-spacing.scss" />
+    <Content Include="Content\sass\helper\_utilities.scss" />
+    <Content Include="Content\sass\helper\_variables.scss" />
+    <Content Include="Content\sass\index.scss" />
+    <Content Include="Content\sass\layout\_grid.scss" />
+    <Content Include="Content\sass\module\_alert.scss" />
+    <Content Include="Content\sass\module\_animation.scss" />
+    <Content Include="Content\sass\module\_breadcrumb.scss" />
+    <Content Include="Content\sass\module\_button-group.scss" />
+    <Content Include="Content\sass\module\_card.scss" />
+    <Content Include="Content\sass\module\_carousel.scss" />
+    <Content Include="Content\sass\module\_close.scss" />
+    <Content Include="Content\sass\module\_custom-forms.scss" />
+    <Content Include="Content\sass\module\_dropdown.scss" />
+    <Content Include="Content\sass\module\_input-group.scss" />
+    <Content Include="Content\sass\module\_jumbotron.scss" />
+    <Content Include="Content\sass\module\_labels.scss" />
+    <Content Include="Content\sass\module\_list-group.scss" />
+    <Content Include="Content\sass\module\_media.scss" />
+    <Content Include="Content\sass\module\_modal.scss" />
+    <Content Include="Content\sass\module\_nav.scss" />
+    <Content Include="Content\sass\module\_navbar.scss" />
+    <Content Include="Content\sass\module\_pager.scss" />
+    <Content Include="Content\sass\module\_pagination.scss" />
+    <Content Include="Content\sass\module\_popover.scss" />
+    <Content Include="Content\sass\module\_progress.scss" />
+    <Content Include="Content\sass\module\_responsive-embed.scss" />
+    <Content Include="Content\sass\module\_tooltip.scss" />
+    <Content Include="Content\sass\page.scss" />
+    <Content Include="Content\sass\_web\_editor.scss" />
+    <Content Include="Content\sass\_web\_element.scss" />
+    <Content Include="Content\sass\_web\_icon.scss" />
+    <Content Include="Content\sass\_web\_layout.scss" />
+    <Content Include="Content\sass\_web\_module.scss" />
+    <Content Include="Content\sass\_web\_var.scss" />
+    <Content Include="Content\images\Index\balloon.svg" />
+    <Content Include="Content\images\Index\cloud.svg" />
+    <Content Include="Content\images\Index\cloud2.svg" />
+    <Content Include="Content\images\Index\couple.svg" />
+    <Content Include="Content\images\Index\slogan1-1.svg" />
+    <Content Include="Content\images\Index\slogan1-2.svg" />
+    <Content Include="Content\images\Index\slogan1-3.svg" />
+    <Content Include="Content\images\Index\slogan1-4.svg" />
+    <Content Include="Content\font\icomoon\icomoon.eot" />
+    <Content Include="Content\font\icomoon\icomoon.svg" />
+    <Content Include="Content\font\icomoon\icomoon.ttf" />
+    <Content Include="Content\font\icomoon\icomoon.woff" />
+    <Content Include="Content\font\themify-icons\themify.eot" />
+    <Content Include="Content\font\themify-icons\themify.svg" />
+    <Content Include="Content\font\themify-icons\themify.ttf" />
+    <Content Include="Content\font\themify-icons\themify.woff" />
+    <Content Include="Content\images\noIE\bg.gif" />
+    <Content Include="Content\images\noIE\brow.gif" />
+    <Content Include="Content\images\noIE\brow2.gif" />
+    <Content Include="Content\images\noIE\brow3.gif" />
+    <Content Include="Content\images\noIE\brow4.gif" />
+    <Content Include="Content\images\noIE\browBg.gif" />
+    <Content Include="Content\images\noIE\browBg.png" />
+    <Content Include="Content\images\noIE\line.gif" />
+    <Content Include="Content\images\noIE\noIE.css" />
+    <Content Include="Content\images\noIE\noIE.html" />
+    <Content Include="Content\js\swiper\swiper.min.js" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.svg" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontAwesome\FontAwesome.otf" />
+    <None Include="Content\publih.wpp.targets" />
+    <Content Include="index.html" />
+    <Content Include="ckeditor\build-config.js" />
+    <Content Include="ckeditor\ckeditor.js" />
+    <Content Include="ckeditor\config.js" />
+    <Content Include="ckeditor\contents.css" />
+    <Content Include="ckeditor\styles.js" />
+    <Content Include="Scripts\build\app\m_change_password.js" />
+    <Content Include="Scripts\build\app\m_community.js" />
+    <Content Include="Scripts\build\app\m_community_news.js" />
+    <Content Include="Scripts\build\app\m_edit.js" />
+    <Content Include="Scripts\build\app\m_edit_detail.js" />
+    <Content Include="Scripts\build\app\m_login.js" />
+    <Content Include="Scripts\build\app\m_matter.js" />
+    <Content Include="Scripts\build\app\m_menu.js" />
+    <Content Include="Scripts\build\app\m_menu_set.js" />
+    <Content Include="Scripts\build\app\m_roles.js" />
+    <Content Include="Scripts\build\app\m_users.js" />
+    <Content Include="Scripts\build\app\vendors.js" />
+    <Content Include="Scripts\build\app\w_sell_list.js" />
+    <Content Include="Scripts\cdn\BootSideMenu.js" />
+    <Content Include="Scripts\cdn\bootstrap.min.js" />
+    <Content Include="Scripts\cdn\codrops\classie.js" />
+    <Content Include="Scripts\cdn\codrops\modalEffects.js" />
+    <Content Include="Scripts\cdn\codrops\modernizr.custom.js" />
+    <Content Include="Scripts\cdn\d3.min.js" />
+    <Content Include="Scripts\cdn\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\cdn\freewall.js" />
+    <Content Include="Scripts\cdn\fresco.js" />
+    <Content Include="Scripts\cdn\jquery.js" />
+    <Content Include="Scripts\cdn\jquery.loadmask.js" />
+    <Content Include="Scripts\cdn\jquery.loadmask.min.js" />
+    <Content Include="Scripts\cdn\jquery.min.js" />
+    <Content Include="Scripts\cdn\js.cookie.js" />
+    <Content Include="Scripts\cdn\moment\moment.min.js" />
+    <Content Include="Scripts\cdn\react-bootstrap.js" />
+    <Content Include="Scripts\cdn\react-bootstrap.min.js" />
+    <Content Include="Scripts\cdn\react-load-mask.js" />
+    <Content Include="Scripts\cdn\react-load-mask.min.js" />
+    <Content Include="Scripts\cdn\react-swipe.min.js" />
+    <Content Include="Scripts\cdn\react-typeahead.js" />
+    <Content Include="Scripts\cdn\ReactRouter.js" />
+    <Content Include="Scripts\cdn\ReactRouter.min.js" />
+    <Content Include="Scripts\cdn\swipe.js" />
+    <Content Include="Scripts\cdn\toastr.min.js" />
+    <Content Include="Scripts\GoogleAnalytics.js" />
+    <Content Include="Scripts\cdn\jquery.flexslider-min.js" />
+    <Content Include="Scripts\cdn\jquery.lazyloadxt.min.js" />
+    <Content Include="Scripts\cdn\moment\moment.js" />
+    <Content Include="Scripts\cdn\moment\locale\zh-tw.js" />
+    <Content Include="Scripts\cdn\react-sortable-mixin.js" />
+    <Content Include="Scripts\cdn\require.js" />
+    <Content Include="Scripts\cdn\SimpleAjaxUploader.js" />
+    <Content Include="Scripts\cdn\Sortable.js" />
+    <Content Include="Scripts\cdn\Sortable.min.js" />
+    <Content Include="Scripts\cdn\swfobject.js" />
+    <Content Include="Scripts\cdn\toastr.js" />
+    <Content Include="Scripts\src\xformat.html" />
+    <Content Include="Scripts\cdn\BrowerInfo.js" />
+    <Content Include="Scripts\cdn\chart\Chart.js" />
+    <Content Include="Scripts\cdn\chart\Chart.min.js" />
+    <Content Include="Scripts\cdn\chart\ie8\Chart.js" />
+    <Content Include="Scripts\cdn\chart\ie8\excanvas.js" />
+    <Content Include="Scripts\cdn\chart\src\Chart.Bar.js" />
+    <Content Include="Scripts\cdn\chart\src\Chart.Core.js" />
+    <Content Include="Scripts\cdn\chart\src\Chart.Doughnut.js" />
+    <Content Include="Scripts\cdn\chart\src\Chart.Line.js" />
+    <Content Include="Scripts\cdn\chart\src\Chart.PolarArea.js" />
+    <Content Include="Scripts\cdn\chart\src\Chart.Radar.js" />
+    <Content Include="Scripts\cdn\jquery.signalR-2.1.2.js" />
+    <Content Include="Scripts\cdn\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Scripts\src\jsx-inc\c-Comm.jsx" />
+    <Content Include="Scripts\cdn\respond.min.js" />
+    <Content Include="Scripts\cdn\shadowbox\close.png" />
+    <Content Include="Scripts\cdn\shadowbox\loading.gif" />
+    <Content Include="Scripts\cdn\shadowbox\next.png" />
+    <Content Include="Scripts\cdn\shadowbox\pause.png" />
+    <Content Include="Scripts\cdn\shadowbox\play.png" />
+    <Content Include="Scripts\cdn\shadowbox\previous.png" />
+    <Content Include="Scripts\cdn\shadowbox\shadowbox.css" />
+    <Content Include="Scripts\cdn\shadowbox\shadowbox.js" />
+    <Content Include="Scripts\cdn\shadowbox\LICENSE" />
+    <Content Include="Scripts\cdn\shadowbox\README" />
+    <Content Include="Content\sass\_admin\bs\bootstrap.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_alerts.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_background-variant.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_border-radius.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_buttons.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_center-block.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_clearfix.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_forms.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_gradients.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_grid-framework.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_grid.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_hide-text.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_image.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_labels.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_list-group.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_nav-divider.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_nav-vertical-align.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_opacity.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_pagination.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_panels.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_progress-bar.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_reset-filter.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_reset-text.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_resize.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_responsive-visibility.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_size.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_tab-focus.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_table-row.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_text-emphasis.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_text-overflow.scss" />
+    <Content Include="Content\sass\_admin\bs\mixins\_vendor-prefixes.scss" />
+    <Content Include="Content\sass\_admin\bs\_alerts.scss" />
+    <Content Include="Content\sass\_admin\bs\_badges.scss" />
+    <Content Include="Content\sass\_admin\bs\_breadcrumbs.scss" />
+    <Content Include="Content\sass\_admin\bs\_button-groups.scss" />
+    <Content Include="Content\sass\_admin\bs\_buttons.scss" />
+    <Content Include="Content\sass\_admin\bs\_carousel.scss" />
+    <Content Include="Content\sass\_admin\bs\_close.scss" />
+    <Content Include="Content\sass\_admin\bs\_code.scss" />
+    <Content Include="Content\sass\_admin\bs\_component-animations.scss" />
+    <Content Include="Content\sass\_admin\bs\_dropdowns.scss" />
+    <Content Include="Content\sass\_admin\bs\_forms.scss" />
+    <Content Include="Content\sass\_admin\bs\_glyphicons.scss" />
+    <Content Include="Content\sass\_admin\bs\_grid.scss" />
+    <Content Include="Content\sass\_admin\bs\_input-groups.scss" />
+    <Content Include="Content\sass\_admin\bs\_jumbotron.scss" />
+    <Content Include="Content\sass\_admin\bs\_labels.scss" />
+    <Content Include="Content\sass\_admin\bs\_list-group.scss" />
+    <Content Include="Content\sass\_admin\bs\_media.scss" />
+    <Content Include="Content\sass\_admin\bs\_mixins.scss" />
+    <Content Include="Content\sass\_admin\bs\_modals.scss" />
+    <Content Include="Content\sass\_admin\bs\_navbar.scss" />
+    <Content Include="Content\sass\_admin\bs\_navs.scss" />
+    <Content Include="Content\sass\_admin\bs\_non-responsive.scss" />
+    <Content Include="Content\sass\_admin\bs\_normalize.scss" />
+    <Content Include="Content\sass\_admin\bs\_pager.scss" />
+    <Content Include="Content\sass\_admin\bs\_pagination.scss" />
+    <Content Include="Content\sass\_admin\bs\_panels.scss" />
+    <Content Include="Content\sass\_admin\bs\_popovers.scss" />
+    <Content Include="Content\sass\_admin\bs\_print.scss" />
+    <Content Include="Content\sass\_admin\bs\_progress-bars.scss" />
+    <Content Include="Content\sass\_admin\bs\_responsive-embed.scss" />
+    <Content Include="Content\sass\_admin\bs\_responsive-utilities.scss" />
+    <Content Include="Content\sass\_admin\bs\_scaffolding.scss" />
+    <Content Include="Content\sass\_admin\bs\_tables.scss" />
+    <Content Include="Content\sass\_admin\bs\_theme.scss" />
+    <Content Include="Content\sass\_admin\bs\_thumbnails.scss" />
+    <Content Include="Content\sass\_admin\bs\_tooltip.scss" />
+    <Content Include="Content\sass\_admin\bs\_type.scss" />
+    <Content Include="Content\sass\_admin\bs\_utilities.scss" />
+    <Content Include="Content\sass\_admin\bs\_variables.3.3.1.scss" />
+    <Content Include="Content\sass\_admin\bs\_variables.scss" />
+    <Content Include="Content\sass\_admin\bs\_wells.scss" />
+    <Content Include="Content\sass\_admin\datetimepicker\bootstrap-datetimepicker-build.scss" />
+    <Content Include="Content\sass\_admin\datetimepicker\bootstrap-datetimepicker.scss" />
+    <Content Include="Content\sass\_admin\editor.scss" />
+    <Content Include="Content\sass\_admin\fa\font-awesome.scss" />
+    <Content Include="Content\sass\_admin\fa\_bordered-pulled.scss" />
+    <Content Include="Content\sass\_admin\fa\_core.scss" />
+    <Content Include="Content\sass\_admin\fa\_fixed-width.scss" />
+    <Content Include="Content\sass\_admin\fa\_icons.scss" />
+    <Content Include="Content\sass\_admin\fa\_larger.scss" />
+    <Content Include="Content\sass\_admin\fa\_list.scss" />
+    <Content Include="Content\sass\_admin\fa\_mixins.scss" />
+    <Content Include="Content\sass\_admin\fa\_path.scss" />
+    <Content Include="Content\sass\_admin\fa\_rotated-flipped.scss" />
+    <Content Include="Content\sass\_admin\fa\_spinning.scss" />
+    <Content Include="Content\sass\_admin\fa\_stacked.scss" />
+    <Content Include="Content\sass\_admin\fa\_variables.scss" />
+    <Content Include="Content\sass\_admin\mobile.scss" />
+    <Content Include="Content\sass\_admin\page.scss" />
+    <Content Include="Content\sass\_admin\_basic.scss" />
+    <Content Include="Content\sass\_admin\_hack.scss" />
+    <Content Include="Content\sass\_admin\_layout.scss" />
+    <Content Include="Content\sass\_admin\_mixins.scss" />
+    <Content Include="Content\sass\_admin\_modules.scss" />
+    <Content Include="Content\sass\_admin\_scripts.scss" />
+    <Content Include="Content\sass\_admin\_variables.scss" />
+    <Content Include="Views\Rent\Rent_content.cshtml" />
+    <Content Include="Views\Rent\Rent_list.cshtml" />
+    <Content Include="Views\Sell\Sell_content.cshtml" />
+    <Content Include="Views\Sell\Sell_list.cshtml" />
+    <Content Include="Views\Neighbor\Neighbor_list.cshtml" />
+    <Content Include="Views\Neighbor\Neighbor_content.cshtml" />
+    <Content Include="Scripts\src\jsx\m-matter.jsx" />
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="webpack.config.js" />
+    <Content Include="Views\AboutUs\AboutUs.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Neighbor\Neighbor.cshtml" />
+    <Content Include="Views\Partner\Partner.cshtml" />
+    <Content Include="Views\Plan\Plan.cshtml" />
+    <Content Include="Views\Rent\Rent.cshtml" />
+    <Content Include="Views\Sell\Sell.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TabletMenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\edit_birthday.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\edit_Date.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\Shared\Manage\JSGlobalVar.cshtml" />
+    <Content Include="Views\Shared\Manage\RLayout.cshtml" />
+    <Content Include="Views\Shared\Manage\vucFooter.cshtml" />
+    <Content Include="Views\Shared\Manage\vucMenu.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Shopping\Shopping.cshtml" />
+    <Content Include="Views\Vendor\Vendor.cshtml" />
+    <Content Include="Views\VIP\VIP.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="_Code\cache\memo.txt" />
+    <Content Include="_Code\RPTExcel\DownExcel.xls" />
+    <Content Include="_Code\RPTExcel\Equipment.xls" />
+    <Content Include="_Code\RPTExcel\Apply.xls" />
+    <Content Include="_Code\RPTExcel\Month.xls" />
+    <Content Include="Scripts\src\jsx-inc\c-ImgFileSort.jsx" />
+    <None Include="package.json" />
+    <Content Include="_Code\Ashx\ValidateCodeB.ashx" />
+    <Content Include="Scripts\src\jsx\m-Users.jsx" />
+    <Content Include="Scripts\src\jsx\m-Roles.jsx" />
+    <Content Include="Scripts\src\xformat.jsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Active\Views\web.config" />
+    <Content Include="Areas\Active\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Base\Views\Doc\ListData.cshtml" />
+    <Content Include="Areas\Base\Views\Login\index.cshtml" />
+    <Content Include="Areas\Base\Views\Login\ResetPassword.cshtml" />
+    <Content Include="Areas\Base\Views\Parm\ListData.cshtml" />
+    <Content Include="Areas\Base\Views\Roles\Main.cshtml" />
+    <Content Include="Areas\Base\Views\Users\ChangePassword.cshtml" />
+    <Content Include="Areas\Base\Views\Users\Main.cshtml" />
+    <Content Include="Areas\Base\Views\Web.config" />
+    <Content Include="Areas\Base\Views\XYZ\Index.cshtml" />
+    <Content Include="Areas\Base\Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="_Code\Log\memo.txt" />
+    <Content Include="_Code\SysDoc\Doc.xml" />
+    <Content Include="_Code\SysUpFiles\memo.txt" />
+    <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.d.ts" />
+    <TypeScriptCompile Include="app_modules\comm-cmpt\comm-cmpt.tsx" />
+    <TypeScriptCompile Include="app_modules\comm-cmpt\react.cmpt.prop.ts" />
+    <TypeScriptCompile Include="app_modules\comm-func\comm-func.d.ts" />
+    <TypeScriptCompile Include="app_modules\comm-func\comm-func.tsx" />
+    <TypeScriptCompile Include="app_modules\comm-typeahead\comm-typeahead.d.ts" />
+    <TypeScriptCompile Include="app_modules\comm-typeahead\main.tsx" />
+    <TypeScriptCompile Include="app_modules\dt\def-data.d.ts" />
+    <TypeScriptCompile Include="app_modules\Pikaday\pikadaydef.ts" />
+    <TypeScriptCompile Include="app_modules\react-datepicker.d\react-datepicker.d.ts" />
+    <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
+    <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-sell-list.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-matter.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-edit_detail.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-edit.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-menu_set.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-parm.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-roles.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-menu.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-community.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-member_login.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\w-shopping_cart.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\JSExt.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\Jquery.Ext.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\Toastr.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\def\defGlobal.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\IAjaxResult.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\IEditType.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\IKeyValue.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\PutGetId.d.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\d.ts\ServerModals.d.ts" />
+    <TypeScriptCompile Include="app_modules\dt\def-data.ts" />
+    <TypeScriptCompile Include="Scripts\ts-def\widegt\gridInfo.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap.v3.datetimepicker\bootstrap.v3.datetimepicker.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\ckeditor\ckeditor.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery-sortable\jquery-sortable.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery.cookie\jquery.cookie.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment-node.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react-bootstrap\react-bootstrap.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react-dom\react-dom.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-addons-update.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-global.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react-mixin.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\react\react.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\sortablejs.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="app_modules\Pikaday\plugins\" />
+    <Folder Include="app_modules\Pikaday\scss\" />
+    <Folder Include="app_modules\Pikaday\tests\" />
+    <Folder Include="Areas\Active\Views\Shared\" />
+    <Folder Include="Areas\Base\Views\Shared\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="_Code\CReport\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="_Code\Ashx\AjaxDownLoadFile.ashx" />
+    <Content Include="_Code\Ashx\ValidateCode.ashx" />
+    <Content Include="_Code\SysDoc\資料庫使用說明.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Res.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Res.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Base\Views\Doc\App_LocalResources\ListData.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Login\App_LocalResources\index.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Login\App_LocalResources\ResetPassword.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Parm\App_LocalResources\ListData.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Roles\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Users\App_LocalResources\ChangePassword.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Users\App_LocalResources\Main.cshtml.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Work.Logic\Work.BusinessLogic.csproj">
+      <Project>{81f31d0b-5d7a-44f7-ba5b-362bf27fcc8d}</Project>
+      <Name>Work.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Active\Views\Community\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Menu\App_LocalResources\ChangePassword.cshtml.resx" />
+    <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\Edit\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\Matter\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="Areas\Active\Views\CommunityNews\App_LocalResources\Main.cshtml.resx" />
+    <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3185</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3194/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參照此電腦中缺少的  NuGet 套件。啟用「NuGet 套件還原」以便下載。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案為 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,6 @@
+{
+  "name": "ImgFileSort",
+  "version": "1.0.0",
+  "main": "./c-ImgFileSort.jsx",
+  "license": "MIT"
+}

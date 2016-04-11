@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "物業專區";
+    ViewBag.BodyClass = "Partner";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 class="h2 title">@ViewBag.Title</h2>
+
+<section id="content">
+
+    <div class="wrap">
+        <div class="editor">
+
+            @Html.Raw(ViewBag.content)
+
+        </div>
+    </div>
+
+</section>
