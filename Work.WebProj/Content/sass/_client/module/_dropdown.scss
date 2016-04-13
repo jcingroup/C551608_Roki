@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+$dropdown-width:            130px !default;
+$dropdown-color:            darken($brand-gray, 25%) !default;
+$dropdown-position:         right 0 top 12px !default;
+
+
+// 下拉最外層容器
+.dropdown {
+    z-index: z(logo)-1;
+    width: $dropdown-width;
+
+    @include absolute($dropdown-position);
+    @include mq-max(break(phone-plus, -1)) {
+        width: 28%;
+    }
+    @include mq-max(break(phone, -1)) {
+        left: 0;
+        top: 5px;
+        width: 35%;
+    }
+}
+
+// 顯示隱藏按鈕
+[data-dropdown="btn"] {
+    cursor: pointer;
+    transition: all .5s ease;
+
+    background: none;
+    border: 1px solid lighten($dropdown-color, 10%);
+    color: $dropdown-color;
+    font-size: em(12px);
+    text-align: left;
+
+    padding: 5px 10px;
+    width: 100%;
+
+    @include el(after) {
+        @include arrow(down,6px,6px,$dropdown-color);
+        @include absolute(right 8px top 10px);
+    }
+
+    &:hover, &:active {
+        background: #fff;
+        border-color: lighten($brand-primary,10);
+        color: lighten($brand-primary,10);
+
+        &::after {
+            border-top-color: lighten($brand-primary,55%);
+            // @include diy-animation(jump, .6s infinite .6s) {
+            //     // 20% { @include prefix(transform, translateY(-2px)); }
+            //     // 80% { @include prefix(transform, translateY(2px)); }
+            //     60% { @include prefix(transform, translateY(-20%)); }
+            // }
+            @include animation(jump .6s infinite .6s);
+        }
+    }
+}
+
+// 隱藏內容
+[data-dropdown="content"] {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    a {
+        color: darken($dropdown-color, 28%);
+        padding: 8px 0;
+        display: block;
+
+        &:hover { background-color: lighten($dropdown-color, 24%) }
+    }
+}
+

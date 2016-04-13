@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+//
+// icon
+// --------------------------------------------------
+
+// .icon-arrow-down {
+//     @include el(before) {
+//         @include arrow(down, 10px, $color: #7B6668);
+//     }
+// }
+
+%icon-shape {
+    @extend %text-hide;
+    @include size(23px);
+    display: inline-block;
+    vertical-align: middle;
+    background-attachment: fixed;
+    background: url(#{$img-path}/icon-shape.gif) center 0 no-repeat;
+}
+.icon-triangle {
+    @extend %icon-shape;
+}
+.icon-cross {
+    @extend %icon-shape;
+    background-position: center -78px;
+}
+.icon-circle {
+    @extend %icon-shape;
+    background-position: center -154px;
+}
+.icon-circle-d {
+    @extend %icon-shape;
+    background-position: center -233px;
+
+    &.text-error {
+        background-position: center bottom;
+    }
+}

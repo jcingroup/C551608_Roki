@@ -1,0 +1,79 @@
+﻿@charset "UTF-8";
+
+// == config
+// ----------------------------------------------------------------------
+$img-path:              '../images' !default;
+$font-path:             '../font' !default;
+$states:                false !default;           // 情境文字是否輸出
+$index:                 false !default;           // 情境文字是否輸出
+$page:                  false !default;           // 情境文字是否輸出
+
+
+// == color
+// ----------------------------------------------------------------------
+$brand-primary:         #2F2F93;             // 主色
+$brand-secondary:       #DD6D16;             // 輔色
+$brand-gray:            #F3F4F4;             // 主題灰
+// $success:               #368B39 !default;             // 綠
+$info:                  #33525D;             // 藍
+// $warning:               rgb(255,128,0) !default;             // 黃
+// $error:                 #F35048 !default;             // 紅
+
+
+// == basic
+// ----------------------------------------------------------------------
+$body-bg:               #DBDCDC url(#{$img-path}/bg.gif) repeat-x 0 103px;
+$body-color:            #4C4C4C;
+$link-hover-color:      $brand-primary;
+$heading-color:         lighten($info,6);
+$font-sp:               'Open Sans', "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+
+
+// == layout
+// ----------------------------------------------------------------------
+$min-width:             1008px;     // 網頁最小尺寸
+$max-width:             1400px;     // 網頁最寬尺寸: .wrap
+$pages:                 'AboutUs' 'Products' 'ContactUs';
+
+$content-spacing:       45px !default;
+
+// header
+$header-height:         103px;
+$header-bg:             false;
+
+// logo
+$logo-img:              'logo.gif' !default;
+$logo-size:             335px 56px !default;
+$logo-position:         left 0 top ($header-height - nth($logo-size,2))/2 !default;
+
+// menu
+$menu-bg:               false;
+$menu-height:           $header-height;
+$menu-font-size:        19px;
+$menu-link:             #191919;
+$menu-link-hover:       #6B9BBB;
+
+// footer
+$footer-height:         213px !default;
+$footer-bg:             $info; //#85afd9
+$footer-color:          #A9A7AC; //#63889D;
+$footer-color2:         #33525D; //#63889D;
+
+
+// == z-index
+// ----------------------------------------------------------------------
+$z-index: (
+    header:           4,
+    main:             2,
+    footer:           1,
+    banner:           3,
+    logo:             10,
+    menu:             20,
+    figure:           19,
+    dropdown:         21,
+    tooltip:          22,
+    modal:            23,
+    toggle:           25,
+    goTop:            99,
+    overlay:          999
+);

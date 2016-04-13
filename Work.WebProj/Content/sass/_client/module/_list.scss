@@ -1,0 +1,92 @@
+﻿@charset "UTF-8";
+
+// list
+// ------------------------------------------------------------
+.list-unstyled { @extend %list-unstyled; }
+.list-inline { @extend %list-inline; }
+
+// 小圓點
+.list-dot, .list-number {
+    @extend %list-unstyled;
+
+    li {
+        @include icon-dot(left, 5px, $info, left 0);
+        line-height: 1.75;
+        margin-bottom: $gutter/2;
+    }
+}
+
+.list-dot {
+    li::before {
+        $font-size: 15px;
+        top: $font-size / 2;
+    }
+}
+
+// em 圓角
+.list-circle {
+    $bg-color: lighten($brand-gray, 2%);
+
+    @extend %list-unstyled;
+    @extend .text-left;
+
+    position: relative;
+
+    @include el(before) {
+        background: $bg-color;
+        width: 3px;
+        height: 90%;
+        z-index: -1;
+        @include absolute(left 30px top 22px);
+    }
+
+    &.col-6:nth-child(2) {
+        &::before { left: 43px; }
+    }
+
+    li {
+        clear: both;
+        padding-top: 30px;
+    }
+    em {
+        @include circle(60px, center, $bg-color);
+        display: block;
+        float: left;
+        border: 1px solid $brand-gray;
+        color: $brand-primary;
+        font-style: normal;
+        margin-top: -20px;
+    }
+    p {
+        margin-left: 70px;
+        vertical-align: middle;
+    }
+    span {
+        margin-right: 8px;
+        color: darken($brand-gray, 20%);
+    }
+}
+
+// 自動編號
+$num-max: 15;
+
+.list-number li {
+    $size: 21px;
+
+    padding-left: $size +10;
+
+    &::before {
+        @include text-center($size);
+        @include size($size);
+        top: 0;
+        font-size: em(13px);
+        color: #fff;
+    }
+    @for $i from 1 through $num-max {
+        &:nth-child(#{$i}) {
+            &::before {
+                content: '#{$i}';
+            }
+        }
+    }
+}

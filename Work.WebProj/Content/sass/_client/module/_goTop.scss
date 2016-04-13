@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+$goTop-position:        bottom 30px right 10px !default;
+$goTop-size:            42px 23px !default;
+$goTop-img:             'goTop.png' !default;
+
+//
+// goTop
+// --------------------------------------------------
+
+.goTop {
+    @extend %effect-all;
+    display: none;
+    z-index: z(goTop);
+
+    opacity: .65;
+
+    @include fixed($goTop-position);
+    @include text-pic(#{$goTop-img}, nth($goTop-size, 1), nth($goTop-size, 1));
+
+    &:hover, &:active { opacity: 1; }
+}

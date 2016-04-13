@@ -3,20 +3,22 @@
 
 // import
 // ------------------------------------------------------------
-@import "helper/variables";
-@import "_web/var";
-
-@import "helper/mixins";
 @import "helper/function";
+@import "helper/var";
+@import "helper/mixins";
 
-// Reset and dependencies
-@import "base/normalize";
-@import "base/print";
-@import "base/reboot";
+@import "base/basic";
+@import "base/extend";
+@import "base/classes";
+@import "base/table";
 
-// Elements
-@import "element/type";
-@import "element/tables";
+@import "layout/grid";
 
-@import "_web/element";
-@import "_web/editor";
+@import "module/label";
+@import "module/list";
+
+body { padding: 10px 15px; line-height: 1.7; }
+h1,h2,h3,h4,h5,h6,p,blockquote,
+ul,ol,li,dl,dt,dd { text-align: left; }
+h2 { margin-top: 0; margin-bottom: 20px; }
+p { color: #333; line-height: 1.9; }

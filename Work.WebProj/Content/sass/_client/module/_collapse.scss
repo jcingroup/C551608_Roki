@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+// $underline-color:             darken($brand-gray, 20%);
+// $underline-position:          top 100% right 0;
+
+// $underline-transform:         scaleY(1);
+// $underline-transform-origin:  50%;
+// $underline-transform-hover:   scaleY(3);
+// $underline-transition:        'transform .35s ease-out, background .4s';
+
+
+.collapse-title {
+    cursor: pointer; cursor: hand;
+
+    @include el(after, inline-block, '+') {
+        background: $brand-secondary;
+        color: #fff;
+        margin-left: 10px;
+        padding: 2px 5px;
+        border-radius: 3px;
+        width: 20px; line-height: 18px;
+        text-align: center;
+    }
+    &:hover, &:active, &.current {
+        strong { color: lighten($brand-primary, 10%); }
+        &::after { background: $info; }
+    }
+    &.current {
+        &::after { content: '-'}
+    }
+}
+.collapse-content {
+    display: none;
+    margin-left: 95px;
+    margin-top: 8px;
+}

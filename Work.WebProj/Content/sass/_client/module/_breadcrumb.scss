@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+//
+// breadcrumb
+// --------------------------------------------------
+
+.breadcrumb {
+    @extend %list-inline;
+
+    text-align: left;
+    font-size: em(15px);
+    color: lighten($body-color, 20%);
+
+    li { margin-right: 10px; }
+    a {
+        color: $brand-primary;
+        @include el(after, false, '/') {
+            margin-left: 3px;
+            color: darken($brand-gray, 7%);
+        }
+    }
+}

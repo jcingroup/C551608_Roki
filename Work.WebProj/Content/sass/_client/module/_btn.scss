@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+$btn-display:            inline-block !default;
+$btn-padding:            12px 20px !default;
+$btn-transition:         'background .35s, color .5s' !default;
+
+// 下為單選自定樣式，變數有值才會顯示，
+// 當變數設為 false or null 則不顯示
+$btn-font-family:        false !default;
+$btn-font-size:          18px !default;
+$btn-line-height:        1.01 !default;
+$btn-letter-spacing:     1px !default;
+
+$btn-min-width:          false !default;
+
+$btn-state-color:        #fff !default;
+$btn-color:              $btn-state-color !default;
+$btn-bg:                 $brand-primary !default;
+$btn-disabled:           $gray-light !default;
+
+$btn-border:             false !default;
+$btn-border-radius:      5px !default;
+$btn-shadow:             false !default; // 1px 1px 2px hsla(0,0,0,.2)
+
+$btn-bg-hover:           lighten($brand-primary, 6%) !default;
+$btn-border-hover:       false !default;
+$btn-color-hover:        false !default;
+
+
+// button
+// ----------------------------------------------
+
+.btn {
+    display: $btn-display;
+    padding: $btn-padding;
+    @include transition($btn-transition);
+
+    // 下為單選自定樣式，變數有值才會顯示，
+    // 當變數設為 false or null 則不顯示
+    @if $btn-color          { color: $btn-color; }
+    @if $btn-bg             { background: $btn-bg; }
+    @if $btn-border         { border: $btn-border; }
+    @if $btn-border-radius  { border-radius: $btn-border-radius; }
+    @if $btn-shadow         { box-shadow: $btn-shadow; }
+    @if $btn-min-width      { min-width: $btn-min-width; }
+    @if $btn-font-family    { font-family: $btn-font-family; }
+    @if $btn-font-size      { font-size: em($btn-font-size); }
+    @if $btn-line-height    { line-height: $btn-line-height; }
+    @if $btn-letter-spacing { letter-spacing: $btn-letter-spacing; }
+
+    &, &:active, &.active {
+        &:focus {
+            @include tab-focus;
+        }
+    }
+    &:active, &.active {
+        outline: 0;
+    }
+    &.disabled, &[disabled], fieldset[disabled] & {
+        cursor: $cursor-disabled;
+        opacity: .65;
+    }
+    &:hover, &:active, &.active {
+    // &:hover, &:focus, &.focus {
+        @if $btn-bg-hover     { background-color: $btn-bg-hover; }
+        @if $btn-border-hover { border-color: $btn-color-hover; }
+        @if $btn-color-hover  { color: $btn-color-hover; }
+    }
+}
+
+@if $states {
+
+    %btn-states {
+        color: #fff;
+    }
+
+    $selector: ();
+    @each $type, $color in $state-type {
+        $selector: $selector, unquote(".btn-#{$type}");
+
+        .btn-#{$type} {
+            background-color: $color;
+            border-color: darken($color, 5%);
+
+            &:hover, &:active {
+                background-color: darken($color, 10%);
+                @extend %btn-states;
+            }
+        }
+    }
+    #{$selector} {
+        @extend %btn-states;
+    }
+}

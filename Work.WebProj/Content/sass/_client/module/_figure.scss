@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+$figure-color:            null !default;
+$figure-bg:               null !default;
+$figure-border:           null !default;
+$figure-text-align:       center !default;
+
+$figure-width:            percentage(1/5) !default;
+$figure-height:           215px !default;
+$figure-min-width:        244px !default;
+$figure-max-width:        percentage(1/5) !default;
+$figure-mg:               null !default;
+$figure-pd:               null !default;
+$figure-effect:           null !default;
+$figure-float:            false !default;
+$figure-inline:           true !default;
+$figure-inline-hack:      true !default;
+
+// 圖片樣式
+$figure-img-full:         false !default;
+$figure-img-width:        null !default;
+$figure-img-height:       null !default;
+
+$figure-title-size:       15px !default;
+$figure-title-color:      #7F7F7F !default;
+$figure-title-pos:        bottom 5% left 0 right 0 !default;
+
+$figure-p-size:           13px !default;
+$figure-p-color:          $gray !default;
+$figure-p-pos:            top 30% left 0 right 0 !default;
+
+// common style
+figcaption, figure > a {
+    @include size(100%);
+    @include absolute(left 0 top 0);
+}
+
+figcaption {
+    // 文字強迫大寫
+    // text-transform: uppercase;
+
+    @extend %effect-all;
+    @include prefix(backface-visibility, hidden);
+
+    &::before, &::after { pointer-events: none; }
+}
+
+figure {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    @if $figure-float {
+        float: left;
+    }
+    @if $figure-inline {
+        display: inline-block;
+        vertical-align: top;
+
+        @if $figure-inline-hack {
+            margin-right: -4px;
+            &:first-child { margin-left: -4px; }
+        }
+    }
+
+    @if $figure-width      { width: $figure-width; }
+    @if $figure-height     { height: $figure-height; }
+    @if $figure-max-width  { max-width: $figure-max-width; }
+    @if $figure-min-width  { min-width: $figure-min-width; }
+    @if $figure-mg         { margin: $figure-mg; }
+    @if $figure-pd         { padding: $figure-pd; }
+    @if $figure-text-align { text-align: $figure-text-align; }
+
+    @if $figure-color      { color: $figure-color; }
+    @if $figure-bg         { background: $figure-bg; }
+    @if $figure-border     { border: $figure-border; }
+
+    @if $figure-effect     { @include transition($figure-effect) }
+
+    img {
+        position: relative;
+
+        @if $figure-img-full {
+            min-width: 100%;
+            min-height: 100%;
+        }
+        @if $figure-img-width  { width: $figure-img-width; }
+        @if $figure-img-height { height: $figure-img-height; }
+    }
+
+    > a {
+        z-index: z(figure);
+        white-space: nowrap;
+        opacity: 0;
+    }
+
+    // RWD
+    @include mq-max(break(desktop, -1)) {
+        float: none;
+        display: inline-block;
+    }
+    @include mq-max(tablet) {
+        width: 48%;
+        max-width: none;
+        margin: 3px; margin-bottom: 15px;
+    }
+    @include mq-max(phone) { width: 100%; }
+
+    // 描述
+    h4, p { margin: 0; }
+    h4 {
+        @if $figure-title-color { color: $figure-title-color; }
+        @if $figure-title-size  { font-size: em($figure-title-size); }
+        @if $figure-title-pos   { @include absolute($figure-title-pos); }
+    }
+    p {
+        @if $figure-p-color   { color: $figure-p-color; }
+        @if $figure-p-size    { font-size: em($figure-p-size); }
+        @if $figure-title-pos { @include absolute($figure-p-pos); }
+    }
+}
+
+// theme
+
+// 背景滿版(in index)
+// .img-full {
+
+//     img {
+//         @include prefix(transition, 'transform 1s, opacity .6s');
+//         opacity: .15;
+//     }
+// }
+
+
+
+// 標題置底(in products series)
+// #slide figure {
+//     border-left: 1px solid darken($brand-gray, 5%);
+//     min-width: $figure-min-width;
+
+//     &:first-child { border-left: none; }
+
+//     img {
+//         min-width: 62%;
+//         min-height: 62%;
+//         margin-top: -8%;
+//         @include prefix(transition, 'opacity .5s');
+//     }
+//     p {
+//         @include prefix(transition, 'opacity .3s, top .5s');
+//         opacity: 0;
+//     }
+//     span { margin: 3px; }
+//     &:hover, &:active {
+//         p { opacity: 1; top: 35% }
+//         img { opacity: .25 }
+//         h4 { color: $brand-primary; }
+//     }
+
+//     @include mq-max(phone) { width: 85%; }
+// }

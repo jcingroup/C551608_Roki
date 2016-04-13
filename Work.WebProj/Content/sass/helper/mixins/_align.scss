@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+// 單行文字垂直置中
+@mixin text-center($height) {
+    @extend .text-center;
+    line-height: $height;
+}
+
+// 讓目標元素垂直置中, 母元素需固定高度
+@mixin middle($target, $height, $align: false) {
+    @include el(before, inline-block) {
+        vertical-align: middle;
+        height: 100%;
+    }
+    // &::before {
+    //     @extend %pseudo;
+    //     @extend %align-middle;
+    //     height: 100%;
+    // }
+
+    #{$target} {
+        @if $target != img {
+            // @extend %align-middle;
+            @include mixin-dryer('va-middle') {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        @content;
+    }
+
+    height: $height;
+
+    @if $align {
+        text-align: $align;
+    }
+}

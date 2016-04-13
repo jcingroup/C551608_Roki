@@ -1,9 +1,12 @@
-// WebKit-style focus
+@charset "UTF-8";
 
-@mixin tab-focus() {
-  // Default
-  outline: thin dotted;
-  // WebKit
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+$tab-focus-outline: 1px solid lighten($brand-secondary, 20%) !default;
+
+@mixin tab-focus($outline: $tab-focus-outline) {
+    // $outline: if($values != null, $values, $tab-focus-outline);
+    // Default
+    outline: nth($outline, 1) nth($outline, 2);
+    // WebKit
+    outline: $outline;
+    outline-offset: 1px;
 }

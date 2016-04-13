@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+$underline-color:             darken($brand-gray, 20%);
+$underline-position:          top 100% right 0;
+
+$underline-transform:         scaleY(1);
+$underline-transform-origin:  50%;
+$underline-transform-hover:   scaleY(3);
+$underline-transition:        'transform .35s ease-out, background .4s';
+
+
+.tabs {
+    display: none;
+    @extend %list-inline;
+    margin-top: 35px;
+    border-bottom: 1px solid $brand-gray;
+
+    a {
+        display: block;
+        color: darken($brand-gray, 50%);
+        background: lighten($brand-gray, 2%);
+        padding: 12px 20px;
+        outline: none;
+        &:hover, &:active {
+            background: lighten($info, 30%);
+        }
+    }
+    li {
+        margin-bottom: -1px;
+        &.active {
+            a {
+                color: $heading-color;
+                background: none;
+                font-size: em(19px);
+            }
+        }
+    }
+}
+
+.tabs-main {
+    margin-top: 35px;
+    // text-align: left;
+}
+.tab-content {
+    // @extend .text-left;
+}

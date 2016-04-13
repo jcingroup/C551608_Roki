@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+
+// layout
+@import "layout/header";
+@import "layout/nav";
+@import "layout/footer";
+
+#wrapper {
+    @include el(before) {
+        // position: absolute;
+        @include absolute(left 0 top 0);
+        width: 100%; height: $header-height;
+        background: #fff;
+        z-index: -1;
+    }
+}
+
+// 共用module
+@import "module/classes";
+@import "module/list";
+@import "module/figure";
+@import "module/slider";
+@import "module/btn";
+@import "module/goTop";
+// @import "module/hover";
+@import "module/dropdown";
+@import "module/search";

@@ -1,245 +1,26 @@
 @charset "UTF-8";
 
-
-// var
+// var 變數，需放在 @import "helper/var" 之上才能覆蓋掉
 // ------------------------------------------------------------
-$img-path2:             '../images/Index';
+$index:           true;
+$img-path2:       '../images/index';
+
+$font-size-h2:    55px;
 
 
 // import
 // ------------------------------------------------------------
+@import "_client/var"; // 覆蓋掉下面的變數
 
-// Core variables and mixins
-@import "helper/variables";
-@import "_web/var";
-
+@import "helper/util";
+@import "helper/var";
 @import "helper/mixins";
-@import "helper/function";
 
-// Reset and dependencies
-@import "base/normalize";
-@import "base/print";
-@import "base/reboot";
+@import "base/basic";
+@import "base/extend";
+@import "base/layout";
 
-// Elements
-@import "element/type";
-@import "element/images";
-
-// Layout
-@import "layout/grid";
-
-// Module
-@import "module/animation";
-@import "module/nav";
-@import "module/navbar";
-
-// Utility classes
-@import "helper/utilities-extends";
-@import "helper/extend";
-@import "helper/classes";
-@import "helper/utilities-spacing";
-@import "helper/utilities-responsive";
-
-@import "_web/element";
-@import "_web/layout";
+@import "_client/main";
 
 
-// layout
-// ----------------------------------------------------------------------
-#wrapper {background: url(#{$img-path2}/bg.jpg) fixed center top / cover;}
-#content {
-	position: relative;
-    padding-bottom: $content-spacing;
-    background: #F5F5E4;
-
-    &::before {
-        content:" ";
-        display: block;
-        width: 100%;
-        height: 128px;
-
-        position: absolute;
-        left: 0; top: -128px;
-
-        background: url(#{$img-path}/mainBg.png) repeat-x;
-    }
-}
-
-
-// main
-// ----------------------------------------------------------------------
-#banner {
-	position: relative;
-	padding-bottom: 53px;
-	background: url(#{$img-path2}/bannerBg.png) no-repeat center bottom;
-
-	p {margin: 0;}
-	.animated {position: absolute;}
-
-	.slogan1 {
-		.slogan1-1 {width: 173px; height: 175px; left: 300px; top: 95px;}
-		.slogan1-2 {width: 206px; height: 206px; left: 436px; top: 75px; animation-delay: 0.5s;}
-		.slogan1-3 {width: 168px; height: 168px; left: 600px; top: 123px; animation-delay: 1s;}
-		.slogan1-4 {width: 180px; height: 173px; left: 723px; top: 87px; animation-delay: 1.5s;}
-	}
-
-	.slogan2 {
-		width: 250px;
-		height: 228px;
-
-		right: 55px;
-		top: 65px;
-		background: url(#{$img-path2}/couple.png) no-repeat center bottom;
-		animation-delay: 2s;
-
-		i, img {position: absolute;}
-
-		.text {
-			display: block;
-			
-			top: 183px;
-			left: 2px;
-
-			color: #28615B;
-			font-size: em(27px);
-			font-style: normal;
-			font-weight: bold;
-			transform: rotate(3deg);
-		}
-		.cloud2 {width: 191px; height: 38px; right: 0; top: 42px;}
-
-		@keyframes fly {
-			from, 95%, to {opacity: 0;}
-			20%, 40%      {opacity: 1; transform: translateY(0);}
-			from          {transform: translateY(20%)}
-			95%, to       {transform: translate(40%,-120%) scale(0.6)}
-		}
-		.balloon {
-			width: 80px; height: 168px;
-			position: absolute;
-			left: 100px; top: 0;
-			opacity: 0;
-
-			animation-name: fly;
-			animation-duration: 5s;
-			animation-delay: 2.75s;
-			animation-timing-function: ease-in-out;
-			animation-iteration-count: infinite;
-		}
-	}
-
-	.cloud {position: absolute; left: 0; top: 315px;}
-}
-
-.intro {
-	margin-bottom: 278px;
-	text-align: center;
-
-	p {
-		width: 500px;
-		margin: 0 auto;
-		color: #8C6231;
-		font-size: em(12px);
-	}
-}
-
-.grid-house {
-	@extend .row;
-	margin-bottom: $spacer*4.375;
-
-	.sell, .rent {
-		@extend .col-xs-6;
-		margin-top: -188px;
-
-		a {
-			display: block;
-			width: 100%;
-			height: 375px;
-			position: relative;
-
-			color: #fff;
-
-			border: 20px solid hsla(0,0,100%,0.3);
-			border-radius: 15px;
-			box-shadow: 0 3px 3px hsla(0,0,0,0.2);
-
-			transition: border 0.5s;
-
-			span, small {
-				position: absolute;
-				right: 7%;
-			}
-
-			span {
-				display: inline-block;
-				top: 30%;
-
-				padding: 15px 35px;
-				background:hsla(0,0,0,0.5);
-			}
-
-			small {
-				display: block;
-				width: 75%;
-				top: 55%;
-
-				text-align: right;
-				font-size: em(10px,36px);
-				text-transform: uppercase;
-
-				opacity: 0.7;
-
-				transition: top 0.5s;
-			}
-
-			&:hover {
-				border-width: 60px;
-
-				small {top: 65%;}
-			}
-		}		
-	}
-
-	.sell a {background:url(#{$img-path2}/sell.jpg) no-repeat center center;}
-	.rent a {background:url(#{$img-path2}/rent.jpg) no-repeat center center;}
-}
-
-.grid-contact {
-
-	.map {
-		height: 380px;
-		position: relative;
-	}
-
-	#map {
-		width: 100%;
-		height: 100%;
-	}
-
-	ul {
-		width: 370px;
-		margin: 0;
-		padding: 0 25px;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		background: hsla(46, 41%, 75%, 0.9);
-	}
-
-	li {
-		padding: 15px 0;
-		font-size: em(20px);
-		color: #634F28;
-
-		&:not(:last-child) {
-			border-bottom: 1px dotted #fff;
-		}
-
-		[class*="icon-"] {margin-right: $spacer*0.6;}
-
-		a {
-			color: #634F28;
-			&:hover {color: $link-color;}
-		}
-	}
-}
+// == main

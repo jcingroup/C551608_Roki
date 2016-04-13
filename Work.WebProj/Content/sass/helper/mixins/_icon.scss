@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+// icon dot
+@mixin icon-dot($direction, $size, $color, $pos: false) {
+    @include el(before) {
+        @include circle($size, $bg-color: $color);
+
+        @if $pos {
+            @include absolute($pos);
+        }
+    }
+    @if $pos {
+        position: relative;
+        padding-#{$direction}: $size * 3;
+    }
+}
+
+// icon arrow
+@mixin icon-arrow($direction, $size, $color, $pos: false) {
+    @include el(before) {
+        @include arrow($direction, $size, $color);
+
+        @if $pos {
+            @include absolute($pos);
+        }
+    }
+    @if $pos {
+        position: relative;
+    }
+}
+
+// icon arrow
+@mixin icon-square($direction, $size, $color, $pos: false) {
+    @include el(before) {
+        @include size($size);
+        background: $color;
+
+        @if $pos {
+            @include absolute($pos);
+        }
+    }
+    @if $pos {
+        position: relative;
+        padding-#{$direction}: $size * 3;
+    }
+}

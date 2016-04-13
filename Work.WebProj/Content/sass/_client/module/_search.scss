@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+$input-group-radius:       19px !default;
+$input-group-height:       38px !default;
+
+$search-min-width:         50px !default;
+$search-height:            50px !default;
+$search-max-width:         280px !default;
+$search-position:          top ($menu-height - $search-height)/2 right 5% !default;
+
+// == input群組
+// .input-group {
+//     position: relative;
+//     padding: 0;
+
+//     float: right;
+//     margin-top: 20px;
+//     font-size: em(13px);
+
+//     input {
+//         border-color: #9CD217;
+//         border-radius: $input-group-radius;
+//         height: $input-group-height;
+//     }
+
+//     .input-group-btn {
+//         @include absolute(right 3px top 0);
+//         height: $input-group-height - 6;
+//         border-radius: $input-group-radius;
+//         margin: 3px;
+//     }
+// }
+
+.search {
+    width: 0;
+    min-width: $search-min-width;
+    height: $search-height;
+    // float: right;
+    overflow: hidden;
+    position: relative;
+
+    -webkit-backface-visibility: hidden;
+    z-index: 55;
+
+    @include prefix(transition, width .3s);
+    @include absolute($search-position);
+
+    input {
+        @include size(100%);
+        border: none;
+        border-radius: 0;
+        outline: none;
+        background: none;
+        box-shadow: none;
+        font-size: 0;
+        -webkit-appearance: none;
+        z-index: 10;
+    }
+    button, span {
+        @include absolute(top 0 right 0);
+        width: $search-min-width;
+        height: 100%;
+        display: block;
+
+        line-height: 100%;
+        text-align: center;
+        cursor: pointer;
+        font-size: em(22px);
+
+        &::before {
+            @include absolute(top 50% left 50%);
+            @include prefix(transform, translate(-50%,-50%));
+        }
+    }
+    button {
+        background: none;
+        opacity: 0;
+        z-index: 11;
+
+        &.enter {
+            opacity: 1;
+            background: $brand-secondary;
+            color: #fff;
+        }
+    }
+    span {
+        color: darken($brand-gray, 30%);
+        z-index: 90;
+        speak: none;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+
+        &:hover, &:active {
+            color: $brand-secondary;
+        }
+    }
+    &-open {
+        width: $search-max-width;
+        input {
+            background: #fff;
+            padding: 0 $search-min-width 0 20px;
+            font-size: 1em;
+            color: $brand-secondary;
+        }
+    }
+}
+

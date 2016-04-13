@@ -1,316 +1,339 @@
 @charset "UTF-8";
 
-// var
-// ------------------------------------------------------------
+$page:                    true;
+$line:                    1px solid #fff;
+
+// module/animate
+$jump:                    true;
+
+// base/basic
+$font-size-h3:            23px;
+
+// layout/layout
+$logo-small-size:         49px 40px;
+
+// module/figure
+$figure-width:            percentage(1/5);
+$figure-min-width:        auto;
+$figure-max-width:        percentage(1/5);
+$figure-img-full:         false;
+$figure-img-height:       138px;
 
 
-// import
-// ------------------------------------------------------------
-
-// Core variables and mixins
-@import "helper/variables";
-@import "_web/var";
-
-@import "helper/mixins";
 @import "helper/function";
+@import "helper/var";
+@import "helper/mixins";
 
-// Reset and dependencies
-@import "base/normalize";
-@import "base/print";
-@import "base/reboot";
+@import "base/basic";
+@import "base/table";
+@import "base/form";
+@import "base/extend";
+@import "base/classes";
 
-// Elements
-@import "element/type";
-@import "element/images";
-@import "element/tables";
-@import "element/forms";
-@import "element/buttons";
+@import "layout/layout";
 
-// Layout
-@import "layout/grid";
-
-// Module
-@import "module/animation";
-@import "module/button-group";
-@import "module/input-group";
-@import "module/custom-forms";
-@import "module/nav";
-@import "module/navbar";
-@import "module/card";
-@import "module/breadcrumb";
-// @import "module/pagination";
-// @import "module/pager";
-@import "module/labels";
-// @import "module/jumbotron";
-// @import "module/alert";
-// @import "module/list-group";
-// @import "module/responsive-embed";
-// @import "module/close";
-
-// Components w/ JavaScript
-@import "module/dropdown";
-// @import "module/modal";
-// @import "module/tooltip";
-// @import "module/popover";
-// @import "module/carousel";
-
-// Utility classes
-@import "helper/utilities-extends";
-@import "helper/utilities";
-@import "helper/extend";
-@import "helper/classes";
-// @import "helper/utilities-background";
-@import "helper/utilities-spacing";
-@import "helper/utilities-responsive";
-
-@import "_web/element";
-@import "_web/module";
-@import "_web/editor";
-@import "_web/layout";
+@import "module/list";
+@import "module/hover";
+@import "module/slider";
+@import "module/btn";
+@import "module/search";
+@import "module/label";
+@import "module/figure";
+@import "module/tab";
+@import "module/animate";
 
 
-// Elements
+// main
 // ----------------------------------------------------------------------
-.editor img {max-width: 100%;}
+#banner {
+    height: 480px;
 
-.title {
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: -155px;
-	z-index: $zindex-navbar;
+    &, .swiper-slide {
+        background: lighten($brand-gray, 3.5%);
+    }
+    .swiper-slide {
+        height: 100%;
+    }
 }
 
-#map {
-	width: 100%;
-	height: 380px;
-	border: 3px solid #fff;
-}
-
-
-// Layout
-// ----------------------------------------------------------------------
 #main {
-    margin-top: 245px;
-    padding-bottom: $content-spacing;
-    position: relative;
-    background: #F5F5E4;
+    section {
+        line-height: 1.7;
+        padding: 50px 0;
 
-    &::before {
-        content:" ";
+        &:first-child { padding-bottom: 0;}
+
+        h3 {
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: $gutter +18;
+        }
+    }
+    li {
+        line-height: 1.2;
+        margin-bottom: $gutter;
+    }
+}
+
+.container {
+    font-size: em(15px);
+
+    h4 { margin-top: 25px; }
+    img { max-width: 100%; }
+}
+
+
+// == Products
+
+.spec {
+    img { margin-right: 10px; max-height: 26px; }
+}
+
+// 燈箱按鈕
+#popup {
+    margin-bottom: 50px;
+    a {
+        // $img-spacing: 25px;
+
+        // float: left;
+        // text-align: center;
+        // background: lighten($brand-gray, 3%);
+        // border: 1px solid darken($brand-gray, 3.5%);
+        // width: 47%;
+        // margin: 0 1%;
+
+        // @include middle(em, 170px) {
+        //     color: $info;
+        //     font: normal em(21px)/#{1.45} $font-sp;
+        //     margin: 2% 5%;
+        //     @include prefix(transition, color .2s);
+        // }
+
+        // &:hover, &:active {
+        //     background: lighten($info, 25%);
+        //     em { color: #fff; }
+        // }
+
+        font-size: 15px;
+
+        &:focus { outline: none }
+    }
+}
+
+// 產品列表右選單
+// 手機用按鈕
+// .pro-menu {
+//     display: none;
+
+//     font-size: em(18px);
+//     width: 100%;
+//     padding: 12px 0;
+
+//     @include mq-max(tablet) {
+//         display: block;
+//     }
+// }
+
+
+// 系列產品(滑動特效)
+#series {
+    padding: 0;
+    h3 {
+        color: $info;
+        font-size: em(42px);
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    aside {
+        color: #ddd;
+        font-size: em(13px);
+        margin-bottom: 0;
+    }
+}
+#slide {
+    height: $figure-height;
+    margin-bottom: 50px;
+
+    .swiper-wrapper {
+        // flex 置中
+        @include prefix(align-items, center);
+        @include prefix(justify-content, center);
+    }
+}
+
+.products-list {
+    border-left: 1px solid darken($brand-gray, 5%);
+    margin-bottom: 2%;
+
+    &:nth-of-type(5n+1) { border-left: none; }
+
+    // @include mq-max(phone) { width: 85%; }
+
+    &:hover, &:active {
+        // p { opacity: 1; top: 35% }
+        img { @include transform(translateX(-50%) scale(1.1)) }
+        h4 { color: $brand-primary; }
+    }
+
+    img {
+        @include pos-center(true, false);
+        @include transition('transform 1s');
+        min-height: auto;
+        top: 8%;
+    }
+    // p {
+    //     @include transition('opacity .3s, top .5s');
+    //     opacity: 0;
+    // }
+    // span { margin: 3px; }
+}
+
+
+// == about us
+.row {
+    span {
+        margin-right: 8px;
+        color: darken($brand-gray, 20%);
+    }
+    em {
+        font-style: normal;
+    }
+}
+.AboutUs .row dt { margin-right: $gutter; }
+
+// == News & Support
+// 右選單
+.sidebar {
+    border-left: 1px solid darken($brand-gray, 5%);
+    padding-left: $gutter;
+
+    a {
         display: block;
+        letter-spacing: 1px;
+        margin: 15px 0;
+
+        &.current {
+            color: $brand-secondary;
+        }
+
+        @include mq-max(break(desktop, -1)) {
+            display: inline-block;
+            margin: 0 10px 10px 0;
+
+            span { padding: 0; }
+        }
+    }
+}
+
+// news
+.news-list {
+    dt {
+        color: $brand-secondary;
+        font-size: em(13px);
+        margin-bottom: 5px;
+    }
+    dd {
+        font-size: em(17px);
+        margin-bottom: 22px;
+    }
+}
+.news-panel {
+    em {
+        font-style: normal;
+        color: $brand-secondary;
+        display: block;
+    }
+    header {
+        font-size: em(23px);
+        color: $brand-primary;
+        margin-bottom: $gutter;
+    }
+    .text-center { margin-top: 30px; }
+}
+
+// support
+.collapse {
+    &-title, &-content {
+        margin-right: $gutter+5;
+    }
+}
+.collapse-title {
+    cursor: pointer; cursor: hand;
+
+    span { display: block; margin-bottom: 5px; }
+    strong {
+        @include el(after, inline-block, '+') {
+            background: $brand-secondary;
+            color: #fff;
+            margin-left: 10px;
+            padding: 2px 5px;
+            border-radius: 3px;
+            width: 20px; line-height: 18px;
+            text-align: center;
+        }
+    }
+
+    &:hover, &:active, &.current {
+        strong { color: lighten($brand-primary, 10%); }
+        strong::after { background: $info; }
+    }
+    &.current {
+        strong::after { content: '-'}
+    }
+}
+.collapse-content {
+    display: none;
+    margin-top: 10px;
+}
+
+// == Contact Us
+// 表單
+.contacts {
+    float: left;
+    width: 50%;
+
+    h3, input, textarea { margin-top: 0; }
+    em {
+        font-style: normal;
+        color: $error;
+    }
+    button { margin: 15px 0; }
+
+    @include mq-max(tablet) {
+        float: none;
         width: 100%;
-        height: 128px;
-
-        position: absolute;
-        left: 0; top: -128px;
-
-        background: url(#{$img-path}/mainBg.png) repeat-x;
-    }
-
-    #content {
-        min-height: 300px;
-        margin-top: -25px;
     }
 }
-
-
-// Sell / Rent
-// ----------------------------------------------------------------------
-.filter {
-
-	.btn {font-size: em(20px);}
-	.btn-secondary {
-		[class*="ti-"] {
-			margin-left: $spacer*0.3;
-			font-size: $font-size-sm;
-			color: lighten($brand-secondary,10%);
-			opacity: 1;
-			transition: opacity 0.3s;
-		}
-	}
-	.open .btn-secondary, .btn-secondary.active {
-		[class*="ti-"] {opacity: 0;}
-	}
-
-	.dropdown-toggle {
-		&::after {display: none;}
-	}
-	.dropdown-menu {
-		min-height: 100px;
-		padding-left: $spacer*0.5;
-		padding-right: $spacer*0.5;
-
-		&.city {width: 600px;}
-		&.district {width: 600px;}
-		&.price {width: 300px;}
-		&.usage {width: 300px;}
-		&.size {width: 300px;}
-		&.type {width: 300px;}
-		&.other {width: 600px;}
-	}
-
-	.card {
-		padding: $spacer*0.5;
-		color: $body-color;
-		border: $dropdown-border-width solid $dropdown-border-color;
-
-		.grid:not(:last-child) {margin-bottom: $spacer;}
-	}
+.ContactUs {
+    table {
+        .text-right {
+            width: 18%;
+            min-width: 155px;
+            font-weight: normal;
+        }
+        h5 { margin-top: 0; margin-bottom: 5px; }
+    }
 }
 
-.result {
-	strong {margin: 0 $spacer*0.5;}
+.map {
+    float: right;
+    width: 47.5%;
+    text-align: left;
+}
+#map-canvas {
+    height: 400px;
+    margin-bottom: 10px;
 }
 
-.pro {
-	@extend .col-xs-4;
-
-	.card-img-top {
-		opacity:1;
-		transition: opacity 0.35s;
-
-		&:hover {opacity: 0.7}
-	}
-
-	.card-block {
-		height: 250px;
-		position: relative;
-	}
-
-	.feature, .info {
-		max-height: $line-height*2em;
-		overflow: hidden;
-	}
-
-	.feature {
-		margin-bottom: $spacer*0.3;
-		font-weight: bold;
-
-		li {
-			margin-right: 0;
-
-			&:not(:last-child)::after {
-				content:"／";
-				margin-left: $spacer*0.2;
-			}
-		}
-	}
-
-	.info {
-		margin-bottom: $spacer*0.5;
-		li {margin-right: $spacer*0.8;}
-	}
-
-	.price {
-		font-size: em(26px);
-
-		strong {
-			margin-right: $spacer*0.2;
-			line-height: 1;
-			font-size: em(40px, 26px);
-		}
-	}
-
-	.more {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		font-size: em(20px);
-		letter-spacing: 0.1em;
-		border-radius: 0;
-	}
-
-	&.style2 {
-		.card-block {height: 200px;}
-		.feature, .info {max-height: $line-height*1em;}
-		.more {position: static;}
-	}
-}
-
-.grid-pro {
-
-	.thumb, .profile {@extend .col-xs-6;}
-
-	.thumb {
-
-		.img-thumbnail {
-			display: block;
-			margin-bottom: $spacer;
-		}
-	}
-
-	.profile {
-
-		.h4 {
-			padding-bottom: $spacer*0.7;
-			font-size: em(20px);
-			border-bottom: 1px solid #ccc;
-
-			.label {font-weight: normal;}
-		}
-
-		.detail {
-
-			li {
-				padding: $spacer*0.3;
-				border-bottom: 1px dotted #ccc;
-
-				&:last-child {border-bottom-style: solid;}
-
-				.grid {
-					@extend .col-xs-4;
-					+ .grid {@extend .col-xs-8;}
-				}
-
-				.text-secondary {
-					display: inline-block;
-					width: 6em;
-					text-align: right;
-				}
-				.price {
-					margin-right: $spacer*0.3;
-					font-size: $font-size-lg;
-				}
-				
-			}
-		}
-
-		.more-info {
-
-			li {
-				float: left;
-				margin-left: $spacer*0.625;
-			}
-
-			.tel {
-				margin-right: $spacer;
-				strong {
-					color: #CC5520;
-					font-size: em(25px);
-				}
-			}
-
-			.btn {
-				width: 6.5em;
-
-
-			}
-		}
-	}
-}
-
-.grid-info {
-	+ .grid-info {margin-top: $spacer*3;}
-
-	.gallery {
-		li {
-			@extend .col-xs-4;
-			margin-bottom: $grid-gutter-width;
-
-			.img-thumbnail {
-				display: block;
-			}
-		}
-	}
-}
+// 路線選單
+// #floating-panel {
+//     @include absolute(left 50% top 10px);
+//     margin-left: -90px;
+//     background: #fff;
+//     border-radius: 2px;
+//     padding: 0 5px 0 10px;
+//     font-size: em(13px);
+//     line-height: 31px;
+//     color: #666;
+// }
+// #mode { border: none; }
