@@ -293,8 +293,10 @@
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\CommunityController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -330,6 +332,7 @@
     <Content Include="Content\css\icomoon.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\page.css" />
+    <Content Include="Content\css\swiper.css" />
     <Content Include="Content\css\swiper.min.css" />
     <Content Include="Content\css\vendor\animate.css" />
     <Content Include="Content\css\vendor\bootstrap-datetimepicker-build.css" />
@@ -344,6 +347,8 @@
     <Content Include="Content\images\logo.gif" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
+    <Content Include="Content\images\Products\list.jpg" />
+    <Content Include="Content\images\Products\list2.jpg" />
     <Content Include="Content\js\common.js" />
     <Content Include="Content\js\swiper.min.js" />
     <Content Include="Content\sass\editor.scss" />
@@ -451,8 +456,8 @@
     <Content Include="Scripts\cdn\shadowbox\LICENSE" />
     <Content Include="Scripts\cdn\shadowbox\README" />
     <Content Include="Scripts\src\jsx\m-matter.jsx" />
-    <Content Include="Content\sass\base\basic\_normalize.scss" />
-    <Content Include="Content\sass\base\basic\_print.scss" />
+    <Content Include="Content\sass\vendor\_normalize.scss" />
+    <Content Include="Content\sass\vendor\_print.scss" />
     <Content Include="Content\sass\base\_basic.scss" />
     <Content Include="Content\sass\base\_extend.scss" />
     <Content Include="Content\sass\base\_form.scss" />
@@ -497,6 +502,10 @@
     <Content Include="Content\sass\helper\mixins\_state.scss" />
     <Content Include="Content\sass\helper\mixins\_text.scss" />
     <Content Include="Content\sass\helper\_var.scss" />
+    <Content Include="Views\Products\NewProduct.cshtml" />
+    <Content Include="Views\Products\list.cshtml" />
+    <Content Include="Views\Products\content.cshtml" />
+    <Content Include="Views\ContactUs\ContactUs.cshtml" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -517,8 +526,6 @@
     <Content Include="Views\Shared\Manage\vucFooter.cshtml" />
     <Content Include="Views\Shared\Manage\vucMenu.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
-    <Content Include="Views\Shopping\Shopping.cshtml" />
-    <Content Include="Views\Vendor\Vendor.cshtml" />
     <Content Include="Views\VIP\VIP.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="_Code\cache\memo.txt" />

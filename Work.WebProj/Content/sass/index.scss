@@ -2,10 +2,25 @@
 
 // var 變數，需放在 @import "helper/var" 之上才能覆蓋掉
 // ------------------------------------------------------------
-$index:           true;
-$img-path2:       '../images/index';
+$index:              true;
+$img-path2:          '../images/index';
+$content-spacing:    0;
+$font-size-h2:       55px;
 
-$font-size-h2:    55px;
+// $swiper-banner:      true;
+// $swiper-slider:      true;
+
+$figure-width:       false;
+$figure-height:      false;
+$figure-inline-hack: false;
+// $figure-mg:          0 .5%;
+$figure-img-height:  200px;
+$figure-title-size:  21px;
+$figure-title-color: #000;
+$figure-p-size:      19px;
+$figure-p-color:     #fff;
+$figure-p-pos:       bottom 0 left 0;
+
 
 
 // import
@@ -24,3 +39,74 @@ $font-size-h2:    55px;
 
 
 // == main
+main {
+    background: $brand-gray;
+    padding: 50px 0 80px;
+}
+
+#slider {
+    height: 412px;
+}
+
+.product-list {
+    height: 410px;
+
+    img {
+        top: 50%;
+        @include transform(translateY(-90%));
+        @include transition(transform 1s);
+    }
+    small {
+        display: block;
+        font-size: em(17px);
+        margin-bottom: 12px;
+        margin-top: 75%;
+    }
+    small, h4 {
+        padding: 0 20px;
+    }
+    p {
+        bottom: 0;
+        background: $info;
+        text-align: center;
+        letter-spacing: 1px;
+        padding: 12px 0;
+        width: 100%;
+        @include transition(background .5s);
+    }
+
+    &:hover, &:active {
+        img { @include transform('translateY(-90%) scale(1.2)'); }
+        p { background: $brand-secondary; }
+    }
+}
+figcaption {
+    text-align: left;;
+}
+
+.icon-chevron-thin-left,
+.icon-chevron-thin-right {
+    @include absolute(top 50%);
+    font-size: em(50px);
+    color: #A9A7AC;
+    opacity: .5;
+    margin-top: -45px;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover, &:active {
+        color: $brand-secondary;
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0;
+        cursor: auto;
+        pointer-events: none;
+    }
+}
+.icon-chevron-thin-left {
+    left: 0;
+}
+.icon-chevron-thin-right {
+    right: 0;
+}

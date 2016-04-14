@@ -16,7 +16,7 @@
     <link href="~/Content/css/grid.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     @if (ViewBag.IsFirstPage)
     {
-        <link rel="stylesheet" href="~/Content/css/swiper.min.css">
+        <link rel="stylesheet" href="~/Content/css/swiper.css">
         <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     }
     else
@@ -24,6 +24,7 @@
         <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     }
     <link href="~/Content/css/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
     @RenderSection("css", false)
 </head>
@@ -97,9 +98,9 @@
 
             <div class="col-5 foot-contact">
                 <ul class="contact list-inline">
-                    <li><em>TEL</em>03-3011936</li>
-                    <li><em>FAX</em>03-3011937</li>
-                    <li><em>Skype</em></li>
+                    <li><i class="icon-phone" title="TEL"></i>03-3011936</li>
+                    <li><i class="icon-print" title="FAX"></i>03-3011937</li>
+                    <li><i class="icon-skype" title="Skype"></i></li>
                     <li>地址/ 桃園市大興西路二段六號四樓之四</li>
                     <li>中國工廠/ 福建省泉州市江南火巨開發區</li>
                     <li>Sample Request/ <a href="mailto:sales2@roki.com.tw">sales2@roki.com.tw</a></li>

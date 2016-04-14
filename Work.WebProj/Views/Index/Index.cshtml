@@ -5,22 +5,81 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-@* @section css {
-    <link href="~/Content/css/vendor/animate.css" rel="stylesheet">
-} *@
+@section Scripts {
+    <script>
+        var mySwiper = new Swiper('#slider', {
+            autoplay: 4000,
+            speed: 1000,
+            spaceBetween: 15,
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+            slidesPerColumnFill: 'row',
+            autoplayDisableOnInteraction: false,
+            prevButton: '.icon-chevron-thin-left',
+            nextButton: '.icon-chevron-thin-right',
+        });
+    </script>
+}
 
-<section class="wrap">
+<main>
 
     <h2 class="font-sp">NEW PRODUCTS</h2>
 
-    <figure class="quick-nav">
-        <img src="~/Content/images/Products/pic.jpg">
-        <a href="~/Products/content">MORE</a>
-        <figcaption>
-            <small>偵測開關Detect Switch</small>
-            <h4>TU SERIES</h4>
-            <p class="font-sp">MORO</p>
-        </figcaption>
-    </figure>
+    <section id="slider" class="swiper-container wrap">
 
-</section>
+        <div class="swiper-wrapper">
+            <figure class="swiper-slide product-list">
+                <img src="~/Content/images/Products/list.jpg">
+                <a href="~/Products/content">MORE</a>
+                <figcaption>
+                    <small>偵測開關Detect Switch</small>
+                    <h4>TU SERIES 1</h4>
+                    <p class="font-sp">MORO</p>
+                </figcaption>
+            </figure>
+
+            <figure class="swiper-slide product-list">
+                <img src="~/Content/images/Products/list2.jpg">
+                <a href="~/Products/content">MORE</a>
+                <figcaption>
+                    <small>偵測開關Detect Switch</small>
+                    <h4>TU SERIES 2</h4>
+                    <p class="font-sp">MORO</p>
+                </figcaption>
+            </figure>
+
+            <figure class="swiper-slide product-list">
+                <img src="~/Content/images/Products/list.jpg">
+                <a href="~/Products/content">MORE</a>
+                <figcaption>
+                    <small>偵測開關Detect Switch</small>
+                    <h4>TU SERIES 3</h4>
+                    <p class="font-sp">MORO</p>
+                </figcaption>
+            </figure>
+
+            <figure class="swiper-slide product-list">
+                <img src="~/Content/images/Products/list2.jpg">
+                <a href="~/Products/content">MORE</a>
+                <figcaption>
+                    <small>偵測開關Detect Switch</small>
+                    <h4>TU SERIES 4 </h4>
+                    <p class="font-sp">MORO</p>
+                </figcaption>
+            </figure>
+
+            <figure class="swiper-slide product-list">
+                <img src="~/Content/images/Products/list.jpg">
+                <a href="~/Products/content">MORE</a>
+                <figcaption>
+                    <small>偵測開關Detect Switch</small>
+                    <h4>TU SERIES 5</h4>
+                    <p class="font-sp">MORO</p>
+                </figcaption>
+            </figure>
+        </div>
+        <i class="icon-chevron-thin-left"></i>
+        <i class="icon-chevron-thin-right"></i>
+    </section>
+
+</main>

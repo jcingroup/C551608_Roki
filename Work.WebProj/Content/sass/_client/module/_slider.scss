@@ -3,6 +3,11 @@
 $swiper-pagination:    true !default;
 $swiper-button:        true !default;
 
+// 常用的套件
+$swiper-banner:        false !default;
+$swiper-slider:        false !default;
+
+
 //
 // slider- 滑動相關
 // --------------------------------------------------
@@ -17,15 +22,8 @@ $swiper-button:        true !default;
 .swiper-slide {
     text-align: center;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
 
-    img {
-        // max-width: none;
-        min-height: 100%;
-        // @include pos-center(true, false);
-        @include pos-center;
-    }
+    // 寬高預設100%
 }
 
 // 分頁圓點
@@ -62,5 +60,28 @@ $swiper-button:        true !default;
     .swiper-button-next {
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23eaeaea'%2F%3E%3C%2Fsvg%3E");
         right: 0;
+    }
+}
+
+// banner
+@if $swiper-banner {
+    #banner {
+        height: $banner-height;
+
+        .swiper-slide img {
+            min-height: 100%;
+            @include pos-center;
+        }
+    }
+}
+
+// 分欄滑動設定
+@if $swiper-slider {
+    #slider {
+        .swiper-wrapper {
+            // flex 置中
+            @include prefix(align-items, center);
+            @include prefix(justify-content, center);
+        }
     }
 }

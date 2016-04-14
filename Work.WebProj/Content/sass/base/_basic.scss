@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-@import "basic/normalize"; // 重置復位
-@import "basic/print";  // 列印樣式
+@import "../vendor/normalize"; // 重置復位
+@import "../vendor/print";  // 列印樣式
 
 /*      basic elements
 -----------------------------------------------------------------------*/
@@ -31,10 +31,10 @@ html {
 }
 
 body {
-    background: $body-bg;
-    color: $body-color;
     font-family: $font-sp;
     line-height: $line-height-base;
+    color: $body-color;
+    background: $body-bg;
 
     // 垂直滿版
     // @if $lte7 {
@@ -87,24 +87,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: $heading-font-weight;
     line-height: $heading-line-height;
     color: $heading-color;
+    margin-bottom: em($line-height-computed / 2);
 
     small {
         font-weight: normal;
-        line-height: 1;
-        color: $heading-small-color;
     }
-}
-h1, h2, h3 {
-    margin-top: em($line-height-computed);
-    margin-bottom: em($line-height-computed / 2);
-
-    small { font-size: 65%; }
-}
-h4, h5, h6 {
-    margin-top: em($line-height-computed / 2);
-    margin-bottom: em($line-height-computed / 2);
-
-    small { font-size: 75%; }
 }
 
 @for $i from 1 through 6 {
@@ -127,7 +114,7 @@ strong {
 
 // 副標題 Ex: (12px small font / 14px base font) * 100% = about 85%
 small {
-    font-size: floor((100% * $font-size-sm / $font-size-base));
+    // font-size: floor((100% * $font-size-sm / $font-size-base));
 }
 
 // 螢光筆註記

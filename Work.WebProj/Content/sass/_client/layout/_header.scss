@@ -25,17 +25,17 @@
 }
 
 // == banner
-#banner {
-    @if $index {
-        &, .swiper-slide {
-            height: 343px;
-        }
-    }
+// #banner {
+//     @if $index {
+//         &, .swiper-slide {
+//             height: 343px;
+//         }
+//     }
 
-    @if $page {
-        height: 480px;
-        .swiper-slide {
-            height: 100%;
-        }
-    }
-}
+//     @if $page {
+//         height: 480px;
+//         .swiper-slide {
+//             height: 100%;
+//         }
+//     }
+// }

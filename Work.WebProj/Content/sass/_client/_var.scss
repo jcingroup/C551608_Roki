@@ -2,11 +2,11 @@
 
 // == config
 // ----------------------------------------------------------------------
-$img-path:              '../images' !default;
-$font-path:             '../font' !default;
+$img-path:              '../images';
+$font-path:             '../font';
 $states:                false !default;           // 情境文字是否輸出
-$index:                 false !default;           // 情境文字是否輸出
-$page:                  false !default;           // 情境文字是否輸出
+$index:                 false !default;           // 首頁用
+$page:                  false !default;           // 內頁用
 
 
 // == color
@@ -40,6 +40,7 @@ $content-spacing:       45px !default;
 // header
 $header-height:         103px;
 $header-bg:             false;
+$banner-height:         343px !default;
 
 // logo
 $logo-img:              'logo.gif' !default;
@@ -77,3 +78,13 @@ $z-index: (
     goTop:            99,
     overlay:          999
 );
+
+
+
+// == theme
+// ----------------------------------------------------------------------
+
+// figure
+$figure-bg:               #fff;
+$figure-border:           1px solid #DCDDDD;
+$figure-text-align:       left;
