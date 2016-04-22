@@ -6,26 +6,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     @* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> *@
-    <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
+    <title>@Resources.Res.System_FrontName::@ViewBag.Title</title>
     <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
     <link rel="shortcut icon" href="/favicon.ico"/>
     <link rel="bookmark" href="/favicon.ico"/>
+    <link rel="stylesheet" href="~/Content/css/vendor/swiper.css">
+    <link href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <link href="~/Content/css/grid.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     @if (ViewBag.IsFirstPage)
     {
-        <link rel="stylesheet" href="~/Content/css/swiper.css">
         <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     }
     else
     {
         <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     }
-    <link href="~/Content/css/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
     @RenderSection("css", false)
 </head>
 
@@ -51,30 +50,48 @@
                     <a href="@Url.Action("SetLanguage")?L=en-US&A=index">English</a>
                 </div>
             </nav>
-            <form action="" class="search">
-                <input type="Search" placeholder="SEARCH..." onkeyup="buttonUp();">
-                <button class="fa fa-search"></button>
-                <span class="fa fa-search"></span>
+            <form action="" class="input-group search">
+                <input type="Search" placeholder="產品查詢...">
+                <button class="icon">&#xe916;</button>
             </form>
 
         </header><!-- header //-->
 
-        <div id="banner" class="swiper-container">
-            <ul class="swiper-wrapper">
-                @if (ViewBag.IsFirstPage)
-                {
-                    @* 圖片尺寸:w1400 x h500 *@
+        @if (ViewBag.IsFirstPage)
+        {
+            <div id="banner" class="swiper-container">
+                <ul class="swiper-wrapper">
+                    @* 圖片尺寸:w1920 x h345 *@
                     <li class="swiper-slide"><img src="~/Content/images/Index/banner1.jpg"></li>
-                }
-                else
-                {
+                    <li class="swiper-slide"><img src="~/Content/images/Index/banner2.jpg"></li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div><!-- banner //-->
 
-                }
-            </ul>
-            <div class="swiper-pagination"></div>
-        </div><!-- banner //-->
+            <main>
+                @RenderBody()
+            </main>
 
-        @RenderBody()
+        } else {
+            <div id="banner" class="swiper-container">
+                <ul class="swiper-wrapper">
+                    @* 圖片尺寸:w1920 x h238 *@
+                    <li class="swiper-slide"><img src="~/Content/images/banner.jpg"></li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div><!-- banner //-->
+
+            <main>
+                <ul class="breadcrumb wrap">
+                    <li><a href="~/index">HOME</a></li>
+                    @RenderSection("breadCrumb", required: false)
+                    <li>@ViewBag.Target</li> @* 當前頁名稱 *@
+                </ul>
+
+                @RenderBody()
+
+            </main>
+        }
 
     </div><!-- wrapper //-->
 
@@ -83,17 +100,17 @@
     <footer id="footer">
         <div class="wrap">
             <div class="col-7 foot-nav">
-                <dl class="col-4">
-                    <dt>公司簡介</dt>
-                    <dd><a href="">服務項目</a></dd>
-                    <dd><a href="">我們的優勢</a></dd>
-                </dl>
-                <dl class="col-8">
-                    <dt>產品介紹</dt>
-                    <dd><a href="">開關類</a></dd>
-                    <dd><a href="">連接器類</a></dd>
-                    <dd><a href="">插座類</a></dd>
-                </dl>
+                <nav class="col-4">
+                    <h4>公司簡介</h4>
+                    <a href="">服務項目</a>
+                    <a href="">我們的優勢</a>
+                </nav>
+                <nav class="col-8">
+                    <h4>產品介紹</h4>
+                    <a href="">開關類</a>
+                    <a href="">插座類</a>
+                    <a href="">連接器類</a>
+                </nav>
             </div>
 
             <div class="col-5 foot-contact">

@@ -3,11 +3,13 @@
 // var 變數，需放在 @import "helper/var" 之上才能覆蓋掉
 // ------------------------------------------------------------
 $index:              true;
+
 $img-path2:          '../images/index';
 $content-spacing:    0;
-$font-size-h2:       55px;
+$banner-height:      345px;
+$font-size-h2:       41px;
 
-// $swiper-banner:      true;
+$swiper-banner:      true;
 // $swiper-slider:      true;
 
 $figure-width:       false;
@@ -33,6 +35,7 @@ $figure-p-pos:       bottom 0 left 0;
 
 @import "base/basic";
 @import "base/extend";
+@import "base/form";
 @import "base/layout";
 
 @import "_client/main";
@@ -50,38 +53,6 @@ main {
 
 .product-list {
     height: 410px;
-
-    img {
-        top: 50%;
-        @include transform(translateY(-90%));
-        @include transition(transform 1s);
-    }
-    small {
-        display: block;
-        font-size: em(17px);
-        margin-bottom: 12px;
-        margin-top: 75%;
-    }
-    small, h4 {
-        padding: 0 20px;
-    }
-    p {
-        bottom: 0;
-        background: $info;
-        text-align: center;
-        letter-spacing: 1px;
-        padding: 12px 0;
-        width: 100%;
-        @include transition(background .5s);
-    }
-
-    &:hover, &:active {
-        img { @include transform('translateY(-90%) scale(1.2)'); }
-        p { background: $brand-secondary; }
-    }
-}
-figcaption {
-    text-align: left;;
 }
 
 .icon-chevron-thin-left,

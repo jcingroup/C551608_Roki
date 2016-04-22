@@ -54,7 +54,7 @@ a {
     text-decoration: none;
     blur: expression(this.onFocus=this.blur()); // 清除虛線框
 
-    @include prefix(transition, 'color .35s, background .3s');
+    @include transition(color .35s, background .3s);
 
     &:hover, &:active, &.active { color: $link-hover-color; }
     &:focus {
@@ -76,7 +76,7 @@ img {
 //          url('../font/Neutraface2Text-Book.otf') format("opentype");
 // }
 
-// .font-sp { font-family: $font-sp; }
+.font-sp { font-family: $font-family-sp; }
 
 
 

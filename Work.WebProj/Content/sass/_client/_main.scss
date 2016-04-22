@@ -1,20 +1,7 @@
 @charset "UTF-8";
 
-
-// layout
-@import "layout/header";
-@import "layout/nav";
-@import "layout/footer";
-
-#wrapper {
-    @include el(before) {
-        // position: absolute;
-        @include absolute(left 0 top 0);
-        width: 100%; height: $header-height;
-        background: #fff;
-        z-index: -1;
-    }
-}
+// 選單
+@import "module/nav";
 
 // 共用module
 @import "module/classes";
@@ -26,3 +13,211 @@
 // @import "module/hover";
 @import "module/dropdown";
 @import "module/search";
+
+
+// 本次專案樣式
+// ----------------------------------------------------------------------
+// == layout
+#wrapper {
+    @include el(before) {
+        // position: absolute;
+        @include absolute(left 0 top 0);
+        width: 100%; height: $header-height;
+        background: #fff;
+        z-index: -1;
+    }
+}
+
+// == header
+#header {
+    @extend %center;
+}
+
+.logo {
+    cursor: pointer; cursor: hand; // for ie
+    z-index: z(logo);
+
+    @include text-pic($logo-img, nth($logo-size,1), nth($logo-size,2));
+    margin-top: ($header-height - nth($logo-size,2)) / 2;
+    float: left;
+
+    // @include mq-max(break(desktop, -1)) {
+    //     left: 50%;
+    //     margin-left: -(nth($logo-size,1) / 2);
+    // }
+    // @include mq-max(break(phone, -1)) {
+    //     right: -10px; left: auto;
+    //     margin-left: 0;
+    // }
+}
+
+// 語系切換 lang-nav
+.lang-nav {
+    @include absolute(right 0 top 3%);
+    div {
+        min-width: 130px;
+        right: 0;
+    }
+}
+
+// 產品搜尋
+.search {
+    @include absolute(right 0 top 43%);
+    font-size: em(15px);
+    button { margin-right: 5px; }
+}
+
+// == footer
+#footer {
+    text-align: left;
+    padding-bottom: $gutter;
+
+    @include el(all) {
+        @include absolute(bottom 0);
+        height: 100%;
+        z-index: -1;
+    }
+    &::after {
+        background: $footer-bg;
+        width: 58%;
+        left: 0;
+    }
+    &::before {
+        background: $footer-color;
+        width: 42%;
+        right: 0;
+    }
+}
+.foot-nav {
+    padding-top: $gutter*2;
+    padding-right: $gutter*2;
+
+    h4 {
+        color: $footer-color2;
+        font-size: em(24px);
+        margin-bottom: 20px;
+    }
+    a {
+        display: block;
+        margin-bottom: 25px;
+        color: #fff;
+        font-size: em(18px);
+        @include icon-square(left, 5px, $brand-secondary, top 42% left 0);
+
+        &:hover, &:active {
+            color: $warning;
+        }
+    }
+    nav:last-child a {
+        display: inline-block;
+        margin-right: -4px;
+        width: percentage(1/3);
+    }
+}
+.foot-contact {
+    padding-top: $gutter;
+    padding-left: $gutter*2;
+    color: #414854;
+    font-size: em(14px);
+
+    li {
+        margin-bottom: 2.7%;
+
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(3) {
+            font-size: em(23px,14px);
+        }
+        &:first-child,
+        &:nth-child(2) {
+            font-weight: 500;
+            color: $footer-color2;
+            letter-spacing: 1px;
+            margin-right: $gutter;
+            margin-bottom: 4%;
+        }
+    }
+    i {
+        margin-right: 10px;
+        color: #fff;
+        vertical-align: top;
+    }
+    a {
+        color: darken($footer-color, 65);
+        &:hover, &:active {
+            color: $info;
+            text-decoration: underline;
+        }
+    }
+}
+
+.copyright {
+    font-size: em(14px);
+    color: $info;
+    margin-top: 30px;
+
+    .hover-underline {
+        color: $footer-color2;
+    }
+    .fa-youtube {
+        display: inline-block;
+        vertical-align: middle;
+
+        @include circle(42px, center);
+
+        &::before {
+            color: $footer-color2;
+            font-size: em(27px);
+        }
+        &:hover, &:active {
+            background-color: $info;
+            &::before { color: $footer-bg; }
+        }
+    }
+    @include mq-max(tablet) {
+        left: 15px; bottom: -30px;
+        text-align: center;
+    }
+}
+
+// == figure - 產品列表
+.product-list {
+
+    img {
+        @if $index {
+            top: 50%;
+            @include transform(translateY(-90%));
+        }
+        @include transition(transform 1s);
+    }
+    small {
+        display: block;
+        font-size: em(17px);
+        margin-bottom: 12px;
+        margin-top: 75%;
+    }
+    small, h4 {
+        padding: 0 20px;
+    }
+    p {
+        @if $index {
+            bottom: 0;
+            background: $brand-primary;
+            text-align: center;
+            letter-spacing: 1px;
+            padding: 12px 0;
+            width: 100%;
+            @include transition(background .5s);
+        }
+    }
+
+    &:hover, &:active {
+        @if $index {
+            img { @include transform('translateY(-90%) scale(1.2)'); }
+            p { background: $brand-secondary; }
+        }
+    }
+}
+figcaption {
+    text-align: left;;
+}

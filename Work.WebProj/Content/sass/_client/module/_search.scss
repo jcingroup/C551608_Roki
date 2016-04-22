@@ -1,52 +1,85 @@
 @charset "UTF-8";
 
-$input-group-radius:       19px !default;
-$input-group-height:       38px !default;
+$search-expand:            false !default;
 
-$search-min-width:         50px !default;
-$search-height:            50px !default;
-$search-max-width:         280px !default;
-$search-position:          top ($menu-height - $search-height)/2 right 5% !default;
+$input-group-height:       36px !default;
+$input-group-width:        100% !default;
+$input-group-radius:       ($input-group-height / 2) !default;
+$input-group-color:        $brand-primary !default;
+$input-group-hover-color:  lighten($input-group-color, 25) !default;
+$input-group-border-color: false !default;
+
+$input-group-btn-width:    $input-group-height - 8px !default;
+$input-group-btn-height:   100% !default;
+$input-group-btn-bg:       false !default;
+
 
 // == input群組
-// .input-group {
-//     position: relative;
-//     padding: 0;
-
-//     float: right;
-//     margin-top: 20px;
-//     font-size: em(13px);
-
-//     input {
-//         border-color: #9CD217;
-//         border-radius: $input-group-radius;
-//         height: $input-group-height;
-//     }
-
-//     .input-group-btn {
-//         @include absolute(right 3px top 0);
-//         height: $input-group-height - 6;
-//         border-radius: $input-group-radius;
-//         margin: 3px;
-//     }
-// }
-
-.search {
-    width: 0;
-    min-width: $search-min-width;
-    height: $search-height;
-    // float: right;
-    overflow: hidden;
+.input-group {
     position: relative;
 
-    -webkit-backface-visibility: hidden;
-    z-index: 55;
-
-    @include prefix(transition, width .3s);
-    @include absolute($search-position);
+    @if $input-group-width  { width: $input-group-width; }
+    @if $input-group-height { height: $input-group-height; }
 
     input {
         @include size(100%);
+
+        @if $input-group-radius       { border-radius: $input-group-radius; }
+        @if $input-group-border-color { border-color: $input-group-border-color; }
+        @if $input-group-btn-width    { padding-right: $input-group-btn-width; }
+    }
+    button {
+        cursor: pointer;
+        @include absolute(top 0 right 0);
+
+        @if $input-group-radius {
+            border-top-right-radius: $input-group-radius;
+            border-bottom-right-radius: $input-group-radius;
+        }
+        @if $input-group-btn-width  { width: $input-group-btn-width; }
+        @if $input-group-btn-height { height: $input-group-btn-height; }
+        @if $input-group-btn-bg {
+            color: #fff;
+            background: $input-group-btn-bg;
+            &:hover, &:active {
+                background: lighten($input-group-btn-bg, 25);
+            }
+        } @else {
+            color: $input-group-color;
+            &:hover, &:active {
+                color: $input-group-hover-color;
+            }
+        }
+    }
+}
+
+@if $search-expand {
+    $search-min-width:         50px !default;
+    $search-max-width:         280px !default;
+    $search-color:             $input-group-color !default;
+
+    [data-expand='box'] {
+        width: 0;
+        min-width: $search-min-width;
+        overflow: hidden;
+        position: relative;
+
+        -webkit-backface-visibility: hidden;
+        z-index: z(logo)+1;
+
+        @include prefix(transition, width .3s);
+
+        &-open {
+            width: $search-max-width;
+            input {
+                background: #fff;
+                padding: 0 $search-min-width 0 20px;
+                font-size: 1em;
+                color: $search-color;
+            }
+        }
+    }
+    [data-expand='input'] {
         border: none;
         border-radius: 0;
         outline: none;
@@ -56,15 +89,14 @@ $search-position:          top ($menu-height - $search-height)/2 right 5% !defau
         -webkit-appearance: none;
         z-index: 10;
     }
-    button, span {
-        @include absolute(top 0 right 0);
+    [data-expand='btn'],
+    [data-expand='icon'] {
         width: $search-min-width;
         height: 100%;
         display: block;
 
         line-height: 100%;
         text-align: center;
-        cursor: pointer;
         font-size: em(22px);
 
         &::before {
@@ -72,36 +104,27 @@ $search-position:          top ($menu-height - $search-height)/2 right 5% !defau
             @include prefix(transform, translate(-50%,-50%));
         }
     }
-    button {
-        background: none;
+    [data-expand='btn'] {
         opacity: 0;
         z-index: 11;
 
         &.enter {
             opacity: 1;
-            background: $brand-secondary;
+            background: $search-color;
             color: #fff;
         }
     }
-    span {
+    [data-expand='icon'] {
+        @include absolute(top 0 right 0);
         color: darken($brand-gray, 30%);
         z-index: 90;
+        cursor: pointer;
         speak: none;
         text-transform: none;
         -webkit-font-smoothing: antialiased;
 
         &:hover, &:active {
-            color: $brand-secondary;
-        }
-    }
-    &-open {
-        width: $search-max-width;
-        input {
-            background: #fff;
-            padding: 0 $search-min-width 0 20px;
-            font-size: 1em;
-            color: $brand-secondary;
+            color: $search-color;
         }
     }
 }
-

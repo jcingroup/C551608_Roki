@@ -44,44 +44,44 @@ $dropbtn.blur(function(){
 });
 
 // 搜尋框縮放
-var submitIcon = $('.search span');
-var inputBox = $('.search input');
-var searchBox = $('.search');
-var isOpen = false;
-submitIcon.click(function(){
-    if(isOpen == false){
-        searchBox.addClass('search-open');
-        inputBox.focus();
-        isOpen = true;
-    } else {
-        searchBox.removeClass('search-open');
-        inputBox.focusout().val('');
-        $('.search button').removeClass('enter');
-        isOpen = false;
-    }
-});
-submitIcon.mouseup(function(){
-    return false;
-});
-searchBox.mouseup(function(){
-    return false;
-});
-$(document).mouseup(function(){
-    if(isOpen == true){
-        $('.search span').css('display','block');
-        submitIcon.click();
-    }
-});
+// var submitIcon = $("[data-expand='icon']");
+// var inputBox = $("[data-expand='input']");
+// var searchBox = $("[data-expand='box']");
+// var isOpen = false;
+// submitIcon.click(function(){
+//     if(isOpen == false){
+//         searchBox.addClass('search-open');
+//         inputBox.focus();
+//         isOpen = true;
+//     } else {
+//         searchBox.removeClass('search-open');
+//         inputBox.focusout().val('');
+//         $("[data-expand='btn']").removeClass('enter');
+//         isOpen = false;
+//     }
+// });
+// submitIcon.mouseup(function(){
+//     return false;
+// });
+// searchBox.mouseup(function(){
+//     return false;
+// });
+// $(document).mouseup(function(){
+//     if(isOpen == true){
+//         $("[data-expand='icon']").css('display','block');
+//         submitIcon.click();
+//     }
+// });
 
-function buttonUp(){
-    var inputVal = $('.search input').val();
-    inputVal = $.trim(inputVal).length;
-    if( inputVal !== 0){
-        $('.search span').css('display','none');
-        $('.search button').addClass('enter');
-    } else {
-        $('.search input').val('');
-        $('.search span').css('display','block');
-        $('.search button').removeClass('enter');
-    }
-}
+// function buttonUp(){
+//     var inputVal = $("[data-expand='input']").val();
+//     inputVal = $.trim(inputVal).length;
+//     if( inputVal !== 0){
+//         $("[data-expand='icon']").css('display','none');
+//         $("[data-expand='btn']").addClass('enter');
+//     } else {
+//         $("[data-expand='input']").val('');
+//         $("[data-expand='icon']").css('display','block');
+//         $("[data-expand='btn']").removeClass('enter');
+//     }
+// }

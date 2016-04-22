@@ -1,339 +1,38 @@
 @charset "UTF-8";
 
-$page:                    true;
-$line:                    1px solid #fff;
+// var 變數，需放在 @import "helper/var" 之上才能覆蓋掉
+// ------------------------------------------------------------
+$page:               true;
 
-// module/animate
-$jump:                    true;
+$swiper-banner:      true;
+$banner-height:      238px;
+// $swiper-slider:      true;
 
-// base/basic
-$font-size-h3:            23px;
-
-// layout/layout
-$logo-small-size:         49px 40px;
-
-// module/figure
-$figure-width:            percentage(1/5);
-$figure-min-width:        auto;
-$figure-max-width:        percentage(1/5);
-$figure-img-full:         false;
-$figure-img-height:       138px;
+$figure-width:       false;
+$figure-height:      false;
+$figure-inline-hack: false;
+// $figure-mg:          0 .5%;
+$figure-img-height:  200px;
+$figure-title-size:  21px;
+$figure-title-color: #000;
+$figure-p-size:      19px;
+$figure-p-color:     #fff;
+$figure-p-pos:       bottom 0 left 0;
 
 
-@import "helper/function";
+
+// import
+// ------------------------------------------------------------
+@import "_client/var"; // 覆蓋掉下面的變數
+
+@import "helper/util";
 @import "helper/var";
 @import "helper/mixins";
 
 @import "base/basic";
-@import "base/table";
-@import "base/form";
 @import "base/extend";
-@import "base/classes";
+@import "base/form";
+@import "base/layout";
 
-@import "layout/layout";
-
-@import "module/list";
-@import "module/hover";
-@import "module/slider";
-@import "module/btn";
-@import "module/search";
-@import "module/label";
-@import "module/figure";
-@import "module/tab";
-@import "module/animate";
-
-
-// main
-// ----------------------------------------------------------------------
-#banner {
-    height: 480px;
-
-    &, .swiper-slide {
-        background: lighten($brand-gray, 3.5%);
-    }
-    .swiper-slide {
-        height: 100%;
-    }
-}
-
-#main {
-    section {
-        line-height: 1.7;
-        padding: 50px 0;
-
-        &:first-child { padding-bottom: 0;}
-
-        h3 {
-            letter-spacing: 1px;
-            margin-top: 0;
-            margin-bottom: $gutter +18;
-        }
-    }
-    li {
-        line-height: 1.2;
-        margin-bottom: $gutter;
-    }
-}
-
-.container {
-    font-size: em(15px);
-
-    h4 { margin-top: 25px; }
-    img { max-width: 100%; }
-}
-
-
-// == Products
-
-.spec {
-    img { margin-right: 10px; max-height: 26px; }
-}
-
-// 燈箱按鈕
-#popup {
-    margin-bottom: 50px;
-    a {
-        // $img-spacing: 25px;
-
-        // float: left;
-        // text-align: center;
-        // background: lighten($brand-gray, 3%);
-        // border: 1px solid darken($brand-gray, 3.5%);
-        // width: 47%;
-        // margin: 0 1%;
-
-        // @include middle(em, 170px) {
-        //     color: $info;
-        //     font: normal em(21px)/#{1.45} $font-sp;
-        //     margin: 2% 5%;
-        //     @include prefix(transition, color .2s);
-        // }
-
-        // &:hover, &:active {
-        //     background: lighten($info, 25%);
-        //     em { color: #fff; }
-        // }
-
-        font-size: 15px;
-
-        &:focus { outline: none }
-    }
-}
-
-// 產品列表右選單
-// 手機用按鈕
-// .pro-menu {
-//     display: none;
-
-//     font-size: em(18px);
-//     width: 100%;
-//     padding: 12px 0;
-
-//     @include mq-max(tablet) {
-//         display: block;
-//     }
-// }
-
-
-// 系列產品(滑動特效)
-#series {
-    padding: 0;
-    h3 {
-        color: $info;
-        font-size: em(42px);
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-    aside {
-        color: #ddd;
-        font-size: em(13px);
-        margin-bottom: 0;
-    }
-}
-#slide {
-    height: $figure-height;
-    margin-bottom: 50px;
-
-    .swiper-wrapper {
-        // flex 置中
-        @include prefix(align-items, center);
-        @include prefix(justify-content, center);
-    }
-}
-
-.products-list {
-    border-left: 1px solid darken($brand-gray, 5%);
-    margin-bottom: 2%;
-
-    &:nth-of-type(5n+1) { border-left: none; }
-
-    // @include mq-max(phone) { width: 85%; }
-
-    &:hover, &:active {
-        // p { opacity: 1; top: 35% }
-        img { @include transform(translateX(-50%) scale(1.1)) }
-        h4 { color: $brand-primary; }
-    }
-
-    img {
-        @include pos-center(true, false);
-        @include transition('transform 1s');
-        min-height: auto;
-        top: 8%;
-    }
-    // p {
-    //     @include transition('opacity .3s, top .5s');
-    //     opacity: 0;
-    // }
-    // span { margin: 3px; }
-}
-
-
-// == about us
-.row {
-    span {
-        margin-right: 8px;
-        color: darken($brand-gray, 20%);
-    }
-    em {
-        font-style: normal;
-    }
-}
-.AboutUs .row dt { margin-right: $gutter; }
-
-// == News & Support
-// 右選單
-.sidebar {
-    border-left: 1px solid darken($brand-gray, 5%);
-    padding-left: $gutter;
-
-    a {
-        display: block;
-        letter-spacing: 1px;
-        margin: 15px 0;
-
-        &.current {
-            color: $brand-secondary;
-        }
-
-        @include mq-max(break(desktop, -1)) {
-            display: inline-block;
-            margin: 0 10px 10px 0;
-
-            span { padding: 0; }
-        }
-    }
-}
-
-// news
-.news-list {
-    dt {
-        color: $brand-secondary;
-        font-size: em(13px);
-        margin-bottom: 5px;
-    }
-    dd {
-        font-size: em(17px);
-        margin-bottom: 22px;
-    }
-}
-.news-panel {
-    em {
-        font-style: normal;
-        color: $brand-secondary;
-        display: block;
-    }
-    header {
-        font-size: em(23px);
-        color: $brand-primary;
-        margin-bottom: $gutter;
-    }
-    .text-center { margin-top: 30px; }
-}
-
-// support
-.collapse {
-    &-title, &-content {
-        margin-right: $gutter+5;
-    }
-}
-.collapse-title {
-    cursor: pointer; cursor: hand;
-
-    span { display: block; margin-bottom: 5px; }
-    strong {
-        @include el(after, inline-block, '+') {
-            background: $brand-secondary;
-            color: #fff;
-            margin-left: 10px;
-            padding: 2px 5px;
-            border-radius: 3px;
-            width: 20px; line-height: 18px;
-            text-align: center;
-        }
-    }
-
-    &:hover, &:active, &.current {
-        strong { color: lighten($brand-primary, 10%); }
-        strong::after { background: $info; }
-    }
-    &.current {
-        strong::after { content: '-'}
-    }
-}
-.collapse-content {
-    display: none;
-    margin-top: 10px;
-}
-
-// == Contact Us
-// 表單
-.contacts {
-    float: left;
-    width: 50%;
-
-    h3, input, textarea { margin-top: 0; }
-    em {
-        font-style: normal;
-        color: $error;
-    }
-    button { margin: 15px 0; }
-
-    @include mq-max(tablet) {
-        float: none;
-        width: 100%;
-    }
-}
-.ContactUs {
-    table {
-        .text-right {
-            width: 18%;
-            min-width: 155px;
-            font-weight: normal;
-        }
-        h5 { margin-top: 0; margin-bottom: 5px; }
-    }
-}
-
-.map {
-    float: right;
-    width: 47.5%;
-    text-align: left;
-}
-#map-canvas {
-    height: 400px;
-    margin-bottom: 10px;
-}
-
-// 路線選單
-// #floating-panel {
-//     @include absolute(left 50% top 10px);
-//     margin-left: -90px;
-//     background: #fff;
-//     border-radius: 2px;
-//     padding: 0 5px 0 10px;
-//     font-size: em(13px);
-//     line-height: 31px;
-//     color: #666;
-// }
-// #mode { border: none; }
+@import "_client/main";
+@import "_client/module/breadcrumb";

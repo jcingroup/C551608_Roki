@@ -781,7 +781,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 社區幸福阿珍 Happiness Agent 的當地語系化字串。
+        ///   查詢類似 銓基電子股份有限公司 ROKI ELECTRONICS CO.,LTD. 的當地語系化字串。
         /// </summary>
         internal static string System_FrontName {
             get {
@@ -790,7 +790,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 社區幸福阿珍 管理系統 的當地語系化字串。
+        ///   查詢類似 銓基電子 管理系統 的當地語系化字串。
         /// </summary>
         internal static string System_Name {
             get {

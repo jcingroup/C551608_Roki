@@ -11,12 +11,12 @@ $page:                  false !default;           // 內頁用
 
 // == color
 // ----------------------------------------------------------------------
-$brand-primary:         #2F2F93;             // 主色
-$brand-secondary:       #DD6D16;             // 輔色
+$brand-primary:         #698BA5;             // 主色
+$brand-secondary:       #8BBE44;             // 輔色
 $brand-gray:            #F3F4F4;             // 主題灰
 // $success:               #368B39 !default;             // 綠
 $info:                  #33525D;             // 藍
-// $warning:               rgb(255,128,0) !default;             // 黃
+$warning:               #F69223;             // 黃
 // $error:                 #F35048 !default;             // 紅
 
 
@@ -24,8 +24,8 @@ $info:                  #33525D;             // 藍
 // ----------------------------------------------------------------------
 $body-bg:               #DBDCDC url(#{$img-path}/bg.gif) repeat-x 0 103px;
 $body-color:            #4C4C4C;
-$link-hover-color:      $brand-primary;
-$heading-color:         lighten($info,6);
+$link-hover-color:      $brand-secondary;
+$heading-color:         $brand-primary;
 $font-sp:               'Open Sans', "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
 
 
@@ -40,7 +40,6 @@ $content-spacing:       45px !default;
 // header
 $header-height:         103px;
 $header-bg:             false;
-$banner-height:         343px !default;
 
 // logo
 $logo-img:              'logo.gif' !default;
@@ -52,13 +51,13 @@ $menu-bg:               false;
 $menu-height:           $header-height;
 $menu-font-size:        19px;
 $menu-link:             #191919;
-$menu-link-hover:       #6B9BBB;
+$menu-link-hover:       $brand-secondary;
 
 // footer
 $footer-height:         213px !default;
-$footer-bg:             $info; //#85afd9
-$footer-color:          #A9A7AC; //#63889D;
-$footer-color2:         #33525D; //#63889D;
+$footer-bg:             $brand-primary; //#85afd9
+$footer-color:          #C3C1C6; //#63889D;
+$footer-color2:         #2E333C; //#63889D;
 
 
 // == z-index
@@ -80,11 +79,21 @@ $z-index: (
 );
 
 
-
-// == theme
+// == module
 // ----------------------------------------------------------------------
 
 // figure
-$figure-bg:               #fff;
-$figure-border:           1px solid #DCDDDD;
-$figure-text-align:       left;
+$figure-bg:                #fff;
+$figure-border:            1px solid #DCDDDD;
+$figure-text-align:        left;
+
+// dropdown
+$dropdown-color:           $brand-secondary;
+$dropdown-hover-color:     darken($brand-secondary, 10);
+
+// search
+$dropdown-font-size:       14px;
+$input-group-width:        12%;
+$input-group-border-color: #EBEBEB;
+$input-group-color:        #CBCBCB;
+$input-group-hover-color:  $brand-primary;

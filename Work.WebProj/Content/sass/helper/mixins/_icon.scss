@@ -18,7 +18,7 @@
 // icon arrow
 @mixin icon-arrow($direction, $size, $color, $pos: false) {
     @include el(before) {
-        @include arrow($direction, $size, $color);
+        @include arrow($direction, $size, $color: $color);
 
         @if $pos {
             @include absolute($pos);
@@ -32,9 +32,8 @@
 // icon arrow
 @mixin icon-square($direction, $size, $color, $pos: false) {
     @include el(before) {
-        @include size($size);
         background: $color;
-
+        @include size($size);
         @if $pos {
             @include absolute($pos);
         }

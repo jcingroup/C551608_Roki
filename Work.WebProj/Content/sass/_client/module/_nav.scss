@@ -16,16 +16,17 @@ $current: ();
 #menu {
     height: $menu-height;
     z-index: z(menu);
+
     width: 50%;
-    margin-left: 90px;
+    margin-left: 6%;
     float: left;
 
     a {
         display: block; float: left;
         width: percentage(1/3);
         height: 100%;
-        border-left: 1px solid #E5E5E5;
 
+        border-left: 1px solid #E5E5E5;
         color: $menu-link;
         font-size: em($menu-font-size);
         font-weight: 300;
@@ -33,9 +34,13 @@ $current: ();
 
         @include text-center($menu-height);
 
+        &:last-child {
+            border-right: 1px solid #E5E5E5;
+        }
+
         &:hover, &:active,
         #{$current} {
-            background: $menu-link-hover;
+            background: $menu-link-hover url(#{$img-path}/nav-bg.gif) 0 0 no-repeat;
             color: #fff;
             text-shadow: 1px 1px 2px darken($menu-link-hover,20);
         }
