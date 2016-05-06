@@ -22,5 +22,9 @@ namespace DotWeb.WebApp.Controllers
         {
             return View();
         }
+        public ActionResult search()
+        {
+            return View();
+        }
     }
 }

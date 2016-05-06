@@ -18,14 +18,16 @@
     @return ceil(($target / $container) * 100%);
 }
 
-// 取第n個之後的pages值
-// @function page($item) {
-//     $page: ();
-//     @for $i from $item through length($pages) {
-//         $page: append($page, nth($pages, $i));
-//     }
-//     @return $page;
-// }
+// 當前頁選單
+@function current($map: $pages) {
+    $current: ();
+
+    @each $item in $map {
+        $i: index($map, $item);
+        $current: $current, unquote(".#{$item} &:nth-of-type(#{$i})");
+    }
+    @return $current;
+}
 
 
 // var Maps
@@ -42,9 +44,9 @@
 }
 
 // 斷點寬度
-@function page-width($key) {
-    @return map-get($mq-breakpoints, $key);
-}
+// @function page-width($key) {
+//     @return map-get($mq-breakpoints, $key);
+// }
 
 // 取多層值
 // 範例 background: m-get($color-theme, 'default', 'background');

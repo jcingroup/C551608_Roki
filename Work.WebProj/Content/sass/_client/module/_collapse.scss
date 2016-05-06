@@ -1,36 +1,57 @@
 @charset "UTF-8";
 
-// $underline-color:             darken($brand-gray, 20%);
-// $underline-position:          top 100% right 0;
+$collapse-title-font-size:     21px !default;
+$collapse-title-font-color:    darken($brand-primary,50) !default;
 
-// $underline-transform:         scaleY(1);
-// $underline-transform-origin:  50%;
-// $underline-transform-hover:   scaleY(3);
-// $underline-transition:        'transform .35s ease-out, background .4s';
+$collapse-content-font-size:   false !default;
+$collapse-content-color:       $info !default;
+$collapse-content-hover-color: $brand-secondary !default;
 
 
 .collapse-title {
     cursor: pointer; cursor: hand;
 
-    @include el(after, inline-block, '+') {
-        background: $brand-secondary;
-        color: #fff;
-        margin-left: 10px;
-        padding: 2px 5px;
-        border-radius: 3px;
-        width: 20px; line-height: 18px;
-        text-align: center;
+    @if $collapse-title-font-size {
+        font-size: em($collapse-title-font-size);
+    }
+    @if $collapse-title-font-color {
+        color: $collapse-title-font-color;
+    }
+
+    @include el(after, inline-block, '\e900') {
+        color: $brand-primary;
+        margin-left: 8px;
+
+        font-family: 'icomoon' !important;
+        speak: none;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
     &:hover, &:active, &.current {
-        strong { color: lighten($brand-primary, 10%); }
-        &::after { background: $info; }
+        &::after { color: $brand-secondary; }
     }
     &.current {
-        &::after { content: '-'}
+        &::after { content: '\e901'}
     }
 }
 .collapse-content {
     display: none;
-    margin-left: 95px;
-    margin-top: 8px;
+
+    a {
+        @if $collapse-content-font-size {
+            font-size: em($collapse-content-font-size);
+        }
+        @if $collapse-content-color {
+            color: $collapse-content-color;
+        }
+        &:hover, &:active, &.current {
+            @if $collapse-content-hover-color {
+                color: $collapse-content-hover-color;
+            }
+        }
+    }
 }

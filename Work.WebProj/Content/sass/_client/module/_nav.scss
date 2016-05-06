@@ -1,16 +1,18 @@
 @charset "UTF-8";
 
 
+$current: current();
+
 %active {
     color: $menu-link-hover;
 }
 
 // 當前選單
-$current: ();
-@each $item in $pages {
-    $i: index($pages, $item);
-    $current: $current, unquote(".#{$item} &:nth-of-type(#{$i})");
-}
+// $current: ();
+// @each $item in $pages {
+//     $i: index($pages, $item);
+//     $current: $current, unquote(".#{$item} &:nth-of-type(#{$i})");
+// }
 
 // 主選單
 #menu {
@@ -37,27 +39,17 @@ $current: ();
         &:last-child {
             border-right: 1px solid #E5E5E5;
         }
-
+        &:hover, &:active {
+            background: lighten($menu-link-hover,5);
+        }
         &:hover, &:active,
         #{$current} {
-            background: $menu-link-hover url(#{$img-path}/nav-bg.gif) 0 0 no-repeat;
             color: #fff;
             text-shadow: 1px 1px 2px darken($menu-link-hover,20);
         }
-    }
-}
-
-// 語系
-.lang-nav {
-    z-index: z(menu)+1;
-    @include absolute(right 10%);
-
-    a {
-        font-size: em(15px);
-        color: darken($brand-gray, 25%)r;
-        padding: 8px 0;
-
-        &:hover { color: darken($brand-gray, 25%) }
+        #{$current} {
+            background: $menu-link-hover url(#{$img-path}/nav-bg.png) 0 0 no-repeat;
+        }
     }
 }
 

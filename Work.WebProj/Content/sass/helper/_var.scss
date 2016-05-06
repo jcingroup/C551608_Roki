@@ -1,6 +1,7 @@
 ﻿@charset "UTF-8";
 
 $lte7:                  false !default;           // 是否兼容IE6-7
+$enable-flex:           false !default;           // 是否使用 flex 版
 
 
 // == color
@@ -67,6 +68,7 @@ $heading-small-color:   desaturate($heading-color, 20%) !default;
 // == Components
 // ----------------------------------------------------------------------
 $gutter:                15px !default;
+$grid-columns:          12 !default;
 
 // 表單元素(停用)上的滑鼠樣式
 $cursor-disabled:           not-allowed;

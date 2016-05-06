@@ -14,16 +14,16 @@ $page:                  false !default;           // 內頁用
 $brand-primary:         #698BA5;             // 主色
 $brand-secondary:       #8BBE44;             // 輔色
 $brand-gray:            #F3F4F4;             // 主題灰
-// $success:               #368B39 !default;             // 綠
+$success:               #28406C;             // 綠
 $info:                  #33525D;             // 藍
-$warning:               #F69223;             // 黃
+$warning:               #DD6D16;             // 黃
 // $error:                 #F35048 !default;             // 紅
 
 
 // == basic
 // ----------------------------------------------------------------------
-$body-bg:               #DBDCDC url(#{$img-path}/bg.gif) repeat-x 0 103px;
-$body-color:            #4C4C4C;
+$body-bg:               #EEEFEF !default;
+$body-color:            #333;
 $link-hover-color:      $brand-secondary;
 $heading-color:         $brand-primary;
 $font-sp:               'Open Sans', "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
@@ -35,11 +35,12 @@ $min-width:             1008px;     // 網頁最小尺寸
 $max-width:             1400px;     // 網頁最寬尺寸: .wrap
 $pages:                 'AboutUs' 'Products' 'ContactUs';
 
+$wrapper-bg:            false !default;
 $content-spacing:       45px !default;
 
 // header
-$header-height:         103px;
-$header-bg:             false;
+$header-height:         103px !default;
+$header-bg:             url(#{$img-path}/bg.gif) repeat-x 0 103px !default;
 
 // logo
 $logo-img:              'logo.gif' !default;
@@ -55,9 +56,9 @@ $menu-link-hover:       $brand-secondary;
 
 // footer
 $footer-height:         213px !default;
-$footer-bg:             $brand-primary; //#85afd9
-$footer-color:          #C3C1C6; //#63889D;
-$footer-color2:         #2E333C; //#63889D;
+$footer-bg:             $brand-primary !default; //#85afd9
+$footer-color:          #C3C1C6 !default; //#63889D;
+$footer-color2:         #2E333C !default; //#63889D;
 
 
 // == z-index
@@ -81,18 +82,23 @@ $z-index: (
 
 // == module
 // ----------------------------------------------------------------------
+// slider
+$swiper-banner:            true;
 
 // figure
 $figure-bg:                #fff;
 $figure-border:            1px solid #DCDDDD;
 $figure-text-align:        left;
+$figure-height:            false;
+$figure-title-color:       #000;
 
 // dropdown
 $dropdown-color:           $brand-secondary;
 $dropdown-hover-color:     darken($brand-secondary, 10);
+$dropdown-font-size:       14px;
 
 // search
-$dropdown-font-size:       14px;
+$input-group-pos:          right 0 top 43%;
 $input-group-width:        12%;
 $input-group-border-color: #EBEBEB;
 $input-group-color:        #CBCBCB;

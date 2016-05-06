@@ -1,40 +1,33 @@
 @charset "UTF-8";
 
-$cols: 12 !default;
 
-// 函數程式
-// ------------------------------------------------------------
-// $one_col: (100% - (cp($gutter) * ($cols - 1))) / $cols;
-// width: ($one_col * $num) + (cp($gutter) * ($num - 1));
+// xs Extra small screen / phone
+// sm Small screen / phone
+// md Medium screen / tablet
+// lg Large screen / desktop
+// xsl Extra large screen / wide desktop
+$grid-breakpoints: (
+    xs: phone,
+    sm: break(tablet,-1),
+    md: break(desktop,-1),
+    lg: wide,
+    xl: wider
+) !default;
 
-$one_col: 100% / $cols;
+// 預設格數
+$columns: $grid-columns;
 
-@mixin make-cols($class: md) {
-    @for $i from 1 through $cols {
-        $selector: if($class == 'md', '.col-#{$i}', '.col-#{$class}-#{$i}');
-
-        #{$selector} {
-            width: ($one_col * $i);
+@mixin make-col($seclector) {
+    @for $i from 1 through $columns {
+        .col-#{$seclector}-#{$i} {
+            @include make-col-span($i, $columns);
         }
     }
-}
-
-// 偏移
-@mixin make-offset($class: md) {
-    @for $i from 0 through ($cols - 1) {
-        $selector: if($class == 'md', '.offset-#{$i}', '.offset-#{$class}-#{$i}');
-
-        #{$selector} {
-            margin-left: ($one_col * $i);
-        }
-    }
-}
-
-@mixin make-col-ratio($num) {
-    @for $i from 1 through ($num - 1) {
-        .col-#{$i}-#{$num} {
-            width: percentage(1 / $num)*$i;
-            // @extend %col-padding;
+    @each $modifier in (pull, push, offset) {
+        @for $i from 0 through ($columns - 1) {
+            .#{$modifier}-#{$seclector}-#{$i} {
+                @include make-col-modifier($modifier, $i, $columns)
+            }
         }
     }
 }
@@ -44,39 +37,26 @@ $one_col: 100% / $cols;
 // ------------------------------------------------------------
 .row {
     @extend %clearfix;
-    // @extend %center;
-
-    // margin-left:-$gutter/2;
-    // margin-right:-$gutter/2;
-
-    // form & {
-    //     margin-bottom: $gutter;
-    // }
 
     & + & { margin-top: $gutter; }
-    // margin-bottom: $gutter;
 }
 
-%col-padding {
-    padding-left: $gutter/2;
-    padding-right: $gutter/2;
+// 置中等比例(1/3) (1/5)
+@include make-col-ratio(3);
+@include make-col-ratio(5);
+
+// 12格 通用(全螢幕)
+@for $i from 1 through $columns {
+
+    @each $breakpoint, $value in $grid-breakpoints {
+        $selector: '.col-#{$i}', '.col-#{$breakpoint}-#{$i}';
+
+        #{$selector} { @include cols-reset; }
+    }
+    .col-#{$i} { @include make-col-span($i, $columns); }
 }
 
 [class*="col-"] {
-    // float: left;
-    display: inline-block;
-    vertical-align: top;
-    padding-left: $gutter;
-    padding-right: $gutter;
-
-    // inline-block模式時 刪除多出間距
-    margin-right: -4px;
-
-    @if $lte7 {
-        *display: inline;
-        zoom: 1
-    }
-
     &:first-child { padding-left: 0; }
     &:last-child { padding-right: 0; }
 }
@@ -84,31 +64,48 @@ $one_col: 100% / $cols;
 [data-col*="first"] { padding-left: 0; }
 [data-col*="last"] { padding-right: 0; }
 
-// 等比例(1/3)
-@include make-col-ratio(3);
-@include make-col-ratio(5);
+
+// RWD
+@each $breakpoint, $value in $grid-breakpoints {
+
+    // @if $breakpoint == 'xs' or $breakpoint == 'sm' or $breakpoint == 'md' {
+    //     $value: '$max: #{$value}';
+    // }
+    // $mq-value: if($breakpoint == 'xs' or $breakpoint == 'sm' or $breakpoint == 'md', '$max: #{$value}', #{$value});
+
+    @if $breakpoint == 'xs' or $breakpoint == 'sm' or $breakpoint == 'md' {
+        @include mq-max($value) {
+            @include make-col($breakpoint);
+        }
+    }
+    @else {
+        @include mq($value) {
+            @include make-col($breakpoint);
+        }
+    }
+}
 
 
 // 12 grid
-@include make-cols(md); // 預設: md
-@include make-offset(md); // 預設: md
+// @include make-cols(md); // 預設: md
+// @include make-offset(md); // 預設: md
 
-@include mq-max(break(tablet,-1)) {
-    @include make-cols(xs);
-    @include make-offset(xs);
-}
+// @include mq-max(break(tablet,-1)) {
+//     @include make-cols(xs);
+//     @include make-offset(xs);
+// }
 
-@include mq-max(break(desktop,-1)) {
-    @include make-cols(sm);
-    @include make-offset(sm);
-}
+// @include mq-max(break(desktop,-1)) {
+//     @include make-cols(sm);
+//     @include make-offset(sm);
+// }
 
-@include mq(wide) {
-    @include make-cols(lg);
-    @include make-offset(lg);
-}
+// @include mq(wide) {
+//     @include make-cols(lg);
+//     @include make-offset(lg);
+// }
 
-@include mq(wider) {
-    @include make-cols(xl);
-    @include make-offset(xl);
-}
+// @include mq(wider) {
+//     @include make-cols(xl);
+//     @include make-offset(xl);
+// }

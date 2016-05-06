@@ -2,6 +2,7 @@
 
 $search-expand:            false !default;
 
+$input-group-pos:          false !default;
 $input-group-height:       36px !default;
 $input-group-width:        100% !default;
 $input-group-radius:       ($input-group-height / 2) !default;
@@ -16,10 +17,15 @@ $input-group-btn-bg:       false !default;
 
 // == input群組
 .input-group {
-    position: relative;
 
-    @if $input-group-width  { width: $input-group-width; }
-    @if $input-group-height { height: $input-group-height; }
+    @if $input-group-pos {
+        @include absolute($input-group-pos);
+    }
+    @else {
+        position: relative;
+    }
+    @if $input-group-width    { width: $input-group-width; }
+    @if $input-group-height   { height: $input-group-height; }
 
     input {
         @include size(100%);

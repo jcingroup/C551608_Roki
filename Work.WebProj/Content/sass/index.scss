@@ -6,38 +6,36 @@ $index:              true;
 
 $img-path2:          '../images/index';
 $content-spacing:    0;
+$header-bg:          false;
 $banner-height:      345px;
+
+$body-bg:            #DBDCDC url(../images/bg.gif) repeat-x 0 103px;
 $font-size-h2:       41px;
 
-$swiper-banner:      true;
-// $swiper-slider:      true;
 
 $figure-width:       false;
-$figure-height:      false;
-$figure-inline-hack: false;
-// $figure-mg:          0 .5%;
-$figure-img-height:  200px;
+// $figure-img-height:  200px;
+$figure-inline:      true;
 $figure-title-size:  21px;
-$figure-title-color: #000;
 $figure-p-size:      19px;
 $figure-p-color:     #fff;
-$figure-p-pos:       bottom 0 left 0;
+// $figure-p-pos:       bottom 0 left 0;
 
 
 
 // import
 // ------------------------------------------------------------
-@import "_client/var"; // 覆蓋掉下面的變數
+@import "_client/settings"; // 覆蓋掉下面的變數
 
-@import "helper/util";
+@import "helper/function";
 @import "helper/var";
 @import "helper/mixins";
 
 @import "base/basic";
-@import "base/extend";
+@import "base/util";
 @import "base/form";
-@import "base/layout";
 
+@import "_client/layout";
 @import "_client/main";
 
 
@@ -47,17 +45,9 @@ main {
     padding: 50px 0 80px;
 }
 
-#slider {
-    height: 412px;
-}
-
-.product-list {
-    height: 410px;
-}
-
 .icon-chevron-thin-left,
 .icon-chevron-thin-right {
-    @include absolute(top 50%);
+    @include absolute(top 53%);
     font-size: em(50px);
     color: #A9A7AC;
     opacity: .5;
@@ -76,8 +66,8 @@ main {
     }
 }
 .icon-chevron-thin-left {
-    left: 0;
+    left: 4.5%;
 }
 .icon-chevron-thin-right {
-    right: 0;
+    right: 4.5%;
 }

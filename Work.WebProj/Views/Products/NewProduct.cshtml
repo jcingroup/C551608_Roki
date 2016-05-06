@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "最新產品";
-    ViewBag.BodyClass = "products";
+    ViewBag.BodyClass = "Products";
     ViewBag.Target = "最新產品";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
@@ -10,80 +10,79 @@
     <li><a href="~/Products">產品介紹</a></li>
 }
 
-<section class="wrap">
-    <article class="col-6 col-sm-12">
-        <header>
-            <h2>關開類 <small>(50)</small></h2>
-            <a href="~/Products/list" class="btn btn-primary">ALL</a>
-        </header>
+@* 每個分類的最新產品 2 則 *@
+<section class="col-6 col-sm-12 catalog-new">
+    <header class="title">
+        <h2>開關類 <small>(50)</small></h2>
+        <a href="~/Products/list" class="btn btn-primary">ALL</a>
+    </header>
 
-        <figure class="product-list col-6 col-sm-12">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關Detect Switch</small>
-                <h4>TU SERIES 1</h4>
-            </figcaption>
-        </figure>
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>偵測開關Detect Switch</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
 
-        <figure class="product-list col-6 col-sm-12">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關Detect Switch</small>
-                <h4>TU SERIES 1</h4>
-            </figcaption>
-        </figure>
-    </article>
-
-    <article class="col-6 col-sm-12">
-        <header>
-            <h2>關開類 <small>(50)</small></h2>
-            <a href="~/Products/list" class="btn btn-primary">ALL</a>
-        </header>
-
-        <figure class="product-list col-6 col-sm-12">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關Detect Switch</small>
-                <h4>TU SERIES 1</h4>
-            </figcaption>
-        </figure>
-
-        <figure class="product-list col-6 col-sm-12">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關Detect Switch</small>
-                <h4>TU SERIES 1</h4>
-            </figcaption>
-        </figure>
-    </article>
-
-    <article class="col-6 col-sm-12">
-        <header>
-            <h2>關開類 <small>(50)</small></h2>
-            <a href="~/Products/list" class="btn btn-primary">ALL</a>
-        </header>
-
-        <figure class="product-list col-6 col-sm-12">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關Detect Switch</small>
-                <h4>TU SERIES 1</h4>
-            </figcaption>
-        </figure>
-
-        <figure class="product-list col-6 col-sm-12">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關Detect Switch</small>
-                <h4>TU SERIES 1</h4>
-            </figcaption>
-        </figure>
-    </article>
-
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>偵測開關Detect Switch</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
 </section>
+
+<section class="col-6 col-sm-12 catalog-new">
+    <header class="title">
+        <h2>插座類 <small>(50)</small></h2>
+        <a href="~/Products/list" class="btn btn-primary">ALL</a>
+    </header>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>偵測開關Detect Switch</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>偵測開關Detect Switch</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+</section>
+
+<section class="col-6 col-sm-12 catalog-new">
+    <header class="title">
+        <h2>連接器類 <small>(50)</small></h2>
+        <a href="~/Products/list" class="btn btn-primary">ALL</a>
+    </header>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>偵測開關Detect Switch</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>偵測開關Detect Switch</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+</section>
+

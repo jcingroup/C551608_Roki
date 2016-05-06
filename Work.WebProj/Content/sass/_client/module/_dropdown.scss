@@ -19,6 +19,18 @@ $dropdown-pd:          5px 10px !default;
     //     top: 5px;
     //     width: 35%;
     // }
+
+    // 語系選單
+    a {
+        color: darken($dropdown-color, 28%);
+        padding: 8px 0;
+        display: block;
+
+        &:hover, &:active, &.current {
+            background-color: $dropdown-color;
+            color: #fff;
+        }
+    }
 }
 
 // 顯示隱藏按鈕
@@ -53,16 +65,4 @@ $dropdown-pd:          5px 10px !default;
 
     background-color: #fff;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
-    a {
-        color: darken($dropdown-color, 28%);
-        padding: 8px 0;
-        display: block;
-
-        &:hover {
-            background-color: $dropdown-color;
-            color: #fff;
-        }
-    }
 }
-

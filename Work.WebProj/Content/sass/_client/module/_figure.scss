@@ -1,24 +1,24 @@
 @charset "UTF-8";
 
-$figure-color:            null !default;
-$figure-bg:               null !default;
-$figure-border:           null !default;
-$figure-align:            center !default;
+$figure-color:            false !default;
+$figure-bg:               false !default;
+$figure-border:           false !default;
+$figure-align:            false !default;
 
-$figure-width:            percentage(1/3) !default;
-$figure-height:           215px !default;
-$figure-min-width:        null !default;
-$figure-max-width:        null !default;
-$figure-mg:               null !default;
-$figure-pd:               null !default;
-$figure-effect:           null !default;
-$figure-inline:           true !default;
-$figure-inline-hack:      true !default;
+$figure-width:            false !default;
+$figure-height:           false !default;
+$figure-min-width:        false !default;
+$figure-max-width:        false !default;
+$figure-mg:               false !default;
+$figure-pd:               false !default;
+$figure-effect:           false !default;
+$figure-inline:           false !default;
+$figure-inline-hack:      false !default;
 
 // 圖片樣式
 $figure-img-full:         false !default;
-$figure-img-width:        100% !default;
-$figure-img-height:       75% !default;
+$figure-img-width:        false !default;
+$figure-img-height:       false !default;
 
 $figure-title-size:       false !default;
 $figure-title-color:      false !default;

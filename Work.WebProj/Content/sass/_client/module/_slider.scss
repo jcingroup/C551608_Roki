@@ -22,9 +22,8 @@ $swiper-slider:        false !default;
 .swiper-slide {
     text-align: center;
     overflow: hidden;
-
-    // 寬高預設100%
 }
+
 
 // 分頁圓點
 @if $swiper-pagination {
@@ -74,6 +73,9 @@ $swiper-slider:        false !default;
             min-height: 100%;
             @include pos-center;
         }
+
+        // 滑動為淡入淡出模式時加
+        .swiper-slide-next { opacity: 0 !important; }
     }
 }
 

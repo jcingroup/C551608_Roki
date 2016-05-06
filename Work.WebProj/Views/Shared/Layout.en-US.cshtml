@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en-US">
 <!-- saved from url=(0014)about:internet -->
 
 <head>
@@ -34,24 +34,24 @@
 
         <header id="header">
 
-            <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="回首頁">@Resources.Res.System_FrontName</h1>
+            <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="HOME">@Resources.Res.System_FrontName</h1>
 
-            <button class="menu-trigger"><span>主選單</span></button>
+            <button class="menu-trigger"><span>MENU</span></button>
             <nav id="menu">
-                <a href="~/AboutUs">公司簡介</a>
-                <a href="~/Products">產品介紹</a>
-    			<a href="~/ContactUs">聯絡我們</a>
+                <a href="~/AboutUs">ABOUT US</a>
+                <a href="~/Products">PRODUCTS</a>
+    			<a href="~/ContactUs">CONTACT US</a>
             </nav>
 
             <nav class="lang-nav dropdown">
-                <button data-dropdown="btn">中文</button>
+                <button data-dropdown="btn">English</button>
                 <div data-dropdown="content">
-                    <a href="@Url.Action("SetLanguage")?L=zh-TW&A=index" class="current">中文</a>
-                    <a href="@Url.Action("SetLanguage")?L=en-US&A=index">English</a>
+                    <a href="@Url.Action("SetLanguage")?L=zh-TW&A=index">中文</a>
+                    <a href="@Url.Action("SetLanguage")?L=en-US&A=index" class="current">English</a>
                 </div>
             </nav>
             <form action="" class="input-group search">
-                <input type="search" placeholder="產品查詢...">
+                <input type="search" placeholder="Search...">
                 <button class="icon-search"></button>
             </form>
 
@@ -102,28 +102,28 @@
         <div class="wrap">
             <div class="col-7 foot-nav">
                 <nav class="col-4">
-                    <h4>公司簡介</h4>
-                    <a href="">服務項目</a>
-                    <a href="">我們的優勢</a>
+                    <h4>ABOUT US</h4>
+                    <a href="">SERVICE</a>
+                    <a href="">ADVANTAGES</a>
                 </nav>
                 <nav class="col-8">
-                    <h4>產品介紹</h4>
-                    <a href="">開關類</a>
-                    <a href="">插座類</a>
-                    <a href="">連接器類</a>
+                    <h4>PRODUCTS</h4>
+                    <a href="">SWITCH</a>
+                    <a href="">JACK</a>
+                    <a href="">CONNECTOR</a>
                 </nav>
             </div>
 
             <div class="col-5 foot-contact">
                 <ul class="contact list-unstyled">
-                    <li><i class="icon-phone" title="TEL"></i>03-3011936</li>
-                    <li><i class="icon-print" title="FAX"></i>03-3011937</li>
+                    <li><i class="icon-phone" title="TEL"></i>+886-3-3011936</li>
+                    <li><i class="icon-print" title="FAX"></i>+886-3-3011937</li>
                     <li><i class="icon-skype" title="Skype"></i></li>
-                    <li>地址/ 桃園市大興西路二段六號四樓之四</li>
-                    <li>中國工廠/ 福建省泉州市江南火巨開發區</li>
+                    <li>OFFICE/ 4F-4 No.6, Sec.2, Dah-Shing W.Road, Taoyuan, Taiwan</li>
+                    <li>CHINA PLANT/ Jiangnan Huoju Industry Development Zone, Quanzhou Fujian China</li>
                     <li>Sample Request/ <a href="mailto:sales2@roki.com.tw">sales2@roki.com.tw</a></li>
                 </ul>
-                <div class="copyright">銓基電子股份有限公司 &copy; 2016</div>
+                <div class="copyright">ROKI ELECTRONICS CO., LTD. &copy; 2016</div>
             </div><!-- contact //-->
         </div><!-- wrap //-->
     </footer><!-- footer -->

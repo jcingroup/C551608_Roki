@@ -338,19 +338,24 @@
     <Content Include="Content\images\bg.gif" />
     <Content Include="Content\images\Index\banner1.jpg" />
     <Content Include="Content\images\Index\banner2.jpg" />
+    <Content Include="Content\images\line-rainbow.gif" />
     <Content Include="Content\images\logo.gif" />
-    <Content Include="Content\images\nav-bg.gif" />
+    <Content Include="Content\images\nav-bg.png" />
     <Content Include="Content\images\no-pic.gif" />
     <Content Include="Areas\Base\Views\Menu\Main.cshtml" />
+    <Content Include="Content\images\Products\content.jpg" />
+    <Content Include="Content\images\Products\draw.gif" />
     <Content Include="Content\images\Products\list.jpg" />
     <Content Include="Content\images\Products\list2.jpg" />
+    <Content Include="Content\images\Products\title-detail_bg.gif" />
     <Content Include="Content\js\common.js" />
     <Content Include="Content\js\swiper.min.js" />
+    <Content Include="Content\sass\base\_grid.scss" />
+    <Content Include="Content\sass\base\_util.scss" />
     <Content Include="Content\sass\editor.scss" />
     <Content Include="Content\sass\helper\mixins\_grid.scss" />
     <Content Include="Content\sass\helper\mixins\_tab-focus.scss" />
     <Content Include="Content\sass\helper\_mixins.scss" />
-    <Content Include="Content\sass\helper\_util.scss" />
     <Content Include="Content\sass\index.scss" />
     <Content Include="Content\sass\page.scss" />
     <Content Include="Content\font\icomoon\icomoon.eot" />
@@ -368,6 +373,9 @@
     <Content Include="Content\font\fontAwesome\FontAwesome.otf" />
     <None Include="Content\publih.wpp.targets" />
     <Content Include="Content\sass\vendor\_normalize.scss" />
+    <Content Include="Content\sass\_client\_layout.scss" />
+    <Content Include="Content\sass\_client\_main.scss" />
+    <Content Include="Content\sass\_client\_settings.scss" />
     <Content Include="index.html" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -453,10 +461,7 @@
     <Content Include="Scripts\src\jsx\m-matter.jsx" />
     <Content Include="Content\sass\vendor\_print.scss" />
     <Content Include="Content\sass\base\_basic.scss" />
-    <Content Include="Content\sass\base\_extend.scss" />
     <Content Include="Content\sass\base\_form.scss" />
-    <Content Include="Content\sass\base\_grid.scss" />
-    <Content Include="Content\sass\base\_layout.scss" />
     <Content Include="Content\sass\base\_table.scss" />
     <Content Include="Content\sass\_client\module\_animate.scss" />
     <Content Include="Content\sass\_client\module\_breadcrumb.scss" />
@@ -475,8 +480,6 @@
     <Content Include="Content\sass\_client\module\_slider.scss" />
     <Content Include="Content\sass\_client\module\_tab.scss" />
     <Content Include="Content\sass\_client\module\_tooltip.scss" />
-    <Content Include="Content\sass\_client\_main.scss" />
-    <Content Include="Content\sass\_client\_var.scss" />
     <Content Include="Content\sass\grid.scss" />
     <Content Include="Content\sass\helper\mixins\_align.scss" />
     <Content Include="Content\sass\helper\mixins\_animation.scss" />
@@ -498,6 +501,21 @@
     <Content Include="Views\Products\content.cshtml" />
     <Content Include="Views\ContactUs\ContactUs.cshtml" />
     <Content Include="Content\sass\_client\module\_nav.scss" />
+    <Content Include="Content\sass\vendor\icomoon.scss" />
+    <Content Include="Content\sass\vendor\icomoon\_style.scss" />
+    <Content Include="Content\sass\vendor\icomoon\_variables.scss" />
+    <Content Include="Views\Products\search.cshtml" />
+    <Content Include="Views\Products\search.en-US.cshtml" />
+    <Content Include="Views\Products\sidebar.cshtml" />
+    <Content Include="Views\AboutUs\AboutUs.en-US.cshtml" />
+    <Content Include="Views\ContactUs\ContactUs.en-US.cshtml" />
+    <Content Include="Views\Index\Index.en-US.cshtml" />
+    <Content Include="Views\Products\content.en-US.cshtml" />
+    <Content Include="Views\Products\list.en-US.cshtml" />
+    <Content Include="Views\Products\NewProduct.en-US.cshtml" />
+    <Content Include="Views\Products\sidebar.en-US.cshtml" />
+    <Content Include="Views\Shared\Layout.en-US.cshtml" />
+    <Content Include="Content\sass\helper\_function.scss" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -518,7 +536,6 @@
     <Content Include="Views\Shared\Manage\vucFooter.cshtml" />
     <Content Include="Views\Shared\Manage\vucMenu.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
-    <Content Include="Views\VIP\VIP.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="_Code\cache\memo.txt" />
     <Content Include="_Code\RPTExcel\DownExcel.xls" />

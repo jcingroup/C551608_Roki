@@ -1,45 +1,27 @@
 ﻿
 @{
-    ViewBag.Title = "開關類:偵測開關";
-    ViewBag.BodyClass = "Products col2";
-    ViewBag.Target = "偵測開關";
+    ViewBag.Title = "最新產品";
+    ViewBag.BodyClass = "Products";
+    ViewBag.Target = "最新產品";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 @section breadCrumb {
-    <li><a href="~/Products">產品介紹</a></li>
-    <li><a href="~/Products/list">開關類</a></li>
+    <li><a href="~/Products">PRODUCTS</a></li>
 }
 
-@section Scripts {
-    <script>
-        // 縮放特效
-        var $collapse = $("[data-toggle='collapse']");
-        var fall = '.collapse-content';
-
-        $collapse.click(function () {
-            $(this).next(fall).slideToggle();
-            $(this).siblings().next(fall).slideUp();
-            $(this).toggleClass("current"),
-                    $collapse.not(this).removeClass("current");
-            return false;
-        });
-    </script>
-}
-
-@Html.Partial("sidebar")
-
-<section class="content">
-    @* 產品子分類名稱 + 此分類內的產品數量 *@
-    <h2 class="title">偵測開關 <small>(15)</small></h2>
+@* 每個分類的最新產品 2 則 *@
+<section class="col-6 col-sm-12 catalog-new">
+    <header class="title">
+        <h2>SWITCH <small>(50)</small></h2>
+        <a href="~/Products/list" class="btn btn-primary">ALL</a>
+    </header>
 
     <figure class="product-list">
         <img src="~/Content/images/Products/list.jpg">
         <a href="~/Products/content">MORE</a>
         <figcaption>
-            @* 子分類名稱 *@
-            <small>偵測開關Detect Switch</small>
-            @* 產品型號 *@
+            <small>DETECT SWITCH</small>
             <h4>TU SERIES 1</h4>
         </figcaption>
     </figure>
@@ -48,45 +30,59 @@
         <img src="~/Content/images/Products/list.jpg">
         <a href="~/Products/content">MORE</a>
         <figcaption>
-            <small>偵測開關Detect Switch</small>
+            <small>DETECT SWITCH</small>
             <h4>TU SERIES 1</h4>
         </figcaption>
     </figure>
-
-    <figure class="product-list">
-        <img src="~/Content/images/Products/list.jpg">
-        <a href="~/Products/content">MORE</a>
-        <figcaption>
-            <small>偵測開關Detect Switch</small>
-            <h4>TU SERIES 1</h4>
-        </figcaption>
-    </figure>
-
-    <figure class="product-list">
-        <img src="~/Content/images/Products/list.jpg">
-        <a href="~/Products/content">MORE</a>
-        <figcaption>
-            <small>偵測開關Detect Switch</small>
-            <h4>TU SERIES 1</h4>
-        </figcaption>
-    </figure>
-
-    <figure class="product-list">
-        <img src="~/Content/images/Products/list.jpg">
-        <a href="~/Products/content">MORE</a>
-        <figcaption>
-            <small>偵測開關Detect Switch</small>
-            <h4>TU SERIES 1</h4>
-        </figcaption>
-    </figure>
-
-    <figure class="product-list">
-        <img src="~/Content/images/Products/list.jpg">
-        <a href="~/Products/content">MORE</a>
-        <figcaption>
-            <small>偵測開關Detect Switch</small>
-            <h4>TU SERIES 1</h4>
-        </figcaption>
-    </figure>
-
 </section>
+
+<section class="col-6 col-sm-12 catalog-new">
+    <header class="title">
+        <h2>JACK <small>(50)</small></h2>
+        <a href="~/Products/list" class="btn btn-primary">ALL</a>
+    </header>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>PHONE JACK</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>PHONE JACK</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+</section>
+
+<section class="col-6 col-sm-12 catalog-new">
+    <header class="title">
+        <h2>CONNECTOR <small>(50)</small></h2>
+        <a href="~/Products/list" class="btn btn-primary">ALL</a>
+    </header>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>USB2.0 CONNECTOR</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+
+    <figure class="product-list">
+        <img src="~/Content/images/Products/list.jpg">
+        <a href="~/Products/content">MORE</a>
+        <figcaption>
+            <small>USB2.0 CONNECTOR</small>
+            <h4>TU SERIES 1</h4>
+        </figcaption>
+    </figure>
+</section>
+

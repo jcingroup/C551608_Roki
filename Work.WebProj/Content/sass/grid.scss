@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-@import "helper/util";
+@import "helper/function";
 @import "helper/var";
 @import "helper/mixins";
 
-@import "base/extend";
+@import "base/util";
 @import "base/grid";
