@@ -50,7 +50,7 @@
     img {
         @if $index {
             margin: $gutter*2 auto;
-            height: 200px;
+            max-height: 200px;
         }
         @if $page {
             margin-top: $gutter;

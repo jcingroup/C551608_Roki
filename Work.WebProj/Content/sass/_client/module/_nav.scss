@@ -7,13 +7,6 @@ $current: current();
     color: $menu-link-hover;
 }
 
-// 當前選單
-// $current: ();
-// @each $item in $pages {
-//     $i: index($pages, $item);
-//     $current: $current, unquote(".#{$item} &:nth-of-type(#{$i})");
-// }
-
 // 主選單
 #menu {
     height: $menu-height;
@@ -50,82 +43,169 @@ $current: current();
         #{$current} {
             background: $menu-link-hover url(#{$img-path}/nav-bg.png) 0 0 no-repeat;
         }
+
+        @include mq-max(break(wide,-1)) {
+            float: none;
+            border-left: none;
+            margin: auto;
+            width: 75%;
+            height: auto;
+            font-size: em(21);
+            line-height: 1.6;
+            &:last-child { border-right: none; }
+        }
+    }
+
+    // 行動版面
+    // .toggle { display: none; }
+
+    @include mq-max(break(wide,-1)) {
+
+        @include fixed(top 0);
+        overflow-y: auto;
+        z-index: z(logo) + 1;
+
+        background: $menu-mobile-bg;
+        width: $menu-mobile-width;
+        height: 100%;
+
+        margin-left: 0;
+
+        // 推拉樣式
+        @if $menu-mobile-style == 'push' {
+            left: -$menu-mobile-width;
+
+            @include transition(left .35s);
+
+            .push & { left: 0; }
+        }
+
+        // 全版樣式
+        @else if $menu-mobile-style == 'overlay' {
+            overflow-x: hidden;
+            visibility: hidden;
+            top: -50%;
+            left: 0;
+            opacity: 0;
+            padding: 3% 0;
+
+            @include transition(top .3s, opacity 1s);
+
+            .overlay & {
+                top: 0;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        // .toggle {
+        //     display: block;
+        //     cursor: pointer; cursor: hand;
+        //     z-index: 3;
+        //     color: #fff;
+        //     font-size: em(50px);
+
+        //     @include absolute(top 2px right 2px);
+
+        //     &:hover, &:active {
+        //         color: $brand-primary;
+        //     }
+        // }
+    }
+}
+.sub-nav {
+    display: none;
+
+    @include mq-max(break(wide,-1)) {
+        display: block;
     }
 }
 
-.menu-trigger {
-    display: none;
+// == 選單出現時 版面變化
+@if $menu-mobile-style == 'push' {
+    .push {
+        left: $menu-mobile-width;
+        overflow-y: hidden;
+    }
+}
+@else if $menu-mobile-style == 'overlay' {
+    .overlay {
+        overflow: hidden;
+    }
 }
 
-// // == 行動版主選單
-// .push {
-//     // left: $menu-trigger-width;
-//     // overflow-y: hidden;
-//     // .md-overlay {
-//     //     opacity: 1;
-//     //     visibility: visible;
-//     //     left: $menu-trigger-width;
-//     // }
-// }
-// .menu-trigger {
-//     @extend %text-hide;
-//     display: none;
-//     cursor: pointer;
-//     // z-index: z(overlay) + 1;
+// == 行動版主選單
+.menu-trigger {
+    @extend %text-hide;
 
-//     position: relative;
-//     left: 0; top: ($menu-height - $menu-trigger-height - $menu-trigger-pd)/2;
-//     overflow: hidden;
-//     width: $menu-trigger-width;
-//     height: $menu-trigger-height;
+    display: none;
+    cursor: pointer;
+    overflow: hidden;
 
-//     @include transition(background 0.3s);
-//     @include prefix(apperance, none, webkit moz);
-//     @include mq-max(tablet) { display: block; }
-//     @include mq-max(break(phone, -1)) { top: 40px; }
+    position: relative;
+    left: $gutter;
+    top: 50%;
+    @include transform(translateY(-50%));
 
-//     &:active, &.active {
-//         background-color: darken($brand-primary, 10%);
-//         span {
-//             background: none;
-//             &::before {
-//                 top: 0;
-//                 @include prefix(transform, rotate(45deg));
-//             }
-//             &::after {
-//                 bottom: 0;
-//                 @include prefix(transform, rotate(-45deg));
-//             }
-//             &::before, &::after {
-//                 @include prefix(transition-delay, '0, .3s');
-//             }
-//         }
-//     }
+    @include mq-max(break(wide,-1)) { display: block; }
+    @include mq-max(phone) { left: 0; }
 
-//     span {
-//         @include absolute(left $menu-trigger-pd right $menu-trigger-pd top (($menu-trigger-height / 2) - ($menu-trigger-thickness / 2)));
-//         display: block;
+    // 變形 X 效果
+    @if $menu-trigger-animate {
+        z-index: z(overlay) + 1;
 
-//         background: $menu-trigger-color;
-//         height: $menu-trigger-thickness;
-//         margin: auto;
-//         @include prefix(transition, background 0s 0.3s);
+        width: $menu-trigger-width;
+        height: $menu-trigger-height;
 
-//         @include el(all) {
-//             width: 100%;
-//             height: $menu-trigger-thickness;
-//             background-color: $menu-trigger-color;
-//             @include absolute(left 0);
-//             @include prefix(transition-duration, '.3s, .3s');
-//             @include prefix(transition-delay, '.3s, 0');
-//         }
-//         &::before {
-//             top: -(($menu-trigger-height / 2) - ($menu-trigger-thickness / 2) - $menu-trigger-pd);
-//             @include prefix(transition-property, 'top, transform');
-//         }
-//         &::after {
-//             bottom: -(($menu-trigger-height / 2) - ($menu-trigger-thickness / 2) - $menu-trigger-pd);
-//             @include prefix(transition-property, 'bottom, transform');
-//         }
-//     }
-// }
+        @include transition(background 0.3s);
+        @include prefix(apperance, none, webkit moz);
+
+        &:active, &.active {
+            // background-color: darken($brand-primary, 10%);
+            span {
+                background: none;
+                &::before {
+                    top: 0;
+                    @include transform(rotate(45deg));
+                }
+                &::after {
+                    bottom: 0;
+                    @include transform(rotate(-45deg));
+                }
+                &::before, &::after {
+                    // background: #fff;
+                    @include prefix(transition-delay, '0, .3s');
+                }
+            }
+        }
+
+        span {
+            @include absolute(left $menu-trigger-pd right $menu-trigger-pd top (($menu-trigger-height / 2) - ($menu-trigger-thickness / 2)));
+            display: block;
+
+            background: $menu-trigger-color;
+            height: $menu-trigger-thickness;
+            margin: auto;
+            @include transition(background 0s 0.3s);
+
+            @include el(all) {
+                width: 100%;
+                height: $menu-trigger-thickness;
+                background-color: $menu-trigger-color;
+                @include absolute(left 0);
+                @include prefix(transition-duration, '.3s, .3s');
+                @include prefix(transition-delay, '.3s, 0');
+            }
+            &::before {
+                top: -(($menu-trigger-height / 2) - ($menu-trigger-thickness / 2) - $menu-trigger-pd);
+                @include prefix(transition-property, 'top, transform');
+            }
+            &::after {
+                bottom: -(($menu-trigger-height / 2) - ($menu-trigger-thickness / 2) - $menu-trigger-pd);
+                @include prefix(transition-property, 'bottom, transform');
+            }
+        }
+    } @else {
+        // 專案樣式
+    }
+}

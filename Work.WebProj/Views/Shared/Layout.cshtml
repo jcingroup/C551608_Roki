@@ -5,25 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    @* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> *@
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@Resources.Res.System_FrontName::@ViewBag.Title</title>
     <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="bookmark" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="~/favicon.ico"/>
+    <link rel="bookmark" href="~/favicon.ico"/>
     <link rel="stylesheet" href="~/Content/css/vendor/swiper.css">
-    <link href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <link href="~/Content/css/grid.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>
+    <link rel="stylesheet" href="~/Content/css/grid.css?v=@CommWebSetup.CacheVer">
     @if (ViewBag.IsFirstPage)
     {
-        <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+        <link rel="stylesheet" href="~/Content/css/index.css?v=@CommWebSetup.CacheVer">
     }
     else
     {
-        <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+        <link rel="stylesheet" href="~/Content/css/page.css?v=@CommWebSetup.CacheVer">
     }
     @RenderSection("css", false)
 </head>
@@ -36,10 +36,36 @@
 
             <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="回首頁">@Resources.Res.System_FrontName</h1>
 
-            <button class="menu-trigger"><span>主選單</span></button>
+            <button class="menu-trigger"><span>MENU</span></button>@* 手機menu *@
             <nav id="menu">
                 <a href="~/AboutUs">公司簡介</a>
                 <a href="~/Products">產品介紹</a>
+                <dl class="sub-nav dropdown">
+                    <dt class="collapse-title" data-toggle="collapse">開關類</dt>
+                    <dd class="collapse-content">
+                        @* 當前子分類 class + current
+                        <a href="~/Products/list" class="current">偵測開關<small>(15)</small></a> *@
+                        <a href="~/Products/list">偵測開關<small>(15)</small></a>
+                        <a href="~/Products/list">滑動開關<small>(15)</small></a>
+                        <a href="~/Products/list">輕觸開關<small>(6)</small></a>
+                        <a href="~/Products/list">指撥開關<small>(15)</small></a>
+                        <a href="~/Products/list">按鍵開關<small>(15)</small></a>
+                    </dd>
+
+                    <dt class="collapse-title" data-toggle="collapse">插座類</dt>
+                    <dd class="collapse-content">
+                        <a href="~/Products/list">直流插座<small>(15)</small></a>
+                        <a href="~/Products/list">耳機插座<small>(15)</small></a>
+                    </dd>
+
+                    <dt class="collapse-title" data-toggle="collapse">連接器類</dt>
+                    <dd class="collapse-content">
+                        <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
+                        <a href="~/Products/list">USB 3.0 連接器<small>(15)</small></a>
+                        <a href="~/Products/list">HDMI 連接器<small>(15)</small></a>
+                        <a href="~/Products/list">微型連接器<small>(15)</small></a>
+                    </dd>
+                </dl>
     			<a href="~/ContactUs">聯絡我們</a>
             </nav>
 
@@ -103,8 +129,8 @@
             <div class="col-7 foot-nav">
                 <nav class="col-4">
                     <h4>公司簡介</h4>
-                    <a href="">服務項目</a>
-                    <a href="">我們的優勢</a>
+                    <a href="~/AboutUs/#p1">服務項目</a>
+                    <a href="~/AboutUs/#p2">我們的優勢</a>
                 </nav>
                 <nav class="col-8">
                     <h4>產品介紹</h4>

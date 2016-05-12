@@ -78,14 +78,10 @@ html, body {
     margin-top: ($header-height - nth($logo-size,2)) / 2;
     float: left;
 
-    // @include mq-max(break(desktop, -1)) {
-    //     left: 50%;
-    //     margin-left: -(nth($logo-size,1) / 2);
-    // }
-    // @include mq-max(break(phone, -1)) {
-    //     right: -10px; left: auto;
-    //     margin-left: 0;
-    // }
+    @include mq-max(break(wide, -1)) {
+        @include absolute(left 50%);
+        @include pos-center(horizontal);
+    }
 }
 
 

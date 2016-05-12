@@ -40,6 +40,34 @@
             <nav id="menu">
                 <a href="~/AboutUs">ABOUT US</a>
                 <a href="~/Products">PRODUCTS</a>
+                <dl class="sub-nav dropdown">
+                    @* 當前分類 class+ current
+                    <dt class="collapse-title current" data-toggle="collapse">SWITCH</dt>  *@
+                    <dt class="collapse-title" data-toggle="collapse">SWITCH</dt>
+                    <dd class="collapse-content">
+                        @* 當前子分類 class + current
+                        <a href="~/Products/list" class="current">DETECT SWITCH<small>(15)</small></a> *@
+                        <a href="~/Products/list">DETECT SWITCH<small>(15)</small></a>
+                        <a href="~/Products/list">SLIDE SWITCH<small>(15)</small></a>
+                        <a href="~/Products/list">TACT SWITCH<small>(6)</small></a>
+                        <a href="~/Products/list">DIP SWITCH<small>(15)</small></a>
+                        <a href="~/Products/list">PUSH SWITCH<small>(15)</small></a>
+                    </dd>
+
+                    <dt class="collapse-title" data-toggle="collapse">JACK</dt>
+                    <dd class="collapse-content">
+                        <a href="~/Products/list">DC JACK<small>(15)</small></a>
+                        <a href="~/Products/list">PHONE JACK<small>(15)</small></a>
+                    </dd>
+
+                    <dt class="collapse-title" data-toggle="collapse">CONNECTOR</dt>
+                    <dd class="collapse-content">
+                        <a href="~/Products/list">USB2.0 CONNECTOR<small>(15)</small></a>
+                        <a href="~/Products/list">USB3.0 CONNECTOR<small>(15)</small></a>
+                        <a href="~/Products/list">HDMI CONNECTOR<small>(15)</small></a>
+                        <a href="~/Products/list">MICRO USB<small>(15)</small></a>
+                    </dd>
+                </dl>
     			<a href="~/ContactUs">CONTACT US</a>
             </nav>
 

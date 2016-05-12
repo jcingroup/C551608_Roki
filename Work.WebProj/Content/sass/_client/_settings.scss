@@ -47,12 +47,6 @@ $logo-img:              'logo.gif' !default;
 $logo-size:             335px 56px !default;
 $logo-position:         left 0 top ($header-height - nth($logo-size,2))/2 !default;
 
-// menu
-$menu-bg:               false;
-$menu-height:           $header-height;
-$menu-font-size:        19px;
-$menu-link:             #191919;
-$menu-link-hover:       $brand-secondary;
 
 // footer
 $footer-height:         213px !default;
@@ -82,22 +76,42 @@ $z-index: (
 
 // == module
 // ----------------------------------------------------------------------
-// slider
+// ## module/nav
+// menu
+$menu-bg:                 false;
+$menu-height:             $header-height;
+$menu-font-size:          19px;
+$menu-link:               #191919;
+$menu-link-hover:         $brand-secondary;
+
+// 行動選單(menu-trigger)
+$menu-mobile-style:       'overlay';  // 行動版選單樣式-push(推拉)/overlay(全螢幕)
+$menu-mobile-bg:          rgba(#eeefef, .9);
+$menu-mobile-width:       100%;
+$menu-trigger-animate:    true;
+$menu-trigger-thickness:  3px;
+$menu-trigger-width:      42px;
+$menu-trigger-height:     $menu-trigger-thickness * 10;
+$menu-trigger-pd:         0;
+$menu-trigger-color:      $brand-primary;
+
+// ## module/slider
 $swiper-banner:            true;
 
-// figure
+// ## module/figure
 $figure-bg:                #fff;
 $figure-border:            1px solid #DCDDDD;
 $figure-text-align:        left;
 $figure-height:            false;
 $figure-title-color:       #000;
+$figure-img-width:         80%;
 
-// dropdown
+// ## module/dropdown
 $dropdown-color:           $brand-secondary;
 $dropdown-hover-color:     darken($brand-secondary, 10);
 $dropdown-font-size:       14px;
 
-// search
+// ## module/search
 $input-group-pos:          right 0 top 43%;
 $input-group-width:        12%;
 $input-group-border-color: #EBEBEB;

@@ -67,11 +67,15 @@ $swiper-slider:        false !default;
     #banner {
         &, .swiper-slide {
             height: $banner-height;
+            @include mq-max(break(wide,-1)) { height: 250px; }
         }
 
         .swiper-slide img {
-            min-height: 100%;
+            height: 100%;
             @include pos-center;
+            // @include mq-max(break(wide,-1)) {
+            //     max-height: 100%;
+            // }
         }
 
         // 滑動為淡入淡出模式時加
