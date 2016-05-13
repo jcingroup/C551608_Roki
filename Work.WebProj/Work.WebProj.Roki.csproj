@@ -803,6 +803,7 @@
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Scripts\typings\sortablejs\" />
     <Folder Include="_Code\CReport\" />
   </ItemGroup>
   <ItemGroup>
