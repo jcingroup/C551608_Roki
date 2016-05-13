@@ -30,7 +30,6 @@ $figure-title-size:  18px;
 @import "_client/main";
 
 @import "_client/module/breadcrumb";
-@import "_client/module/collapse";
 
 
 
@@ -87,10 +86,11 @@ h2.title {
 
     margin-top: -90px;
 
-    dt {
+    .collapse-title {
         padding-left: 13%;
         margin-top: $gutter+10;
         line-height: 1;
+        color: darken($brand-primary,50);
 
         @include icon-square(false, 9px, $info, left 0 top 40%);
 
@@ -101,7 +101,7 @@ h2.title {
             color: $brand-primary;
         }
     }
-    dd {
+    .collapse-content {
         padding-top: 12px;
         margin-top: -5px;
         margin-left: 4px;
@@ -112,6 +112,7 @@ h2.title {
         padding-left: 11%;
 
         &:hover, &:active, &.current {
+            color: $brand-secondary;
             @include icon-dot(false, 7px, lighten($brand-secondary,10), left -4px top 40%);
         }
     }

@@ -21,9 +21,9 @@ $trigger.click(function() {
     $(this).toggleClass('active');
     $('body').toggleClass('overlay');
 });
-$('.toggle').click(function() {
-    $('body').removeClass('overlay');
-});
+// $('.toggle').click(function() {
+//     $('body').removeClass('overlay');
+// });
 
 // 行動裝置的產品分類選單
 // $(".pro-menu").click(function() {
@@ -49,10 +49,14 @@ var fall = '.collapse-content';
 
 $collapse.click(function () {
     $(this).next(fall).slideToggle();
-    $(this).siblings().next(fall).slideUp();
+    $(this).parent().siblings().children().next().slideUp();
+    // $(this).siblings().next(fall).slideUp();
     $(this).toggleClass("current"),
             $collapse.not(this).removeClass("current");
     return false;
+});
+$collapse.blur(function(){
+    $(fall).slideUp();
 });
 
 // 搜尋框縮放

@@ -40,32 +40,38 @@
             <nav id="menu">
                 <a href="~/AboutUs">公司簡介</a>
                 <a href="~/Products">產品介紹</a>
-                <dl class="sub-nav dropdown">
-                    <dt class="collapse-title" data-toggle="collapse">開關類</dt>
-                    <dd class="collapse-content">
-                        @* 當前子分類 class + current
-                        <a href="~/Products/list" class="current">偵測開關<small>(15)</small></a> *@
-                        <a href="~/Products/list">偵測開關<small>(15)</small></a>
-                        <a href="~/Products/list">滑動開關<small>(15)</small></a>
-                        <a href="~/Products/list">輕觸開關<small>(6)</small></a>
-                        <a href="~/Products/list">指撥開關<small>(15)</small></a>
-                        <a href="~/Products/list">按鍵開關<small>(15)</small></a>
-                    </dd>
+                <ul class="sub-nav dropdown">
+                    <li class="col-3 col-xs-12">
+                        <h4 class="collapse-title" data-toggle="collapse">開關類</h4>
+                        <div class="collapse-content">
+                            @* 當前子分類 class + current
+                            <a href="~/Products/list" class="current">偵測開關<small>(15)</small></a> *@
+                            <a href="~/Products/list">偵測開關<small>(15)</small></a>
+                            <a href="~/Products/list">滑動開關<small>(15)</small></a>
+                            <a href="~/Products/list">輕觸開關<small>(6)</small></a>
+                            <a href="~/Products/list">指撥開關<small>(15)</small></a>
+                            <a href="~/Products/list">按鍵開關<small>(15)</small></a>
+                        </div>
+                    </li>
 
-                    <dt class="collapse-title" data-toggle="collapse">插座類</dt>
-                    <dd class="collapse-content">
-                        <a href="~/Products/list">直流插座<small>(15)</small></a>
-                        <a href="~/Products/list">耳機插座<small>(15)</small></a>
-                    </dd>
+                    <li class="col-3 col-xs-12">
+                        <h4 class="collapse-title" data-toggle="collapse">插座類</h4>
+                        <div class="collapse-content">
+                            <a href="~/Products/list">直流插座<small>(15)</small></a>
+                            <a href="~/Products/list">耳機插座<small>(15)</small></a>
+                        </div>
+                    </li>
 
-                    <dt class="collapse-title" data-toggle="collapse">連接器類</dt>
-                    <dd class="collapse-content">
-                        <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
-                        <a href="~/Products/list">USB 3.0 連接器<small>(15)</small></a>
-                        <a href="~/Products/list">HDMI 連接器<small>(15)</small></a>
-                        <a href="~/Products/list">微型連接器<small>(15)</small></a>
-                    </dd>
-                </dl>
+                    <li class="col-3 col-xs-12">
+                        <h4 class="collapse-title" data-toggle="collapse">連接器類</h4>
+                        <div class="collapse-content">
+                            <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
+                            <a href="~/Products/list">USB 3.0 連接器<small>(15)</small></a>
+                            <a href="~/Products/list">HDMI 連接器<small>(15)</small></a>
+                            <a href="~/Products/list">微型連接器<small>(15)</small></a>
+                        </div>
+                    </li>
+                </ul>
     			<a href="~/ContactUs">聯絡我們</a>
             </nav>
 

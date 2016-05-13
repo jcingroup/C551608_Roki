@@ -210,3 +210,30 @@ html, body {
         text-align: center;
     }
 }
+
+// == 行動選單出現時 版面變化
+@if $menu-mobile-style == 'push' {
+    .push {
+        left: $menu-mobile-width;
+        overflow-y: hidden;
+    }
+}
+@else if $menu-mobile-style == 'overlay' {
+    .overlay {
+        overflow: hidden;
+
+        .lang-nav, .search {
+            @include animation('fadeIn .5s','slide-down 1s forwards');
+        }
+        .lang-nav {
+            z-index: z(overlay) + 2;
+            top: 34%;
+        }
+        .search {
+            z-index: z(overlay) + 1;
+            top: 32%;
+            right: 8%;
+            width: 30%;
+        }
+    }
+}

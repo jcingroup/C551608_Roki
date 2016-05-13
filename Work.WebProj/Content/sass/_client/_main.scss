@@ -11,6 +11,8 @@
 @import "module/goTop";
 @import "module/dropdown";
 @import "module/search";
+@import "module/collapse";
+@import "module/animate";
 
 
 // 本次專案樣式
@@ -50,7 +52,8 @@
     img {
         @if $index {
             margin: $gutter*2 auto;
-            max-height: 200px;
+            // max-height: 200px;
+            max-height: 180px;
         }
         @if $page {
             margin-top: $gutter;
@@ -92,7 +95,7 @@ figcaption {
     text-align: left;
     position: relative;
     height: auto;
-    z-index: 5;
+    // z-index: 5;
 
     @if $index {
         padding-top: $gutter;
