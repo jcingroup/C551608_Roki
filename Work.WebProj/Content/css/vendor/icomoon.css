@@ -1,72 +1,112 @@
 @font-face {
-    font-family: 'icomoon';
-    src:    url('../../font/icomoon/icomoon.eot?k6dxeg');
-    src:    url('../../font/icomoon/icomoon.eot?k6dxeg#iefix') format('embedded-opentype'),
-        url('../../font/icomoon/icomoon.ttf?k6dxeg') format('truetype'),
-        url('../../font/icomoon/icomoon.woff?k6dxeg') format('woff'),
-        url('../../font/icomoon/icomoon.svg?k6dxeg#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+  font-family: 'icomoon';
+  src: url("../../font/icomoon/icomoon.eot?egl40k");
+  src: url("../../font/icomoon/icomoon.eot?egl40k#iefix") format("embedded-opentype"), url("../../font/icomoon/icomoon.ttf?egl40k") format("truetype"), url("../../font/icomoon/icomoon.woff?egl40k") format("woff"), url("../../font/icomoon/icomoon.svg?egl40k#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+i,
+[class*='icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+.icon-cross:before {
+  content: "\e117"; }
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+.icon-menu2:before {
+  content: "\e120"; }
 
-.icon-angle:before {
-    content: "\e90e";
-}
-.icon-building:before {
-    content: "\e900";
-}
-.icon-cart:before {
-    content: "\e901";
-}
-.icon-cooperate:before {
-    content: "\e902";
-}
-.icon-diamond:before {
-    content: "\e903";
-}
-.icon-fb:before {
-    content: "\e904";
-}
-.icon-gplus:before {
-    content: "\e905";
-}
+.icon-battery:before {
+  content: "\e917"; }
+
 .icon-home:before {
-    content: "\e906";
-}
-.icon-house:before {
-    content: "\e907";
-}
-.icon-joinus:before {
-    content: "\e908";
-}
-.icon-mail:before {
-    content: "\e909";
-}
-.icon-members:before {
-    content: "\e90a";
-}
-.icon-money:before {
-    content: "\e90c";
-}
-.icon-vip:before {
-    content: "\e90d";
-}
-.icon-phone:before {
-    content: "\e90b";
-}
+  content: "\e918"; }
 
+.icon-megaphone:before {
+  content: "\e919"; }
+
+.icon-paper-plane:before {
+  content: "\e91a"; }
+
+.icon-power-plug:before {
+  content: "\e91b"; }
+
+.icon-chevron-small-down:before {
+  content: "\e900"; }
+
+.icon-chevron-small-right:before {
+  content: "\e901"; }
+
+.icon-chevron-thin-down:before {
+  content: "\e902"; }
+
+.icon-chevron-thin-left:before {
+  content: "\e903"; }
+
+.icon-chevron-thin-right:before {
+  content: "\e904"; }
+
+.icon-chevron-thin-up:before {
+  content: "\e905"; }
+
+.icon-dots-three-horizontal:before {
+  content: "\e906"; }
+
+.icon-print:before {
+  content: "\e908"; }
+
+.icon-skype2:before {
+  content: "\e909"; }
+
+.icon-images:before {
+  content: "\e90a"; }
+
+.icon-phone:before {
+  content: "\e90b"; }
+
+.icon-download:before {
+  content: "\e90c"; }
+
+.icon-switch:before {
+  content: "\e90d"; }
+
+.icon-facebook:before {
+  content: "\e90e"; }
+
+.icon-facebook2:before {
+  content: "\e90f"; }
+
+.icon-twitter:before {
+  content: "\e910"; }
+
+.icon-youtube:before {
+  content: "\e911"; }
+
+.icon-youtube2:before {
+  content: "\e912"; }
+
+.icon-tumblr:before {
+  content: "\e913"; }
+
+.icon-tumblr2:before {
+  content: "\e914"; }
+
+.icon-skype:before {
+  content: "\e915"; }
+
+.icon-search:before {
+  content: "\e916"; }
+
+.icon-printer:before {
+  content: "\e91c"; }
+
+.icon-trophy:before {
+  content: "\e91e"; }

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+// @mixin row() {
+//     font-size: 0;
+// }
+// @extend %col-reset;
+
+@mixin col($col, $sum, $gap: $gutter, $align: top, $first: false, $last: false, $extend: true) {
+
+    @if($align != top) {
+        vertical-align: $align;
+    }
+    width: percentage($col/$sum);
+
+    @include mixin-dryer('col-reset', $extend) {
+        display: inline-block;
+        vertical-align: top;
+        padding-left: if($first, 0, $gap/2);
+        padding-right: if($last, 0, $gap/2);
+
+        // width: 100%;
+        // inline-block模式時 刪除多出間距
+        margin-right: -4px;
+
+        @if $lte7 {
+            *display: inline;
+            zoom: 1
+        }
+        &:first-child { padding-left: 0; }
+        &:last-child { padding-right: 0; }
+    }
+}

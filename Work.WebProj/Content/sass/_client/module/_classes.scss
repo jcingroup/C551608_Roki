@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+// common
+// ------------------------------------------------------------
+.clearfix { @extend %clearfix; }
+
+.circle { @extend %circle; } // 圓形
+
+.full { @extend %full;  }
+.half { @extend %half; }
+
+.float-l { float: left; }
+.float-r { float: right; }
+
+img.float-l { margin-right: $gutter;}
+
+.clear { clear: both  }
+
+.hidden { display: none; }
+
+
+
+// text
+// ------------------------------------------------------------
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+.text-line {
+    border-bottom: 1px solid $info;
+    padding-bottom: $gutter;
+}
+
+
+// 情境: var.scss> $states: true
+// ------------------------------------------------------------
+@if $states {
+
+    .text-white { color: #fff;; }
+
+    @each $type, $color in $state-type {
+        // .text-#{$type} {
+        //     @include state($color);
+        // }
+        .bg-#{$type} {
+            background: lighten($color, 4.5%);
+        }
+    }
+}

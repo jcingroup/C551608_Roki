@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+//
+// breadcrumb
+// --------------------------------------------------
+
+.breadcrumb {
+    @extend %list-inline;
+
+    text-align: left;
+    color: lighten($body-color, 15);
+
+    border-bottom: 1px solid #fff;
+    padding-top: $gutter*2;
+    padding-bottom: $gutter;
+    margin: 0;
+    margin-bottom: $gutter*2+5;
+
+    li { margin-right: 6px; }
+    a {
+        color: lighten($body-color, 40);
+        font-size: em(13px);
+
+        @include el(after, false, '/') {
+            margin-left: 3px;
+            color: darken($brand-gray, 7%);
+        }
+
+        &:hover, &:active {
+            color: $brand-secondary;
+        }
+    }
+}

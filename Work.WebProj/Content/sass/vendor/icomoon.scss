@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+$icomoon-font-path: "../../font/icomoon";
+
+@function unicode($str){
+  @return unquote("\"") + $str + unquote("\"");
+}
+
+@import "icomoon/style";

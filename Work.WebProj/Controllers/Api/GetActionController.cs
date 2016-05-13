@@ -113,12 +113,12 @@ namespace DotWeb.Api
                 return Ok(result_obj);
             }
         }
-        public async Task<IHttpActionResult> GetOptionsCommunity()
-        {
-            db0 = getDB0();
-            var options = await db0.Community.Select(x => new { x.community_id, x.community_name }).OrderBy(x => x.community_id).ToListAsync();
-            return Ok(options);
-        }
+        //public async Task<IHttpActionResult> GetOptionsCommunity()
+        //{
+        //    db0 = getDB0();
+        //    var options = await db0.Community.Select(x => new { x.community_id, x.community_name }).OrderBy(x => x.community_id).ToListAsync();
+        //    return Ok(options);
+        //}
         private IList<MenuDef> ReMarkMenuTree(MenuDef t2, IList<MenuDef> data)
         {
             var t3 = data.Where(x => x.ParentKey == t2.Key);

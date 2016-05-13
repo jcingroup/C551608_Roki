@@ -1,0 +1,99 @@
+﻿@charset "UTF-8";
+
+$lte7:                  false !default;           // 是否兼容IE6-7
+$enable-flex:           false !default;           // 是否使用 flex 版
+
+
+// == color
+// ----------------------------------------------------------------------
+// 語義色
+$gray-base:             #000;
+$gray-darker:           lighten($gray-base, 13.5%);   // #222
+$gray-dark:             lighten($gray-base, 20%);     // #333
+$gray:                  lighten($gray-base, 33.5%);   // #555
+$gray-light:            lighten($gray-base, 46.7%);   // #777
+$gray-lighter:          lighten($gray-base, 93.5%);   // #eee
+
+// 抽象色
+$brand-primary:         #0066cc !default;             // 主色
+$brand-secondary:       #85AFD9 !default;             // 輔色
+$success:               #368B39 !default;             // 綠
+$info:                  #67C4DF !default;             // 藍
+$warning:               rgb(255,128,0) !default;             // 黃
+$error:                 #F35048 !default;             // 紅
+
+
+// == basic
+// ----------------------------------------------------------------------
+// <body> 背景 & 文字色
+$body-bg:               #fff !default;
+$body-color:            #222 !default;
+
+// 文字鏈結色&滑鼠移過色
+$link-color:            $body-color;
+$link-hover-color:      $brand-secondary !default;
+
+
+// == font
+// ----------------------------------------------------------------------
+// 微軟正黑體
+$font-family-base:      'Microsoft Jhenghei', \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sp:        'Open Sans', "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+
+$font-size-root:        16px !default;
+$font-size-base:        16px !default;
+$font-size-lg:          $font-size-base * 1.25 !default;     // 20px
+$font-size-sm:          $font-size-base * 0.85 !default;     // 13px
+
+$line-height-base:      1.25 !default;                       // 20px/16px
+// $line-height-lg:        1.33 !default;
+// $line-height-sm:        1.5 !default;
+$line-height-computed:  $font-size-base * $line-height-base; // 20px 用在 margin, padding, etc.
+
+$font-size-h1:          $font-size-base * 2.25 !default;
+$font-size-h2:          $font-size-base * 1.875 !default;
+$font-size-h3:          $font-size-base * 1.5 !default;
+$font-size-h4:          $font-size-base * 1.125 !default;
+$font-size-h5:          $font-size-base !default;
+$font-size-h6:          $font-size-base * 0.875 !default;
+
+$heading-font-family:   $font-family-base !default;
+$heading-font-weight:   500 !default;
+$heading-line-height:   1.1 !default;
+
+$heading-color:         $brand-primary !default;
+$heading-small-color:   desaturate($heading-color, 20%) !default;
+
+
+// == Components
+// ----------------------------------------------------------------------
+$gutter:                15px !default;
+$grid-columns:          12 !default;
+
+// 表單元素(停用)上的滑鼠樣式
+$cursor-disabled:           not-allowed;
+
+// 情境狀態 + 配色
+$state-type: (
+    primary:                $brand-primary,
+    // success:                $success,
+    info:                   $info,
+    // warn:                   $warning,
+    // error:                  $error
+);
+
+// 合併配色
+$color: $state-type;
+
+
+// == RWD-break
+// ----------------------------------------------------------------------
+$mq-breakpoints: (
+    mobile:           320px,
+    phone:            480px,
+    phone-plus:       640px,
+    tablet:           768px,
+    desktop:          980px,
+    wide:             1200px,
+    wider:            1400px
+) !default;

@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+
+// xs Extra small screen / phone
+// sm Small screen / phone
+// md Medium screen / tablet
+// lg Large screen / desktop
+// xsl Extra large screen / wide desktop
+$grid-breakpoints: (
+    xs: phone,
+    sm: break(tablet,-1),
+    md: break(desktop,-1),
+    lg: wide,
+    xl: wider
+) !default;
+
+// 預設格數
+$columns: $grid-columns;
+
+@mixin make-col($seclector) {
+    @for $i from 1 through $columns {
+        .col-#{$seclector}-#{$i} {
+            @include make-col-span($i, $columns);
+        }
+    }
+    @each $modifier in (pull, push, offset) {
+        @for $i from 0 through ($columns - 1) {
+            .#{$modifier}-#{$seclector}-#{$i} {
+                @include make-col-modifier($modifier, $i, $columns)
+            }
+        }
+    }
+}
+
+
+// output
+// ------------------------------------------------------------
+.row {
+    @extend %clearfix;
+
+    & + & { margin-top: $gutter; }
+}
+
+// 置中等比例(1/3) (1/5)
+@include make-col-ratio(3);
+@include make-col-ratio(5);
+
+// 12格 通用(全螢幕)
+@for $i from 1 through $columns {
+
+    @each $breakpoint, $value in $grid-breakpoints {
+        $selector: '.col-#{$i}', '.col-#{$breakpoint}-#{$i}';
+
+        #{$selector} { @include cols-reset; }
+    }
+    .col-#{$i} { @include make-col-span($i, $columns); }
+}
+
+[class*="col-"] {
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
+}
+
+[data-col*="first"] { padding-left: 0; }
+[data-col*="last"] { padding-right: 0; }
+
+
+// RWD
+@each $breakpoint, $value in $grid-breakpoints {
+
+    // @if $breakpoint == 'xs' or $breakpoint == 'sm' or $breakpoint == 'md' {
+    //     $value: '$max: #{$value}';
+    // }
+    // $mq-value: if($breakpoint == 'xs' or $breakpoint == 'sm' or $breakpoint == 'md', '$max: #{$value}', #{$value});
+
+    @if $breakpoint == 'xs' or $breakpoint == 'sm' or $breakpoint == 'md' {
+        @include mq-max($value) {
+            @include make-col($breakpoint);
+        }
+    }
+    @else {
+        @include mq($value) {
+            @include make-col($breakpoint);
+        }
+    }
+}
+
+
+// 12 grid
+// @include make-cols(md); // 預設: md
+// @include make-offset(md); // 預設: md
+
+// @include mq-max(break(tablet,-1)) {
+//     @include make-cols(xs);
+//     @include make-offset(xs);
+// }
+
+// @include mq-max(break(desktop,-1)) {
+//     @include make-cols(sm);
+//     @include make-offset(sm);
+// }
+
+// @include mq(wide) {
+//     @include make-cols(lg);
+//     @include make-offset(lg);
+// }
+
+// @include mq(wider) {
+//     @include make-cols(xl);
+//     @include make-offset(xl);
+// }

@@ -5,111 +5,170 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewBag.Title:@Resources.Res.System_FrontName</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>@Resources.Res.System_FrontName::@ViewBag.Title</title>
     <script src="~/Scripts/cdn/BrowerInfo.js"></script>
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
+    <link rel="shortcut icon" href="~/favicon.ico"/>
+    <link rel="bookmark" href="~/favicon.ico"/>
+    <link rel="stylesheet" href="~/Content/css/vendor/swiper.css">
+    <link rel="stylesheet" href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>
+    <link rel="stylesheet" href="~/Content/css/grid.css?v=@CommWebSetup.CacheVer">
     @if (ViewBag.IsFirstPage)
     {
-        <link href="~/Content/css/index.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+        <link rel="stylesheet" href="~/Content/css/index.css?v=@CommWebSetup.CacheVer">
     }
     else
     {
-        <link href="~/Content/css/page.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
+        <link rel="stylesheet" href="~/Content/css/page.css?v=@CommWebSetup.CacheVer">
     }
-    <link href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
     @RenderSection("css", false)
 </head>
 
 <body class="@ViewBag.BodyClass">
-    
+
     <div id="wrapper">
 
         <header id="header">
-            <div class="wrap">
 
-                <h1 class="logo"><a href="~/Index" title="回首頁">@Resources.Res.System_FrontName</a></h1>
+            <h1 class="logo" onclick="location.href='@Url.Content("~/index")'" title="回首頁">@Resources.Res.System_FrontName</h1>
 
-                <ul class="topNav list-inline">
-                    <li><a href="~/Shopping"><i class="icon-cart"></i>我要購物</a></li>
-                </ul>
+            <button class="menu-trigger"><span>MENU</span></button>@* 手機menu *@
+            <nav id="menu">
+                <a href="~/AboutUs">公司簡介</a>
+                <a href="~/Products">產品介紹</a>
+                <dl class="sub-nav dropdown">
+                    <dt class="collapse-title" data-toggle="collapse">開關類</dt>
+                    <dd class="collapse-content">
+                        @* 當前子分類 class + current
+                        <a href="~/Products/list" class="current">偵測開關<small>(15)</small></a> *@
+                        <a href="~/Products/list">偵測開關<small>(15)</small></a>
+                        <a href="~/Products/list">滑動開關<small>(15)</small></a>
+                        <a href="~/Products/list">輕觸開關<small>(6)</small></a>
+                        <a href="~/Products/list">指撥開關<small>(15)</small></a>
+                        <a href="~/Products/list">按鍵開關<small>(15)</small></a>
+                    </dd>
 
-                <nav id="menu" class="navbar">
-                	<h2 class="sr-only">主選單</h2>
-                	<ul class="nav navbar-nav">
-                		<li>
-                			<a href="~/AboutUs"><i class="icon-members"></i>公司簡介</a>
-                		</li>
-                		<li>
-                			<a href="~/Plan"><i class="icon-money"></i>社區收益型專案</a>
-                		</li>
-                		<li>
-                			<a href="~/Sell"><i class="icon-house"></i>我要買房</a>
-                		</li>
-                		<li>
-                			<a href="~/Rent"><i class="icon-building"></i>我要租房</a>
-                		</li>
-                		<li>
-                			<a href="~/Vendor"><i class="icon-cooperate"></i>協力廠商</a>
-                		</li>
-                		<li>
-                			<a href="~/Neighbor"><i class="icon-diamond"></i>幸福社區</a>
-                		</li>
-                		<li>
-                			<a href="~/Partner"><i class="icon-joinus"></i>物業專區</a>
-                		</li>
-                        <li>
-                            <a href="~/VIP"><i class="icon-vip"></i>幸福房仲VIP</a>
-                        </li>
-                	</ul>
-                </nav>
+                    <dt class="collapse-title" data-toggle="collapse">插座類</dt>
+                    <dd class="collapse-content">
+                        <a href="~/Products/list">直流插座<small>(15)</small></a>
+                        <a href="~/Products/list">耳機插座<small>(15)</small></a>
+                    </dd>
 
-            </div><!-- wrap //-->
+                    <dt class="collapse-title" data-toggle="collapse">連接器類</dt>
+                    <dd class="collapse-content">
+                        <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
+                        <a href="~/Products/list">USB 3.0 連接器<small>(15)</small></a>
+                        <a href="~/Products/list">HDMI 連接器<small>(15)</small></a>
+                        <a href="~/Products/list">微型連接器<small>(15)</small></a>
+                    </dd>
+                </dl>
+    			<a href="~/ContactUs">聯絡我們</a>
+            </nav>
+
+            <nav class="lang-nav dropdown">
+                <button data-dropdown="btn">中文</button>
+                <div data-dropdown="content">
+                    <a href="@Url.Action("SetLanguage")?L=zh-TW&A=index" class="current">中文</a>
+                    <a href="@Url.Action("SetLanguage")?L=en-US&A=index">English</a>
+                </div>
+            </nav>
+            <form action="" class="input-group search">
+                <input type="search" placeholder="產品查詢...">
+                <button class="icon-search"></button>
+            </form>
+
         </header><!-- header //-->
 
-        <main id="main">
-            @RenderBody()
-        </main>
+        @if (ViewBag.IsFirstPage)
+        {
+            <div id="banner" class="swiper-container">
+                <ul class="swiper-wrapper">
+                    @* 圖片尺寸:w1920 x h345 *@
+                    <li class="swiper-slide"><img src="~/Content/images/Index/banner1.jpg"></li>
+                    <li class="swiper-slide"><img src="~/Content/images/Index/banner2.jpg"></li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div><!-- banner //-->
+
+            <main id="main">
+                @RenderBody()
+            </main>
+
+        } else {
+            <div id="banner" class="swiper-container">
+                <ul class="swiper-wrapper">
+                    @* 圖片尺寸:w1920 x h238 *@
+                    <li class="swiper-slide"><img src="~/Content/images/banner.jpg"></li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div><!-- banner //-->
+
+            <main id="main">
+
+                <ul class="breadcrumb wrap">
+                    <li><a href="~/index">HOME</a></li>
+                    @RenderSection("breadCrumb", required: false)
+                    <li>@ViewBag.Target</li> @* 當前頁名稱 *@
+                </ul>
+
+                @RenderBody()
+
+            </main>
+        }
 
     </div><!-- wrapper //-->
 
+    <a href="#header" class="goTop scroll"><i class="icon-angle"></i></a>
+
     <footer id="footer">
         <div class="wrap">
-            <h1 class="logo"><a href="~/Index" title="回首頁">@Resources.Res.System_FrontName</a></h1>
-            <div class="copyright">Happiness Agent &copy; 2016</div>
-            <ul class="social list-inline">
-                <li><a href="https://www.facebook.com/754952781302809/" target="new"><i class="icon-fb"></i><span class="sr-only">Facebook</span></a></li>
-                <li><a href=""><i class="icon-gplus"></i><span class="sr-only">Google+</span></a></li>
-            </ul>
-            <ul class="contact list-inline">
-                <li><i class="icon-home"></i><span class="sr-only">地址</span>新北市樹林區學成路655號9樓</li>
-                <li><i class="icon-phone"></i><span class="sr-only">電話</span>02-3501-6715</li>
-                <li><i class="icon-mail"></i><span class="sr-only">E-mail</span><a href="ahagentcom@gmail.com">ahagentcom@gmail.com</a></li>
-            </ul>
-            <a href="#header" class="goTop scroll img-circle"><i class="icon-angle"></i></a>
-        </div>
+            <div class="col-7 foot-nav">
+                <nav class="col-4">
+                    <h4>公司簡介</h4>
+                    <a href="~/AboutUs/#p1">服務項目</a>
+                    <a href="~/AboutUs/#p2">我們的優勢</a>
+                </nav>
+                <nav class="col-8">
+                    <h4>產品介紹</h4>
+                    <a href="">開關類</a>
+                    <a href="">插座類</a>
+                    <a href="">連接器類</a>
+                </nav>
+            </div>
+
+            <div class="col-5 foot-contact">
+                <ul class="contact list-unstyled">
+                    <li><i class="icon-phone" title="TEL"></i>03-3011936</li>
+                    <li><i class="icon-print" title="FAX"></i>03-3011937</li>
+                    <li><i class="icon-skype" title="Skype"></i></li>
+                    <li>地址/ 桃園市大興西路二段六號四樓之四</li>
+                    <li>中國工廠/ 福建省泉州市江南火巨開發區</li>
+                    <li>Sample Request/ <a href="mailto:sales2@roki.com.tw">sales2@roki.com.tw</a></li>
+                </ul>
+                <div class="copyright">銓基電子股份有限公司 &copy; 2016</div>
+            </div><!-- contact //-->
+        </div><!-- wrap //-->
     </footer><!-- footer -->
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript">
-        // 回頂端
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 100) {
-                $('.goTop').fadeIn();
-            } else {
-                $('.goTop').fadeOut();
-            }
-        });
-        $('.scroll').click(function (event) {
-            $('html, body').animate({
-                scrollTop: $($.attr(this, 'href')).offset().top - 50
-            }, 1000);
-            event.preventDefault();
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/swiper.min.js"></script>
+    <script>
+        // 輪播banner
+        var swiper = new Swiper('#banner', {
+            autoplay: 4500,
+            autoplayDisableOnInteraction: false,
+            loop: true,
+            speed: 1000,
+            effect: 'fade',
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
         });
     </script>
     @RenderSection("Scripts", required: false)
-
 </body>
 </html>

@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+$dropdown-color:       $brand-primary !default;
+$dropdown-hover-color: $brand-primary !default;
+$dropdown-font-size:   12px !default;
+$dropdown-arrow-size:  5px !default;
+$dropdown-pd:          5px 10px !default;
+
+
+// 下拉最外層容器
+.dropdown {
+    z-index: z(logo)+2;
+
+    // @include mq-max(break(phone-plus, -1)) {
+    //     width: 28%;
+    // }
+    // @include mq-max(break(phone, -1)) {
+    //     left: 0;
+    //     top: 5px;
+    //     width: 35%;
+    // }
+
+    // 語系選單
+    a {
+        color: darken($dropdown-color, 28%);
+        padding: 8px 0;
+        display: block;
+
+        &:hover, &:active, &.current {
+            background-color: $dropdown-color;
+            color: #fff;
+        }
+    }
+}
+
+// 顯示隱藏按鈕
+[data-dropdown="btn"] {
+    cursor: pointer;
+    transition: all .5s ease;
+    padding: $dropdown-pd;
+    padding-right: (nth($dropdown-pd,2) + $dropdown-arrow-size);
+    width: 100%;
+
+    background: none;
+    color: $dropdown-color;
+    font-size: em($dropdown-font-size);
+
+    @include icon-arrow(down, $dropdown-arrow-size, $dropdown-color, right 0 top 40%);
+
+    &:hover, &:active {
+        color: $dropdown-hover-color;
+
+        &::before {
+            border-top-color: $dropdown-hover-color;
+            @include animation(jump .6s infinite .6s);
+        }
+    }
+}
+
+// 隱藏內容
+[data-dropdown="content"] {
+    display: none;
+    position: absolute;
+    width: 100%;
+
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}

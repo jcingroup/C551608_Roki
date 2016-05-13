@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+//
+// label
+// --------------------------------------------------
+
+.label {
+    color: #fff;
+    background: $brand-secondary;
+    border-radius: 4px;
+    font-size: em(13px);
+
+    display: inline;
+    padding: 3px 8px;
+    // margin-right: 10px;
+}

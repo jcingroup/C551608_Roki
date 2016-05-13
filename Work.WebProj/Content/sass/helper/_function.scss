@@ -18,44 +18,34 @@
     @return ceil(($target / $container) * 100%);
 }
 
-// 取第n個之後的pages值
-@function page($item) {
-    $page: ();
-    @for $i from $item through length($pages) {
-        $page: append($page, nth($pages, $i));
+// 當前頁選單
+@function current($map: $pages) {
+    $current: ();
+
+    @each $item in $map {
+        $i: index($map, $item);
+        $current: $current, unquote(".#{$item} &:nth-of-type(#{$i})");
     }
-    @return $page;
-}
-
-
-// mixins
-// -----------------------------------------------------------------
-
-// 字換圖
-@mixin text-pic($img, $width, $height, $display: block, $pic: false, $position: 0 0) {
-    @include text-hide;
-    @if $pic == fixed {
-        background-attachment: fixed;
-    }
-    background: url(#{$img-path}/#{$img}) $position no-repeat;
-    display: $display;
-    width: $width; height: $height;
-    
-    overflow: hidden;
+    @return $current;
 }
 
 
 // var Maps
 // -----------------------------------------------------------------
 
-// // colors
-// @function color($key) {
-//     @return map-get($color, $key);
-// }
+// colors
+@function color($key) {
+    @return map-get($color, $key);
+}
 
-// // z-index
-// @function z($key) {
-//     @return map-get($z-index, $key);
+// z-index
+@function z($key) {
+    @return map-get($z-index, $key);
+}
+
+// 斷點寬度
+// @function page-width($key) {
+//     @return map-get($mq-breakpoints, $key);
 // }
 
 // 取多層值

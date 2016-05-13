@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "開關類:偵測開關:Through Hole & Ground Terminal";
+    ViewBag.BodyClass = "Products col2";
+    ViewBag.Target = "Through Hole & Ground Terminal";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section breadCrumb {
+    <li><a href="~/Products">產品介紹</a></li>
+    <li><a href="~/Products/list">開關類</a></li>
+    <li><a href="~/Products/list">偵測開關</a></li>
+}
+
+@Html.Partial("sidebar")
+
+<section class="content">
+    @* 子分類名稱 + 此分類內的產品數量 *@
+    <h2 class="title">偵測開關 <small>(15)</small></h2>
+
+    <article class="row product-intro">
+        <div class="product-pic col-6 col-sm-12">
+            <img src="~/Content/images/Products/content.jpg" alt="Through Hole & Ground Terminal">
+        </div>
+
+        <dl class="list-info col-6 col-sm-12">
+            <dt class="list-info-title">產品型號</dt>
+            <dd class="list-info-content">Through Hole & Ground Terminal</dd>
+            <dt class="list-info-title">規格描述</dt>
+            <dd class="list-info-content">6.2 x 6.2 mm</dd>
+        </dl>
+    </article><!-- row //-->
+
+    <h3 class="title-detail">詳細介紹</h3>
+    @* 以下為更多介紹內容範例，後台使用編輯器(含圖片上傳) *@
+
+    <dl class="list-info col-6 col-sm-12" data-col="first">
+        <dt class="list-info-title">FEATURES</dt>
+        <dd class="list-info-content">
+            <ul class="list-dot">
+                <li>Compact size 6 x 6 mm</li>
+                <li>Sharp tactile feeling</li>
+                <li>Cap options</li>
+            </ul>
+        </dd>
+    </dl>
+
+    <dl class="list-info col-6 col-sm-12" data-col="last">
+        <dt class="list-info-title">APPLICATION</dt>
+        <dd class="list-info-content">
+            <ul class="list-dot">
+                <li>Audio, OA equipment</li>
+                <li>Instrumentation</li>
+                <li>Industrial</li>
+            </ul>
+        </dd>
+    </dl>
+
+    <dl class="list-info">
+        <dt class="list-info-title">PDF元件</dt>
+        <dd class="list-info-content">
+            <img src="~/Content/images/Products/draw.gif" alt="">
+        </dd>
+    </dl>
+
+</section>

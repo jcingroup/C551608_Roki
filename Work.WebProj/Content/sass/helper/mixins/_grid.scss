@@ -1,75 +1,108 @@
-/// Grid system
-//
-// Generate semantic grid columns with these mixins.
-
-@mixin make-container($gutter: $grid-gutter-width) {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
-  @if not $enable-flex {
-    @include clearfix();
-  }
-}
+@charset "UTF-8";
 
 
-// For each breakpoint, define the maximum width of the container in a media query
-@mixin make-container-max-widths($max-widths: $container-max-widths) {
-  @each $breakpoint, $container-max-width in $max-widths {
-    @include media-breakpoint-up($breakpoint) {
-      max-width: $container-max-width;
-    }
-  }
-}
-
-@mixin make-row($gutter: $grid-gutter-width) {
-  @if $enable-flex {
-    display: flex;
-    flex-wrap: wrap;
-  } @else {
-    @include clearfix();
-  }
-  margin-left:  ($gutter / -2);
-  margin-right: ($gutter / -2);
-}
-
-@mixin make-col($gutter: $grid-gutter-width) {
-  position: relative;
-  @if not $enable-flex {
-    float: left;
-  }
-  min-height: 1px;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
-}
+// $one_col: 100% / $cols;
+// $one_col: (100% - (cp($gutter) * ($cols - 1))) / $cols;
+// width: ($one_col * $num) + (cp($gutter) * ($num - 1));
 
 @mixin make-col-span($size, $columns: $grid-columns) {
-  @if $enable-flex {
-    flex: 0 0 percentage($size / $columns);
-  } @else {
-    width: percentage($size / $columns);
-  }
+    @if $enable-flex {
+        flex: 0 0 percentage($size / $columns);
+    } @else {
+        width: percentage($size / $columns);
+    }
+}
+
+@mixin cols-reset($gap: $gutter, $theme: float, $first: false, $last: false, $extend: true) {
+
+    @include mixin-dryer('col-#{$theme}', $extend) {
+
+        @if $theme == center {
+            display: inline-block;
+            vertical-align: top;
+
+            // inline-block模式時 刪除多出間距
+            margin-right: -4px;
+
+            @if $lte7 {
+                *display: inline;
+                zoom: 1
+            }
+        }
+        @else if $theme == float {
+            @if not $enable-flex {
+                float: left;
+            }
+            min-height: 1px;
+            position: relative;
+        }
+        // &:first-child { padding-left: 0; }
+        // &:last-child { padding-right: 0; }
+
+        @if $first or $last {
+            @if not $last { padding-right: $gap/2; }
+            @if not $first { padding-left: $gap/2; }
+        }
+        @else {
+            padding-left: $gap/2;
+            padding-right: $gap/2;
+        }
+        // padding-left: if($first, 0, $gap/2);
+        // padding-right: if($last, 0, $gap/2);
+    }
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
-  margin-left: percentage($size / $columns);
+    margin-left: percentage($size / $columns);
 }
 
 @mixin make-col-push($size, $columns: $grid-columns) {
-  left: if($size > 0, percentage($size / $columns), auto);
+    left: if($size > 0, percentage($size / $columns), auto);
 }
 
 @mixin make-col-pull($size, $columns: $grid-columns) {
-  right: if($size > 0, percentage($size / $columns), auto);
+    right: if($size > 0, percentage($size / $columns), auto);
 }
 
 @mixin make-col-modifier($type, $size, $columns) {
-  // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
-  @if $type == push {
-    @include make-col-push($size, $columns);
-  } @else if $type == pull {
-    @include make-col-pull($size, $columns);
-  } @else if $type == offset {
-    @include make-col-offset($size, $columns);
-  }
+    // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
+    @if $type == push {
+        @include make-col-push($size, $columns);
+    }
+    @else if $type == pull {
+        @include make-col-pull($size, $columns);
+    }
+    @else if $type == offset {
+        @include make-col-offset($size, $columns);
+    }
+}
+
+// @mixin make-cols($class: md) {
+//     @for $i from 1 through $cols {
+//         $selector: if($class == 'md', '.col-#{$i}', '.col-#{$class}-#{$i}');
+
+//         #{$selector} {
+//             width: ($one_col * $i);
+//         }
+//     }
+// }
+
+// // 偏移
+// @mixin make-offset($class: md) {
+//     @for $i from 0 through ($cols - 1) {
+//         $selector: if($class == 'md', '.offset-#{$i}', '.offset-#{$class}-#{$i}');
+
+//         #{$selector} {
+//             margin-left: ($one_col * $i);
+//         }
+//     }
+// }
+
+@mixin make-col-ratio($columns: $grid-columns) {
+    @for $i from 1 through ($columns - 1) {
+        .col-#{$i}-#{$columns} {
+            @include cols-reset($theme: center);
+            @include make-col-span($i, $columns);
+        }
+    }
 }

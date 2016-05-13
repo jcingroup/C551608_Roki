@@ -1,20 +1,22 @@
 ﻿@{
     ViewBag.Title = "公司簡介";
     ViewBag.BodyClass = "AboutUs";
+    ViewBag.Target = "公司簡介";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2 class="h2 title">@ViewBag.Title</h2>
+<h2 class="text-left title">@ViewBag.Title</h2>
 
-<section id="content">
+<article id="p1">
+    <h3>服務項目</h3>
 
-    <div class="wrap">
-        <div class="editor">
+    <p>銓基電子股份有限公司創立於1999年10月，致力於精密電子開關的開發與製造，如 : <strong>輕觸開關、滑動開關、指撥開關、偵測開關、按鍵開關、電源插座、耳機插座</strong>…等。</p>
 
-            @Html.Raw(ViewBag.content)
+    <p>我們的產品廣泛應用於電腦週邊、工業電子、視聽器材，如 : <strong>居家安全系統、個人電腦、穿戴式電子裝置、數位像機、智慧型手機及所有3C產品</strong>。目前，為滿足市場及客戶的需求。</p>
+</article>
 
-        </div>
-    </div>
-
-</section>
-
+<article id="p2">
+    <h3>我們的優勢</h3>
+    <h5>銓基一直秉持著永續發展的理念</h5>
+    <p>我們維持的經營理念是”優秀的產品、不斷創新、誠信與誠實”，以滿足廣大國內外客戶的需求。</p>
+</article>

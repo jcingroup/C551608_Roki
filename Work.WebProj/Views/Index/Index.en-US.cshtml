@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "HOME";
+    ViewBag.IsFirstPage = true;
+    ViewBag.BodyClass = "index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section Scripts {
+    <script>
+        var mySwiper = new Swiper('#slider', {
+            autoplay: 4000,
+            speed: 1000,
+            spaceBetween: 15,
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+            slidesPerColumnFill: 'row',
+            autoplayDisableOnInteraction: false,
+            prevButton: '.icon-chevron-thin-left',
+            nextButton: '.icon-chevron-thin-right',
+        });
+    </script>
+}
+
+
+<h2 class="font-sp">NEW PRODUCTS</h2>
+
+<section id="slider" class="swiper-container wrap">
+
+    <div class="swiper-wrapper">
+        @* 新產品最多 6則 *@
+        <figure class="swiper-slide product-list">
+            <img src="~/Content/images/Products/list.jpg">
+            <a href="~/Products/content">MORE</a>
+            <figcaption>
+                <small>DETECT SWITCH</small>
+                <h4>TU SERIES 1</h4>
+                <p class="font-sp">MORO</p>
+            </figcaption>
+        </figure>
+
+        <figure class="swiper-slide product-list">
+            <img src="~/Content/images/Products/list2.jpg">
+            <a href="~/Products/content">MORE</a>
+            <figcaption>
+                <small>DETECT SWITCH</small>
+                <h4>TU SERIES 2</h4>
+                <p class="font-sp">MORO</p>
+            </figcaption>
+        </figure>
+
+        <figure class="swiper-slide product-list">
+            <img src="~/Content/images/Products/list.jpg">
+            <a href="~/Products/content">MORE</a>
+            <figcaption>
+                <small>DETECT SWITCH</small>
+                <h4>TU SERIES 3</h4>
+                <p class="font-sp">MORO</p>
+            </figcaption>
+        </figure>
+
+        <figure class="swiper-slide product-list">
+            <img src="~/Content/images/Products/list2.jpg">
+            <a href="~/Products/content">MORE</a>
+            <figcaption>
+                <small>DETECT SWITCH</small>
+                <h4>TU SERIES 4 </h4>
+                <p class="font-sp">MORO</p>
+            </figcaption>
+        </figure>
+
+        <figure class="swiper-slide product-list">
+            <img src="~/Content/images/Products/list.jpg">
+            <a href="~/Products/content">MORE</a>
+            <figcaption>
+                <small>DETECT SWITCH</small>
+                <h4>TU SERIES 5</h4>
+                <p class="font-sp">MORO</p>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+<i class="icon-chevron-thin-left"></i>
+<i class="icon-chevron-thin-right"></i>
+

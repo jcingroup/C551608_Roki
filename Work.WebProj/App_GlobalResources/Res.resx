@@ -218,7 +218,7 @@
     <value>開始上傳圖片</value>
   </data>
   <data name="System_Name" xml:space="preserve">
-    <value>社區幸福阿珍 管理系統</value>
+    <value>銓基電子 管理系統</value>
   </data>
   <data name="CurrencySign" xml:space="preserve">
     <value>NT$</value>
@@ -365,7 +365,7 @@
     <value>此筆訂單編號已付款，請重新檢查訂單編號!</value>
   </data>
   <data name="System_FrontName" xml:space="preserve">
-    <value>社區幸福阿珍 Happiness Agent</value>
+    <value>銓基電子股份有限公司 ROKI ELECTRONICS CO.,LTD.</value>
   </data>
   <data name="Button_ReturnIndex" xml:space="preserve">
     <value>回首頁</value>

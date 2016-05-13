@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+$search-expand:            false !default;
+
+$input-group-pos:          false !default;
+$input-group-height:       36px !default;
+$input-group-width:        100% !default;
+$input-group-radius:       ($input-group-height / 2) !default;
+$input-group-color:        $brand-primary !default;
+$input-group-hover-color:  lighten($input-group-color, 25) !default;
+$input-group-border-color: false !default;
+
+$input-group-btn-width:    $input-group-height - 8px !default;
+$input-group-btn-height:   100% !default;
+$input-group-btn-bg:       false !default;
+
+
+// == input群組
+.input-group {
+
+    @if $input-group-pos {
+        @include absolute($input-group-pos);
+    }
+    @else {
+        position: relative;
+    }
+    @if $input-group-width    { width: $input-group-width; }
+    @if $input-group-height   { height: $input-group-height; }
+
+    input {
+        @include size(100%);
+
+        @if $input-group-radius       { border-radius: $input-group-radius; }
+        @if $input-group-border-color { border-color: $input-group-border-color; }
+        @if $input-group-btn-width    { padding-right: $input-group-btn-width; }
+    }
+    button {
+        cursor: pointer;
+        @include absolute(top 0 right 0);
+
+        @if $input-group-radius {
+            border-top-right-radius: $input-group-radius;
+            border-bottom-right-radius: $input-group-radius;
+        }
+        @if $input-group-btn-width  { width: $input-group-btn-width; }
+        @if $input-group-btn-height { height: $input-group-btn-height; }
+        @if $input-group-btn-bg {
+            color: #fff;
+            background: $input-group-btn-bg;
+            &:hover, &:active {
+                background: lighten($input-group-btn-bg, 25);
+            }
+        } @else {
+            color: $input-group-color;
+            &:hover, &:active {
+                color: $input-group-hover-color;
+            }
+        }
+    }
+}
+
+@if $search-expand {
+    $search-min-width:         50px !default;
+    $search-max-width:         280px !default;
+    $search-color:             $input-group-color !default;
+
+    [data-expand='box'] {
+        width: 0;
+        min-width: $search-min-width;
+        overflow: hidden;
+        position: relative;
+
+        -webkit-backface-visibility: hidden;
+        z-index: z(logo)+1;
+
+        @include prefix(transition, width .3s);
+
+        &-open {
+            width: $search-max-width;
+            input {
+                background: #fff;
+                padding: 0 $search-min-width 0 20px;
+                font-size: 1em;
+                color: $search-color;
+            }
+        }
+    }
+    [data-expand='input'] {
+        border: none;
+        border-radius: 0;
+        outline: none;
+        background: none;
+        box-shadow: none;
+        font-size: 0;
+        -webkit-appearance: none;
+        z-index: 10;
+    }
+    [data-expand='btn'],
+    [data-expand='icon'] {
+        width: $search-min-width;
+        height: 100%;
+        display: block;
+
+        line-height: 100%;
+        text-align: center;
+        font-size: em(22px);
+
+        &::before {
+            @include absolute(top 50% left 50%);
+            @include prefix(transform, translate(-50%,-50%));
+        }
+    }
+    [data-expand='btn'] {
+        opacity: 0;
+        z-index: 11;
+
+        &.enter {
+            opacity: 1;
+            background: $search-color;
+            color: #fff;
+        }
+    }
+    [data-expand='icon'] {
+        @include absolute(top 0 right 0);
+        color: darken($brand-gray, 30%);
+        z-index: 90;
+        cursor: pointer;
+        speak: none;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+
+        &:hover, &:active {
+            color: $search-color;
+        }
+    }
+}

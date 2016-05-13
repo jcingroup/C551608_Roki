@@ -1,0 +1,119 @@
+﻿@charset "UTF-8";
+
+// == config
+// ----------------------------------------------------------------------
+$img-path:              '../images';
+$font-path:             '../font';
+$states:                false !default;           // 情境文字是否輸出
+$index:                 false !default;           // 首頁用
+$page:                  false !default;           // 內頁用
+
+
+// == color
+// ----------------------------------------------------------------------
+$brand-primary:         #698BA5;             // 主色
+$brand-secondary:       #8BBE44;             // 輔色
+$brand-gray:            #F3F4F4;             // 主題灰
+$success:               #28406C;             // 綠
+$info:                  #33525D;             // 藍
+$warning:               #DD6D16;             // 黃
+// $error:                 #F35048 !default;             // 紅
+
+
+// == basic
+// ----------------------------------------------------------------------
+$body-bg:               #EEEFEF !default;
+$body-color:            #333;
+$link-hover-color:      $brand-secondary;
+$heading-color:         $brand-primary;
+$font-sp:               'Open Sans', "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+
+
+// == layout
+// ----------------------------------------------------------------------
+$min-width:             1008px;     // 網頁最小尺寸
+$max-width:             1400px;     // 網頁最寬尺寸: .wrap
+$pages:                 'AboutUs' 'Products' 'ContactUs';
+
+$wrapper-bg:            false !default;
+$content-spacing:       45px !default;
+
+// header
+$header-height:         103px !default;
+$header-bg:             url(#{$img-path}/bg.gif) repeat-x 0 103px !default;
+
+// logo
+$logo-img:              'logo.gif' !default;
+$logo-size:             335px 56px !default;
+$logo-position:         left 0 top ($header-height - nth($logo-size,2))/2 !default;
+
+
+// footer
+$footer-height:         213px !default;
+$footer-bg:             $brand-primary !default; //#85afd9
+$footer-color:          #C3C1C6 !default; //#63889D;
+$footer-color2:         #2E333C !default; //#63889D;
+
+
+// == z-index
+// ----------------------------------------------------------------------
+$z-index: (
+    header:           4,
+    main:             2,
+    footer:           1,
+    banner:           3,
+    logo:             10,
+    menu:             20,
+    figure:           19,
+    dropdown:         21,
+    tooltip:          22,
+    modal:            23,
+    toggle:           25,
+    goTop:            99,
+    overlay:          999
+);
+
+
+// == module
+// ----------------------------------------------------------------------
+// ## module/nav
+// menu
+$menu-bg:                 false;
+$menu-height:             $header-height;
+$menu-font-size:          19px;
+$menu-link:               #191919;
+$menu-link-hover:         $brand-secondary;
+
+// 行動選單(menu-trigger)
+$menu-mobile-style:       'overlay';  // 行動版選單樣式-push(推拉)/overlay(全螢幕)
+$menu-mobile-bg:          rgba(#eeefef, .9);
+$menu-mobile-width:       100%;
+$menu-trigger-animate:    true;
+$menu-trigger-thickness:  3px;
+$menu-trigger-width:      42px;
+$menu-trigger-height:     $menu-trigger-thickness * 10;
+$menu-trigger-pd:         0;
+$menu-trigger-color:      $brand-primary;
+
+// ## module/slider
+$swiper-banner:            true;
+
+// ## module/figure
+$figure-bg:                #fff;
+$figure-border:            1px solid #DCDDDD;
+$figure-text-align:        left;
+$figure-height:            false;
+$figure-title-color:       #000;
+$figure-img-width:         80%;
+
+// ## module/dropdown
+$dropdown-color:           $brand-secondary;
+$dropdown-hover-color:     darken($brand-secondary, 10);
+$dropdown-font-size:       14px;
+
+// ## module/search
+$input-group-pos:          right 0 top 43%;
+$input-group-width:        12%;
+$input-group-border-color: #EBEBEB;
+$input-group-color:        #CBCBCB;
+$input-group-hover-color:  $brand-primary;

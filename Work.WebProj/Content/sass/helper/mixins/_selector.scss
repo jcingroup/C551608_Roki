@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+// selector::類別名稱(class)
+// -----------------------------------------------------------------
+
+
+// 繼承名稱用-連結 使用方法:
+// .swiper {
+//     @include selector-d(wrapper) {}
+//     @include selector-d(slide) {}
+//     @include selector-d(pagination-bullet) {
+//         @include selector-d(active) { }
+//     }
+// }
+//
+@mixin selector-dash($name) {
+    @at-root #{&}-#{$name} {
+        @content;
+    }
+}

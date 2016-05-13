@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+
+// 插入偽類
+@mixin el($pseudo, $display: block, $content: null) {
+    $selector: if($pseudo == 'all', '&::before,&::after', '&::#{$pseudo}');
+
+    #{$selector} {
+        // content 是否要有值
+        @if $content {
+            content: $content;
+        }
+        @else {
+            @include mixin-dryer('pseudo') {
+                content: '';
+            }
+        }
+        display: if($display, $display, null);
+        // @if $display {
+        // }
+        @content;
+    }
+}
