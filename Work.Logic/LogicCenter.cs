@@ -56,9 +56,9 @@ namespace ProcCore.Business.LogicConect
     public class LogicCenter
     {
         private static string db0_connectionstring;
-        protected C51A0_BuyNowEntities db0;
+        protected C55A0_RokiEntities db0;
         protected TransactionScope tx;
-        private const string DatabaseName = "C51A0_BuyNow";
+        private const string DatabaseName = "C55A0_Roki";
         public int DepartmentId { get; set; }
         public string Lang { get; set; }
         public string IP { get; set; }
@@ -101,11 +101,11 @@ namespace ProcCore.Business.LogicConect
             db0_connectionstring = LogicCenter.GetDB0EntityString(db0_configstring);
         }
 
-        public static C51A0_BuyNowEntities getDB0
+        public static C55A0_RokiEntities getDB0
         {
             get
             {
-                return new C51A0_BuyNowEntities(db0_connectionstring);
+                return new C55A0_RokiEntities(db0_connectionstring);
             }
         }
         public int GetNewId(CodeTable tab)

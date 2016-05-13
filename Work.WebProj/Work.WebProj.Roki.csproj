@@ -285,13 +285,10 @@
     <Content Include="ckfinder\core\connector\aspx\lang\vi.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
-    <Compile Include="Controllers\Api\CommunityNewsController.cs" />
-    <Compile Include="Controllers\Api\MatterController.cs" />
-    <Compile Include="Controllers\Api\EditController.cs" />
+    <None Include="Controllers\Api\EditController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
-    <Compile Include="Controllers\Api\CommunityController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />

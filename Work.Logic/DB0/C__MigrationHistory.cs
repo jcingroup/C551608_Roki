@@ -12,13 +12,11 @@ namespace ProcCore.Business.DB0
     using System;
     using System.Collections.Generic;
     
-    public partial class i_Currency
+    public partial class C__MigrationHistory
     {
-        public int id { get; set; }
-        public string name_currency { get; set; }
-        public string english_currency { get; set; }
-        public string sign { get; set; }
-        public string code { get; set; }
-        public bool is_use { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
