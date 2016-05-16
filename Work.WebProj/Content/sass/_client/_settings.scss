@@ -87,7 +87,7 @@ $menu-link-hover:              $brand-secondary;
 // 行動選單(menu-trigger)
 $menu-mobile-bk:               'wide';     // 從()螢幕寬度以下開始出現行動版選單
 $menu-mobile-style:            'overlay';  // 行動版選單樣式-push(推拉)/overlay(全螢幕)
-$menu-mobile-bg:               rgba(#eeefef, .9);
+$menu-mobile-bg:               #eeefef;
 $menu-mobile-width:            100%;
 $menu-trigger-animate:         true;
 $menu-trigger-thickness:       3px;
@@ -97,6 +97,7 @@ $menu-trigger-pd:              0;
 $menu-trigger-color:           $brand-primary;
 
 // ## module/slider
+$swiper-pagination:            true;
 $swiper-banner:                true;
 
 // ## module/figure

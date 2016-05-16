@@ -37,6 +37,45 @@
 .search {
     font-size: em(15px);
     button { margin-right: 5px; }
+    @include mq-max(break(desktop,-1)) {
+        width: 22%;
+    }
+}
+.lang-nav, .search {
+    @include mq-max(break(desktop,-1)) {
+        right: $gutter;
+    }
+}
+
+// == 行動選單出現時 版面變化
+@if $menu-mobile-style == 'push' {
+    .push {
+        left: $menu-mobile-width;
+        overflow-y: hidden;
+    }
+}
+@else if $menu-mobile-style == 'overlay' {
+    .overlay {
+        overflow: hidden;
+
+        .lang-nav, .search {
+            @include animation('fadeIn .5s','slide-down 1s forwards');
+        }
+        .lang-nav {
+            z-index: z(overlay) + 2;
+            top: ($header-height/2 - 15);
+        }
+        .search {
+            z-index: z(overlay) + 1;
+            top: ($header-height/2 - 20);
+            right: 80px;
+            width: 40%;
+
+            // @include mq-max(mobile) {
+            //     width: 40%;
+            // }
+        }
+    }
 }
 
 // == figure - 產品列表
@@ -52,11 +91,19 @@
     img {
         @if $index {
             margin: $gutter*2 auto;
-            // max-height: 200px;
+            min-height: 180px;
             max-height: 180px;
+
+            @include mq-max(break(desktop,-1)) {
+                min-height: 100px;
+                max-height: 100px;
+                margin: $gutter auto;
+            }
         }
         @if $page {
             margin-top: $gutter;
+            min-height: 100px;
+            max-height: 115px;
         }
         @include transition(transform 1s);
     }
@@ -77,6 +124,9 @@
             padding: 12px 0;
             width: 100%;
             @include transition(background .5s);
+            @include mq-max(break(desktop,-1)) {
+                margin-top: $gutter;
+            }
         }
     }
 
@@ -95,13 +145,12 @@ figcaption {
     text-align: left;
     position: relative;
     height: auto;
-    // z-index: 5;
+    padding-top: $gutter;
 
     @if $index {
-        padding-top: $gutter;
     }
     @if $page {
-        padding: $gutter 0;
+        padding-bottom: $gutter;
         @include transition(background 1s);
     }
 }

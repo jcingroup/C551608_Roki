@@ -41,7 +41,13 @@ $figure-p-color:     #fff;
 // == main
 main {
     background: $brand-gray;
-    padding: 50px 0 80px;
+    padding: 50px 0 80px 0;
+}
+
+#slider {
+    @include mq-max(break(desktop,-1)) {
+        padding: 0;
+    }
 }
 
 .icon-chevron-thin-left,
@@ -52,7 +58,7 @@ main {
     opacity: .5;
     margin-top: -45px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 2;
 
     &:hover, &:active {
         color: $brand-secondary;
@@ -65,8 +71,8 @@ main {
     }
 }
 .icon-chevron-thin-left {
-    left: .8%;
+    left: .2%;
 }
 .icon-chevron-thin-right {
-    right: .8%;
+    right: .2%;
 }

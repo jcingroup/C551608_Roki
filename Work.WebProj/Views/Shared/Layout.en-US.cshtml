@@ -40,34 +40,40 @@
             <nav id="menu">
                 <a href="~/AboutUs">ABOUT US</a>
                 <a href="~/Products">PRODUCTS</a>
-                <dl class="sub-nav dropdown">
-                    @* 當前分類 class+ current
-                    <dt class="collapse-title current" data-toggle="collapse">SWITCH</dt>  *@
-                    <dt class="collapse-title" data-toggle="collapse">SWITCH</dt>
-                    <dd class="collapse-content">
-                        @* 當前子分類 class + current
-                        <a href="~/Products/list" class="current">DETECT SWITCH<small>(15)</small></a> *@
-                        <a href="~/Products/list">DETECT SWITCH<small>(15)</small></a>
-                        <a href="~/Products/list">SLIDE SWITCH<small>(15)</small></a>
-                        <a href="~/Products/list">TACT SWITCH<small>(6)</small></a>
-                        <a href="~/Products/list">DIP SWITCH<small>(15)</small></a>
-                        <a href="~/Products/list">PUSH SWITCH<small>(15)</small></a>
-                    </dd>
+                <ul class="sub-nav">
+                    <li>
+                        @* 當前分類 class+ current
+                        <h4 class="collapse-title current" data-toggle="collapse">SWITCH</h4>  *@
+                        <h4 class="collapse-title" data-toggle="collapse">SWITCH</h4>
+                        <div class="collapse-content">
+                            @* 當前子分類 class + current
+                            <a href="~/Products/list" class="current">DETECT SWITCH<small>(15)</small></a> *@
+                            <a href="~/Products/list">DETECT SWITCH<small>(15)</small></a>
+                            <a href="~/Products/list">SLIDE SWITCH<small>(15)</small></a>
+                            <a href="~/Products/list">TACT SWITCH<small>(6)</small></a>
+                            <a href="~/Products/list">DIP SWITCH<small>(15)</small></a>
+                            <a href="~/Products/list">PUSH SWITCH<small>(15)</small></a>
+                        </div>
+                    </li>
 
-                    <dt class="collapse-title" data-toggle="collapse">JACK</dt>
-                    <dd class="collapse-content">
-                        <a href="~/Products/list">DC JACK<small>(15)</small></a>
-                        <a href="~/Products/list">PHONE JACK<small>(15)</small></a>
-                    </dd>
+                    <li>
+                        <h4 class="collapse-title" data-toggle="collapse">JACK</h4>
+                        <div class="collapse-content">
+                            <a href="~/Products/list">DC JACK<small>(15)</small></a>
+                            <a href="~/Products/list">PHONE JACK<small>(15)</small></a>
+                        </div>
+                    </li>
 
-                    <dt class="collapse-title" data-toggle="collapse">CONNECTOR</dt>
-                    <dd class="collapse-content">
-                        <a href="~/Products/list">USB2.0 CONNECTOR<small>(15)</small></a>
-                        <a href="~/Products/list">USB3.0 CONNECTOR<small>(15)</small></a>
-                        <a href="~/Products/list">HDMI CONNECTOR<small>(15)</small></a>
-                        <a href="~/Products/list">MICRO USB<small>(15)</small></a>
-                    </dd>
-                </dl>
+                    <li>
+                        <h4 class="collapse-title" data-toggle="collapse">CONNECTOR</h4>
+                        <div class="collapse-content">
+                            <a href="~/Products/list">USB2.0 CONNECTOR<small>(15)</small></a>
+                            <a href="~/Products/list">USB3.0 CONNECTOR<small>(15)</small></a>
+                            <a href="~/Products/list">HDMI CONNECTOR<small>(15)</small></a>
+                            <a href="~/Products/list">MICRO USB<small>(15)</small></a>
+                        </div>
+                    </li>
+                </ul>
     			<a href="~/ContactUs">CONTACT US</a>
             </nav>
 
@@ -128,7 +134,7 @@
 
     <footer id="footer">
         <div class="wrap">
-            <div class="col-7 foot-nav">
+            <div class="col-7 col-sm-12 foot-nav">
                 <nav class="col-4">
                     <h4>ABOUT US</h4>
                     <a href="">SERVICE</a>
@@ -142,7 +148,7 @@
                 </nav>
             </div>
 
-            <div class="col-5 foot-contact">
+            <div class="col-5 col-sm-12 foot-contact">
                 <ul class="contact list-unstyled">
                     <li><i class="icon-phone" title="TEL"></i>+886-3-3011936</li>
                     <li><i class="icon-print" title="FAX"></i>+886-3-3011937</li>

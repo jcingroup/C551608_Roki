@@ -40,8 +40,8 @@
             <nav id="menu">
                 <a href="~/AboutUs">公司簡介</a>
                 <a href="~/Products">產品介紹</a>
-                <ul class="sub-nav dropdown">
-                    <li class="col-3 col-xs-12">
+                <ul class="sub-nav">
+                    <li>
                         <h4 class="collapse-title" data-toggle="collapse">開關類</h4>
                         <div class="collapse-content">
                             @* 當前子分類 class + current
@@ -54,7 +54,7 @@
                         </div>
                     </li>
 
-                    <li class="col-3 col-xs-12">
+                    <li>
                         <h4 class="collapse-title" data-toggle="collapse">插座類</h4>
                         <div class="collapse-content">
                             <a href="~/Products/list">直流插座<small>(15)</small></a>
@@ -62,7 +62,7 @@
                         </div>
                     </li>
 
-                    <li class="col-3 col-xs-12">
+                    <li>
                         <h4 class="collapse-title" data-toggle="collapse">連接器類</h4>
                         <div class="collapse-content">
                             <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
@@ -132,7 +132,7 @@
 
     <footer id="footer">
         <div class="wrap">
-            <div class="col-7 foot-nav">
+            <div class="col-7 col-sm-12 foot-nav">
                 <nav class="col-4">
                     <h4>公司簡介</h4>
                     <a href="~/AboutUs/#p1">服務項目</a>
@@ -140,13 +140,13 @@
                 </nav>
                 <nav class="col-8">
                     <h4>產品介紹</h4>
-                    <a href="">開關類</a>
-                    <a href="">插座類</a>
-                    <a href="">連接器類</a>
+                    <a href="~/Products/list">開關類</a>
+                    <a href="~/Products/list">插座類</a>
+                    <a href="~/Products/list">連接器類</a>
                 </nav>
             </div>
 
-            <div class="col-5 foot-contact">
+            <div class="col-5 col-sm-12 foot-contact">
                 <ul class="contact list-unstyled">
                     <li><i class="icon-phone" title="TEL"></i>03-3011936</li>
                     <li><i class="icon-print" title="FAX"></i>03-3011937</li>

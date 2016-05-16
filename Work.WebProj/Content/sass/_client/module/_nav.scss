@@ -53,12 +53,13 @@ $current: current();
             font-size: em(21);
             line-height: 1.6;
             position: relative;
-            top: 15%;
+            top: $menu-height - 10;
 
             &:hover, &:active,
             #{$current} {
                 color: $brand-primary;
                 background: none;
+                text-shadow: none;
             }
 
             &:first-child,
@@ -69,8 +70,13 @@ $current: current();
             }
             &:last-child {
                 border-right: none;
-                top: 24%;
+                top: $menu-height+50;
             }
+        }
+        @include mq-max(phone-plus) {
+            &:first-child,
+            &:last-child,
+            &:nth-child(2) { width: 50%;}
         }
     }
 
@@ -87,7 +93,22 @@ $current: current();
         width: $menu-mobile-width;
         height: 100%;
 
+        // 本次專案
         margin-left: 0;
+        &::before, &::after {
+            content: '';
+            position: absolute;
+        }
+        &::before {
+            width: 1px; height: 75%;
+            background: #CBCBCB;
+            @include absolute(left 25% top ($menu-height - 10))
+        }
+        &::after {
+            background: $menu-mobile-bg;
+            height: $menu-height - 20;
+            @include fixed(left 0 right 0 top 0);
+        }
 
         // 推拉樣式
         @if $menu-mobile-style == 'push' {
@@ -130,6 +151,9 @@ $current: current();
         //     }
         // }
     }
+    @include mq-max(phone-plus) {
+        &::before { left: 42% }
+    }
 }
 .sub-nav {
     display: none;
@@ -137,17 +161,27 @@ $current: current();
 
     @include mq-max(break(#{$menu-mobile-bk},-1)) {
         display: block;
-
         text-align: left;
 
-        @include absolute(left 30% top 25% right 0);
+        @include absolute(left 30% top $menu-height+60 right 0);
     }
-    h4 {
-        color: $brand-secondary;
+    @include mq-max(phone-plus) {
+        left: 50%;
     }
     a {
+        display: block;
         font-size: em(17);
-        color: $info
+        color: $info;
+        line-height: 2;
+
+        &:hover, &:active { background: none; }
+    }
+    .collapse-title { color: $brand-secondary; }
+    li {
+        float: left;
+        width: percentage(1/3);
+        margin-bottom: $gutter;
+        @include mq-max(phone-plus) { width: 100%; }
     }
 }
 
@@ -176,6 +210,13 @@ $current: current();
 
         @include transition(background 0.3s);
         @include prefix(apperance, none, webkit moz);
+
+        // 本次專案
+        @include mq-max(mobile) {
+            @include transform(scale(.6));
+            top: 30%;
+            left: -5px;
+        }
 
         &:active, &.active {
             // background-color: darken($brand-primary, 10%);

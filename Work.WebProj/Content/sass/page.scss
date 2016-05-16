@@ -72,13 +72,28 @@ h2.title {
 // 2欄設計(產品列表+內容)
 .col2 .breadcrumb {
     @include make-col-offset(2,12);
-}
-.content, .sidebar {
-    text-align: left;
+    @include mq-max(break(desktop,-1)) {
+        margin-left: 0;
+    }
 }
 .content {
     @include cols-reset($first: true, $last: true);
     @include make-col-span(10,12);
+}
+%pro-menu-root {
+    padding-left: 13%;
+    margin-top: $gutter+10;
+    line-height: 1;
+    color: darken($brand-primary,50);
+
+    @include icon-square(false, 9px, $info, left 0 top 40%);
+
+    &::before {
+        border: 1px solid darken($brand-gray,20);
+    }
+    &:hover, &:active {
+        color: $brand-primary;
+    }
 }
 .sidebar {
     @include cols-reset($first: true);
@@ -86,20 +101,17 @@ h2.title {
 
     margin-top: -90px;
 
+    // 行動版時隱藏
+    @include mq-max(break(desktop,-1)) {
+        margin-top: 0;
+        display: none;
+    }
+    &.active {
+        display: block;
+    }
+
     .collapse-title {
-        padding-left: 13%;
-        margin-top: $gutter+10;
-        line-height: 1;
-        color: darken($brand-primary,50);
-
-        @include icon-square(false, 9px, $info, left 0 top 40%);
-
-        &::before {
-            border: 1px solid darken($brand-gray,20);
-        }
-        &:hover, &:active {
-            color: $brand-primary;
-        }
+        @extend %pro-menu-root;
     }
     .collapse-content {
         padding-top: 12px;
@@ -126,6 +138,22 @@ h2.title {
         }
     }
 }
+.content, .sidebar {
+    text-align: left;
+    @include mq-max(break(desktop,-1)) {
+        width: 100%;
+    }
+}
+// == 行動版產品選單
+.pro-menu {
+    display: none;
+
+    @extend %pro-menu-root;
+
+    @include mq-max(break(desktop,-1)) {
+        display: block;
+    }
+}
 
 // == NewProduct 最新產品
 .catalog-new {
@@ -139,14 +167,27 @@ h2.title {
         padding-right: 0;
         padding-left: 13px;
     }
+    @include mq-max(break(tablet,-1)) {
+        &:nth-child(even),
+        &:nth-child(odd) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
     header {
         @extend %clearfix;
         text-align: left;
     }
     .product-list {
         width: 48.8%;
+        // width: 48%;
 
         &:first-of-type { margin-right: 2.4%; }
+
+        @include mq-max(mobile) {
+            width: 100%;
+            margin-right: 0;
+        }
     }
     .btn {
         float: right;

@@ -68,6 +68,9 @@ html, body {
 
     // 本次專案樣式
     @extend %center;
+    @include mq-max(phone) {
+        height: $header-height - 30;
+    }
 }
 
 .logo {
@@ -80,7 +83,13 @@ html, body {
 
     @include mq-max(break(wide, -1)) {
         @include absolute(left 50%);
-        @include pos-center(horizontal);
+        @include pos-center(x);
+        margin-left: -20px;
+    }
+    @include mq-max(phone-plus) {
+        background-size: contain;
+        width: 50%;
+        margin-top: 6%;
     }
 }
 
@@ -95,29 +104,33 @@ html, body {
     z-index: z(footer);
 
     // 本次專案樣式
-    text-align: left;
     padding-bottom: $gutter;
 
-    @include el(all) {
+    @include el(before) {
         @include absolute(bottom 0);
         height: 100%;
         z-index: -1;
-    }
-    &::after {
-        background: $footer-bg;
-        width: 58%;
-        left: 0;
-    }
-    &::before {
         background: $footer-color;
         width: 42%;
         right: 0;
     }
-}
-
-.foot-nav,
-.foot-contact {
-    padding-top: $gutter*2;
+    // 選單底色
+    // &::after {
+    //     background: $footer-bg;
+    //     width: 58%;
+    //     left: 0;
+    // }
+    // 聯絡底色
+    // &::before {
+    //     background: $footer-color;
+    //     width: 42%;
+    //     right: 0;
+    // }
+    @include mq-max(tablet) {
+        padding: 0;
+        &::after, &::before { display: none; }
+        .wrap { padding: 0; }
+    }
 }
 
 .foot-nav {
@@ -126,7 +139,7 @@ html, body {
     h4 {
         color: $footer-color2;
         font-size: em(24px);
-        margin-bottom: 20px;
+        margin-bottom: 4%;
     }
     a {
         display: block;
@@ -138,17 +151,46 @@ html, body {
         &:hover, &:active {
             color: $warning;
         }
+        @include mq-max(tablet) {
+            // float: left;
+            // margin-right: 15px;
+            display: inline-block;
+            margin-right: -4px;
+            width: percentage(1/3);
+        }
+        @include mq-max(mobile) {
+            width: percentage(1/2);
+        }
     }
-    nav:last-child a {
-        display: inline-block;
-        margin-right: -4px;
-        width: percentage(1/3);
+    nav {
+        &:last-child a {
+            display: inline-block;
+            margin-right: -4px;
+            width: percentage(1/3);
+
+            @include mq-max(mobile) {
+                width: percentage(1/2);
+            }
+        }
+        @include mq-max(tablet) {
+            width: 100%;
+            padding-left: $gutter;
+            padding-right: $gutter;
+            &:first-child { padding-left: $gutter; }
+        }
+        @include mq-max(phone-plus) {
+        }
     }
 }
 .foot-contact {
     padding-left: $gutter*2;
     color: #414854;
     font-size: em(14px);
+
+    @include mq-max(tablet) {
+        background: $footer-color;
+        padding-bottom: $gutter;
+    }
 
     li {
         margin-bottom: 2%;
@@ -182,58 +224,20 @@ html, body {
     }
 }
 
+.foot-nav,
+.foot-contact {
+    text-align: left;
+    padding-top: $gutter*2;
+
+    @include mq-max(tablet) {
+        padding-top: $gutter;
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+}
+
 .copyright {
     font-size: em(14px);
     color: $info;
     margin-top: 30px;
-
-    .hover-underline {
-        color: $footer-color2;
-    }
-    .fa-youtube {
-        display: inline-block;
-        vertical-align: middle;
-
-        @include circle(42px, center);
-
-        &::before {
-            color: $footer-color2;
-            font-size: em(27px);
-        }
-        &:hover, &:active {
-            background-color: $info;
-            &::before { color: $footer-bg; }
-        }
-    }
-    @include mq-max(tablet) {
-        left: 15px; bottom: -30px;
-        text-align: center;
-    }
-}
-
-// == 行動選單出現時 版面變化
-@if $menu-mobile-style == 'push' {
-    .push {
-        left: $menu-mobile-width;
-        overflow-y: hidden;
-    }
-}
-@else if $menu-mobile-style == 'overlay' {
-    .overlay {
-        overflow: hidden;
-
-        .lang-nav, .search {
-            @include animation('fadeIn .5s','slide-down 1s forwards');
-        }
-        .lang-nav {
-            z-index: z(overlay) + 2;
-            top: 34%;
-        }
-        .search {
-            z-index: z(overlay) + 1;
-            top: 32%;
-            right: 8%;
-            width: 30%;
-        }
-    }
 }
