@@ -515,7 +515,10 @@ html, body {
     .logo {
       background-size: contain;
       width: 50%;
-      margin-top: 6%; } }
+      margin-top: 5%; } }
+  @media (max-width: 20em) {
+    .logo {
+      margin-top: 7%; } }
 
 #footer {
   background: #698BA5;
@@ -546,7 +549,7 @@ html, body {
   .foot-nav h4 {
     color: #2E333C;
     font-size: 1.5em;
-    margin-bottom: 4%; }
+    margin-bottom: 15px; }
   .foot-nav a {
     display: block;
     margin-bottom: 25px;
@@ -731,7 +734,7 @@ html, body {
       display: block;
       text-align: left;
       position: absolute;
-      top: 163px;
+      top: 168px;
       right: 0;
       left: 30%; } }
   @media (max-width: 40em) {
@@ -934,9 +937,6 @@ figure {
     z-index: 3;
     white-space: nowrap;
     opacity: 0; }
-  @media (max-width: 30em) {
-    figure {
-      width: 100%; } }
   figure h4, figure p {
     margin: 0; }
   figure h4 {
@@ -1118,6 +1118,9 @@ figure {
     right: 80px;
     width: 40%; }
 
+@media (max-width: 30em) {
+  .product-list {
+    width: 100%; } }
 .product-list img {
   margin: 30px auto;
   min-height: 180px;

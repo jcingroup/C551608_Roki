@@ -81,11 +81,25 @@
 // == figure - 產品列表
 .product-list {
 
+    @if $index {
+        @include mq-max(phone) { width: 100%; }
+    }
+
     @if $page {
         margin-right: 1.5%;
         margin-bottom: 3%;
         &:last-of-type,
         &:nth-of-type(3n) { margin-right: 0; }
+
+        @include mq-max(phone-plus) {
+            width: (100%/2) - .75%;
+            &:nth-of-type(odd) { margin-right: 1.5%; }
+            &:nth-of-type(even) { margin-right: 0; }
+        }
+        @include mq-max(mobile) {
+            width: 100%;
+            &:nth-of-type(odd) { margin-right: 0; }
+        }
     }
 
     img {

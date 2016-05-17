@@ -89,7 +89,10 @@ html, body {
     @include mq-max(phone-plus) {
         background-size: contain;
         width: 50%;
-        margin-top: 6%;
+        margin-top: 5%;
+    }
+    @include mq-max(mobile) {
+        margin-top: 7%;
     }
 }
 
@@ -139,7 +142,7 @@ html, body {
     h4 {
         color: $footer-color2;
         font-size: em(24px);
-        margin-bottom: 4%;
+        margin-bottom: $gutter;
     }
     a {
         display: block;
@@ -177,8 +180,6 @@ html, body {
             padding-left: $gutter;
             padding-right: $gutter;
             &:first-child { padding-left: $gutter; }
-        }
-        @include mq-max(phone-plus) {
         }
     }
 }

@@ -55,7 +55,9 @@ $trigger.click(function() {
 $(".pro-menu").click(function() {
     $(this).toggleClass("active");
     // $('aside nav').slideToggle(750);
-    $('.sidebar').toggleClass('active');
+    $('.sidebar').slideToggle(170);
+    $(fall).slideUp();
+    $collapse.removeClass("current");
 });
 
 // 搜尋框縮放

@@ -163,7 +163,7 @@ $current: current();
         display: block;
         text-align: left;
 
-        @include absolute(left 30% top $menu-height+60 right 0);
+        @include absolute(left 30% top $menu-height+65 right 0);
     }
     @include mq-max(phone-plus) {
         left: 50%;
