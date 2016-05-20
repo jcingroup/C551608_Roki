@@ -1,35 +1,39 @@
-﻿<button class="pro-menu">產品選單</button>
+﻿@model DotWeb.WebApp.Controllers.CategoryStroe
+
+<button class="pro-menu">產品選單</button>
 <aside class="sidebar">
-    <dl>
-        @* 當前分類 class+ current
-        <dt class="collapse-title current" data-toggle="collapse">開關類</dt>  *@
-        <dt class="collapse-title" data-toggle="collapse">開關類</dt>
-        <dd class="collapse-content">
-            @* 當前子分類 class + current
-            <a href="~/Products/list" class="current">偵測開關<small>(15)</small></a> *@
-            <a href="~/Products/list">偵測開關<small>(15)</small></a>
-            <a href="~/Products/list">滑動開關<small>(15)</small></a>
-            <a href="~/Products/list">輕觸開關<small>(6)</small></a>
-            <a href="~/Products/list">指撥開關<small>(15)</small></a>
-            <a href="~/Products/list">按鍵開關<small>(15)</small></a>
-        </dd>
-    </dl>
-
-    <dl>
-        <dt class="collapse-title" data-toggle="collapse">插座類</dt>
-        <dd class="collapse-content">
-            <a href="~/Products/list">直流插座<small>(15)</small></a>
-            <a href="~/Products/list">耳機插座<small>(15)</small></a>
-        </dd>
-    </dl>
-
-    <dl>
-        <dt class="collapse-title" data-toggle="collapse">連接器類</dt>
-        <dd class="collapse-content">
-            <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
-            <a href="~/Products/list">USB 3.0 連接器<small>(15)</small></a>
-            <a href="~/Products/list">HDMI 連接器<small>(15)</small></a>
-            <a href="~/Products/list">微型連接器<small>(15)</small></a>
-        </dd>
-    </dl>
+    @foreach (var item in Model.categoryL1Data)
+    {
+        if (item.id == Model.now_category_l1)
+        {
+            <dl>
+                <dt class="collapse-title current" data-toggle="collapse">@item.name</dt>
+                <dd class="collapse-content">
+                    @foreach (var list in item.categoryL2Data)
+                    {
+                        if (list.id == Model.now_category_l2)
+                        {
+                            <a href="~/Products/list" class="current">@list.name<small>(15)</small></a>
+                        }
+                        else
+                        {
+                            <a href="~/Products/list">@list.name<small>(15)</small></a>
+                        }
+                    }
+                </dd>
+            </dl>
+        }
+        else
+        {
+            <dl>
+                <dt class="collapse-title" data-toggle="collapse">@item.name</dt>
+                <dd class="collapse-content">
+                    @foreach (var list in item.categoryL2Data)
+                    {
+                        <a href="~/Products/list">@list.name<small>(15)</small></a>
+                    }
+                </dd>
+            </dl>
+        }
+    }
 </aside>

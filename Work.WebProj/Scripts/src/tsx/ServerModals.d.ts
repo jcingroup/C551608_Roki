@@ -118,6 +118,11 @@
         sort?: number;
         i_Hide?: boolean;
         i_Lang?: string;
+        product_name?: string;
+        modal?: string;
+        standard?: string;
+        description?: string;
+
         Product_Category_L1?: server.Product_Category_L1;
         Product_Category_L2?: server.Product_Category_L2;
     }

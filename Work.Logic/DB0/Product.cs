@@ -30,6 +30,10 @@ namespace ProcCore.Business.DB0
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
+        public string product_name { get; set; }
+        public string modal { get; set; }
+        public string standard { get; set; }
+        public string description { get; set; }
     
         public virtual Product_Category_L1 Product_Category_L1 { get; set; }
         public virtual Product_Category_L2 Product_Category_L2 { get; set; }

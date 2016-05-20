@@ -606,7 +606,7 @@
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IEditType.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\IKeyValue.d.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\d.ts\PutGetId.d.ts" />
-    <TypeScriptCompile Include="Scripts\ts-def\d.ts\ServerModals.d.ts" />
+    <TypeScriptCompile Include="Scripts\src\tsx\ServerModals.d.ts" />
     <TypeScriptCompile Include="app_modules\dt\def-data.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\widegt\gridInfo.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap.v3.datetimepicker\bootstrap.v3.datetimepicker.d.ts" />

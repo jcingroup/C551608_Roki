@@ -137,9 +137,8 @@ namespace Product {
         }
         componentDidUpdate(prevProps, prevState) {
             if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
-                CKEDITOR.replace('feature', { customConfig: '../ckeditor/inlineConfig.js' });
-                CKEDITOR.disableAutoInline = true;
-                CKEDITOR.inline('technical_specification', { customConfig: '../ckeditor/inlineTableConfig.js' });
+                CKEDITOR.replace('description');
+                //CKEDITOR.disableAutoInline = true;
             }
         }
 
@@ -197,8 +196,7 @@ namespace Product {
         handleSubmit(e: React.FormEvent) {
 
             e.preventDefault();
-            this.state.fieldData.feature = CKEDITOR.instances['feature'].getData();
-            this.state.fieldData.technical_specification = CKEDITOR.instances['technical_specification'].getData();
+            this.state.fieldData.description = CKEDITOR.instances['description'].getData();
             if (this.state.edit_type == 1) {
                 CommFunc.jqPost(this.props.apiPath, this.state.fieldData)
                     .done((data: FormResult, textStatus, jqXHRdata) => {
@@ -493,11 +491,6 @@ namespace Product {
             }
             else if (this.state.edit_type == 1 || this.state.edit_type == 2) {
                 let fieldData = this.state.fieldData;
-                var Tabs = ReactBootstrap.Tabs;
-                var Tab = ReactBootstrap.Tab;
-                //分類-選單內容
-                let options = [];
-
                 ////分類-選單內容
                 outHtml = (
                     <div>
@@ -584,14 +577,21 @@ namespace Product {
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">產品名稱</label>
                                     <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'power') } value={fieldData.power} maxLength={64} required />
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'product_name') } value={fieldData.product_name} maxLength={64} required />
                                     </div>
                                     <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
                                 </div>
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
                                     <div className="col-xs-6">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={fieldData.modal} maxLength={64} required />
+                                    </div>
+                                </div>
 
+                                <div className="form-group">
+                                    <label className="col-xs-3 control-label">規格</label>
+                                    <div className="col-xs-6">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'standard') } value={fieldData.standard} maxLength={64} required />
                                     </div>
                                 </div>
 
@@ -615,6 +615,17 @@ namespace Product {
                                 </div>
                             </div>
 
+                            <div className="col-xs-12">
+                                <div className="form-group">
+                                    <label className="col-xs-1 control-label">詳細介紹</label>
+                                    <div className="col-xs-10">
+                                        <textarea className="form-control" id="description" name="description"
+                                            value={fieldData.description} onChange={this.changeFDValue.bind(this, 'description') }/>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div className="form-group clear bg-warning">
                                 <div className="col-xs-6">
                                     <label className="col-xs-3 control-label">證書文件</label>
@@ -628,14 +639,6 @@ namespace Product {
                             </div>
 
                             <div className="col-xs-12">
-                                <Tabs defaultActiveKey={2} animation={false}>
-                                    <Tab eventKey={1} title="特色(Feature)">
-                                        <textarea type="date" className="form-control" id="feature" name="feature" value={fieldData.feature} onChange={this.changeFDValue.bind(this, 'feature') } />
-                                    </Tab>
-                                    <Tab eventKey={2} title="技術規格(Technical Specification)">
-                                        <textarea type="date" className="form-control" id="technical_specification" name="technical_specification" value={fieldData.technical_specification} onChange={this.changeFDValue.bind(this, 'technical_specification') } />
-                                    </Tab>
-                                </Tabs>
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
                                         <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }

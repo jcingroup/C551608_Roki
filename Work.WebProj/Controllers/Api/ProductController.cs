@@ -108,6 +108,11 @@ namespace DotWeb.Api
                 item.i_Hide = md.i_Hide;
                 item.i_Lang = md.i_Lang;
 
+                item.standard = md.standard;
+                item.modal = md.modal;
+                item.product_name = md.product_name;
+                item.description = md.description;
+
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;
             }
