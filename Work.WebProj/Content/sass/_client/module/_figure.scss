@@ -93,16 +93,16 @@ figure {
     }
 
     // RWD
-    @include mq-max(break(desktop, -1)) {
-        float: none;
-        display: inline-block;
-    }
-    @include mq-max(tablet) {
-        width: 48%;
-        max-width: none;
-        margin: 3px; margin-bottom: 15px;
-    }
-    @include mq-max(phone) { width: 100%; }
+    // @include mq-max(break(desktop, -1)) {
+    //     float: none;
+    //     display: inline-block;
+    // }
+    // @include mq-max(tablet) {
+    //     width: 48%;
+    //     max-width: none;
+    //     margin: 3px; margin-bottom: 15px;
+    // }
+    // @include mq-max(phone) { width: 100%; }
 
     // 描述
     h4, p { margin: 0; }

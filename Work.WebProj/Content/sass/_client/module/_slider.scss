@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-$swiper-pagination:    true !default;
-$swiper-button:        true !default;
+$swiper-pagination:    false !default;
+$swiper-button:        false !default;
 
 // 常用的套件
 $swiper-banner:        false !default;
@@ -68,14 +68,13 @@ $swiper-slider:        false !default;
         &, .swiper-slide {
             height: $banner-height;
             @include mq-max(break(wide,-1)) { height: 250px; }
+            @include mq-max(tablet) { height: 170px; }
+            @include mq-max(phone) { height: 100px; }
         }
 
         .swiper-slide img {
             height: 100%;
             @include pos-center;
-            // @include mq-max(break(wide,-1)) {
-            //     max-height: 100%;
-            // }
         }
 
         // 滑動為淡入淡出模式時加

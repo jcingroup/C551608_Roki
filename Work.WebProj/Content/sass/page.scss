@@ -30,7 +30,6 @@ $figure-title-size:  18px;
 @import "_client/main";
 
 @import "_client/module/breadcrumb";
-@import "_client/module/collapse";
 
 
 
@@ -41,7 +40,7 @@ $figure-title-size:  18px;
 }
 #main {
     @extend %center;
-
+    img { max-width: 100%; }
 }
 .title {
     background: url(#{$img-path}/line-rainbow.gif) center bottom no-repeat;
@@ -71,28 +70,84 @@ h2.title {
 }
 
 // 2欄設計(產品列表+內容)
-.col2 .breadcrumb {
-    @include make-col-offset(2,12);
-}
-.content, .sidebar {
-    text-align: left;
+.col2 {
+    .breadcrumb {
+        @include make-col-offset(2,12);
+        @include mq-max(break(desktop,-1)) {
+            margin-left: 0;
+        }
+    }
+    .title {
+        @include mq-max(break(desktop,-1)) {
+            margin-top: 5%;
+        }
+    }
 }
 .content {
     @include cols-reset($first: true, $last: true);
     @include make-col-span(10,12);
 }
+
+// == 行動版產品選單
+.pro-menu {
+    display: none;
+
+    cursor: pointer; cursor: hand;
+    border: 1px solid #DCDDDD;
+    background: #fff;
+    padding: 5px 30px;
+    font-size: em(18);
+    margin-top: -15px;
+    float: right;
+
+    &:hover, &:active {
+        color: $brand-secondary;
+    }
+    &.active { border-bottom: none; z-index: 5 }
+
+    @include icon-arrow(down,5px,$brand-primary,right 10px top 45%);
+
+    @include mq-max(break(desktop,-1)) {
+        display: block;
+    }
+}
+// 左欄
 .sidebar {
     @include cols-reset($first: true);
     @include make-col-span(2,12);
 
     margin-top: -90px;
 
-    dt {
+    // 行動版時隱藏
+    @include mq-max(break(desktop,-1)) {
+        display: none;
+
+        background: #fff;
+        border: 1px solid #DCDDDD;
+        margin-top: -1px;
+        margin-bottom: 2%;
+        padding: 20px;
+        padding-bottom: 10px;
+
+        dl {
+            float: left;
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .collapse-title {
         padding-left: 13%;
         margin-top: $gutter+10;
         line-height: 1;
+        color: darken($brand-primary,50);
 
         @include icon-square(false, 9px, $info, left 0 top 40%);
+
+        @include mq-max(break(desktop,-1)) {
+            padding-left: 25px;
+            margin-top: 0;
+        }
 
         &::before {
             border: 1px solid darken($brand-gray,20);
@@ -101,17 +156,21 @@ h2.title {
             color: $brand-primary;
         }
     }
-    dd {
+    .collapse-content {
         padding-top: 12px;
         margin-top: -5px;
         margin-left: 4px;
     }
     a {
         display: block;
-        line-height: 2;
         padding-left: 11%;
+        padding-top: 6px;
+        padding-bottom: 6px;
+
+        @include mq-max(break(desktop,-1)) { padding-left: 22px; }
 
         &:hover, &:active, &.current {
+            color: $brand-secondary;
             @include icon-dot(false, 7px, lighten($brand-secondary,10), left -4px top 40%);
         }
     }
@@ -125,6 +184,13 @@ h2.title {
         }
     }
 }
+.content, .sidebar {
+    text-align: left;
+    @include mq-max(break(desktop,-1)) {
+        width: 100%;
+    }
+}
+
 
 // == NewProduct 最新產品
 .catalog-new {
@@ -138,14 +204,27 @@ h2.title {
         padding-right: 0;
         padding-left: 13px;
     }
+    @include mq-max(break(tablet,-1)) {
+        &:nth-child(even),
+        &:nth-child(odd) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
     header {
         @extend %clearfix;
         text-align: left;
     }
     .product-list {
         width: 48.8%;
+        // width: 48%;
 
         &:first-of-type { margin-right: 2.4%; }
+
+        @include mq-max(mobile) {
+            width: 100%;
+            margin-right: 0;
+        }
     }
     .btn {
         float: right;
@@ -159,10 +238,10 @@ h2.title {
 .product-pic {
     @extend %bg-white;
 
-    padding: 3.5% 0;
+    padding: 3.5%;
     text-align: center;
     img {
-        max-width: 100%;
+        max-width: 90%;
         max-height: 260px;
         margin: auto;
     }
@@ -173,6 +252,10 @@ h2.title {
     .list-info {
         margin-top: $gutter+10;
         padding-left: $gutter*2;
+
+        @include mq-max(break(tablet,-1)) {
+            padding-left: 0;
+        }
     }
     .list-info-content {
         &:first-of-type {
@@ -182,6 +265,10 @@ h2.title {
 }
 .list-info {
     margin-bottom: $gutter;
+
+    @include mq-max(break(tablet,-1)) {
+        padding-left: 0;
+    }
 
     &-title {
         color: $success;
@@ -229,13 +316,26 @@ h2.title {
             float: none;
             width: 100%;
             padding-bottom: 20px;
+            margin-left: 0;
+        }
+        &:first-of-type {
+            margin-bottom: 5%;
         }
     }
 }
 
 // == 聯絡我們
 iframe { width: 100%; }
+.map {
+    @include mq-max(break(tablet,-1)) {
+        padding-right: 0;
+    }
+}
 .ContactUs .list-info {
     margin-top: $gutter+10;
     padding-left: $gutter+5;
+
+    @include mq-max(break(tablet,-1)) {
+        padding-left: 0;
+    }
 }

@@ -16,7 +16,7 @@ $current: current();
     margin-left: 6%;
     float: left;
 
-    a {
+    > a {
         display: block; float: left;
         width: percentage(1/3);
         height: 100%;
@@ -44,32 +44,71 @@ $current: current();
             background: $menu-link-hover url(#{$img-path}/nav-bg.png) 0 0 no-repeat;
         }
 
-        @include mq-max(break(wide,-1)) {
-            float: none;
+        @include mq-max(break(#{$menu-mobile-bk},-1)) {
+            // float: none;
             border-left: none;
             margin: auto;
-            width: 75%;
+            // width: 50%;
             height: auto;
             font-size: em(21);
             line-height: 1.6;
-            &:last-child { border-right: none; }
+            position: relative;
+            top: $menu-height - 10;
+
+            &:hover, &:active,
+            #{$current} {
+                color: $brand-primary;
+                background: none;
+                text-shadow: none;
+            }
+
+            &:first-child,
+            &:last-child { width: 30%; }
+            &:nth-child(2) {
+                width: 70%;
+                text-align: left;
+            }
+            &:last-child {
+                border-right: none;
+                top: $menu-height+50;
+            }
+        }
+        @include mq-max(phone-plus) {
+            &:first-child,
+            &:last-child,
+            &:nth-child(2) { width: 50%;}
         }
     }
 
     // 行動版面
     // .toggle { display: none; }
 
-    @include mq-max(break(wide,-1)) {
+    @include mq-max(break(#{$menu-mobile-bk},-1)) {
 
         @include fixed(top 0);
         overflow-y: auto;
-        z-index: z(logo) + 1;
+        z-index: z(overlay);
 
         background: $menu-mobile-bg;
         width: $menu-mobile-width;
         height: 100%;
 
+        // 本次專案
         margin-left: 0;
+        &::before, &::after {
+            content: '';
+            position: absolute;
+        }
+        &::before {
+            width: 1px; height: 75%;
+            background: #CBCBCB;
+            @include absolute(left 25% top ($menu-height - 10))
+        }
+        &::after {
+            background: $menu-mobile-bg;
+            height: $menu-height - 20;
+            @include fixed(left 0 right 0 top 0);
+        }
 
         // 推拉樣式
         @if $menu-mobile-style == 'push' {
@@ -89,7 +128,7 @@ $current: current();
             opacity: 0;
             padding: 3% 0;
 
-            @include transition(top .3s, opacity 1s);
+            @include transition(top .5s, opacity 1s);
 
             .overlay & {
                 top: 0;
@@ -112,25 +151,37 @@ $current: current();
         //     }
         // }
     }
+    @include mq-max(phone-plus) {
+        &::before { left: 42% }
+    }
 }
 .sub-nav {
     display: none;
+    @extend %list-unstyled;
 
-    @include mq-max(break(wide,-1)) {
+    @include mq-max(break(#{$menu-mobile-bk},-1)) {
         display: block;
-    }
-}
+        text-align: left;
 
-// == 選單出現時 版面變化
-@if $menu-mobile-style == 'push' {
-    .push {
-        left: $menu-mobile-width;
-        overflow-y: hidden;
+        @include absolute(left 30% top $menu-height+65 right 0);
     }
-}
-@else if $menu-mobile-style == 'overlay' {
-    .overlay {
-        overflow: hidden;
+    @include mq-max(phone-plus) {
+        left: 50%;
+    }
+    a {
+        display: block;
+        font-size: em(17);
+        color: $info;
+        line-height: 2;
+
+        &:hover, &:active { background: none; }
+    }
+    .collapse-title { color: $brand-secondary; }
+    li {
+        float: left;
+        width: percentage(1/3);
+        margin-bottom: $gutter;
+        @include mq-max(phone-plus) { width: 100%; }
     }
 }
 
@@ -147,7 +198,7 @@ $current: current();
     top: 50%;
     @include transform(translateY(-50%));
 
-    @include mq-max(break(wide,-1)) { display: block; }
+    @include mq-max(break(#{$menu-mobile-bk},-1)) { display: block; }
     @include mq-max(phone) { left: 0; }
 
     // 變形 X 效果
@@ -159,6 +210,13 @@ $current: current();
 
         @include transition(background 0.3s);
         @include prefix(apperance, none, webkit moz);
+
+        // 本次專案
+        @include mq-max(mobile) {
+            @include transform(scale(.6));
+            top: 30%;
+            left: -5px;
+        }
 
         &:active, &.active {
             // background-color: darken($brand-primary, 10%);

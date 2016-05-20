@@ -31,22 +31,13 @@ html {
 }
 
 body {
-    font-family: $font-sp;
+    font-family: $font-family-base;
     line-height: $line-height-base;
     color: $body-color;
     background: $body-bg;
 
-    // 垂直滿版
-    // @if $lte7 {
-    //     _height: 100%;
-    // }
-    // min-height: 100%;
-
-    // 手機版選單動畫
-    // position: relative;
-    // overflow-x: hidden;
-    // left: 0;
-    // @include prefix(transition, left .35s);
+    // 字體平滑 for chrome
+    -webkit-font-smoothing: antialiased;
 }
 
 a {

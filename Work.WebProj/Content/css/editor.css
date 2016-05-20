@@ -268,10 +268,11 @@ html {
 @viewport {
   width: device-width; }
 body {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  font-family: "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.25;
   color: #333;
-  background: #EEEFEF; }
+  background: #EEEFEF;
+  -webkit-font-smoothing: antialiased; }
 
 a {
   color: #333;
@@ -288,10 +289,10 @@ img {
   vertical-align: middle; }
 
 .font-sp {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Heiti TC", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif; }
+  font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Microsoft Jhenghei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", \5FAE\8EDF\6B63\9ED1\9AD4, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: #698BA5;

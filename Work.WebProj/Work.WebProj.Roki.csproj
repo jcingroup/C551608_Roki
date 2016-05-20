@@ -338,9 +338,12 @@
     <Content Include="Content\css\vendor\toastr.css" />
     <Content Include="Content\css\_admin\page.css" />
     <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\banner2.jpg" />
+    <Content Include="Content\images\banner3.jpg" />
     <Content Include="Content\images\bg.gif" />
     <Content Include="Content\images\Index\banner1.jpg" />
     <Content Include="Content\images\Index\banner2.jpg" />
+    <Content Include="Content\images\Index\banner3.jpg" />
     <Content Include="Content\images\line-rainbow.gif" />
     <Content Include="Content\images\logo.gif" />
     <Content Include="Content\images\nav-bg.png" />

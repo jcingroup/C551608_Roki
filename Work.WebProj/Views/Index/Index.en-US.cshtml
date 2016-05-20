@@ -13,10 +13,18 @@
             spaceBetween: 15,
             slidesPerView: 3,
             slidesPerGroup: 1,
-            slidesPerColumnFill: 'row',
             autoplayDisableOnInteraction: false,
             prevButton: '.icon-chevron-thin-left',
             nextButton: '.icon-chevron-thin-right',
+            breakpoints: {
+                480: {
+                    spaceBetween: 0,
+                    slidesPerView: 'auto'
+                },
+                768: {
+                    spaceBetween: 10,
+                }
+            }
         });
     </script>
 }
