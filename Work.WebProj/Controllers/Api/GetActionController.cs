@@ -113,26 +113,55 @@ namespace DotWeb.Api
                 return Ok(result_obj);
             }
         }
-        //public async Task<IHttpActionResult> GetOptionsCommunity()
-        //{
-        //    db0 = getDB0();
-        //    var options = await db0.Community.Select(x => new { x.community_id, x.community_name }).OrderBy(x => x.community_id).ToListAsync();
-        //    return Ok(options);
-        //}
-        private IList<MenuDef> ReMarkMenuTree(MenuDef t2, IList<MenuDef> data)
-        {
-            var t3 = data.Where(x => x.ParentKey == t2.Key);
-            IList<MenuDef> s = new List<MenuDef>();
-            if (!t3.Any())
-            {
-                return s;
-            }
 
-            foreach (var t4 in t3)
-            {
-                t4.sub = ReMarkMenuTree(t4, data);
-            }
-            return t3.ToList();
+        public async Task<IHttpActionResult> GetPorductCategoryL1(string lang)
+        {
+            db0 = getDB0();
+            var items = await db0.Product_Category_L1
+                .Where(x => x.i_Lang == lang)
+                .OrderBy(x => x.l1_sort)
+                .Select(x => new { x.product_category_l1_id, x.l1_name })
+                .ToListAsync();
+            return Ok(items);
+        }
+        public async Task<IHttpActionResult> GetPorductCategoryL2(string lang, int id)
+        {
+            db0 = getDB0();
+            var items = await db0.Product_Category_L2
+                .Where(x => x.i_Lang == lang && x.l1_id == id)
+                .OrderBy(x => x.l2_sort)
+                .Select(x => new { x.product_category_l2_id, x.l2_name })
+                .ToListAsync();
+            return Ok(items);
+        }
+        public async Task<IHttpActionResult> GetCategoryStruc()
+        {
+            db0 = getDB0();
+            var items = await db0.Product_Category_L1
+                .OrderBy(x => x.l1_sort)
+                .Select(x => new CategoryL1
+                {
+                    id = x.product_category_l1_id,
+                    name = x.l1_name,
+                    lang = x.i_Lang,
+                    l2 = x.Product_Category_L2.OrderBy(y => y.l2_sort).Select(y => new CategoryL2 { id = y.product_category_l2_id, name = y.l2_name })
+                })
+                .ToListAsync();
+            return Ok(items);
+        }
+
+        public class CategoryL1
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public string lang { get; set; }
+            public IEnumerable<CategoryL2> l2 { get; set; }
+        }
+
+        public class CategoryL2
+        {
+            public int id { get; set; }
+            public string name { get; set; }
         }
 
         #region 後台-參數設定

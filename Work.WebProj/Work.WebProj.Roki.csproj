@@ -204,6 +204,7 @@
     <Compile Include="Areas\Active\Controllers\MatterController.cs" />
     <Compile Include="Areas\Active\Controllers\EditController.cs" />
     <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
+    <Compile Include="Areas\Active\Controllers\ProductDataController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
     <Content Include="app_modules\comm-cmpt\package.js" />
     <Content Include="app_modules\comm-func\package.js" />
@@ -288,6 +289,9 @@
     <None Include="Controllers\Api\EditController.cs" />
     <Compile Include="Controllers\Api\GetActionController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
+    <Compile Include="Controllers\Api\ProductCategoryL1Controller.cs" />
+    <Compile Include="Controllers\Api\ProductCategoryL2Controller.cs" />
+    <Compile Include="Controllers\Api\ProductController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
@@ -328,8 +332,10 @@
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
+    <Content Include="Content\css\vendor\jquery.loadmask.css" />
     <Content Include="Content\css\vendor\swiper.css" />
     <Content Include="Content\css\vendor\swiper.min.css" />
+    <Content Include="Content\css\vendor\toastr.css" />
     <Content Include="Content\css\_admin\page.css" />
     <Content Include="Content\images\banner.jpg" />
     <Content Include="Content\images\bg.gif" />
@@ -380,18 +386,11 @@
     <Content Include="ckeditor\contents.css" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Scripts\build\app\m_change_password.js" />
-    <Content Include="Scripts\build\app\m_community.js" />
-    <Content Include="Scripts\build\app\m_community_news.js" />
-    <Content Include="Scripts\build\app\m_edit.js" />
-    <Content Include="Scripts\build\app\m_edit_detail.js" />
     <Content Include="Scripts\build\app\m_login.js" />
-    <Content Include="Scripts\build\app\m_matter.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
-    <Content Include="Scripts\build\app\vendors.js" />
-    <Content Include="Scripts\build\app\w_sell_list.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -513,6 +512,8 @@
     <Content Include="Views\Products\sidebar.en-US.cshtml" />
     <Content Include="Views\Shared\Layout.en-US.cshtml" />
     <Content Include="Content\sass\helper\_function.scss" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-product.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-product_category_l2.tsx" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -584,20 +585,13 @@
     <TypeScriptCompile Include="app_modules\simple-ajax-uploader\SimpleAjaxUploader.def.ts" />
     <TypeScriptCompile Include="app_modules\funtest\fun.ts" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-change_password.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-community-news.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\w-sell-list.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-matter.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-edit_detail.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-edit.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-menu_set.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-parm.tsx" />
+    <TypeScriptCompile Include="Scripts\src\tsx\m-product_category_l1.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-roles.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-menu.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-login.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\m-community.tsx" />
     <TypeScriptCompile Include="Scripts\src\tsx\m-users.tsx" />
-    <TypeScriptCompile Include="Scripts\src\tsx\w-member_login.ts" />
-    <TypeScriptCompile Include="Scripts\src\tsx\w-shopping_cart.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commfunc.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\commwww.ts" />
     <TypeScriptCompile Include="Scripts\ts-def\ConsoleIe8.ts" />
@@ -634,6 +628,7 @@
     <Folder Include="app_modules\Pikaday\plugins\" />
     <Folder Include="app_modules\Pikaday\scss\" />
     <Folder Include="app_modules\Pikaday\tests\" />
+    <Folder Include="Areas\Active\Views\ProductData\" />
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />

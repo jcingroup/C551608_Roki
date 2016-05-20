@@ -85,68 +85,49 @@
         val?: number;
         Lname?: string;
     }
-    interface Banner extends BaseEntityTable {
-        banner_id?: number;
-        banner_name?: string;
+
+    interface Product_Category_L1 extends BaseEntityTable {
+        product_category_l1_id?: number;
+        l1_name?: string;
+        l1_info?: string;
+        l1_sort?: number;
+        i_Hide?: boolean;
+        i_Lang?: string;
+        Product_Category_L2?: server.Product_Category_L2[];
+
+    }
+    interface Product_Category_L2 extends BaseEntityTable {
+        product_category_l2_id?: number;
+        l1_id?: number;
+        l2_name?: string;
+        l2_info?: string;
+        l2_sort?: number;
+        i_Hide?: boolean;
+        i_Lang?: string;
+        Product_Category_L1?: server.Product_Category_L1;
+
+    }
+    interface Product extends BaseEntityTable {
+        product_id?: number;
+        power?: string;
+        feature?: string;
+        technical_specification?: string;
+        l1_id?: number;
+        l2_id?: number;
+        l3_id?: number;
         sort?: number;
         i_Hide?: boolean;
         i_Lang?: string;
+        Product_Category_L1?: server.Product_Category_L1;
+        Product_Category_L2?: server.Product_Category_L2;
     }
-    interface Community extends BaseEntityTable {
-        community_id?: number;
-        community_name?: string;
-        account?: string;
-        passwd?: string;
-        intro?: string;
+    interface L1 {//產品分類第一層
+        l1_id?: number;
+        l1_name?: string;
+        l2_list?: server.L2[];
     }
-    interface Community_News {
-        community_news_id?: number;
-        community_id?: number;
-        title?: string;
-        context?: string;
-        start_date?: Date;
-        end_date?: Date;
-        state?: string;
-        community_name?: string;
-    }
-    interface Edit extends BaseEntityTable {
-        edit_id?: number;
-        edit_name?: string;
-        edit_content?: string;
-        sort?: number;
-    }
-    interface Matter {
-        matter_id?: number;
-        community_id?: number;
-        zip?: string;
-        city?: string;
-        country?: string;
-        address?: string;
-        bedrooms?: number;
-        livingrooms?: number;
-        bathrooms?: number;
-        rooms?: number;
-        build_area?: number;
-        land_area?: number;
-        house_area?: number;
-        balcony_area?: number;
-        umbrella_aea?: number;
-        public_area?: number;
-        age?: number;
-        buildhouses?: number;
-        typeOfHouse?: string;
-        managementFeeOfMonth?: number;
-        architecture?: string;
-        parking?: string;
-        orientation?: string;
-        guard?: string;
-        is_end?: boolean;
-        is_darkroom?: boolean;
-        wall_materials?: string;
-        matter_name?: string;
-        info_type?: string;
-        start_date?: Date;
-        end_date?: Date;
-        state?: string;
+    interface L2 {//產品分類第二層
+        l2_id?: number;
+        l2_name?: string;
     }
 } 

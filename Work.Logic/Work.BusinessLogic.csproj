@@ -122,10 +122,19 @@
     <Compile Include="DB0\Menu.cs">
       <DependentUpon>C55A0_Roki.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB0\Product.cs">
+      <DependentUpon>C55A0_Roki.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\Product_Category_L1.cs">
+      <DependentUpon>C55A0_Roki.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB0\Product_Category_L2.cs">
+      <DependentUpon>C55A0_Roki.tt</DependentUpon>
+    </Compile>
     <Compile Include="LogicCenter.cs" />
-    <Compile Include="Models\Community_News.cs" />
-    <Compile Include="Models\Matter.cs" />
-    <Compile Include="Models\Community.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Product_Category_L2.cs" />
+    <Compile Include="Models\Product_Category_L1.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

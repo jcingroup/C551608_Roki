@@ -81,6 +81,10 @@ namespace DotWeb.Controller
         protected string getArea = string.Empty;
         protected string getAction = string.Empty;
 
+        //訂義檔案上傳路行樣板
+        protected string upload_path_tpl_o = "~/_Code/SysUpFiles/{0}/{1}/{2}/{3}/{4}";
+        protected string upload_path_tpl_s = "~/_Code/SysUpFiles/{0}/{1}/{2}/{3}";
+
         //系統認可圖片檔副檔名
         protected string[] imgExtDef = new string[] { ".jpg", ".jpeg", ".gif", ".png", ".bmp" };
 
@@ -611,6 +615,334 @@ namespace DotWeb.Controller
             o.DepartmentId = departmentId;
             o.Lang = getNowLnag();
             return o;
+        }
+        protected SerializeFile[] listImgFiles(string id, string file_kind, string category1, string category2)
+        {
+            string web_path_org = string.Format(upload_path_tpl_o, category1, category2, id, file_kind, "origin");
+            string server_path_org = Server.MapPath(web_path_org);
+            string web_path_icon = string.Format(upload_path_tpl_o, category1, category2, id, file_kind, "icon");
+
+            List<SerializeFile> l_files = new List<SerializeFile>();
+
+            string file_json_web_path = string.Format(upload_path_tpl_s, category1, category2, id, file_kind);
+            string file_json_server_path = Server.MapPath(file_json_web_path) + "\\file.json";
+
+            string web_path_s = string.Format(upload_path_tpl_s, category1, category2, id, file_kind, "origin");
+            string server_path_s = Server.MapPath(web_path_s);
+
+            if (System.IO.File.Exists(file_json_server_path))
+            {
+                var read_json = System.IO.File.ReadAllText(file_json_server_path);
+                var get_file_json_object = JsonConvert.DeserializeObject<IList<JsonFileInfo>>(read_json).OrderBy(x => x.sort);
+                foreach (var m in get_file_json_object)
+                {
+                    string get_file = server_path_org + "//" + m.fileName;
+                    if (System.IO.File.Exists(get_file))
+                    {
+                        FileInfo file_info = new FileInfo(get_file);
+                        SerializeFile file_object = new SerializeFile()
+                        {
+                            fileName = file_info.Name,
+                            fileKind = file_kind,
+                            iconPath = Url.Content(web_path_icon + "/" + file_info.Name),
+                            originPath = Url.Content(web_path_org + "/" + file_info.Name),
+                            size = file_info.Length,
+                            isImage = true
+                        };
+                        l_files.Add(file_object);
+                    }
+                }
+            }
+
+            return l_files.ToArray();
+        }
+        protected SerializeFile[] listDocFiles(string id, string file_kind, string category1, string category2)
+        {
+            string tpl_folder_path = string.Empty;
+            string server_path = string.Empty;
+
+            tpl_folder_path = string.Format(upload_path_tpl_s, category1, category2, id, file_kind);
+            server_path = Server.MapPath(tpl_folder_path);
+
+            List<SerializeFile> ls_files = new List<SerializeFile>();
+
+            if (Directory.Exists(server_path))
+            {
+                foreach (string fileString in Directory.GetFiles(server_path))
+                {
+                    FileInfo file_info = new FileInfo(fileString);
+
+                    ls_files.Add(new SerializeFile()
+                    {
+                        fileName = file_info.Name,
+                        fileKind = file_kind,
+                        iconPath = Url.Content(tpl_folder_path + "/" + file_info.Name),
+                        originPath = Url.Content(tpl_folder_path + "/" + file_info.Name),
+                        size = file_info.Length,
+                        isImage = false
+                    });
+                }
+            }
+            return ls_files.ToArray();
+        }
+        protected void handleImageSave(string file_name, string id, ImageUpScope fp, string file_kind, string category1, string category2)
+        {
+            BinaryReader binary_read = null;
+            string file_ext = Path.GetExtension(file_name); //取得副檔名
+            string[] ie_older_ver = new string[] { "6.0", "7.0", "8.0", "9.0" };
+
+            if (Request.Browser.Browser == "IE" && ie_older_ver.Any(x => x == Request.Browser.Version))
+            {
+                #region IE file stream handle
+                HttpPostedFile get_post_file = System.Web.HttpContext.Current.Request.Files[0];
+                if (!get_post_file.FileName.Equals(""))
+                    binary_read = new BinaryReader(get_post_file.InputStream);
+                #endregion
+            }
+            else
+                binary_read = new BinaryReader(Request.InputStream);
+
+            byte[] upload_file = binary_read.ReadBytes(System.Convert.ToInt32(binary_read.BaseStream.Length));
+
+            string web_path_org = string.Format(upload_path_tpl_o, category1, category2, id, file_kind, "origin");
+            string server_path_org = Server.MapPath(web_path_org);
+
+            #region 檔案上傳前檢查
+            if (fp.limitSize > 0) //檔案大小檢查
+                if (binary_read.BaseStream.Length > fp.limitSize)
+                    throw new LogicError("Log_Err_FileSizeOver");
+
+            if (fp.limitCount > 0 && Directory.Exists(server_path_org))
+            {
+                string[] Files = Directory.GetFiles(server_path_org);
+                if (Files.Count() >= fp.limitCount) //還沒存檔，因此Selet到等於的數量，再加上現在要存的檔案即算超過
+                    throw new LogicError("Log_Err_FileCountOver");
+            }
+
+            if (fp.allowExtType != null)
+                if (!fp.allowExtType.Contains(file_ext.ToLower()))
+                    throw new LogicError("Log_Err_AllowFileType");
+
+            if (fp.limitExtType != null)
+                if (fp.limitExtType.Contains(file_ext))
+                    throw new LogicError("Log_Err_LimitedFileType");
+            #endregion
+            #region 存檔區
+
+            if (fp.keepOrigin)
+            {
+                //原始檔
+                if (!System.IO.Directory.Exists(server_path_org)) { System.IO.Directory.CreateDirectory(server_path_org); }
+
+                FileStream file_stream = new FileStream(server_path_org + "\\" + file_name, FileMode.Create);
+                BinaryWriter binary_write = new BinaryWriter(file_stream);
+                binary_write.Write(upload_file);
+
+                file_stream.Close();
+                binary_write.Close();
+            }
+
+            //後台管理的ICON小圖
+            string web_path_icon = string.Format(upload_path_tpl_o, category1, category2, id, file_kind, "icon");
+            string server_path_icon = Server.MapPath(web_path_icon);
+            if (!System.IO.Directory.Exists(server_path_icon)) { System.IO.Directory.CreateDirectory(server_path_icon); }
+            MemoryStream smr = resizeImage(upload_file, 0, 90);
+            System.IO.File.WriteAllBytes(server_path_icon + "\\" + Path.GetFileName(file_name), smr.ToArray());
+            smr.Dispose();
+
+            //依據參數進行裁圖
+            if (fp.Parm.Count() > 1)//存兩種以上圖片大小
+            {
+                foreach (ImageSizeParm imSize in fp.Parm)
+                {
+                    string web_path_parm = string.Format(upload_path_tpl_o, category1, category2, id, file_kind, imSize.folderName);
+                    string server_path_parm = Server.MapPath(web_path_parm);
+                    if (!System.IO.Directory.Exists(server_path_parm)) { System.IO.Directory.CreateDirectory(server_path_parm); }//找不到路徑
+                    MemoryStream sm = resizeImage(upload_file, imSize.width, imSize.heigh);
+                    System.IO.File.WriteAllBytes(server_path_parm + "\\" + Path.GetFileName(file_name), sm.ToArray());
+                    sm.Dispose();
+                }
+            }
+            else if (fp.Parm.Count() > 0)
+            {//只存一種
+                string web_path_parm = string.Format(upload_path_tpl_s, category1, category2, id, file_kind);
+                string server_path_parm = Server.MapPath(web_path_parm);
+                foreach (ImageSizeParm imSize in fp.Parm)
+                {
+                    TypeConverter tc = TypeDescriptor.GetConverter(typeof(Bitmap));
+                    Bitmap im = (Bitmap)tc.ConvertFrom(upload_file);
+                    bool reSize = false;
+
+                    if (imSize.width != 0 & im.Width > imSize.width) { reSize = true; }
+                    if (imSize.heigh != 0 & im.Height > imSize.heigh) { reSize = true; }
+
+                    if (reSize)
+                    {
+                        MemoryStream sm = resizeImage(upload_file, imSize.width, imSize.heigh);
+                        System.IO.File.WriteAllBytes(server_path_parm + "\\" + Path.GetFileName(file_name), sm.ToArray());
+                        sm.Dispose();
+                    }
+                    else
+                    {
+                        FileStream file_stream_p = new FileStream(server_path_parm + "\\" + Path.GetFileName(file_name), FileMode.Create);
+                        BinaryWriter binary_write_p = new BinaryWriter(file_stream_p);
+                        binary_write_p.Write(upload_file);
+
+                        file_stream_p.Close();
+                        binary_write_p.Close();
+                    }
+                }
+            }
+            #endregion
+
+            #region Handle Json Info
+            string file_json_web_path = string.Format(upload_path_tpl_s, category1, category2, id, file_kind);
+            string file_json_server_path = Server.MapPath(file_json_web_path) + "\\file.json";
+
+            IList<JsonFileInfo> f = null;
+            int sort = 0;
+            if (System.IO.File.Exists(file_json_server_path))
+            {
+                var read_json = System.IO.File.ReadAllText(file_json_server_path);
+                f = JsonConvert.DeserializeObject<IList<JsonFileInfo>>(read_json);
+                if (f.Any(x => x.fileName == file_name))
+                {
+                    return;
+                }
+
+                sort = f.Count + 1;
+            }
+            else
+            {
+                f = new List<JsonFileInfo>();
+                sort = 1;
+            }
+
+            f.Add(new JsonFileInfo()
+            {
+                fileName = file_name,
+                sort = sort
+            });
+
+            var json_string = JsonConvert.SerializeObject(f);
+            System.IO.File.WriteAllText(file_json_server_path, json_string, Encoding.UTF8);
+            #endregion
+        }
+        protected void handleFileSave(string file_name, string id, FilesUpScope fp, string file_kind, string category1, string category2)
+        {
+            Stream file_stream = Request.InputStream;
+            BinaryReader binary_read = new BinaryReader(file_stream);
+            string file_ext = System.IO.Path.GetExtension(file_name);
+
+            #region IE file stream handle
+
+            string[] IEOlderVer = new string[] { "6.0", "7.0", "8.0", "9.0" };
+            System.Web.HttpPostedFile GetPostFile = null;
+            if (Request.Browser.Browser == "IE" && IEOlderVer.Any(x => x == Request.Browser.Version))
+            {
+                System.Web.HttpFileCollection collectFiles = System.Web.HttpContext.Current.Request.Files;
+                GetPostFile = collectFiles[0];
+                if (!GetPostFile.FileName.Equals(""))
+                {
+                    binary_read = new BinaryReader(GetPostFile.InputStream);
+                }
+            }
+
+            Byte[] fileContents = { };
+
+            while (binary_read.BaseStream.Position < binary_read.BaseStream.Length - 1)
+            {
+                Byte[] buffer = new Byte[binary_read.BaseStream.Length - 1];
+                int read_line = binary_read.Read(buffer, 0, buffer.Length);
+                Byte[] dummy = fileContents.Concat(buffer).ToArray();
+                fileContents = dummy;
+                dummy = null;
+            }
+            #endregion
+
+            string web_path_org = string.Format(upload_path_tpl_s, category1, category2, id, file_kind);
+            string server_path_org = Server.MapPath(web_path_org);
+
+            #region 檔案上傳前檢查
+            if (fp.limitSize > 0)
+                if (binary_read.BaseStream.Length > fp.limitSize)
+                    throw new LogicError("Log_Err_FileSizeOver");
+
+            if (fp.limitCount > 0 && Directory.Exists(server_path_org))
+            {
+                string[] Files = Directory.GetFiles(server_path_org);
+                if (Files.Count() >= fp.limitCount)
+                    throw new LogicError("Log_Err_FileCountOver");
+            }
+
+            if (fp.allowExtType != null)
+                if (!fp.allowExtType.Contains(file_ext.ToLower()))
+                    throw new LogicError("Log_Err_AllowFileType");
+
+            if (fp.limitExtType != null)
+                if (fp.limitExtType.Contains(file_ext))
+                    throw new LogicError("Log_Err_LimitedFileType");
+            #endregion
+
+            #region 存檔區
+
+            if (!System.IO.Directory.Exists(server_path_org)) { System.IO.Directory.CreateDirectory(server_path_org); }
+
+            FileStream write_stream = new FileStream(server_path_org + "\\" + file_name, FileMode.Create);
+            BinaryWriter binary_write = new BinaryWriter(write_stream);
+            binary_write.Write(fileContents);
+
+            file_stream.Close();
+            write_stream.Close();
+            binary_write.Close();
+
+            #endregion
+        }
+        protected void DeleteSysFile(string id, string file_kind, string file_name, ImageUpScope im, string category1, string category2)
+        {
+            string tpl_FolderPath = Server.MapPath(string.Format(upload_path_tpl_s, category1, category2, id, file_kind));
+
+            string handle_delete_file = tpl_FolderPath + "/" + file_name;
+            if (System.IO.File.Exists(handle_delete_file))
+                System.IO.File.Delete(handle_delete_file);
+            #region Delete Run
+            if (Directory.Exists(tpl_FolderPath))
+            {
+                var folders = Directory.GetDirectories(tpl_FolderPath);
+                foreach (var folder in folders)
+                {
+                    string herefile = folder + "\\" + file_name;
+                    if (System.IO.File.Exists(herefile))
+                        System.IO.File.Delete(herefile);
+                }
+            }
+            #endregion
+
+            #region Handle Json Info
+            string file_json_web_path = string.Format(upload_path_tpl_s, category1, category2, id, file_kind);
+            string file_json_server_path = Server.MapPath(file_json_web_path) + "\\file.json";
+
+            IList<JsonFileInfo> get_file_json_object = null;
+            if (System.IO.File.Exists(file_json_server_path))
+            {
+                var read_json = System.IO.File.ReadAllText(file_json_server_path);
+                get_file_json_object = JsonConvert.DeserializeObject<IList<JsonFileInfo>>(read_json);
+                var get_file_object = get_file_json_object.Where(x => x.fileName == file_name).FirstOrDefault();
+                if (get_file_object != null)
+                {
+                    get_file_json_object.Remove(get_file_object);
+                    int i = 1;
+                    foreach (var file_object in get_file_json_object)
+                    {
+                        file_object.sort = i;
+                        i++;
+                    }
+                    var json_string = JsonConvert.SerializeObject(get_file_json_object);
+                    System.IO.File.WriteAllText(file_json_server_path, json_string, Encoding.UTF8);
+                }
+            }
+            #endregion
+
         }
         #region 寄信相關
         //將變數套用至信件版面

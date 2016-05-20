@@ -36,5 +36,8 @@ namespace ProcCore.Business.DB0
         public virtual DbSet<i_SN> i_SN { get; set; }
         public virtual DbSet<i_UserLoginLog> i_UserLoginLog { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Product_Category_L1> Product_Category_L1 { get; set; }
+        public virtual DbSet<Product_Category_L2> Product_Category_L2 { get; set; }
     }
 }
