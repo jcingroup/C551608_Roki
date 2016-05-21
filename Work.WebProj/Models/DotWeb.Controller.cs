@@ -1047,7 +1047,7 @@ namespace DotWeb.Controller
         //protected Log.LogPlamInfo plamInfo = new Log.LogPlamInfo() { AllowWrite = true };
         //protected readonly string sessionShoppingString = "CestLaVie.Shopping";
         //protected readonly string sessionMemberLoginString = "CestLaVie.loginMail";
-        private readonly string sysUpFilePathTpl = "~/_Code/SysUpFiles/{0}.{1}/{2}/{3}/{4}";
+        private readonly string sysUpFilePathTpl = "~/_Code/SysUpFiles/{0}/{1}/{2}/{3}/{4}";
         private string getImg_path_tpl = "~/_Code/SysUpFiles/{0}/{1}/{2}/{3}";
         protected WebInfo wi;
         protected string MemberId;
@@ -1208,6 +1208,30 @@ namespace DotWeb.Controller
         public string ImgSrc(string AreaName, string ContorllerName, Int32 Id, String FilesKind, Int32 ImageSizeTRype)
         {
             String ImgSizeString = "s_" + ImageSizeTRype;
+            String SearchPath = String.Format(sysUpFilePathTpl, AreaName, ContorllerName, Id, FilesKind, ImgSizeString);
+            String FolderPth = Server.MapPath(SearchPath);
+
+            if (Directory.Exists(FolderPth))
+            {
+                String[] SFiles = Directory.GetFiles(FolderPth);
+
+                if (SFiles.Length > 0)
+                {
+                    FileInfo f = new FileInfo(SFiles[0]);
+                    return Url.Content(SearchPath) + "/" + f.Name;
+                }
+                else
+                {
+                    return Url.Content("~/Content/images/nopic.png");
+                }
+
+            }
+            else
+                return Url.Content("~/Content/images/nopic.png");
+        }
+        public string ImgSrc(string AreaName, string ContorllerName, Int32 Id, String FilesKind, string ImageSizeTRype)
+        {
+            String ImgSizeString = "" + ImageSizeTRype;
             String SearchPath = String.Format(sysUpFilePathTpl, AreaName, ContorllerName, Id, FilesKind, ImgSizeString);
             String FolderPth = Server.MapPath(SearchPath);
 

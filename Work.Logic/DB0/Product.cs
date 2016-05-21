@@ -34,6 +34,7 @@ namespace ProcCore.Business.DB0
         public string modal { get; set; }
         public string standard { get; set; }
         public string description { get; set; }
+        public bool is_new { get; set; }
     
         public virtual Product_Category_L1 Product_Category_L1 { get; set; }
         public virtual Product_Category_L2 Product_Category_L2 { get; set; }

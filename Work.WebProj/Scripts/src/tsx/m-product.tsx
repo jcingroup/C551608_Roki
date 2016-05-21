@@ -605,14 +605,6 @@ namespace Product {
                                         <small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>
                                     </div>
                                 </div>
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">附件檔</label>
-                                    <div className="col-xs-8">
-                                        <CommCmpt.MasterFileUpload FileKind="file1" MainId={fieldData.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'}
-                                            url_list={gb_approot + 'Active/ProductData/aj_FList'} url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} url_download={gb_approot + 'Active/ProductData/aj_FDown'} />
-                                        <small className="help-block">最多1個檔案, 每個檔案最大不可超過4MB; 接受檔案類型為pdf、doc、docx、xls、xlsx、txt、png、jpg、jpeg的檔案</small>
-                                    </div>
-                                </div>
                             </div>
 
                             <div className="col-xs-12">
@@ -623,19 +615,6 @@ namespace Product {
                                             value={fieldData.description} onChange={this.changeFDValue.bind(this, 'description') }/>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <div className="form-group clear bg-warning">
-                                <div className="col-xs-6">
-                                    <label className="col-xs-3 control-label">證書文件</label>
-                                    <small className="col-xs-9 help-block">每項證書最多1張圖，建議尺寸寬度不超過 1000px, 每張最大不可超過2MB</small>
-                                </div>
-                            </div>
-
-                            <div className="alert alert-warning alert-dismissible" role="alert">
-                                編輯器上傳圖片或新增表格等時，請勿設定寬度及高度(將數字刪除) ，以免行動裝置顯示時會跑版。<br/>
-                                ps.youtube 可勾選「用自適應縮放模式」
                             </div>
 
                             <div className="col-xs-12">

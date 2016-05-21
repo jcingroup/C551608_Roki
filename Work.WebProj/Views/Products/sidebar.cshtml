@@ -13,7 +13,7 @@
                     {
                         if (list.id == Model.now_category_l2)
                         {
-                            <a href="~/Products/list" class="current">@list.name<small>(15)</small></a>
+                            <a href="~/Products/list" class="current">@list.name<small>(@item.count)</small></a>
                         }
                         else
                         {
@@ -30,7 +30,7 @@
                 <dd class="collapse-content">
                     @foreach (var list in item.categoryL2Data)
                     {
-                        <a href="~/Products/list">@list.name<small>(15)</small></a>
+                        <a href="~/Products/list">@list.name<small>(@list.count)</small></a>
                     }
                 </dd>
             </dl>

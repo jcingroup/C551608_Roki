@@ -14,11 +14,11 @@
 @Html.Partial("sidebar", Model.menuStroe)
 
 <section class="content">
-    <h2 class="title">@Model.name_category_l2 <small>(15)</small></h2>
+    <h2 class="title">@Model.name_category_l2 <small>(@Model.count_category_l2)</small></h2>
     @foreach (var item in Model.products)
     {
         <figure class="product-list">
-            <img src="~/Content/images/Products/list.jpg">
+            <img src="@item.src">
             <a href="~/Products/content?id=@item.product_id">MORE</a>
             <figcaption>
                 <small>@item.product_name</small>

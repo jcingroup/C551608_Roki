@@ -30,8 +30,10 @@ namespace DotWeb.WebApp.Controllers
                     categoryL2Data = x.Product_Category_L2.OrderBy(y => y.l2_sort).Select(y => new CategoryL2Data()
                     {
                         id = y.l1_id,
-                        name = y.l2_name
-                    })
+                        name = y.l2_name,
+                        count = y.Product.Count()
+                    }),
+                    count = x.Product.Count()
                 });
 
             int main_category_id = 0;
@@ -39,6 +41,9 @@ namespace DotWeb.WebApp.Controllers
 
             string main_category_name = "";
             string sub_category_name = "";
+
+            int main_category_count = 0;
+            int sub_category_count = 0;
 
             var main_category = menus.FirstOrDefault();
             var sub_category = menus.FirstOrDefault().categoryL2Data.FirstOrDefault();
@@ -49,11 +54,14 @@ namespace DotWeb.WebApp.Controllers
             main_category_name = main_category.name;
             sub_category_name = sub_category.name;
 
+            main_category_count = db0.Product_Category_L1.Where(x => x.product_category_l1_id == main_category_id).Count();
+            sub_category_count = db0.Product_Category_L2.Where(x => x.product_category_l2_id == main_category_id).Count();
 
             CategoryStroe categoryStroe = new CategoryStroe();
             categoryStroe.categoryL1Data = menus;
             categoryStroe.now_category_l1 = main_category_id;
             categoryStroe.now_category_l2 = sub_category_id;
+
 
             var items = db0
                 .Product
@@ -67,11 +75,18 @@ namespace DotWeb.WebApp.Controllers
 
                 }).ToList();
 
+            foreach (var item in items)
+            {
+                item.src = ImgSrc("Active", "ProductData", item.product_id, "img1", "origin");
+            }
+
             ProductList md = new ProductList();
             md.products = items;
             md.menuStroe = categoryStroe;
             md.name_category_l1 = main_category_name;
             md.name_category_l2 = sub_category_name;
+            md.count_category_l1 = main_category_count;
+            md.count_category_l2 = sub_category_count;
 
             return View(md);
         }
@@ -89,8 +104,10 @@ namespace DotWeb.WebApp.Controllers
                     categoryL2Data = x.Product_Category_L2.OrderBy(y => y.l2_sort).Select(y => new CategoryL2Data()
                     {
                         id = y.l1_id,
-                        name = y.l2_name
-                    })
+                        name = y.l2_name,
+                        count = y.Product.Count()
+                    }),
+                    count = x.Product.Count()
                 });
 
             int main_category_id = 0;
@@ -98,6 +115,9 @@ namespace DotWeb.WebApp.Controllers
 
             string main_category_name = "";
             string sub_category_name = "";
+
+            int main_category_count = 0;
+            int sub_category_count = 0;
 
             var main_category = menus.FirstOrDefault();
             var sub_category = menus.FirstOrDefault().categoryL2Data.FirstOrDefault();
@@ -114,11 +134,18 @@ namespace DotWeb.WebApp.Controllers
             categoryStroe.now_category_l2 = sub_category_id;
 
             var item = db0.Product.Find(id);
+
+            main_category_count = db0.Product_Category_L1.Where(x => x.product_category_l1_id == item.l1_id).Count();
+            sub_category_count = db0.Product_Category_L2.Where(x => x.product_category_l2_id == item.l2_id).Count();
+
             ProductContent md = new ProductContent();
             md.product = item;
             md.menuStroe = categoryStroe;
             md.name_category_l1 = main_category_name;
             md.name_category_l2 = sub_category_name;
+            md.count_category_l1 = main_category_count;
+            md.count_category_l2 = sub_category_count;
+            md.src = ImgSrc("Active", "ProductData", item.product_id, "img1", "origin");
 
             return View(md);
         }
@@ -135,6 +162,9 @@ namespace DotWeb.WebApp.Controllers
         public CategoryStroe menuStroe { get; set; }
         public string name_category_l1 { get; set; }
         public string name_category_l2 { get; set; }
+
+        public int count_category_l1 { get; set; }
+        public int count_category_l2 { get; set; }
     }
 
     public class CategoryStroe
@@ -147,12 +177,14 @@ namespace DotWeb.WebApp.Controllers
     {
         public int id { get; set; }
         public string name { get; set; }
+        public int count { get; set; }
         public IEnumerable<CategoryL2Data> categoryL2Data { get; set; }
     }
     public class CategoryL2Data
     {
         public int id { get; set; }
         public string name { get; set; }
+        public int count { get; set; }
     }
     public class ProductIntro
     {
@@ -164,6 +196,7 @@ namespace DotWeb.WebApp.Controllers
         public string power { get; set; }
         public string feature { get; set; }
         public string technical_specification { get; set; }
+        public string src { get; set; }
     }
 
     public class ProductContent
@@ -172,6 +205,10 @@ namespace DotWeb.WebApp.Controllers
         public CategoryStroe menuStroe { get; set; }
         public string name_category_l1 { get; set; }
         public string name_category_l2 { get; set; }
+        public int count_category_l1 { get; set; }
+        public int count_category_l2 { get; set; }
+        public string src { get; set; }
+
     }
 
 
