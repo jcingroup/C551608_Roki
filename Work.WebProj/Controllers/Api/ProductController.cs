@@ -38,7 +38,6 @@ namespace DotWeb.Api
                         product_id = x.product_id,
                         l1_id = x.l1_id,
                         l2_id = x.l2_id,
-                        l3_id = x.l3_id,
                         l1_name = x.Product_Category_L1.l1_name,
                         l2_name = x.Product_Category_L2.l2_name,
                         modal = x.modal,
@@ -100,10 +99,7 @@ namespace DotWeb.Api
 
                 item.l1_id = md.l1_id;
                 item.l2_id = md.l2_id;
-                item.l3_id = md.l3_id;
-                item.power = md.power;
-                item.feature = md.feature;
-                item.technical_specification = md.technical_specification;
+
                 item.sort = md.sort;
                 item.i_Hide = md.i_Hide;
                 item.i_Lang = md.i_Lang;

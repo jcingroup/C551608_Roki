@@ -6,6 +6,9 @@
         category_stroe = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
     }
 
+    Dictionary<string, string> langdata = new Dictionary<string, string> { };
+    var lang = Request.Cookies[CommWebSetup.WebCookiesId + ".Lang"];
+
 }
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -62,11 +65,11 @@
                                     {
                                         if (list.id == ViewBag.sub_category_id)
                                         {
-                                            <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
+                                    <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
                                         }
                                         else
                                         {
-                                            <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
+                                    <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
                                         }
                                     }
                                 </div>
@@ -119,17 +122,13 @@
                 </ul>
                 <div class="swiper-pagination"></div>
             </div><!-- banner //-->
-
             <main id="main">
-
                 <ul class="breadcrumb wrap">
                     <li><a href="~/index">HOME</a></li>
                     @RenderSection("breadCrumb", required: false)
                     <li>@ViewBag.Target</li> @* 當前頁名稱 *@
                 </ul>
-
                 @RenderBody()
-
             </main>
         }
 

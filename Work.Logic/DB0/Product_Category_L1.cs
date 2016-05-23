@@ -17,8 +17,8 @@ namespace ProcCore.Business.DB0
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product_Category_L1()
         {
-            this.Product = new HashSet<Product>();
             this.Product_Category_L2 = new HashSet<Product_Category_L2>();
+            this.Product = new HashSet<Product>();
         }
     
         public int product_category_l1_id { get; set; }
@@ -35,8 +35,8 @@ namespace ProcCore.Business.DB0
         public string i_Lang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product_Category_L2> Product_Category_L2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

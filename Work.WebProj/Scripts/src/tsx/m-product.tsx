@@ -427,7 +427,6 @@ namespace Product {
                                                         <option value="false">顯示</option>
                                                         <option value="true">隱藏</option>
                                                     </select> { }
-                                                    <br />
                                                     <label>語系</label> { }
                                                     <select className="form-control"
                                                         onChange={this.setLangVal.bind(this, this.props.gdName, 'i_Lang') }
@@ -435,9 +434,6 @@ namespace Product {
                                                         <option value="">全部</option>
 
                                                     </select> { }
-                                                    <label>第一層分類</label> { }
-
-                                                    <label>第二層分類</label> { }
                                                     <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -492,7 +488,22 @@ namespace Product {
                     );
             }
             else if (this.state.edit_type == 1 || this.state.edit_type == 2) {
-                let fieldData = this.state.fieldData;
+                let field = this.state.fieldData;
+
+                let file_upload = null;
+                if (this.state.edit_type == 2) {
+                    file_upload = <div className="col-xs-6">
+                        <div className="form-group">
+                            <label className="col-xs-2 control-label">產品圖</label>
+                            <div className="col-xs-8">
+                                <CommCmpt.MasterImageUpload FileKind="img1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'} url_list={gb_approot + 'Active/ProductData/aj_FList'}
+                                    url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} />
+                                <small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+
                 ////分類-選單內容
                 outHtml = (
                     <div>
@@ -505,7 +516,7 @@ namespace Product {
                                     <div className="col-xs-6">
                                         <select className="form-control"
                                             onChange={this.changeLang.bind(this, this.props.fdName, 'i_Lang') }
-                                            value={fieldData.i_Lang} >
+                                            value={field.i_Lang} >
                                             <option value=""></option>
                                             <option value="zh-TW">中文</option>
                                             <option value="en-US">英文</option>
@@ -518,7 +529,7 @@ namespace Product {
                                     <div className="col-xs-3">
                                         <select className="form-control"
                                             onChange={this.changeCategoryL1.bind(this, this.props.fdName, 'l1_id') }
-                                            value={fieldData.l1_id} >
+                                            value={field.l1_id} >
                                             <option value=""></option>
                                             {
                                                 this.state.option_category_l1.map(function (item, i) {
@@ -530,7 +541,7 @@ namespace Product {
                                     <div className="col-xs-3">
                                         <select className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'l2_id') }
-                                            value={fieldData.l2_id} >
+                                            value={field.l2_id} >
                                             <option value=""></option>
                                             {
                                                 this.state.option_category_l2.map(function (item, i) {
@@ -545,7 +556,7 @@ namespace Product {
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">排序</label>
                                     <div className="col-xs-6">
-                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={fieldData.sort}  />
+                                        <input type="number" className="form-control" onChange={this.changeFDValue.bind(this, 'sort') } value={field.sort}  />
                                     </div>
                                     <small className="col-xs-3 help-inline">數字越大越前面</small>
                                 </div>
@@ -557,7 +568,7 @@ namespace Product {
                                                 <input type="radio"
                                                     name="i_Hide"
                                                     value={true}
-                                                    checked={fieldData.i_Hide === true}
+                                                    checked={field.i_Hide === true}
                                                     onChange={this.changeFDValue.bind(this, 'i_Hide') }
                                                     />
                                                 <span>隱藏</span>
@@ -568,7 +579,7 @@ namespace Product {
                                                 <input type="radio"
                                                     name="i_Hide"
                                                     value={false}
-                                                    checked={fieldData.i_Hide === false}
+                                                    checked={field.i_Hide === false}
                                                     onChange={this.changeFDValue.bind(this, 'i_Hide') }
                                                     />
                                                 <span>顯示</span>
@@ -591,14 +602,14 @@ namespace Product {
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
                                     <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={fieldData.modal} maxLength={64} required />
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={field.modal} maxLength={64} required />
                                     </div>
                                 </div>
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">規格</label>
                                     <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'standard') } value={fieldData.standard} maxLength={64} required />
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'standard') } value={field.standard} maxLength={64} required />
                                     </div>
                                 </div>
 
@@ -608,7 +619,7 @@ namespace Product {
                                     <div className="col-xs-6">
                                         <select className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'is_new') }
-                                            value={fieldData.is_new} >
+                                            value={field.is_new} >
                                             <option value="false">否</option>
                                             <option value="true">是</option>
                                         </select>
@@ -616,23 +627,13 @@ namespace Product {
                                 </div>
 
                             </div>
-                            <div className="col-xs-6">
-                                <div className="form-group">
-                                    <label className="col-xs-2 control-label">產品圖</label>
-                                    <div className="col-xs-8">
-                                        <CommCmpt.MasterImageUpload FileKind="img1" MainId={fieldData.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'} url_list={gb_approot + 'Active/ProductData/aj_FList'}
-                                            url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} />
-                                        <small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>
-                                    </div>
-                                </div>
-                            </div>
-
+                            {file_upload}
                             <div className="col-xs-12">
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">詳細介紹</label>
                                     <div className="col-xs-10">
                                         <textarea className="form-control" id="description" name="description"
-                                            value={fieldData.description} onChange={this.changeFDValue.bind(this, 'description') }/>
+                                            value={field.description} onChange={this.changeFDValue.bind(this, 'description') }/>
                                     </div>
                                 </div>
                             </div>

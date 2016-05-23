@@ -15,12 +15,13 @@ namespace ProcCore.Business.DB0
     public partial class Product
     {
         public int product_id { get; set; }
-        public string power { get; set; }
-        public string feature { get; set; }
-        public string technical_specification { get; set; }
+        public string product_name { get; set; }
+        public string modal { get; set; }
+        public string standard { get; set; }
+        public string description { get; set; }
+        public bool is_new { get; set; }
         public int l1_id { get; set; }
         public int l2_id { get; set; }
-        public int l3_id { get; set; }
         public int sort { get; set; }
         public bool i_Hide { get; set; }
         public string i_InsertUserID { get; set; }
@@ -30,11 +31,6 @@ namespace ProcCore.Business.DB0
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
-        public string product_name { get; set; }
-        public string modal { get; set; }
-        public string standard { get; set; }
-        public string description { get; set; }
-        public bool is_new { get; set; }
     
         public virtual Product_Category_L1 Product_Category_L1 { get; set; }
         public virtual Product_Category_L2 Product_Category_L2 { get; set; }

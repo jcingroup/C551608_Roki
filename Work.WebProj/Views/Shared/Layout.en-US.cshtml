@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using DotWeb.Controller;
+@{
+    IEnumerable<CategoryL1Data> category_stroe = null;
+    if (ViewBag.CategoryStroe != null)
+    {
+        category_stroe = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
+    }
+
+}
+<!DOCTYPE html>
 <html lang="en-US">
 <!-- saved from url=(0014)about:internet -->
 
@@ -11,8 +20,8 @@
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="bookmark" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="bookmark" href="/favicon.ico" />
     <link rel="stylesheet" href="~/Content/css/vendor/swiper.css">
     <link href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -41,40 +50,31 @@
                 <a href="~/AboutUs">ABOUT US</a>
                 <a href="~/Products">PRODUCTS</a>
                 <ul class="sub-nav">
-                    <li>
-                        @* 當前分類 class+ current
-                        <h4 class="collapse-title current" data-toggle="collapse">SWITCH</h4>  *@
-                        <h4 class="collapse-title" data-toggle="collapse">SWITCH</h4>
-                        <div class="collapse-content">
-                            @* 當前子分類 class + current
-                            <a href="~/Products/list" class="current">DETECT SWITCH<small>(15)</small></a> *@
-                            <a href="~/Products/list">DETECT SWITCH<small>(15)</small></a>
-                            <a href="~/Products/list">SLIDE SWITCH<small>(15)</small></a>
-                            <a href="~/Products/list">TACT SWITCH<small>(6)</small></a>
-                            <a href="~/Products/list">DIP SWITCH<small>(15)</small></a>
-                            <a href="~/Products/list">PUSH SWITCH<small>(15)</small></a>
-                        </div>
-                    </li>
+                    @if (category_stroe != null)
+                    {
+                        foreach (var item in category_stroe)
+                        {
 
-                    <li>
-                        <h4 class="collapse-title" data-toggle="collapse">JACK</h4>
-                        <div class="collapse-content">
-                            <a href="~/Products/list">DC JACK<small>(15)</small></a>
-                            <a href="~/Products/list">PHONE JACK<small>(15)</small></a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <h4 class="collapse-title" data-toggle="collapse">CONNECTOR</h4>
-                        <div class="collapse-content">
-                            <a href="~/Products/list">USB2.0 CONNECTOR<small>(15)</small></a>
-                            <a href="~/Products/list">USB3.0 CONNECTOR<small>(15)</small></a>
-                            <a href="~/Products/list">HDMI CONNECTOR<small>(15)</small></a>
-                            <a href="~/Products/list">MICRO USB<small>(15)</small></a>
-                        </div>
-                    </li>
+                            <li>
+                                <h4 class="collapse-title" data-toggle="collapse">@item.name</h4>
+                                <div class="collapse-content">
+                                    @foreach (var list in item.categoryL2Data)
+                                    {
+                                        if (list.id == ViewBag.sub_category_id)
+                                        {
+                                            <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
+                                        }
+                                    }
+                                </div>
+                            </li>
+                        }
+                    }
                 </ul>
-    			<a href="~/ContactUs">CONTACT US</a>
+                <a href="~/ContactUs">CONTACT US</a>
             </nav>
 
             <nav class="lang-nav dropdown">
@@ -107,7 +107,9 @@
                 @RenderBody()
             </main>
 
-        } else {
+        }
+        else
+        {
             <div id="banner" class="swiper-container">
                 <ul class="swiper-wrapper">
                     @* 圖片尺寸:w1920 x h238 *@
@@ -145,9 +147,13 @@
                 </nav>
                 <nav class="col-8">
                     <h4>PRODUCTS</h4>
-                    <a href="">SWITCH</a>
-                    <a href="">JACK</a>
-                    <a href="">CONNECTOR</a>
+                    @if (category_stroe != null)
+                    {
+                        foreach (var item in category_stroe)
+                        {
+                            <a href="~/Products/list?id=@item.id">@item.name</a>
+                        }
+                    }
                 </nav>
             </div>
 

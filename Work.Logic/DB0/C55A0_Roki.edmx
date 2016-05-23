@@ -156,12 +156,8 @@
           <Property Name="standard" Type="nvarchar" MaxLength="100" />
           <Property Name="description" Type="ntext" />
           <Property Name="is_new" Type="bit" Nullable="false" />
-          <Property Name="power" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="feature" Type="ntext" />
-          <Property Name="technical_specification" Type="ntext" />
           <Property Name="l1_id" Type="int" Nullable="false" />
           <Property Name="l2_id" Type="int" Nullable="false" />
-          <Property Name="l3_id" Type="int" Nullable="false" />
           <Property Name="sort" Type="int" Nullable="false" />
           <Property Name="i_Hide" Type="bit" Nullable="false" />
           <Property Name="i_InsertUserID" Type="nvarchar" MaxLength="128" />
@@ -502,9 +498,13 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
-          <EntitySet Name="Product" EntityType="C55A0_RokiModel.Product" />
           <EntitySet Name="Product_Category_L1" EntityType="C55A0_RokiModel.Product_Category_L1" />
           <EntitySet Name="Product_Category_L2" EntityType="C55A0_RokiModel.Product_Category_L2" />
+          <AssociationSet Name="FK_Product_Category_L2_Product_Category_L1" Association="C55A0_RokiModel.FK_Product_Category_L2_Product_Category_L1">
+            <End Role="Product_Category_L1" EntitySet="Product_Category_L1" />
+            <End Role="Product_Category_L2" EntitySet="Product_Category_L2" />
+          </AssociationSet>
+          <EntitySet Name="Product" EntityType="C55A0_RokiModel.Product" />
           <AssociationSet Name="FK_Product_Product_Category_L1" Association="C55A0_RokiModel.FK_Product_Product_Category_L1">
             <End Role="Product_Category_L1" EntitySet="Product_Category_L1" />
             <End Role="Product" EntitySet="Product" />
@@ -513,39 +513,7 @@
             <End Role="Product_Category_L2" EntitySet="Product_Category_L2" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Category_L2_Product_Category_L1" Association="C55A0_RokiModel.FK_Product_Category_L2_Product_Category_L1">
-            <End Role="Product_Category_L1" EntitySet="Product_Category_L1" />
-            <End Role="Product_Category_L2" EntitySet="Product_Category_L2" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="power" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="feature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="technical_specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="l1_id" Type="Int32" Nullable="false" />
-          <Property Name="l2_id" Type="Int32" Nullable="false" />
-          <Property Name="l3_id" Type="Int32" Nullable="false" />
-          <Property Name="sort" Type="Int32" Nullable="false" />
-          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
-          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_InsertDeptID" Type="Int32" />
-          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="i_UpdateDeptID" Type="Int32" />
-          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
-          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Product_Category_L1" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L1" FromRole="Product" ToRole="Product_Category_L1" />
-          <NavigationProperty Name="Product_Category_L2" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L2" FromRole="Product" ToRole="Product_Category_L2" />
-          <Property Name="product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="modal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="standard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="is_new" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="Product_Category_L1">
           <Key>
             <PropertyRef Name="product_category_l1_id" />
@@ -562,8 +530,8 @@
           <Property Name="i_UpdateDeptID" Type="Int32" />
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L1" FromRole="Product_Category_L1" ToRole="Product" />
           <NavigationProperty Name="Product_Category_L2" Relationship="C55A0_RokiModel.FK_Product_Category_L2_Product_Category_L1" FromRole="Product_Category_L1" ToRole="Product_Category_L2" />
+          <NavigationProperty Name="Product" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L1" FromRole="Product_Category_L1" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product_Category_L2">
           <Key>
@@ -582,8 +550,44 @@
           <Property Name="i_UpdateDeptID" Type="Int32" />
           <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
           <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L2" FromRole="Product_Category_L2" ToRole="Product" />
           <NavigationProperty Name="Product_Category_L1" Relationship="C55A0_RokiModel.FK_Product_Category_L2_Product_Category_L1" FromRole="Product_Category_L2" ToRole="Product_Category_L1" />
+          <NavigationProperty Name="Product" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L2" FromRole="Product_Category_L2" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_Category_L2_Product_Category_L1">
+          <End Type="C55A0_RokiModel.Product_Category_L1" Role="Product_Category_L1" Multiplicity="1" />
+          <End Type="C55A0_RokiModel.Product_Category_L2" Role="Product_Category_L2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Category_L1">
+              <PropertyRef Name="product_category_l1_id" />
+            </Principal>
+            <Dependent Role="Product_Category_L2">
+              <PropertyRef Name="l1_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="modal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="standard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_new" Type="Boolean" Nullable="false" />
+          <Property Name="l1_id" Type="Int32" Nullable="false" />
+          <Property Name="l2_id" Type="Int32" Nullable="false" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="i_Hide" Type="Boolean" Nullable="false" />
+          <Property Name="i_InsertUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_InsertDeptID" Type="Int32" />
+          <Property Name="i_InsertDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_UpdateUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="i_UpdateDeptID" Type="Int32" />
+          <Property Name="i_UpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="i_Lang" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Product_Category_L1" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L1" FromRole="Product" ToRole="Product_Category_L1" />
+          <NavigationProperty Name="Product_Category_L2" Relationship="C55A0_RokiModel.FK_Product_Product_Category_L2" FromRole="Product" ToRole="Product_Category_L2" />
         </EntityType>
         <Association Name="FK_Product_Product_Category_L1">
           <End Type="C55A0_RokiModel.Product_Category_L1" Role="Product_Category_L1" Multiplicity="1" />
@@ -606,18 +610,6 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="l2_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Category_L2_Product_Category_L1">
-          <End Type="C55A0_RokiModel.Product_Category_L1" Role="Product_Category_L1" Multiplicity="1" />
-          <End Type="C55A0_RokiModel.Product_Category_L2" Role="Product_Category_L2" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product_Category_L1">
-              <PropertyRef Name="product_category_l1_id" />
-            </Principal>
-            <Dependent Role="Product_Category_L2">
-              <PropertyRef Name="l1_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -778,33 +770,6 @@
               <ScalarProperty Name="menu_id" ColumnName="menu_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="C55A0_RokiModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="is_new" ColumnName="is_new" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="standard" ColumnName="standard" />
-                <ScalarProperty Name="modal" ColumnName="modal" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
-                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
-                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
-                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
-                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
-                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
-                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
-                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
-                <ScalarProperty Name="sort" ColumnName="sort" />
-                <ScalarProperty Name="l3_id" ColumnName="l3_id" />
-                <ScalarProperty Name="l2_id" ColumnName="l2_id" />
-                <ScalarProperty Name="l1_id" ColumnName="l1_id" />
-                <ScalarProperty Name="technical_specification" ColumnName="technical_specification" />
-                <ScalarProperty Name="feature" ColumnName="feature" />
-                <ScalarProperty Name="power" ColumnName="power" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Product_Category_L1">
             <EntityTypeMapping TypeName="C55A0_RokiModel.Product_Category_L1">
               <MappingFragment StoreEntitySet="Product_Category_L1">
@@ -839,6 +804,29 @@
                 <ScalarProperty Name="l2_name" ColumnName="l2_name" />
                 <ScalarProperty Name="l1_id" ColumnName="l1_id" />
                 <ScalarProperty Name="product_category_l2_id" ColumnName="product_category_l2_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="C55A0_RokiModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="i_Lang" ColumnName="i_Lang" />
+                <ScalarProperty Name="i_UpdateDateTime" ColumnName="i_UpdateDateTime" />
+                <ScalarProperty Name="i_UpdateDeptID" ColumnName="i_UpdateDeptID" />
+                <ScalarProperty Name="i_UpdateUserID" ColumnName="i_UpdateUserID" />
+                <ScalarProperty Name="i_InsertDateTime" ColumnName="i_InsertDateTime" />
+                <ScalarProperty Name="i_InsertDeptID" ColumnName="i_InsertDeptID" />
+                <ScalarProperty Name="i_InsertUserID" ColumnName="i_InsertUserID" />
+                <ScalarProperty Name="i_Hide" ColumnName="i_Hide" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="l2_id" ColumnName="l2_id" />
+                <ScalarProperty Name="l1_id" ColumnName="l1_id" />
+                <ScalarProperty Name="is_new" ColumnName="is_new" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="standard" ColumnName="standard" />
+                <ScalarProperty Name="modal" ColumnName="modal" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

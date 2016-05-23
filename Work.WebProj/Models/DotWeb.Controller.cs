@@ -1284,7 +1284,7 @@ namespace DotWeb.Controller
         }
         public RedirectResult SetLanguage(string L, string A)
         {
-            HttpCookie WebLang = new HttpCookie(DotWeb.CommSetup.CommWebSetup.WebCookiesId + ".Lang", L);
+            HttpCookie WebLang = new HttpCookie(CommWebSetup.WebCookiesId + ".Lang", L);
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(WebLang.Value);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(WebLang.Value);
             Response.Cookies.Add(WebLang);

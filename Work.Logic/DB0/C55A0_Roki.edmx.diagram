@@ -18,12 +18,12 @@
         <EntityTypeShape EntityType="C55A0_RokiModel.Menu" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
         <AssociationConnector Association="C55A0_RokiModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="C55A0_RokiModel.MenuRole" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="C55A0_RokiModel.Product" Width="1.5" PointX="5.25" PointY="16.125" />
         <EntityTypeShape EntityType="C55A0_RokiModel.Product_Category_L1" Width="1.5" PointX="0.75" PointY="13.875" />
         <EntityTypeShape EntityType="C55A0_RokiModel.Product_Category_L2" Width="1.5" PointX="3" PointY="18.875" />
+        <AssociationConnector Association="C55A0_RokiModel.FK_Product_Category_L2_Product_Category_L1" />
+        <EntityTypeShape EntityType="C55A0_RokiModel.Product" Width="1.5" PointX="5.25" PointY="16" />
         <AssociationConnector Association="C55A0_RokiModel.FK_Product_Product_Category_L1" />
         <AssociationConnector Association="C55A0_RokiModel.FK_Product_Product_Category_L2" />
-        <AssociationConnector Association="C55A0_RokiModel.FK_Product_Category_L2_Product_Category_L1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

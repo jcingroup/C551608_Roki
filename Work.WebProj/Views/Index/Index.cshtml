@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IList<DotWeb.WebApp.Controllers.ProductIntro>
+@{
     ViewBag.Title = "首頁";
     ViewBag.IsFirstPage = true;
     ViewBag.BodyClass = "index";
@@ -29,63 +30,21 @@
         });
     </script>
 }
-
-
 <h2 class="font-sp">NEW PRODUCTS</h2>
-
 <section id="slider" class="swiper-container wrap">
-
     <div class="swiper-wrapper">
-        @* 新產品最多 6則 *@
-        <figure class="swiper-slide product-list">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關</small>
-                <h4>TU SERIES 1</h4>
-                <p class="font-sp">MORO</p>
-            </figcaption>
-        </figure>
-
-        <figure class="swiper-slide product-list">
-            <img src="~/Content/images/Products/list2.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關</small>
-                <h4>TU SERIES 2</h4>
-                <p class="font-sp">MORO</p>
-            </figcaption>
-        </figure>
-
-        <figure class="swiper-slide product-list">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關</small>
-                <h4>TU SERIES 3</h4>
-                <p class="font-sp">MORO</p>
-            </figcaption>
-        </figure>
-
-        <figure class="swiper-slide product-list">
-            <img src="~/Content/images/Products/list2.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關</small>
-                <h4>TU SERIES 4 </h4>
-                <p class="font-sp">MORO</p>
-            </figcaption>
-        </figure>
-
-        <figure class="swiper-slide product-list">
-            <img src="~/Content/images/Products/list.jpg">
-            <a href="~/Products/content">MORE</a>
-            <figcaption>
-                <small>偵測開關</small>
-                <h4>TU SERIES 5</h4>
-                <p class="font-sp">MORO</p>
-            </figcaption>
-        </figure>
+        @foreach (var item in Model)
+        {
+            <figure class="swiper-slide product-list">
+                <img src="@item.src">
+                <a href="~/Products/content?id=@item.product_id">MORE</a>
+                <figcaption>
+                    <small>@item.category_l2_name</small>
+                    <h4>@item.modal</h4>
+                    <p class="font-sp">MORO</p>
+                </figcaption>
+            </figure>
+        }
     </div>
 </section>
 <i class="icon-chevron-thin-left"></i>
