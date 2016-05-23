@@ -179,9 +179,33 @@ namespace DotWeb.WebApp.Controllers
 
             return View(md);
         }
-        public ActionResult search()
+        public ActionResult search(string keyword)
         {
-            return View();
+            var w = keyword.Trim();
+
+            db0 = getDB0();
+            IList<ProductIntro> items = null;
+            if (keyword != null)
+            {
+                items = db0.Product
+                    .Where(x => x.modal.Contains(w) || x.standard.Contains(w))
+                    .OrderByDescending(x => x.sort)
+                    .Select(x => new ProductIntro()
+                    {
+                        product_id = x.product_id,
+                        modal = x.modal,
+                        standard = x.standard,
+                        category_l2_name = x.Product_Category_L2.l2_name
+
+                    }).ToList();
+            }
+
+            foreach (var item in items)
+            {
+                item.src = ImgSrc("Active", "ProductData", item.product_id, "img1", "origin");
+            }
+
+            return View(items);
         }
     }
 

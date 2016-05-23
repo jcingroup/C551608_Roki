@@ -6,6 +6,12 @@
         category_stroe = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
     }
 
+    Dictionary<string, string> lang_data = new Dictionary<string, string> {
+        { "zh-TW","中文"},
+        { "en-US","English"}
+    };
+    var cookie_lang = Request.Cookies[CommWebSetup.WebCookiesId + ".Lang"];
+    var lang_name = lang_data[cookie_lang.Value];
 }
 <!DOCTYPE html>
 <html lang="en-US">
@@ -62,11 +68,11 @@
                                     {
                                         if (list.id == ViewBag.sub_category_id)
                                         {
-                                            <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
+                                    <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
                                         }
                                         else
                                         {
-                                            <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
+                                    <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
                                         }
                                     }
                                 </div>
@@ -78,17 +84,16 @@
             </nav>
 
             <nav class="lang-nav dropdown">
-                <button data-dropdown="btn">English</button>
+                <button data-dropdown="btn">@lang_name</button>
                 <div data-dropdown="content">
                     <a href="@Url.Action("SetLanguage")?L=zh-TW&A=index">中文</a>
                     <a href="@Url.Action("SetLanguage")?L=en-US&A=index" class="current">English</a>
                 </div>
             </nav>
-            <form action="" class="input-group search">
-                <input type="search" placeholder="Search...">
-                <button class="icon-search"></button>
+            <form action="~/Products/search" class="input-group search" method="get">
+                <input type="search" name="keyword" placeholder="Search...">
+                <button class="icon-search" type="submit"></button>
             </form>
-
         </header><!-- header //-->
 
         @if (ViewBag.IsFirstPage)

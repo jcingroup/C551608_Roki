@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查詢類似 產品搜尋結果 [搜尋關鍵字] 的當地語系化字串。
+        /// </summary>
+        internal static string product_search_result {
+            get {
+                return ResourceManager.GetString("product_search_result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 規格描述 的當地語系化字串。
         /// </summary>
         internal static string product_standard {

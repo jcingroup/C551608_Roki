@@ -1,4 +1,4 @@
-﻿
+﻿@model IList<DotWeb.WebApp.Controllers.ProductIntro>
 @{
     ViewBag.Title = "產品搜尋";
     ViewBag.BodyClass = "Search";
@@ -7,31 +7,15 @@
 }
 
 
-<h2 class="title text-left">產品搜尋結果 [搜尋關鍵字]</h2>
-
-<figure class="product-list">
-    <img src="~/Content/images/Products/list.jpg">
-    <a href="~/Products/content">MORE</a>
-    <figcaption>
-        <small>偵測開關Detect Switch</small>
-        <h4>TU SERIES 1</h4>
-    </figcaption>
-</figure>
-
-<figure class="product-list">
-    <img src="~/Content/images/Products/list.jpg">
-    <a href="~/Products/content">MORE</a>
-    <figcaption>
-        <small>偵測開關Detect Switch</small>
-        <h4>TU SERIES 1</h4>
-    </figcaption>
-</figure>
-
-<figure class="product-list">
-    <img src="~/Content/images/Products/list.jpg">
-    <a href="~/Products/content">MORE</a>
-    <figcaption>
-        <small>偵測開關Detect Switch</small>
-        <h4>TU SERIES 1</h4>
-    </figcaption>
-</figure>
+<h2 class="title text-left">@Resources.Web.product_search_result</h2>
+@foreach (var item in Model)
+{
+    <figure class="product-list">
+        <img src="@item.src">
+        <a href="~/Products/content?id=@item.product_id">MORE</a>
+        <figcaption>
+            <small>@item.category_l2_name</small>
+            <h4>@item.modal</h4>
+        </figcaption>
+    </figure>
+}
