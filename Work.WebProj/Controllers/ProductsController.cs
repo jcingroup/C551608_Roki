@@ -44,10 +44,7 @@ namespace DotWeb.WebApp.Controllers
 
             return View("NewProduct", items);
         }
-
-
-
-        public ActionResult list()
+        public ActionResult list(int? id)
         {
             var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 
@@ -80,7 +77,11 @@ namespace DotWeb.WebApp.Controllers
             var main_category = menus.FirstOrDefault();
             var sub_category = menus.FirstOrDefault().categoryL2Data.FirstOrDefault();
 
-            main_category_id = main_category.id;
+            if (id == null)
+                main_category_id = main_category.id;
+            else
+                main_category_id = (int)id;
+
             sub_category_id = sub_category.id;
 
             main_category_name = main_category.name;
