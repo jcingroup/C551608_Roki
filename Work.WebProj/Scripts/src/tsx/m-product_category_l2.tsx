@@ -49,7 +49,14 @@ namespace ProductCategoryL2 {
             this.props.updateType(this.props.primKey)
         }
         render() {
-            let StateForGird = CommCmpt.StateForGird;
+            //let StateForGird = CommCmpt.StateForGird;
+            let item = this.props.itemData;
+            let text_lang = null;
+            if (item.i_Lang == 'zh-TW')
+                text_lang = '中文';
+            else if (item.i_Lang == 'en-US')
+                text_lang = '英文';
+
             return <tr>
                 <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                 <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
@@ -57,7 +64,7 @@ namespace ProductCategoryL2 {
                 <td>{this.props.itemData.l2_name}</td>
                 <td>{this.props.itemData.l2_sort }</td>
                 <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
-                <td></td>
+                <td>{text_lang}</td>
             </tr>;
 
         }
@@ -100,8 +107,8 @@ namespace ProductCategoryL2 {
             apiInitPath: gb_approot + 'api/GetAction/GetPorductCategoryL1'
         }
         componentDidMount() {
-
-            CommFunc.jqGet(this.props.apiInitPath, {  })
+            let def_lang = 'zh-TW'
+            CommFunc.jqGet(this.props.apiInitPath, { lang: def_lang })
                 .done((data, textStatus, jqXHRdata) => {
                     this.queryGridData(1);
                 })
@@ -309,7 +316,7 @@ namespace ProductCategoryL2 {
         setLangVal(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
             let value = input.value;
-            
+
             CommFunc.jqGet(this.props.apiInitPath, { lang: input.value })
                 .done((data_lang, textStatus, jqXHRdata) => {
 
@@ -346,37 +353,7 @@ namespace ProductCategoryL2 {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label>標題</label> { }
-                                                    <input type="text" className="form-control"
-                                                        onChange={this.changeGDValue.bind(this, 'keyword') }
-                                                        value={searchData.keyword}
-                                                        placeholder="請輸入關鍵字..." /> { }
-                                                    <label>狀態</label> { }
-                                                    <select className="form-control"
-                                                        onChange={this.changeGDValue.bind(this, 'i_Hide') }
-                                                        value={searchData.i_Hide} >
-                                                        <option value="">全部</option>
-                                                        <option value="false">顯示</option>
-                                                        <option value="true">隱藏</option>
-                                                    </select> { }
-                                                    <label>語系</label> { }
-                                                    <select className="form-control"
-                                                        onChange={this.setLangVal.bind(this, this.props.gdName, 'i_Lang') }
-                                                        value={searchData.i_Lang} >
-                                                        <option value="">全部</option>
 
-                                                    </select> { }
-                                                    <label>分類</label> { }
-                                                    <select className="form-control"
-                                                        id="search-category"
-                                                        onChange={this.changeGDValue.bind(this, 'category_l1') }
-                                                        value={searchData.category_l1} >
-                                                        <option value="">全部</option>
-                                                        {
-                                                            option.map((itemData, i) => <option key={i} value={itemData.product_category_l1_id}>{itemData.l1_name}</option>)
-                                                        }
-                                                    </select> { }
-                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
                                         </div>

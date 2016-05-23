@@ -122,7 +122,7 @@
         modal?: string;
         standard?: string;
         description?: string;
-
+        is_new?: string;
         Product_Category_L1?: server.Product_Category_L1;
         Product_Category_L2?: server.Product_Category_L2;
     }

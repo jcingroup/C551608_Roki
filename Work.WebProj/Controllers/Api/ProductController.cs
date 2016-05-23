@@ -112,6 +112,7 @@ namespace DotWeb.Api
                 item.modal = md.modal;
                 item.product_name = md.product_name;
                 item.description = md.description;
+                item.is_new = md.is_new;
 
                 await db0.SaveChangesAsync();
                 rAjaxResult.result = true;

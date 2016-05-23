@@ -192,6 +192,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Res.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Web.designer.cs">
+      <DependentUpon>Web.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Web.en-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Web.en-US.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -200,10 +210,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Active\ActiveAreaRegistration.cs" />
-    <Compile Include="Areas\Active\Controllers\CommunityNewsController.cs" />
     <Compile Include="Areas\Active\Controllers\MatterController.cs" />
     <Compile Include="Areas\Active\Controllers\EditController.cs" />
-    <Compile Include="Areas\Active\Controllers\CommunityController.cs" />
     <Compile Include="Areas\Active\Controllers\ProductDataController.cs" />
     <Compile Include="Areas\Base\Controllers\LoginController.cs" />
     <Content Include="app_modules\comm-cmpt\package.js" />
@@ -224,7 +232,6 @@
     <Content Include="app_modules\simple-ajax-uploader\bower.json" />
     <Content Include="app_modules\simple-ajax-uploader\package.json" />
     <Content Include="app_modules\dt\package.json" />
-    <Content Include="Areas\Active\Views\Community\Main.cshtml" />
     <Content Include="app_modules\comm-typeahead\package.json" />
     <Content Include="Areas\Active\Views\Edit\Main.cshtml" />
     <Content Include="Areas\Active\Views\Edit\Aboutus.cshtml" />
@@ -232,9 +239,11 @@
     <Content Include="Areas\Active\Views\Edit\Recruit.cshtml" />
     <Content Include="Areas\Active\Views\Edit\VIP.cshtml" />
     <Content Include="Areas\Active\Views\Matter\Main.cshtml" />
-    <Content Include="Areas\Active\Views\CommunityNews\Main.cshtml" />
     <Content Include="app_modules\ImgFileSort\package.json" />
     <Content Include="app_modules\ImgFileSort\c-ImgFileSort.jsx" />
+    <Content Include="Areas\Active\Views\ProductData\CategoryL1.cshtml" />
+    <Content Include="Areas\Active\Views\ProductData\CategoryL2.cshtml" />
+    <Content Include="Areas\Active\Views\ProductData\Main.cshtml" />
     <None Include="Areas\Base\Controllers\ReportChartController.cs" />
     <Compile Include="Areas\Base\Controllers\RolesController.cs" />
     <Compile Include="Areas\Base\Controllers\MenuController.cs" />
@@ -392,8 +401,12 @@
     <Content Include="Scripts\build\app\m_login.js" />
     <Content Include="Scripts\build\app\m_menu.js" />
     <Content Include="Scripts\build\app\m_menu_set.js" />
+    <Content Include="Scripts\build\app\m_product.js" />
+    <Content Include="Scripts\build\app\m_product_category_l1.js" />
+    <Content Include="Scripts\build\app\m_product_category_l2.js" />
     <Content Include="Scripts\build\app\m_roles.js" />
     <Content Include="Scripts\build\app\m_users.js" />
+    <Content Include="Scripts\build\app\vendors.js" />
     <Content Include="Scripts\cdn\BootSideMenu.js" />
     <Content Include="Scripts\cdn\bootstrap.min.js" />
     <Content Include="Scripts\cdn\codrops\classie.js" />
@@ -631,7 +644,6 @@
     <Folder Include="app_modules\Pikaday\plugins\" />
     <Folder Include="app_modules\Pikaday\scss\" />
     <Folder Include="app_modules\Pikaday\tests\" />
-    <Folder Include="Areas\Active\Views\ProductData\" />
     <Folder Include="Areas\Active\Views\Shared\" />
     <Folder Include="Areas\Base\Views\Shared\" />
     <Folder Include="Properties\PublishProfiles\" />
@@ -664,12 +676,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Active\Views\Community\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\ChangePassword.cshtml.resx" />
     <Content Include="Areas\Base\Views\Menu\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Edit\App_LocalResources\Main.cshtml.resx" />
     <Content Include="Areas\Active\Views\Matter\App_LocalResources\Main.cshtml.resx" />
-    <Content Include="Areas\Active\Views\CommunityNews\App_LocalResources\Main.cshtml.resx" />
+    <Content Include="App_GlobalResources\Web.en-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Web.en-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Web.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Web.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Active\Views\ProductData\App_LocalResources\Main.cshtml.resx" />
     <EmbeddedResource Include="_Code\RPTFile\MemeberLabel.rdlc" />
   </ItemGroup>
   <PropertyGroup>

@@ -13,8 +13,40 @@ namespace DotWeb.WebApp.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View("NewProduct");
+            var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+
+            db0 = getDB0();
+
+            var items = db0.Product_Category_L1
+                .OrderBy(x => x.l1_sort)
+                .Where(x => x.i_Lang == lang && x.Product.Count() > 0)
+                .Select(x => new NewProduct
+                {
+                    category_id = x.product_category_l1_id,
+                    category_name = x.l1_name,
+                    count = x.Product.Count(),
+                    products = x.Product.OrderBy(y => y.sort).Take(2).Select(z => new ProductIntro()
+                    {
+                        product_id = z.product_id,
+                        product_name = z.product_name,
+                        standard = z.standard,
+                        modal = z.modal
+                    })
+                }).ToList();
+
+            foreach (var item in items)
+            {
+                foreach (var list in item.products)
+                {
+                    list.src = ImgSrc("Active", "ProductData", list.product_id, "img1", "origin");
+                }
+            }
+
+            return View("NewProduct", items);
         }
+
+
+
         public ActionResult list()
         {
             var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
@@ -155,7 +187,13 @@ namespace DotWeb.WebApp.Controllers
         }
     }
 
-
+    public class NewProduct
+    {
+        public string category_name { get; set; }
+        public int category_id { get; set; }
+        public int count { get; set; }
+        public IEnumerable<ProductIntro> products { get; set; }
+    }
     public class ProductList
     {
         public IEnumerable<ProductIntro> products { get; set; }
@@ -166,7 +204,6 @@ namespace DotWeb.WebApp.Controllers
         public int count_category_l1 { get; set; }
         public int count_category_l2 { get; set; }
     }
-
     public class CategoryStroe
     {
         public IEnumerable<CategoryL1Data> categoryL1Data { get; set; }
@@ -198,7 +235,6 @@ namespace DotWeb.WebApp.Controllers
         public string technical_specification { get; set; }
         public string src { get; set; }
     }
-
     public class ProductContent
     {
         public Product product { get; set; }

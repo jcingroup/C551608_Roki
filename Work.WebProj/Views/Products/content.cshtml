@@ -7,7 +7,7 @@
 }
 
 @section breadCrumb {
-    <li><a href="~/Products">產品介紹</a></li>
+    <li><a href="~/Products">@Resources.Web.product_introd</a></li>
     <li><a href="~/Products/list">@Model.name_category_l1</a></li>
     <li><a href="~/Products/list">@Model.name_category_l2</a></li>
 }
@@ -24,14 +24,14 @@
         </div>
 
         <dl class="list-info col-6 col-sm-12">
-            <dt class="list-info-title">產品型號</dt>
+            <dt class="list-info-title">@Resources.Web.product_modal</dt>
             <dd class="list-info-content">@Model.product.modal</dd>
-            <dt class="list-info-title">規格描述</dt>
+            <dt class="list-info-title">@Resources.Web.product_standard</dt>
             <dd class="list-info-content">@Model.product.standard</dd>
         </dl>
     </article><!-- row //-->
 
-    <h3 class="title-detail">詳細介紹</h3>
+    <h3 class="title-detail">@Resources.Web.product_description</h3>
     @Html.Raw(Model.product.description)
 
 </section>

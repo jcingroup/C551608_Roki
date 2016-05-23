@@ -595,6 +595,19 @@ namespace Product {
                                     </div>
                                 </div>
 
+
+                                <div className="form-group">
+                                    <label className="col-xs-3 control-label">新品</label>
+                                    <div className="col-xs-6">
+                                        <select className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'is_new') }
+                                            value={fieldData.is_new} >
+                                            <option value="false">否</option>
+                                            <option value="true">是</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
                             <div className="col-xs-6">
                                 <div className="form-group">
