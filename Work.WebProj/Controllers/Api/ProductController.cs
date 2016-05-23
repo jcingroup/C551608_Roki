@@ -41,7 +41,7 @@ namespace DotWeb.Api
                         l3_id = x.l3_id,
                         l1_name = x.Product_Category_L1.l1_name,
                         l2_name = x.Product_Category_L2.l2_name,
-                        power = x.power,
+                        modal = x.modal,
                         sort = x.sort,
                         i_Hide = x.i_Hide,
                         i_Lang = x.i_Lang
@@ -259,5 +259,11 @@ namespace DotWeb.Api
         public Nullable<int> i_UpdateDeptID { get; set; }
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
+
+
+        public string product_name { get; set; }
+        public string modal { get; set; }
+        public string standard { get; set; }
+        public string description { get; set; }
     }
 }

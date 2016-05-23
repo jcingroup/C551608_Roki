@@ -242,8 +242,8 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
     deleteFile(guid) {
         CommFunc.jqPost(this.props.url_delete, {
             id: this.props.MainId,
-            fileKind: this.props.FileKind,
-            guid: guid
+            filekind: this.props.FileKind,
+            filename: guid
         })
             .done(function (data, textStatus, jqXHRdata) {
                 if (data.result) {
@@ -410,7 +410,7 @@ export class MasterImageUpload extends React.Component<FileUpProps, FileUpState>
                                 <span className="img-upload" key={itemData.guid}>
                                     <button type="button"
                                         className="close"
-                                        onClick={this.deleteFile.bind(this, itemData.guid) }
+                                        onClick={this.deleteFile.bind(this, itemData.fileName) }
                                         title="刪除圖片"> &times; </button>
                                     <img src={itemData.iconPath} title={CommFunc.formatFileSize(itemData.size) } />
                                 </span>;

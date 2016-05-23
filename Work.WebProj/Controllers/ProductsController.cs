@@ -28,7 +28,7 @@ namespace DotWeb.WebApp.Controllers
                     products = x.Product.OrderBy(y => y.sort).Take(2).Select(z => new ProductIntro()
                     {
                         product_id = z.product_id,
-                        product_name = z.product_name,
+                        category_l2_name = z.product_name,
                         standard = z.standard,
                         modal = z.modal
                     })
@@ -44,51 +44,58 @@ namespace DotWeb.WebApp.Controllers
 
             return View("NewProduct", items);
         }
-        public ActionResult list(int? id)
+        public ActionResult list(int? id, int? id2)
         {
             var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 
             db0 = getDB0();
 
-            var menus = db0.Product_Category_L1
-                .Where(x => x.i_Lang == lang).OrderBy(x => x.l1_sort)
-                .Select(x => new CategoryL1Data()
-                {
-                    id = x.product_category_l1_id,
-                    name = x.l1_name,
-                    categoryL2Data = x.Product_Category_L2.OrderBy(y => y.l2_sort).Select(y => new CategoryL2Data()
-                    {
-                        id = y.l1_id,
-                        name = y.l2_name,
-                        count = y.Product.Count()
-                    }),
-                    count = x.Product.Count()
-                });
+            var menus = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
+
+            //取得Menu 第一項目
 
             int main_category_id = 0;
             int sub_category_id = 0;
-
             string main_category_name = "";
             string sub_category_name = "";
-
             int main_category_count = 0;
             int sub_category_count = 0;
 
-            var main_category = menus.FirstOrDefault();
-            var sub_category = menus.FirstOrDefault().categoryL2Data.FirstOrDefault();
-
             if (id == null)
+            {
+                var main_category = menus.FirstOrDefault();
+                var sub_category = menus.FirstOrDefault().categoryL2Data.FirstOrDefault();
                 main_category_id = main_category.id;
+                main_category_name = main_category.name;
+                sub_category_name = sub_category.name;
+                sub_category_id = sub_category.id;
+            }
             else
+            {
                 main_category_id = (int)id;
+                var find_category_l1 = menus.First(x => x.id == main_category_id);
+                main_category_name = find_category_l1.name;
 
-            sub_category_id = sub_category.id;
+                if (id2 == null)
+                {
+                    var find_category_l2 = find_category_l1.categoryL2Data.FirstOrDefault();
+                    sub_category_id = find_category_l2.id;
+                    sub_category_name = find_category_l2.name;
+                }
+                else
+                {
+                    var find_category_l2 = find_category_l1.categoryL2Data.FirstOrDefault(x => x.id == id2);
+                    sub_category_id = find_category_l2.id;
+                    sub_category_name = find_category_l2.name;
+                }
+            }
 
-            main_category_name = main_category.name;
-            sub_category_name = sub_category.name;
+            ViewBag.main_category_id = main_category_id;
+            ViewBag.sub_category_id = sub_category_id;
+            ViewBag.CategoryStroe = menus;
 
-            main_category_count = db0.Product_Category_L1.Where(x => x.product_category_l1_id == main_category_id).Count();
-            sub_category_count = db0.Product_Category_L2.Where(x => x.product_category_l2_id == main_category_id).Count();
+            main_category_count = db0.Product.Where(x => x.l1_id == main_category_id).Count();
+            sub_category_count = db0.Product.Where(x => x.l2_id == sub_category_id).Count();
 
             CategoryStroe categoryStroe = new CategoryStroe();
             categoryStroe.categoryL1Data = menus;
@@ -98,13 +105,13 @@ namespace DotWeb.WebApp.Controllers
 
             var items = db0
                 .Product
-                .Where(x => x.i_Lang == lang)
+                .Where(x => x.i_Lang == lang && x.l1_id == main_category_id && x.l2_id == sub_category_id)
                 .Select(x => new ProductIntro()
                 {
                     product_id = x.product_id,
                     modal = x.modal,
                     standard = x.standard,
-                    product_name = x.product_name
+                    category_l2_name = x.Product_Category_L2.l2_name
 
                 }).ToList();
 
@@ -128,48 +135,38 @@ namespace DotWeb.WebApp.Controllers
             var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
             db0 = getDB0();
 
-            var menus = db0.Product_Category_L1
-                .Where(x => x.i_Lang == lang).OrderBy(x => x.l1_sort)
-                .Select(x => new CategoryL1Data()
-                {
-                    id = x.product_category_l1_id,
-                    name = x.l1_name,
-                    categoryL2Data = x.Product_Category_L2.OrderBy(y => y.l2_sort).Select(y => new CategoryL2Data()
-                    {
-                        id = y.l1_id,
-                        name = y.l2_name,
-                        count = y.Product.Count()
-                    }),
-                    count = x.Product.Count()
-                });
+            var menus = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
 
             int main_category_id = 0;
             int sub_category_id = 0;
-
             string main_category_name = "";
             string sub_category_name = "";
-
             int main_category_count = 0;
             int sub_category_count = 0;
 
-            var main_category = menus.FirstOrDefault();
-            var sub_category = menus.FirstOrDefault().categoryL2Data.FirstOrDefault();
 
-            main_category_id = main_category.id;
-            sub_category_id = sub_category.id;
+            var item = db0.Product.Find(id);
 
-            main_category_name = main_category.name;
-            sub_category_name = sub_category.name;
+            var get_category_l1 = item.Product_Category_L1;
+            var get_category_l2 = item.Product_Category_L2;
+
+            main_category_id = get_category_l1.product_category_l1_id;
+            sub_category_id = get_category_l2.product_category_l2_id;
+            main_category_name = get_category_l1.l1_name;
+            sub_category_name = get_category_l2.l2_name;
+
+            ViewBag.main_category_id = main_category_id;
+            ViewBag.sub_category_id = sub_category_id;
+            ViewBag.CategoryStroe = menus;
+
+            main_category_count = db0.Product.Where(x => x.l1_id == main_category_id).Count();
+            sub_category_count = db0.Product.Where(x => x.l2_id == sub_category_id).Count();
+
 
             CategoryStroe categoryStroe = new CategoryStroe();
             categoryStroe.categoryL1Data = menus;
             categoryStroe.now_category_l1 = main_category_id;
             categoryStroe.now_category_l2 = sub_category_id;
-
-            var item = db0.Product.Find(id);
-
-            main_category_count = db0.Product_Category_L1.Where(x => x.product_category_l1_id == item.l1_id).Count();
-            sub_category_count = db0.Product_Category_L2.Where(x => x.product_category_l2_id == item.l2_id).Count();
 
             ProductContent md = new ProductContent();
             md.product = item;
@@ -205,29 +202,11 @@ namespace DotWeb.WebApp.Controllers
         public int count_category_l1 { get; set; }
         public int count_category_l2 { get; set; }
     }
-    public class CategoryStroe
-    {
-        public IEnumerable<CategoryL1Data> categoryL1Data { get; set; }
-        public int? now_category_l1 { get; set; }
-        public int? now_category_l2 { get; set; }
-    }
-    public class CategoryL1Data
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public int count { get; set; }
-        public IEnumerable<CategoryL2Data> categoryL2Data { get; set; }
-    }
-    public class CategoryL2Data
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public int count { get; set; }
-    }
+
     public class ProductIntro
     {
         public int product_id { get; set; }
-        public string product_name { get; set; }
+        public string category_l2_name { get; set; }
         public string modal { get; set; }
         public string standard { get; set; }
 
@@ -247,6 +226,4 @@ namespace DotWeb.WebApp.Controllers
         public string src { get; set; }
 
     }
-
-
 }

@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using DotWeb.Controller;
+@{
+    IEnumerable<CategoryL1Data> category_stroe = null;
+    if (ViewBag.CategoryStroe != null)
+    {
+        category_stroe = (IEnumerable<CategoryL1Data>)ViewBag.CategoryStroe;
+    }
+
+}
+<!DOCTYPE html>
 <html lang="zh-TW">
 <!-- saved from url=(0014)about:internet -->
 
@@ -11,8 +20,8 @@
     <script>
         var gb_approot = '@Url.Content("~")';
     </script>
-    <link rel="shortcut icon" href="~/favicon.ico"/>
-    <link rel="bookmark" href="~/favicon.ico"/>
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link rel="bookmark" href="~/favicon.ico" />
     <link rel="stylesheet" href="~/Content/css/vendor/swiper.css">
     <link rel="stylesheet" href="~/Content/css/vendor/icomoon.css?v=@CommWebSetup.CacheVer">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>
@@ -41,38 +50,31 @@
                 <a href="~/AboutUs">公司簡介</a>
                 <a href="~/Products">產品介紹</a>
                 <ul class="sub-nav">
-                    <li>
-                        <h4 class="collapse-title" data-toggle="collapse">開關類</h4>
-                        <div class="collapse-content">
-                            @* 當前子分類 class + current
-                            <a href="~/Products/list" class="current">偵測開關<small>(15)</small></a> *@
-                            <a href="~/Products/list">偵測開關<small>(15)</small></a>
-                            <a href="~/Products/list">滑動開關<small>(15)</small></a>
-                            <a href="~/Products/list">輕觸開關<small>(6)</small></a>
-                            <a href="~/Products/list">指撥開關<small>(15)</small></a>
-                            <a href="~/Products/list">按鍵開關<small>(15)</small></a>
-                        </div>
-                    </li>
+                    @if (category_stroe != null)
+                    {
+                        foreach (var item in category_stroe)
+                        {
 
-                    <li>
-                        <h4 class="collapse-title" data-toggle="collapse">插座類</h4>
-                        <div class="collapse-content">
-                            <a href="~/Products/list">直流插座<small>(15)</small></a>
-                            <a href="~/Products/list">耳機插座<small>(15)</small></a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <h4 class="collapse-title" data-toggle="collapse">連接器類</h4>
-                        <div class="collapse-content">
-                            <a href="~/Products/list">USB 2.0 連接器<small>(15)</small></a>
-                            <a href="~/Products/list">USB 3.0 連接器<small>(15)</small></a>
-                            <a href="~/Products/list">HDMI 連接器<small>(15)</small></a>
-                            <a href="~/Products/list">微型連接器<small>(15)</small></a>
-                        </div>
-                    </li>
+                            <li>
+                                <h4 class="collapse-title" data-toggle="collapse">@item.name</h4>
+                                <div class="collapse-content">
+                                    @foreach (var list in item.categoryL2Data)
+                                    {
+                                        if (list.id == ViewBag.sub_category_id)
+                                        {
+                                            <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
+                                        }
+                                    }
+                                </div>
+                            </li>
+                        }
+                    }
                 </ul>
-    			<a href="~/ContactUs">聯絡我們</a>
+                <a href="~/ContactUs">聯絡我們</a>
             </nav>
 
             <nav class="lang-nav dropdown">
@@ -90,7 +92,7 @@
         </header><!-- header //-->
 
         @if (ViewBag.IsFirstPage)
-        {
+            {
             <div id="banner" class="swiper-container">
                 <ul class="swiper-wrapper">
                     @* 圖片尺寸:w1920 x h345 *@
@@ -105,7 +107,9 @@
                 @RenderBody()
             </main>
 
-        } else {
+        }
+        else
+        {
             <div id="banner" class="swiper-container">
                 <ul class="swiper-wrapper">
                     @* 圖片尺寸:w1920 x h238 *@
@@ -143,9 +147,13 @@
                 </nav>
                 <nav class="col-8">
                     <h4>產品介紹</h4>
-                    <a href="~/Products/list">開關類</a>
-                    <a href="~/Products/list">插座類</a>
-                    <a href="~/Products/list">連接器類</a>
+                    @if (category_stroe != null)
+                    {
+                        foreach (var item in category_stroe)
+                        {
+                            <a href="~/Products/list?id=@item.id">@item.name</a>
+                        }
+                    }
                 </nav>
             </div>
 

@@ -423,7 +423,6 @@ namespace ProductCategoryL2 {
                                             onChange={this.setLangVal.bind(this, this.props.fdName, 'i_Lang') }
                                             value={fieldData.i_Lang}
                                             required>
-                                            <option value="">xxx</option>
                                             <option value="zh-TW">中文</option>
                                             <option value="en-US">英文</option>
                                         </select>

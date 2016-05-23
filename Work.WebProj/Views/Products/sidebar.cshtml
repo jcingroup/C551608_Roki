@@ -1,4 +1,4 @@
-﻿@model DotWeb.WebApp.Controllers.CategoryStroe
+﻿@model DotWeb.Controller.CategoryStroe
 
 <button class="pro-menu">@Resources.Web.product_menu</button>
 <aside class="sidebar">
@@ -13,11 +13,11 @@
                     {
                         if (list.id == Model.now_category_l2)
                         {
-                            <a href="~/Products/list" class="current">@list.name<small>(@item.count)</small></a>
+                            <a href="~/Products/list?id=@item.id&id2=@list.id" class="current">@list.name<small>(@list.count)</small></a>
                         }
                         else
                         {
-                            <a href="~/Products/list">@list.name<small>(@item.count)</small></a>
+                            <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
                         }
                     }
                 </dd>
@@ -30,7 +30,7 @@
                 <dd class="collapse-content">
                     @foreach (var list in item.categoryL2Data)
                     {
-                        <a href="~/Products/list">@list.name<small>(@list.count)</small></a>
+                        <a href="~/Products/list?id=@item.id&id2=@list.id">@list.name<small>(@list.count)</small></a>
                     }
                 </dd>
             </dl>

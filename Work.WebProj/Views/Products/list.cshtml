@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "開關類:偵測開關";
     ViewBag.BodyClass = "Products col2";
-    ViewBag.Target = Model.name_category_l1;
+    ViewBag.Target = Model.name_category_l2;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -21,7 +21,7 @@
             <img src="@item.src">
             <a href="~/Products/content?id=@item.product_id">MORE</a>
             <figcaption>
-                <small>@item.product_name</small>
+                <small>@item.category_l2_name</small>
                 <h4>@item.modal</h4>
             </figcaption>
         </figure>

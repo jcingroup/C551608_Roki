@@ -1075,16 +1075,12 @@ namespace DotWeb.Controller
             MemberId = getMemberIdCookie == null ? null : EncryptString.desDecryptBase64(Server.UrlDecode(getMemberIdCookie.Value));
             try
             {
-                var db = getDB0();
-                var Async = db.SaveChangesAsync();
-                Async.Wait();
-
                 ViewBag.VisitCount = visitCount;
                 ViewBag.IsFirstPage = false; //是否為首頁，請在首頁的Action此值設為True
-                //ajax_GetSidebarData();//取得左選單內容
-                //ajax_GetAboutUsData();//layout下方aboutus
+                ViewBag.CategoryStroe = WebCategory();
+                ViewBag.main_category_id = 0;
+                ViewBag.sub_category_id = 0;
 
-                this.isTablet = (new WebInfo()).isTablet();
             }
             catch (Exception ex)
             {
@@ -1189,7 +1185,7 @@ namespace DotWeb.Controller
             SNObject sn = GetSN(ProcCore.Business.SNType.Orders);
             return String.Format(tpl, sn.y.ToString().Right(2), sn.m, sn.d, sn.sn_max, (new Random()).Next(99));
         }
-        public FileResult DownLoadFile(Int32 Id, string GetArea, string GetController, string FileName, string FilesKind)
+        public FileResult DownLoadFile(int Id, string GetArea, string GetController, string FileName, string FilesKind)
         {
             if (FilesKind == null)
                 FilesKind = "DocFiles";
@@ -1205,7 +1201,7 @@ namespace DotWeb.Controller
             }
             return File(DownFilePath, "application/" + fi.Extension.Replace(".", ""), Url.Encode(fi.Name));
         }
-        public string ImgSrc(string AreaName, string ContorllerName, Int32 Id, String FilesKind, Int32 ImageSizeTRype)
+        public string ImgSrc(string AreaName, string ContorllerName, int Id, string FilesKind, int ImageSizeTRype)
         {
             String ImgSizeString = "s_" + ImageSizeTRype;
             String SearchPath = String.Format(sysUpFilePathTpl, AreaName, ContorllerName, Id, FilesKind, ImgSizeString);
@@ -1229,7 +1225,7 @@ namespace DotWeb.Controller
             else
                 return Url.Content("~/Content/images/nopic.png");
         }
-        public string ImgSrc(string AreaName, string ContorllerName, Int32 Id, String FilesKind, string ImageSizeTRype)
+        public string ImgSrc(string AreaName, string ContorllerName, int Id, string FilesKind, string ImageSizeTRype)
         {
             String ImgSizeString = "" + ImageSizeTRype;
             String SearchPath = String.Format(sysUpFilePathTpl, AreaName, ContorllerName, Id, FilesKind, ImgSizeString);
@@ -1264,7 +1260,7 @@ namespace DotWeb.Controller
 
             return File(DownFilePath, "audio/mp3", Url.Encode(fi.Name));
         }
-        public string GetSYSImage(Int32 Id, string GetArea, string GetController)
+        public string GetSYSImage(int Id, string GetArea, string GetController)
         {
             String SystemUpFilePathTpl = "~/_Code/SysUpFiles/{0}.{1}/{2}/{3}/{4}";
             String SearchPath = String.Format(SystemUpFilePathTpl, GetArea, GetController, Id, "DefaultKind", "OriginFile");
@@ -1298,7 +1294,7 @@ namespace DotWeb.Controller
         {
             return Resources.Res.ResourceManager.GetString(MsgId);
         }
-        protected List<SelectListItem> MakeNumOptions(Int32 num, Boolean FirstIsBlank)
+        protected List<SelectListItem> MakeNumOptions(int num, bool FirstIsBlank)
         {
 
             List<SelectListItem> r = new List<SelectListItem>();
@@ -1322,43 +1318,30 @@ namespace DotWeb.Controller
         /// <summary>
         /// 取得前台每頁左選單內容
         /// </summary>
-        public void ajax_GetSidebarData()
+        protected IEnumerable<CategoryL1Data> WebCategory()
         {
-            //List<L1> l1 = new List<L1>();
-            //using (var db = getDB0())
-            //{
-            //    l1 = db.ProductCategory_l1.Where(x => !x.i_Hide).OrderByDescending(x => x.sort)
-            //                    .Select(x => new L1()
-            //                    {
-            //                        l1_id = x.product_category_l1_id,
-            //                        l1_name = x.category_l1_name
-            //                    }).ToList();
-            //    foreach (var item in l1)
-            //    {
-            //        item.l2_list = db.ProductCategory_l2.Where(x => !x.i_Hide & x.product_category_l1_id == item.l1_id).OrderByDescending(x => x.sort)
-            //                            .Select(x => new L2()
-            //                            {
-            //                                l2_id = x.product_category_l2_id,
-            //                                l2_name = x.category_l2_name
-            //                            }).ToList();
-            //    }
+            var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            db0 = getDB0();
 
-            //}
-            //ViewBag.Sidebar = l1;
+            var menus = db0.Product_Category_L1
+                .Where(x => x.i_Lang == lang)
+                .OrderByDescending(x => x.l1_sort)
+                .Select(x => new CategoryL1Data()
+                {
+                    id = x.product_category_l1_id,
+                    name = x.l1_name,
+                    categoryL2Data = x.Product_Category_L2.OrderByDescending(y => y.l2_sort).Select(y => new CategoryL2Data()
+                    {
+                        id = y.product_category_l2_id,
+                        name = y.l2_name,
+                        count = y.Product.Count()
+                    }),
+                    count = x.Product.Count()
+                });
+
+            return menus;
         }
-        /// <summary>
-        /// 取得萬客摩關於我們資料
-        /// </summary>
-        public void ajax_GetAboutUsData()
-        {
-            string AboutUs = string.Empty;
-            using (var db = getDB0())
-            {
-                var open = openLogic();
-                AboutUs = RemoveHTMLTag((string)open.getParmValue(ParmDefine.AboutUs));
-            }
-            ViewBag.AboutUs = AboutUs;
-        }
+
         #region 前台抓取圖片
         public string[] GetImgs(string id, string file_kind, string category1, string category2, string size)
         {
@@ -1538,6 +1521,25 @@ namespace DotWeb.Controller
         }
 
         #endregion
+    }
+    public class CategoryStroe
+    {
+        public IEnumerable<CategoryL1Data> categoryL1Data { get; set; }
+        public int? now_category_l1 { get; set; }
+        public int? now_category_l2 { get; set; }
+    }
+    public class CategoryL1Data
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public int count { get; set; }
+        public IEnumerable<CategoryL2Data> categoryL2Data { get; set; }
+    }
+    public class CategoryL2Data
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public int count { get; set; }
     }
     #endregion
 

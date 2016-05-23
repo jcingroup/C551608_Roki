@@ -15,7 +15,7 @@
     <section class="col-6 col-sm-12 catalog-new">
         <header class="title">
             <h2>@item.category_name <small>(@item.count)</small></h2>
-            <a href="~/Products/list?category_id=@item.category_id" class="btn btn-primary">ALL</a>
+            <a href="~/Products/list?id=@item.category_id" class="btn btn-primary">ALL</a>
         </header>
         @foreach (var list in item.products)
         {
@@ -23,7 +23,7 @@
                 <img src="@list.src">
                 <a href="~/Products/content?id=@list.product_id">MORE</a>
                 <figcaption>
-                    <small>@list.product_name</small>
+                    <small>@list.category_l2_name</small>
                     <h4>@list.modal</h4>
                 </figcaption>
             </figure>

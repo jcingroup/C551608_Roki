@@ -16,8 +16,7 @@ namespace Product {
         l3_id: number;
         l1_name?: string;
         l2_name?: string;
-        l3_name?: string;
-        power?: string;
+        modal?: string;
         sort?: number;
         i_Hide?: boolean;
         i_Lang: string;
@@ -67,16 +66,22 @@ namespace Product {
             this.props.updateType(this.props.primKey)
         }
         render() {
-            let StateForGird = CommCmpt.StateForGird;
+            let item = this.props.itemData;
+            let text_lang = null;
+            if (item.i_Lang == 'zh-TW')
+                text_lang = '中文';
+            else if (item.i_Lang == 'en-US')
+                text_lang = '英文';
+
             return <tr>
                 <td className="text-center"><CommCmpt.GridCheckDel iKey={this.props.ikey} chd={this.props.itemData.check_del} delCheck={this.delCheck} /></td>
                 <td className="text-center"><CommCmpt.GridButtonModify modify={this.modify} /></td>
                 <td>{this.props.itemData.l1_name}</td>
                 <td>{this.props.itemData.l2_name}</td>
-                <td>{this.props.itemData.power}</td>
+                <td>{this.props.itemData.modal}</td>
                 <td>{this.props.itemData.sort }</td>
                 <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
-                <td></td>
+                <td>{text_lang }</td>
             </tr>;
 
         }
@@ -433,9 +438,6 @@ namespace Product {
                                                     <label>第一層分類</label> { }
 
                                                     <label>第二層分類</label> { }
-
-                                                    <label>第三層分類</label> { }
-
                                                     <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
@@ -453,7 +455,7 @@ namespace Product {
                                                 <th className="col-xs-1 text-center">修改</th>
                                                 <th className="col-xs-1">第一層分類</th>
                                                 <th className="col-xs-2">第二層分類</th>
-                                                <th className="col-xs-2">產品名稱</th>
+                                                <th className="col-xs-2">產品型號</th>
                                                 <th className="col-xs-1">排序</th>
                                                 <th className="col-xs-1">狀態</th>
                                                 <th className="col-xs-1">語系</th>
@@ -574,6 +576,7 @@ namespace Product {
                                         </div>
                                     </div>
                                 </div>
+                                {/*
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">產品名稱</label>
                                     <div className="col-xs-6">
@@ -581,6 +584,10 @@ namespace Product {
                                     </div>
                                     <small className="col-xs-3 help-inline"><span className="text-danger">(必填) </span>, 最多64字</small>
                                 </div>
+
+                                */}
+
+                                
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
                                     <div className="col-xs-6">
