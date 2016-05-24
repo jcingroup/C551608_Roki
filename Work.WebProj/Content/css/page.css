@@ -1305,8 +1305,7 @@ h2.title {
   .sidebar a {
     display: block;
     padding-left: 11%;
-    padding-top: 6px;
-    padding-bottom: 6px; }
+    padding-top: 10px; }
     @media (max-width: 61.1875em) {
       .sidebar a {
         padding-left: 22px; } }
@@ -1319,12 +1318,13 @@ h2.title {
         height: 7px;
         background-color: #a2cb6a;
         position: absolute;
-        top: 40%;
+        top: 50%;
         left: -4px; }
   .sidebar small {
     margin-left: 3px;
     font-size: 75%; }
-  .sidebar .current + dd {
+  .sidebar .current + .collapse-content {
+    display: block;
     border-left: 1px solid #bec3c3; }
 
 .content, .sidebar {

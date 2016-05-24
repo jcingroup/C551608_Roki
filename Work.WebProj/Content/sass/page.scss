@@ -164,14 +164,14 @@ h2.title {
     a {
         display: block;
         padding-left: 11%;
-        padding-top: 6px;
-        padding-bottom: 6px;
+        padding-top: 10px;
+        // padding-bottom: 6px;
 
         @include mq-max(break(desktop,-1)) { padding-left: 22px; }
 
         &:hover, &:active, &.current {
             color: $brand-secondary;
-            @include icon-dot(false, 7px, lighten($brand-secondary,10), left -4px top 40%);
+            @include icon-dot(false, 7px, lighten($brand-secondary,10), left -4px top 50%);
         }
     }
     small {
@@ -179,7 +179,8 @@ h2.title {
         font-size: 75%;
     }
     .current {
-        & + dd {
+        & + .collapse-content {
+            display: block;
             border-left: 1px solid darken($brand-gray,20);
         }
     }
