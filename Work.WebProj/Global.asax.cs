@@ -21,21 +21,21 @@ namespace DotWeb.AppStart
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
-            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("zh-TW")
-            {
-                ContextCondition = (x => x.Request.Cookies[VarCookie + ".Lang"] != null && x.Request.Cookies[VarCookie + ".Lang"].Value.Contains("zh-TW"))
-            });
+            //DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("zh-TW")
+            //{
+            //    ContextCondition = (x => x.Request.Cookies[VarCookie + ".Lang"] != null && x.Request.Cookies[VarCookie + ".Lang"].Value.Contains("zh-TW"))
+            //});
 
-            DisplayModeProvider.Instance.Modes.Insert(1, new DefaultDisplayMode("en-US")
+            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("en-US")
             {
-                ContextCondition = (x => x.Request.Cookies[VarCookie + ".Lang"] != null && x.Request.Cookies[VarCookie + ".Lang"].Value.Contains("en-US "))
+                ContextCondition = (Context => (Context.Request.Cookies[VarCookie + ".Lang"] != null && Context.Request.Cookies[VarCookie + ".Lang"].Value.Contains("en-US")))
             });
         }
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             HttpCookie WebLang = Request.Cookies[VarCookie + ".Lang"];
             var set_lang = string.Empty;
-            string[] allow_lang = new string[] { "zh-TW","en-US" };
+            string[] allow_lang = new string[] { "zh-TW", "en-US" };
 
             if (WebLang == null)
             {
