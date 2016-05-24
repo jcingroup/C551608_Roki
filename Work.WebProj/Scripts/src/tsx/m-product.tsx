@@ -8,7 +8,7 @@ import CommFunc = require('comm-func');
 import DT = require('dt');
 
 namespace Product {
-    interface Rows {
+    interface Rows { 
         product_id?: string;
         check_del?: boolean,
         l1_id: number;
@@ -498,7 +498,7 @@ namespace Product {
                             <div className="col-xs-8">
                                 <CommCmpt.MasterImageUpload FileKind="img1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'} url_list={gb_approot + 'Active/ProductData/aj_FList'}
                                     url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} />
-                                <small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>
+                                {/*<small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>*/}
                             </div>
                         </div>
                     </div>
@@ -508,6 +508,7 @@ namespace Product {
                 outHtml = (
                     <div>
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
+
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
                             <div className="col-xs-6">
 
@@ -598,7 +599,7 @@ namespace Product {
 
                                 */}
 
-                                
+
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
                                     <div className="col-xs-6">
@@ -628,10 +629,20 @@ namespace Product {
 
                             </div>
                             {file_upload}
+                            <div className="col-xs-6 text-danger">
+                                <strong>產品圖上傳注意事項：</strong><br/>
+                                因安全及效能考量，需先儲存後才顯示圖片上傳區塊<br/>
+                                最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB
+                            </div>
                             <div className="col-xs-12">
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">詳細介紹</label>
                                     <div className="col-xs-10">
+                                        <div className="alert alert-warning alert-dismissible" role="alert">
+                                            <strong>編輯器注意事項：</strong><br/>
+                                            編輯器上傳圖片或新增表格等時，請勿設定寬度及高度(將數字刪除) ，以免行動裝置顯示時會跑版。<br/>
+                                            檔案尺寸寬度超過 1600 或 高度超過1200 的圖片會被壓縮(PNG透明背景會變成不透明)
+                                        </div>
                                         <textarea className="form-control" id="description" name="description"
                                             value={field.description} onChange={this.changeFDValue.bind(this, 'description') }/>
                                     </div>
