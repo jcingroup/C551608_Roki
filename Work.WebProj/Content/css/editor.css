@@ -1276,3 +1276,21 @@ body {
 h1, h2, h3, h4, h5, h6, p, blockquote,
 ul, ol, li, dl, dt, dd {
   text-align: left; }
+
+.bg-gray, .list-info-content {
+  background: #DDD;
+  color: #000;
+  line-height: 1.6;
+  padding: 3px 10px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 0 #fff; }
+
+.list-info {
+  margin-bottom: 15px; }
+  .list-info-title {
+    color: #28406C;
+    margin-bottom: 5px; }
+  .list-info-content {
+    font-size: 0.9375em;
+    padding: 10px 15px;
+    margin-bottom: 30px; }

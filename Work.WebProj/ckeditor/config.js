@@ -29,6 +29,9 @@ CKEDITOR.editorConfig = function (config) {
     config.filebrowserImageBrowseUrl = "../../ckfinder/ckfinder.html?type=Images";
     config.filebrowserImageUploadUrl = "../../ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images";
     config.autoUpdateElement = true;
+    config.allowedContent = true;
+    config.fontSize_sizes = '12px/12px;13/13px;16/16px;18/18px;20/20px;22/22px;24/24px;36/36px;48/48px;';
+    config.font_names = 'Arial;Arial Black;Comic Sans MS;Courier New;Tahoma;Verdana;新細明體;細明體;標楷體;微軟正黑體';
 };
 
 CKEDITOR.stylesSet.add('default', [
