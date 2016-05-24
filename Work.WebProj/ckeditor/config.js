@@ -36,28 +36,16 @@ CKEDITOR.editorConfig = function (config) {
 
 CKEDITOR.stylesSet.add('default', [
     // Block Styles
-    // { name: '標題 - 樣式1', element: 'h1', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式1', element: 'h2', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式2', element: 'h3', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式3', element: 'h4', attributes: { 'class': 'colored' } },
-    { name: '標題 - 樣式4', element: 'h5', attributes: { 'class': 'colored' } },
-    // { name: '標題 - 樣式4', element: 'h6', attributes: { 'class': 'colored' } },
-    // { name: '段落 - 引言', element: 'p', attributes: { 'class': 'leading' } },
-
-    // Inline Styles
-    // { name: '文字 - 強調1', element: 'strong', attributes: { 'class': 'strong2' } },
-    // { name: '文字 - 強調2', element: 'strong', attributes: { 'class': 'strong3' } },
-    // { name: '文字 - 裝飾1', element: 'span', attributes: { 'class': 'underline' } },
-    // { name: '文字 - 裝飾2', element: 'span', attributes: { 'class': 'arrow-right' } },
+    { name: '標題 - 樣式1', element: 'h2' },
+    { name: '標題 - 樣式2', element: 'h3' },
+    { name: '標題 - 樣式3', element: 'h4' },
+    { name: '標題 - 樣式4', element: 'h5' },
 
     // Object Styles
-    { name: '列表 - 項目符號、分隔線', element: 'ul', attributes: { 'class': 'list-icon list-underline' } },
-    { name: '列表 - 項目符號', element: 'ul', attributes: { 'class': 'list-icon' } },
-    { name: '列表 - 分隔線', element: 'ul', attributes: { 'class': 'list-unstyled list-underline' } },
-    { name: '列表 - 無項目符號', element: 'ul', attributes: { 'class': 'list-unstyled' } },
-    // { name: '列表 - 樣式1', element: 'ol', attributes: { 'class': 'list-styled list-underline' } },
-    { name: '列表 - 分隔線', element: 'ol', attributes: { 'class': 'list-underline' } },
-    // { name: '列表 - 樣式3', element: 'ol', attributes: { 'class': 'list-styled' } },
-    { name: '表格樣式', element: 'table', attributes: { 'class': 'table' } },
+    { name: '列表 - 預設', element: 'ul', attributes: { 'class': 'list-unstyled' } },
+    { name: '列表 - 有圖標', element: 'ul', attributes: { 'class': 'list-dot' } },
+    { name: '數字列表 - 預設', element: 'ol', attributes: { 'class': 'list-unstyled' } },
+    { name: '數字列表 - 有圖標', element: 'ol', attributes: { 'class': 'list-dot' } },
+    { name: '表格 - 預設', element: 'table' },
     // { name: '圖片 - 加框', element: 'img', attributes: { 'class': 'thumb' } }
 ]);
