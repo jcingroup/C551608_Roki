@@ -8,7 +8,7 @@
 
 @section breadCrumb {
     <li><a href="~/Products">@Resources.Web.product_introd</a></li>
-    <li><a href="~/Products/list">@Model.name_category_l1</a></li>
+    <li><a href="~/Products/list?id=@ViewBag.main_category_id&id2=@ViewBag.sub_category_id">@Model.name_category_l1</a></li>
 }
 
 @Html.Partial("sidebar", Model.menuStroe)
