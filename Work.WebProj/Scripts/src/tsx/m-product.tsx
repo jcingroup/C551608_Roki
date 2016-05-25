@@ -8,7 +8,7 @@ import CommFunc = require('comm-func');
 import DT = require('dt');
 
 namespace Product {
-    interface Rows { 
+    interface Rows {
         product_id?: string;
         check_del?: boolean,
         l1_id: number;
@@ -492,17 +492,28 @@ namespace Product {
                 let field = this.state.fieldData;
 
                 let file_upload = null;
+
                 if (this.state.edit_type == 2) {
-                    file_upload = <div className="col-xs-6">
-                        <div className="form-group">
-                            <label className="col-xs-2 control-label">產品圖</label>
-                            <div className="col-xs-8">
-                                <CommCmpt.MasterImageUpload FileKind="img1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'} url_list={gb_approot + 'Active/ProductData/aj_FList'}
-                                    url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} />
-                                {/*<small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>*/}
+                    file_upload = (
+                        <div className="col-xs-6">
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">產品圖</label>
+                                <div className="col-xs-8">
+                                    <CommCmpt.MasterImageUpload FileKind="img1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'} url_list={gb_approot + 'Active/ProductData/aj_FList'}
+                                        url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} />
+                                    {/*<small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>*/}
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div className="form-group">
+                                <label className="col-xs-2 control-label">附件檔</label>
+                                <div className="col-xs-8">
+                                    <CommCmpt.MasterFileUpload FileKind="file1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'}
+                                        url_list={gb_approot + 'Active/ProductData/aj_FList'} url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} url_download={gb_approot + 'Active/ProductData/aj_FDown'} />
+                                    <small className="help-block">最多1個檔案, 每個檔案最大不可超過4MB; 接受檔案類型為pdf、doc、docx、xls、xlsx、txt、png、jpg、jpeg的檔案</small>
+                                </div>
+                            </div>
+                        </div>);
+
                 }
 
                 ////分類-選單內容
@@ -667,8 +678,6 @@ namespace Product {
             return outHtml;
         }
     }
-
-
 }
 
 var dom = document.getElementById('page_content');
