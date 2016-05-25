@@ -414,7 +414,7 @@ namespace Product {
                                         <div className="table-filter">
                                             <div className="form-inline">
                                                 <div className="form-group">
-                                                    <label>標題/分類名稱</label> { }
+                                                    <label>產品型號</label> { }
                                                     <input type="text" className="form-control"
                                                         onChange={this.changeGDValue.bind(this, 'keyword') }
                                                         value={searchData.keyword}
@@ -429,10 +429,11 @@ namespace Product {
                                                     </select> { }
                                                     <label>語系</label> { }
                                                     <select className="form-control"
-                                                        onChange={this.setLangVal.bind(this, this.props.gdName, 'i_Lang') }
+                                                        onChange={this.changeGDValue.bind(this, this.props.gdName, 'i_Lang') }
                                                         value={searchData.i_Lang} >
                                                         <option value="">全部</option>
-
+                                                        <option value="zh-TW">中文</option>
+                                                        <option value="en-US">英文</option>
                                                     </select> { }
                                                     <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
@@ -598,7 +599,7 @@ namespace Product {
 
                                 */}
 
-                                
+
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
                                     <div className="col-xs-6">
