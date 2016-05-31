@@ -338,6 +338,7 @@
     <Content Include="Content\css\editor.css" />
     <Content Include="Content\css\grid.css" />
     <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\learn.css" />
     <Content Include="Content\css\page.css" />
     <Content Include="Content\css\vendor\icomoon.css" />
     <Content Include="Content\css\vendor\jquery.loadmask.css" />

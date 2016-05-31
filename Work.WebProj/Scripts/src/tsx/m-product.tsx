@@ -7,7 +7,7 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Product {
+namespace Product { 
     interface Rows {
         product_id?: string;
         check_del?: boolean,
@@ -523,7 +523,7 @@ namespace Product {
 
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
 
-                            <div className="col-xs-6"> 
+                            <div className="col-xs-6">
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">語系</label>
@@ -637,13 +637,14 @@ namespace Product {
                                             <option value="false">否</option>
                                             <option value="true">是</option>
                                         </select>
+                                        <small className="help-block">顯示於最新商品列表(取最新2筆)，以及首頁最新商品輪播(取最新6筆)</small>
                                     </div>
                                 </div>
 
                             </div>
                             <div className="col-xs-6 alert alert-danger alert-dismissible" role="alert">
                                 <strong>檔案上傳注意事項</strong><br/>
-                                因安全及效能考量，需先儲存後才顯示上傳區塊                                    
+                                因安全及效能考量，需先儲存後才顯示上傳區塊
                             </div>
                             {file_upload}
                             <div className="col-xs-12">

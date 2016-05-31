@@ -30,7 +30,7 @@ $figure-title-size:  18px;
 @import "_client/main";
 
 @import "_client/module/breadcrumb";
-@import "_client/module/btn";
+// @import "_client/module/btn";
 
 
 
@@ -295,7 +295,25 @@ h2.title {
     margin-top: $gutter*3;
     margin-bottom: $gutter+5;
 }
+// 附件下載
+.download {
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        color: #fff;
+        font-size: em(15);
+        line-height: 1.01;
+        letter-spacing: 1px;
+        background: $brand-primary;
+        border-radius: 5px;
+        @include transition(background .35s);
 
+        &:hover, &:active {
+            background: $brand-secondary;
+            color: #fff;
+        }
+    }
+}
 
 // == 關於我們
 .AboutUs article {

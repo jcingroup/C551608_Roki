@@ -1192,30 +1192,6 @@ figcaption {
     .breadcrumb a:hover, .breadcrumb a:active {
       color: #8BBE44; }
 
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  -webkit-transition: background .35s, color .5s;
-  transition: background .35s, color .5s;
-  color: #fff;
-  background: #698BA5;
-  border-radius: 5px;
-  font-size: 0.9375em;
-  line-height: 1.01;
-  letter-spacing: 1px; }
-  .btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 1px solid;
-    outline: 1px solid #bad890;
-    outline-offset: 1px; }
-  .btn:active, .btn.active {
-    outline: 0; }
-  .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
-    cursor: not-allowed;
-    opacity: .65; }
-  .btn:hover, .btn:active, .btn.active {
-    background-color: #8BBE44;
-    color: #fff; }
-
 #banner {
   border-bottom: 1px solid #fff; }
 
@@ -1429,6 +1405,21 @@ h2.title {
   padding-top: 15px;
   margin-top: 45px;
   margin-bottom: 20px; }
+
+.download .btn {
+  display: inline-block;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 0.9375em;
+  line-height: 1.01;
+  letter-spacing: 1px;
+  background: #698BA5;
+  border-radius: 5px;
+  -webkit-transition: background 0.35s;
+  transition: background 0.35s; }
+  .download .btn:hover, .download .btn:active {
+    background: #8BBE44;
+    color: #fff; }
 
 .AboutUs article {
   float: left;
