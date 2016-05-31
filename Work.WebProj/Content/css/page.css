@@ -537,6 +537,9 @@ html, body {
     background: #C3C1C6;
     width: 42%;
     right: 0; }
+    @media (min-width: 87.5em) {
+      #footer::before {
+        width: 44.5%; } }
   @media (max-width: 48em) {
     #footer {
       padding: 0; }
@@ -610,7 +613,7 @@ html, body {
       letter-spacing: 1px;
       margin-right: 15px;
       margin-bottom: 4%; }
-  .foot-contact i {
+  .foot-contact [class*="icon"] {
     margin-right: 10px;
     color: #fff;
     vertical-align: top; }
@@ -619,6 +622,9 @@ html, body {
     .foot-contact a:hover, .foot-contact a:active {
       color: #33525D;
       text-decoration: underline; }
+  .foot-contact .icon-skype:hover, .foot-contact .icon-skype:active {
+    color: #698BA5;
+    text-decoration: none; }
 
 .foot-nav,
 .foot-contact {

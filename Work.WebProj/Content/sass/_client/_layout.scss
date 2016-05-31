@@ -116,6 +116,10 @@ html, body {
         background: $footer-color;
         width: 42%;
         right: 0;
+
+        @include mq(wider) {
+            width: 44.5%;
+        }
     }
     // 選單底色
     // &::after {
@@ -211,7 +215,7 @@ html, body {
             margin-bottom: 4%;
         }
     }
-    i {
+    [class*="icon"] {
         margin-right: 10px;
         color: #fff;
         vertical-align: top;
@@ -221,6 +225,12 @@ html, body {
         &:hover, &:active {
             color: $info;
             text-decoration: underline;
+        }
+    }
+    .icon-skype {
+        &:hover, &:active {
+            color: $footer-bg;
+            text-decoration: none;
         }
     }
 }
