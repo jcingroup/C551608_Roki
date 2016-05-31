@@ -501,7 +501,7 @@ namespace Product {
                                 <div className="col-xs-8">
                                     <CommCmpt.MasterImageUpload FileKind="img1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'} url_list={gb_approot + 'Active/ProductData/aj_FList'}
                                         url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} />
-                                    {/*<small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>*/}
+                                    <small className="help-block">最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB</small>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -509,7 +509,7 @@ namespace Product {
                                 <div className="col-xs-8">
                                     <CommCmpt.MasterFileUpload FileKind="file1" MainId={field.product_id} ParentEditType={this.state.edit_type} url_upload={gb_approot + 'Active/ProductData/aj_FUpload'}
                                         url_list={gb_approot + 'Active/ProductData/aj_FList'} url_delete={gb_approot + 'Active/ProductData/aj_FDelete'} url_download={gb_approot + 'Active/ProductData/aj_FDown'} />
-                                    <small className="help-block">最多1個檔案, 每個檔案最大不可超過4MB; 接受檔案類型為pdf、doc、docx、xls、xlsx、txt、png、jpg、jpeg的檔案</small>
+                                    <small className="help-block">每個檔案最大不可超過15MB; 接受檔案類型為pdf、doc、docx、xls、xlsx、txt、png、jpg、jpeg的檔案，檔案名稱不可含有下列文字「＆、％、＃、＋」</small>
                                 </div>
                             </div>
                         </div>);
@@ -522,7 +522,8 @@ namespace Product {
                         <h4 className="title"> {this.props.caption} 基本資料維護</h4>
 
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className="col-xs-6">
+
+                            <div className="col-xs-6"> 
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">語系</label>
@@ -640,12 +641,11 @@ namespace Product {
                                 </div>
 
                             </div>
-                            {file_upload}
-                            <div className="col-xs-6 text-danger">
-                                <strong>產品圖上傳注意事項：</strong><br/>
-                                因安全及效能考量，需先儲存後才顯示圖片上傳區塊<br/>
-                                最多1張圖，建議尺寸 420*350 px, 每張圖最大不可超過2MB
+                            <div className="col-xs-6 alert alert-danger alert-dismissible" role="alert">
+                                <strong>檔案上傳注意事項</strong><br/>
+                                因安全及效能考量，需先儲存後才顯示上傳區塊                                    
                             </div>
+                            {file_upload}
                             <div className="col-xs-12">
                                 <div className="form-group">
                                     <label className="col-xs-1 control-label">詳細介紹</label>
