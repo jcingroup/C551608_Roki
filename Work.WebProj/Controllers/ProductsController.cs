@@ -28,7 +28,7 @@ namespace DotWeb.WebApp.Controllers
                     products = x.Product.OrderBy(y => y.sort).Take(2).Select(z => new ProductIntro()
                     {
                         product_id = z.product_id,
-                        category_l2_name = z.product_name,
+                        category_l2_name = z.Product_Category_L2.l2_name,
                         standard = z.standard,
                         modal = z.modal
                     })
