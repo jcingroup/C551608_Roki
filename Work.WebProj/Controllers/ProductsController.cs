@@ -176,6 +176,9 @@ namespace DotWeb.WebApp.Controllers
             md.count_category_l1 = main_category_count;
             md.count_category_l2 = sub_category_count;
             md.src = ImgSrc("Active", "ProductData", item.product_id, "img1", "origin");
+            md.fileSrcs = GetFiles(id.ToString(), "File1", "Active", "ProductData");
+
+
 
             return View(md);
         }
@@ -248,6 +251,7 @@ namespace DotWeb.WebApp.Controllers
         public int count_category_l1 { get; set; }
         public int count_category_l2 { get; set; }
         public string src { get; set; }
+        public string[] fileSrcs { get; set; }
 
     }
 }

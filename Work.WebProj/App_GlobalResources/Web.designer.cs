@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   查詢類似 附件下載 的當地語系化字串。
+        /// </summary>
+        internal static string product_content_append {
+            get {
+                return ResourceManager.GetString("product_content_append", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 詳細介紹 的當地語系化字串。
         /// </summary>
         internal static string product_description {

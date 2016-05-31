@@ -34,12 +34,15 @@
     <h3 class="title-detail">@Resources.Web.product_description</h3>
     @Html.Raw(Model.product.description)
 
-    <footer class="download">
-        <h4>附件下載:</h4>
-        @* <h4>DOWNLOAD:</h4> 英文版 *@
-        <a href="" class="btn" target="_blank">2016相關型錄.jpg</a>
-        <a href="" class="btn" target="_blank">檔名很長檔名很長檔名很長檔名很長.pdf</a>
-        <a href="" class="btn" target="_blank">PDF元件.doc</a>
-    </footer>
-
+    @if (Model.fileSrcs.Length > 0)
+    {
+        <footer class="download">
+            <h4>@Resources.Web.product_content_append:</h4>
+            @foreach (var item in Model.fileSrcs)
+            {
+                var file_name = item.Split('/')[item.Split('/').Length - 1];
+                <a href="@item" class="btn" target="_blank">@file_name</a>
+            }
+        </footer>
+    }
 </section>
