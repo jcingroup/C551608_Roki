@@ -191,7 +191,11 @@ namespace DotWeb.WebApp.Controllers
             if (keyword != null)
             {
                 items = db0.Product
-                    .Where(x => x.modal.Contains(w) || x.standard.Contains(w))
+                    .Where(x => x.modal.Contains(w) 
+                    || x.standard.Contains(w) 
+                    || x.Product_Category_L1.l1_name.Contains(keyword)
+                    || x.Product_Category_L2.l2_name.Contains(keyword)
+                    )
                     .OrderByDescending(x => x.sort)
                     .Select(x => new ProductIntro()
                     {
