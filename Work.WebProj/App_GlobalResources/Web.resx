@@ -136,7 +136,7 @@
     <value>最新產品</value>
   </data>
   <data name="product_search_result" xml:space="preserve">
-    <value>產品搜尋結果 [搜尋關鍵字]</value>
+    <value>產品搜尋結果</value>
   </data>
   <data name="product_standard" xml:space="preserve">
     <value>規格描述</value>

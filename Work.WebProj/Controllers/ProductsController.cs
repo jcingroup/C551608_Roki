@@ -185,7 +185,7 @@ namespace DotWeb.WebApp.Controllers
         public ActionResult search(string keyword)
         {
             var w = keyword.Trim();
-
+            ViewBag.keyword = w;
             db0 = getDB0();
             IList<ProductIntro> items = null;
             if (keyword != null)
