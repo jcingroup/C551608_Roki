@@ -47,26 +47,25 @@ namespace DotWeb.Api
                     });
                 if (q.keyword != null)
                 {
-                    items = items.Where(x => x.power.Contains(q.keyword) || x.l1_name.Contains(q.keyword)
-                                        || x.l2_name.Contains(q.keyword) || x.l3_name.Contains(q.keyword));
-
+                    items = items.Where(x => x.modal.Contains(q.keyword));
                 }
                 if (q.i_Lang != null)
                 {
                     items = items.Where(x => x.i_Lang == q.i_Lang);
                 }
-                if (q.category_l1 != null)
-                {
-                    items = items.Where(x => x.l1_id == q.category_l1);
-                }
-                if (q.category_l2 != null)
-                {
-                    items = items.Where(x => x.l2_id == q.category_l2);
-                }
-                if (q.category_l3 != null)
-                {
-                    items = items.Where(x => x.l3_id == q.category_l3);
-                }
+
+                //if (q.category_l1 != null)
+                //{
+                //    items = items.Where(x => x.l1_id == q.category_l1);
+                //}
+                //if (q.category_l2 != null)
+                //{
+                //    items = items.Where(x => x.l2_id == q.category_l2);
+                //}
+                //if (q.category_l3 != null)
+                //{
+                //    items = items.Where(x => x.l3_id == q.category_l3);
+                //}
                 if (q.i_Hide != null)
                 {
                     items = items.Where(x => x.i_Hide == q.i_Hide);
@@ -225,7 +224,6 @@ namespace DotWeb.Api
         public bool? i_Hide { get; set; }
         public int? category_l1 { get; set; }
         public int? category_l2 { get; set; }
-        public int? category_l3 { get; set; }
     }
 
     public partial class m_Product

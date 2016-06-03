@@ -350,9 +350,9 @@ namespace Product {
                 obj[name] = input.value;
             }
             this.setState({ fieldData: obj });
-            if (collentName == this.props.gdName) {
-                this.queryGridData(1);
-            }
+            //if (collentName == this.props.gdName) {
+            //    this.queryGridData(1);
+            //}
         }
         setLangVal(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;

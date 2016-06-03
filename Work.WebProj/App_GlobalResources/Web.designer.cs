@@ -115,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 產品搜尋結果 [搜尋關鍵字] 的當地語系化字串。
+        ///   查詢類似 產品搜尋結果 的當地語系化字串。
         /// </summary>
         internal static string product_search_result {
             get {
