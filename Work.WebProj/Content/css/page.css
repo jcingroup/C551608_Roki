@@ -611,20 +611,27 @@ html, body {
       font-weight: 500;
       color: #2E333C;
       letter-spacing: 1px;
-      margin-right: 15px;
-      margin-bottom: 4%; }
+      margin-right: 15px; }
+    .foot-contact li:last-child a {
+      color: #1d1c1f; }
+      .foot-contact li:last-child a:hover, .foot-contact li:last-child a:active {
+        text-decoration: underline; }
+    .foot-contact li:nth-child(3) a {
+      font-size: 0.69565em;
+      font-weight: bold; }
+    .foot-contact li:nth-child(4) {
+      margin-top: 2%; }
   .foot-contact [class*="icon"] {
     margin-right: 10px;
     color: #fff;
-    vertical-align: top; }
-  .foot-contact a {
-    color: #1d1c1f; }
-    .foot-contact a:hover, .foot-contact a:active {
-      color: #33525D;
-      text-decoration: underline; }
-  .foot-contact .icon-skype:hover, .foot-contact .icon-skype:active {
-    color: #698BA5;
-    text-decoration: none; }
+    vertical-align: middle; }
+  .foot-contact a:hover, .foot-contact a:active {
+    color: #33525D; }
+  .foot-contact .icon-skype {
+    font-size: 1.4375em; }
+    .foot-contact .icon-skype:hover, .foot-contact .icon-skype:active {
+      color: #698BA5;
+      text-decoration: none; }
 
 .foot-nav,
 .foot-contact {
@@ -1453,3 +1460,8 @@ iframe {
   @media (max-width: 47.9375em) {
     .ContactUs .list-info {
       padding-left: 0; } }
+  .ContactUs .list-info .icon-skype {
+    color: #fff;
+    font-size: 1.3125em;
+    vertical-align: middle;
+    margin-right: 5px; }

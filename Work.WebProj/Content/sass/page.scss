@@ -351,11 +351,20 @@ iframe { width: 100%; }
         padding-right: 0;
     }
 }
-.ContactUs .list-info {
-    margin-top: $gutter+10;
-    padding-left: $gutter+5;
+.ContactUs {
+    .list-info {
+        margin-top: $gutter+10;
+        padding-left: $gutter+5;
 
-    @include mq-max(break(tablet,-1)) {
-        padding-left: 0;
+        @include mq-max(break(tablet,-1)) {
+            padding-left: 0;
+        }
+
+        .icon-skype {
+            color: #fff;
+            font-size: em(21);
+            vertical-align: middle;
+            margin-right: 5px;
+        }
     }
 }
