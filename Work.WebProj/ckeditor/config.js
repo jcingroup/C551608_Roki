@@ -5,26 +5,27 @@ CKEDITOR.editorConfig = function (config) {
 
     config.contentsCss = ['../../Content/css/editor.css'];
     config.toolbar = [
-        { name: "document", items: ["Source", "-"] },
-        { name: "tools", items: ["Maximize", "-"] },
-        {
-            name: "clipboard",
-            items: ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "Undo", "Redo"]
-        },
-        { name: "links", items: ["Link", "Unlink", "Anchor"] },
-        {
-            name: 'insert',
-            items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
-        },
         {
             name: "basicstyles",
             items: ["FontSize", "Bold", "Underline", "Strike", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "-", "RemoveFormat"]
         },
         { name: "paragraph", items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent"] },
         { name: "colors", items: ["TextColor", "BGColor"] },
-        { name: "styles", items: ["Styles", "Format"] },
+        { name: "styles", items: ["Styles"] },
+        {
+            name: 'insert',
+            items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe']
+        },
+        { name: "links", items: ["Link", "Unlink", "Anchor"] },
+        {
+            name: "clipboard",
+            items: ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "Undo", "Redo"]
+        },
+        { name: "document", items: ["Source", "-"] },
+        { name: "tools", items: ["Maximize", "-"] },
         { name: "editing" }
     ];
+    config.specialChars = ['℃', 'Ω', '±', '∀', '∁', '∂', '∃', '∄', '∅', 'Δ', '∇', '∈', '∉', 'ε', '∋', '∌', '∍', '∎', 'Π', '∐', 'Σ', '−', '∓', '∔', '∕', '∗', '∘', '∙', '√', '∛', '∜', '∝', '∞', '∟', '∠', '∡', '∢', '∣', '∤', '∥', '∦', '∧', '∨', '∩', '∪', '∫', '∬', '∭', '∮', '∯', '∰', '∱', '∲', '∳', '∴', '∵', '∶', '∷', '∸', '∹', '∺', '∻', '∼', '∽', '∾', '∿', '≀', '≁', '≂', '≃', '≄', '≅', '≆', '≇', '≈', '≉', '≊', '≋', '≌', '≍', '≎', '≏', '≐', '≑', '≒', '≓', '≔', '≕', '≖', '≗', '≘', '≙', '≚', '≛', '≜', '≝', '≞', '≟', '≠', '≡', '≢', '≣', '≤', '≥', '≦', '≧', '≨', '≩', '≪', '≫', '≬', '≭', '≮', '≯', '≰', '≱', '≲', '≳', '≴', '≵', '≶', '≷', '≺', '≻', '≼', '≽', '≾', '≿', '⊀', '⊁', '⊂', '⊃', '⊄', '⊅', '⊆', '⊇', '⊈', '⊉', '⊊', '⊋', '⊌', '⊍', '⊎', '⊏', '⊐', '⊑', '⊓', '⊔', '⊕', '⊖', '⊗', '⊘', '⊙', '⊚', '⊛', '⊜', '⊝', '⊞', '⊟', '⊠', '⊡', '⊢', '⊣', '⊤', '⊥', '⊦', '⊧', '⊨', '⊩', '⊪', '⊫', '⊬', '⊭', '⊮', '⊯', '⊰', '⊱', '⊲', '⊳', '⊴', '⊵', '⊹', '⊺', '⊻', '⊼', '⊽', '⊿', '⋀', '⋁', '⋂', '⋃', '⋄', '⋅', '⋆', '⋇', '⋍', '⋎', '⋏', '⋐', '⋑', '⋒', '⋓', '⋔', '⋕', '⋖', '⋗', '⋘', '⋙', '⋚', '⋛', '⋜', '⋝', '⋞', '⋟', '⋠', '⋡', '⋢', '⋣', '⋤', '⋥', '⋦', '⋧', '⋨', '⋩', '⋪', '⋫', '⋬', '⋭', '⋮', '⋯', '⋰', '⋱'];
     config.filebrowserBrowseUrl = "../../ckfinder/ckfinder.html";
     config.filebrowserImageBrowseUrl = "../../ckfinder/ckfinder.html?type=Images";
     config.filebrowserImageUploadUrl = "../../ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images";
@@ -42,9 +43,9 @@ CKEDITOR.stylesSet.add('default', [
     { name: '標題 - 樣式4', element: 'h5' },
 
     // Object Styles
-    { name: '列表 - 預設', element: 'ul', attributes: { 'class': 'list-unstyled' } },
+    { name: '列表 - 無圖標', element: 'ul', attributes: { 'class': 'list-unstyled' } },
     { name: '列表 - 有圖標', element: 'ul', attributes: { 'class': 'list-dot' } },
-    { name: '數字列表 - 預設', element: 'ol', attributes: { 'class': 'list-unstyled' } },
+    { name: '數字列表 - 無圖標', element: 'ol', attributes: { 'class': 'list-unstyled' } },
     { name: '數字列表 - 有圖標', element: 'ol', attributes: { 'class': 'list-dot' } },
     { name: '表格 - 預設', element: 'table' },
     // { name: '圖片 - 加框', element: 'img', attributes: { 'class': 'thumb' } }
