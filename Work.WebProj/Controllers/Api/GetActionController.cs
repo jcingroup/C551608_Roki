@@ -150,18 +150,21 @@ namespace DotWeb.Api
                 .ToListAsync();
             return Ok(items);
         }
+        [HttpGet]
         public async Task<IHttpActionResult> copyToNewItemProduct(int id)
         {
             db0 = getDB0();
-            int new_id=0;
+            int new_id = 0;
             var item = await db0.Product.FindAsync(id);
-            if (item != null) {
+            if (item != null)
+            {
                 new_id = GetNewId(CodeTable.Product);
 
                 var md = new Product();
                 md.product_id = new_id;
                 md.product_name = item.product_name;
                 md.modal = item.modal;
+                md.standard = item.standard;
                 md.description = item.description;
                 md.l1_id = item.l1_id;
                 md.l2_id = item.l2_id;
@@ -172,7 +175,21 @@ namespace DotWeb.Api
                 db0.Product.Add(md);
                 await db0.SaveChangesAsync();
 
+                string path_1 = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("/_code/SysUpFiles/Active/ProductData/{0}/", id));
+                string path_2 = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("/_code/SysUpFiles/Active/ProductData/{0}/", new_id));
 
+                if (Directory.Exists(path_1))
+                {
+                    Directory.CreateDirectory(path_2);
+
+                    string[] files = Directory.GetFiles(path_1);
+                    foreach (string s in files)
+                    {
+                        string fileName = Path.GetFileName(s);
+                        string destFile = Path.Combine(path_2, fileName);
+                        File.Copy(s, destFile, true);
+                    }
+                }
 
             }
 

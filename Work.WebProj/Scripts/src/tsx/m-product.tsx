@@ -110,6 +110,7 @@ namespace Product {
             this.setLangVal = this.setLangVal.bind(this);
             this.changeCategoryL1 = this.changeCategoryL1.bind(this);
             this.changeLang = this.changeLang.bind(this);
+            this.copyToNewItem = this.copyToNewItem.bind(this);
             this.render = this.render.bind(this);
 
             this.category = null;
@@ -401,7 +402,7 @@ namespace Product {
 
                 CommFunc.jqGet(gb_approot + 'api/GetAction/copyToNewItemProduct', { id: id })
                     .done((data: IResultBase, textStatus, jqXHRdata) => {
-
+                        alert(data);
                     })
                     .fail((jqXHR, textStatus, errorThrown) => {
                         CommFunc.showAjaxError(errorThrown);
@@ -687,11 +688,15 @@ namespace Product {
                             <div className="col-xs-12">
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
+                                        {/*  
                                         <button type="button" className="btn-primary"
                                             onClick={this.copyToNewItem}
-                                            disabled={this.state.edit_type == IEditType.update}                                            >
+                                            disabled={this.state.edit_type != IEditType.update}                                            >
                                             <i className="fa-check"></i> Copy New
-                                        </button> { }
+                                        </button>
+                                        
+*/}
+ { }
                                         <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
                                         <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
                                     </div>
