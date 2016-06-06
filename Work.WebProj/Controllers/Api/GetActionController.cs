@@ -17,6 +17,7 @@ using DotWeb.CommSetup;
 using System.Web;
 using ProcCore.WebCore;
 using DotWeb.Helpers;
+using ProcCore.Business;
 
 namespace DotWeb.Api
 {
@@ -149,6 +150,35 @@ namespace DotWeb.Api
                 .ToListAsync();
             return Ok(items);
         }
+        public async Task<IHttpActionResult> copyToNewItemProduct(int id)
+        {
+            db0 = getDB0();
+            int new_id=0;
+            var item = await db0.Product.FindAsync(id);
+            if (item != null) {
+                new_id = GetNewId(CodeTable.Product);
+
+                var md = new Product();
+                md.product_id = new_id;
+                md.product_name = item.product_name;
+                md.modal = item.modal;
+                md.description = item.description;
+                md.l1_id = item.l1_id;
+                md.l2_id = item.l2_id;
+                md.sort = item.sort;
+                md.is_new = item.is_new;
+                md.i_Hide = item.i_Hide;
+                md.i_Lang = item.i_Lang;
+                db0.Product.Add(md);
+                await db0.SaveChangesAsync();
+
+
+
+            }
+
+            return Ok(new_id);
+        }
+
 
         public class CategoryL1
         {
