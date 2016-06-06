@@ -615,15 +615,19 @@ namespace Product {
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
-                                    <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={field.modal} maxLength={64} required />
+                                    <div className="col-xs-9">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={field.modal} maxLength={1024} required />
                                     </div>
                                 </div>
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">規格</label>
-                                    <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'standard') } value={field.standard} maxLength={64} required />
+                                    <div className="col-xs-9">
+                                        <textarea
+                                            className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'standard') }
+                                            value={field.standard} maxLength={4000} required />
+                                        
                                     </div>
                                 </div>
 

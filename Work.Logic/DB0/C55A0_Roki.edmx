@@ -152,8 +152,8 @@
           </Key>
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="product_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="modal" Type="nvarchar" MaxLength="100" />
-          <Property Name="standard" Type="nvarchar" MaxLength="100" />
+          <Property Name="modal" Type="nvarchar" MaxLength="1024" />
+          <Property Name="standard" Type="nvarchar" MaxLength="4000" />
           <Property Name="description" Type="ntext" />
           <Property Name="is_new" Type="bit" Nullable="false" />
           <Property Name="l1_id" Type="int" Nullable="false" />
@@ -513,7 +513,7 @@
             <End Role="Product_Category_L2" EntitySet="Product_Category_L2" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Product_Category_L1">
           <Key>
             <PropertyRef Name="product_category_l1_id" />
@@ -571,8 +571,8 @@
           </Key>
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="modal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="standard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="modal" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="standard" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="is_new" Type="Boolean" Nullable="false" />
           <Property Name="l1_id" Type="Int32" Nullable="false" />
@@ -613,7 +613,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
