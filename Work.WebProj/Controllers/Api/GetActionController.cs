@@ -195,8 +195,61 @@ namespace DotWeb.Api
 
             return Ok(new_id);
         }
+        /// <summary>
+        /// 其他複製方法 by GetType().GetProperties()
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IHttpActionResult> copyProduct([FromUri]int product_id)
+        {
+            ResultInfo rAjaxResult = new ResultInfo();
+            using (var db0 = getDB0())
+            {
+                bool check_exist = db0.Product.Any(x => x.product_id == product_id);
+                try
+                {
+
+                    if (check_exist)
+                    {
+                        Product getCopyData = db0.Product.Find(product_id);
+                        Product newData = new Product();
+
+                        string[] test = new string[] { "Product_Category_L1", "Product_Category_L2" };
+                        foreach (var prop in getCopyData.GetType().GetProperties())
+                        {
+                            foreach (var i in newData.GetType().GetProperties())
+                            {
+                                if (prop.Name == i.Name)
+                                {
+                                    if (!test.Contains(prop.Name))
+                                        i.SetValue(newData, prop.GetValue(getCopyData, null));
+                                }
+                            }
+                        }
+                        newData.product_id = GetNewId(CodeTable.Product);
+                        newData.i_InsertDateTime = DateTime.Now;
+                        newData.i_InsertDeptID = this.departmentId;
+                        newData.i_InsertUserID = this.UserId;
+                        db0.Product.Add(newData);
+                        await db0.SaveChangesAsync();
+                        rAjaxResult.result = true;
+                    }
+                    else
+                    {
+                        rAjaxResult.result = false;
+                    }
 
 
+                    return Ok(rAjaxResult);
+                }
+                catch (Exception ex)
+                {
+                    rAjaxResult.message = ex.ToString();
+                    return Ok(rAjaxResult);
+                }
+            }
+        }
         public class CategoryL1
         {
             public int id { get; set; }
