@@ -25,7 +25,7 @@ namespace DotWeb.WebApp.Controllers
                     category_id = x.product_category_l1_id,
                     category_name = x.l1_name,
                     count = x.Product.Count(),
-                    products = x.Product.OrderBy(y => y.sort).Take(2).Select(z => new ProductIntro()
+                    products = x.Product.OrderBy(y => y.modal).Take(2).Select(z => new ProductIntro()
                     {
                         product_id = z.product_id,
                         category_l2_name = z.Product_Category_L2.l2_name,
@@ -106,6 +106,7 @@ namespace DotWeb.WebApp.Controllers
             var items = db0
                 .Product
                 .Where(x => x.i_Lang == lang && x.l1_id == main_category_id && x.l2_id == sub_category_id)
+                .OrderBy(x=>x.modal)
                 .Select(x => new ProductIntro()
                 {
                     product_id = x.product_id,
@@ -196,7 +197,7 @@ namespace DotWeb.WebApp.Controllers
                     || x.Product_Category_L1.l1_name.Contains(keyword)
                     || x.Product_Category_L2.l2_name.Contains(keyword)
                     )
-                    .OrderByDescending(x => x.sort)
+                    .OrderByDescending(x => x.modal)
                     .Select(x => new ProductIntro()
                     {
                         product_id = x.product_id,

@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="C55A0_RokiModel.Product" Width="1.5" PointX="5.25" PointY="16" />
         <AssociationConnector Association="C55A0_RokiModel.FK_Product_Product_Category_L1" />
         <AssociationConnector Association="C55A0_RokiModel.FK_Product_Product_Category_L2" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

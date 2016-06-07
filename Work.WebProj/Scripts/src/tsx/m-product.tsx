@@ -7,8 +7,8 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Product {
-    interface Rows { 
+namespace Product { 
+    interface Rows {
         product_id?: string;
         check_del?: boolean,
         l1_id: number;
@@ -110,6 +110,7 @@ namespace Product {
             this.setLangVal = this.setLangVal.bind(this);
             this.changeCategoryL1 = this.changeCategoryL1.bind(this);
             this.changeLang = this.changeLang.bind(this);
+            this.copyToNewItem = this.copyToNewItem.bind(this);
             this.render = this.render.bind(this);
 
             this.category = null;
@@ -394,6 +395,24 @@ namespace Product {
                 this.setState({ fieldData: obj, option_category_l2: [] });
             }
         }
+        copyToNewItem() {
+
+            let id = this.state.fieldData.product_id;
+            if (id != undefined && id != null && this.state.edit_type == IEditType.update) {
+
+                CommFunc.jqGet(gb_approot + 'api/GetAction/copyToNewItemProduct', { id: id })
+                    .done((data: IResultBase, textStatus, jqXHRdata) => {
+                        alert(data);
+                    })
+                    .fail((jqXHR, textStatus, errorThrown) => {
+                        CommFunc.showAjaxError(errorThrown);
+                    });
+            }
+
+
+        }
+
+
         render() {
 
             var outHtml: JSX.Element = null;
@@ -615,15 +634,19 @@ namespace Product {
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">型號(Model) </label>
-                                    <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={field.modal} maxLength={64} required />
+                                    <div className="col-xs-9">
+                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={field.modal} maxLength={1024} required />
                                     </div>
                                 </div>
 
                                 <div className="form-group">
                                     <label className="col-xs-3 control-label">規格</label>
-                                    <div className="col-xs-6">
-                                        <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'standard') } value={field.standard} maxLength={64} required />
+                                    <div className="col-xs-9">
+                                        <textarea
+                                            className="form-control"
+                                            onChange={this.changeFDValue.bind(this, 'standard') }
+                                            value={field.standard} maxLength={4000} required />
+
                                     </div>
                                 </div>
 
@@ -637,7 +660,7 @@ namespace Product {
                                             <option value="false">否</option>
                                             <option value="true">是</option>
                                         </select>
-                                        <small className="help-block">顯示於最新商品列表(取最新2筆)，以及首頁最新商品輪播(取最新6筆)</small>
+                                        <small className="help-block">顯示於最新商品列表(取最新2筆) ，以及首頁最新商品輪播(取最新6筆) </small>
                                     </div>
                                 </div>
 
@@ -665,6 +688,15 @@ namespace Product {
                             <div className="col-xs-12">
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
+                                        {/*  
+                                        <button type="button" className="btn-primary"
+                                            onClick={this.copyToNewItem}
+                                            disabled={this.state.edit_type != IEditType.update}                                            >
+                                            <i className="fa-check"></i> Copy New
+                                        </button>
+                                        
+*/}
+ { }
                                         <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
                                         <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
                                     </div>

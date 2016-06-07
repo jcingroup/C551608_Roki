@@ -17,6 +17,7 @@ using DotWeb.CommSetup;
 using System.Web;
 using ProcCore.WebCore;
 using DotWeb.Helpers;
+using ProcCore.Business;
 
 namespace DotWeb.Api
 {
@@ -149,7 +150,106 @@ namespace DotWeb.Api
                 .ToListAsync();
             return Ok(items);
         }
+        [HttpGet]
+        public async Task<IHttpActionResult> copyToNewItemProduct(int id)
+        {
+            db0 = getDB0();
+            int new_id = 0;
+            var item = await db0.Product.FindAsync(id);
+            if (item != null)
+            {
+                new_id = GetNewId(CodeTable.Product);
 
+                var md = new Product();
+                md.product_id = new_id;
+                md.product_name = item.product_name;
+                md.modal = item.modal;
+                md.standard = item.standard;
+                md.description = item.description;
+                md.l1_id = item.l1_id;
+                md.l2_id = item.l2_id;
+                md.sort = item.sort;
+                md.is_new = item.is_new;
+                md.i_Hide = item.i_Hide;
+                md.i_Lang = item.i_Lang;
+                db0.Product.Add(md);
+                await db0.SaveChangesAsync();
+
+                string path_1 = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("/_code/SysUpFiles/Active/ProductData/{0}/", id));
+                string path_2 = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("/_code/SysUpFiles/Active/ProductData/{0}/", new_id));
+
+                if (Directory.Exists(path_1))
+                {
+                    Directory.CreateDirectory(path_2);
+
+                    string[] files = Directory.GetFiles(path_1);
+                    foreach (string s in files)
+                    {
+                        string fileName = Path.GetFileName(s);
+                        string destFile = Path.Combine(path_2, fileName);
+                        File.Copy(s, destFile, true);
+                    }
+                }
+
+            }
+
+            return Ok(new_id);
+        }
+        /// <summary>
+        /// 其他複製方法 by GetType().GetProperties()
+        /// </summary>
+        /// <param name="product_id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IHttpActionResult> copyProduct([FromUri]int product_id)
+        {
+            ResultInfo rAjaxResult = new ResultInfo();
+            using (var db0 = getDB0())
+            {
+                bool check_exist = db0.Product.Any(x => x.product_id == product_id);
+                try
+                {
+
+                    if (check_exist)
+                    {
+                        Product getCopyData = db0.Product.Find(product_id);
+                        Product newData = new Product();
+
+                        string[] test = new string[] { "Product_Category_L1", "Product_Category_L2" };
+                        foreach (var prop in getCopyData.GetType().GetProperties())
+                        {
+                            foreach (var i in newData.GetType().GetProperties())
+                            {
+                                if (prop.Name == i.Name)
+                                {
+                                    if (!test.Contains(prop.Name))
+                                        i.SetValue(newData, prop.GetValue(getCopyData, null));
+                                }
+                            }
+                        }
+                        newData.product_id = GetNewId(CodeTable.Product);
+                        newData.i_InsertDateTime = DateTime.Now;
+                        newData.i_InsertDeptID = this.departmentId;
+                        newData.i_InsertUserID = this.UserId;
+                        db0.Product.Add(newData);
+                        await db0.SaveChangesAsync();
+                        rAjaxResult.result = true;
+                    }
+                    else
+                    {
+                        rAjaxResult.result = false;
+                    }
+
+
+                    return Ok(rAjaxResult);
+                }
+                catch (Exception ex)
+                {
+                    rAjaxResult.message = ex.ToString();
+                    return Ok(rAjaxResult);
+                }
+            }
+        }
         public class CategoryL1
         {
             public int id { get; set; }
