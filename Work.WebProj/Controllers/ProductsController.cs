@@ -19,13 +19,13 @@ namespace DotWeb.WebApp.Controllers
 
             var items = db0.Product_Category_L1
                 .OrderBy(x => x.l1_sort)
-                .Where(x => x.i_Lang == lang && x.Product.Count() > 0)
+                .Where(x => x.i_Lang == lang && x.Product.Where(y => !y.i_Hide).Count() > 0)
                 .Select(x => new NewProduct
                 {
                     category_id = x.product_category_l1_id,
                     category_name = x.l1_name,
-                    count = x.Product.Count(),
-                    products = x.Product.OrderBy(y => y.modal).Take(2).Select(z => new ProductIntro()
+                    count = x.Product.Where(y => !y.i_Hide).Count(),
+                    products = x.Product.OrderBy(y => y.modal).Where(y => !y.i_Hide).Take(2).Select(z => new ProductIntro()
                     {
                         product_id = z.product_id,
                         category_l2_name = z.Product_Category_L2.l2_name,
@@ -94,8 +94,8 @@ namespace DotWeb.WebApp.Controllers
             ViewBag.sub_category_id = sub_category_id;
             ViewBag.CategoryStroe = menus;
 
-            main_category_count = db0.Product.Where(x => x.l1_id == main_category_id).Count();
-            sub_category_count = db0.Product.Where(x => x.l2_id == sub_category_id).Count();
+            main_category_count = db0.Product.Where(x => x.l1_id == main_category_id & !x.i_Hide).Count();
+            sub_category_count = db0.Product.Where(x => x.l2_id == sub_category_id & !x.i_Hide).Count();
 
             CategoryStroe categoryStroe = new CategoryStroe();
             categoryStroe.categoryL1Data = menus;
@@ -105,8 +105,8 @@ namespace DotWeb.WebApp.Controllers
 
             var items = db0
                 .Product
-                .Where(x => x.i_Lang == lang && x.l1_id == main_category_id && x.l2_id == sub_category_id)
-                .OrderBy(x=>x.modal)
+                .Where(x => x.i_Lang == lang && x.l1_id == main_category_id && x.l2_id == sub_category_id & !x.i_Hide)
+                .OrderBy(x => x.modal)
                 .Select(x => new ProductIntro()
                 {
                     product_id = x.product_id,
@@ -192,8 +192,8 @@ namespace DotWeb.WebApp.Controllers
             if (keyword != null)
             {
                 items = db0.Product
-                    .Where(x => x.modal.Contains(w) 
-                    || x.standard.Contains(w) 
+                    .Where(x => x.modal.Contains(w)
+                    || x.standard.Contains(w)
                     || x.Product_Category_L1.l1_name.Contains(keyword)
                     || x.Product_Category_L2.l2_name.Contains(keyword)
                     )

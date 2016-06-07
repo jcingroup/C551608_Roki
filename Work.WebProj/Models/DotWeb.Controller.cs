@@ -1334,7 +1334,7 @@ namespace DotWeb.Controller
                     {
                         id = y.product_category_l2_id,
                         name = y.l2_name,
-                        count = y.Product.Count()
+                        count = y.Product.Where(z => !z.i_Hide).Count()
                     }),
                     count = x.Product.Count()
                 });
