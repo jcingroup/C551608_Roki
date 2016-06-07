@@ -27,7 +27,13 @@
             <dt class="list-info-title">@Resources.Web.product_modal</dt>
             <dd class="list-info-content">@Model.product.modal</dd>
             <dt class="list-info-title">@Resources.Web.product_standard</dt>
-            <dd class="list-info-content">@Model.product.standard</dd>
+            @if (Model.product.standard != null)
+            {
+                string str = Model.product.standard.ToString();
+                str = str.Replace("\n", "<br>");
+                <dd class="list-info-content">@Html.Raw(str)</dd>
+            }
+
         </dl>
     </article><!-- row //-->
 
