@@ -7,8 +7,8 @@ import CommCmpt = require('comm-cmpt');
 import CommFunc = require('comm-func');
 import DT = require('dt');
 
-namespace Product { 
-    interface Rows {
+namespace Product {
+    interface Rows { 
         product_id?: string;
         check_del?: boolean,
         l1_id: number;
@@ -142,7 +142,7 @@ namespace Product {
         }
         componentDidUpdate(prevProps, prevState) {
             if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
-                CKEDITOR.replace('description');
+                CKEDITOR.replace('description', { customConfig: '../ckeditor/Config.js?v=' + CommFunc.uniqid() });
                 //CKEDITOR.disableAutoInline = true;
             }
         }
