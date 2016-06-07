@@ -218,14 +218,8 @@ namespace DotWeb.Api
                         string[] test = new string[] { "Product_Category_L1", "Product_Category_L2" };
                         foreach (var prop in getCopyData.GetType().GetProperties())
                         {
-                            foreach (var i in newData.GetType().GetProperties())
-                            {
-                                if (prop.Name == i.Name)
-                                {
-                                    if (!test.Contains(prop.Name))
-                                        i.SetValue(newData, prop.GetValue(getCopyData, null));
-                                }
-                            }
+                            if (!test.Contains(prop.Name))
+                                newData.GetType().GetProperty(prop.Name).SetValue(newData, prop.GetValue(getCopyData, null));
                         }
                         newData.product_id = GetNewId(CodeTable.Product);
                         newData.i_InsertDateTime = DateTime.Now;
