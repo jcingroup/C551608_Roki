@@ -129,8 +129,13 @@
     small, h4 {
         padding: 0 20px;
     }
-    @if $index {
-        p {
+    h4 {
+        @if $page {
+            @include text-overflow;
+        }
+    }
+    p {
+        @if $index {
             margin-top: $gutter*2;
             background: $brand-primary;
             text-align: center;
@@ -161,8 +166,6 @@ figcaption {
     height: auto;
     padding-top: $gutter;
 
-    @if $index {
-    }
     @if $page {
         padding-bottom: $gutter;
         @include transition(background 1s);

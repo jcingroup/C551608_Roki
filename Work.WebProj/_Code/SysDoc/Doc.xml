@@ -36,4 +36,10 @@
     <memo>編輯器教學 - 【表格】增加/刪除列</memo>
   </file>
 
+  <file>
+    <name>D04_editor_template.html</name>
+    <sort>6</sort>
+    <memo>編輯器教學 - 【文章編輯】範本功能教學</memo>
+  </file>
+
 </document>

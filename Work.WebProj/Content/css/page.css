@@ -1160,6 +1160,12 @@ figure {
     margin-bottom: 2%; }
   .product-list small, .product-list h4 {
     padding: 0 20px; }
+  .product-list h4 {
+    width: 100%; }
+    .product-list h4 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
   .product-list:hover img, .product-list:active img {
     -ms-transform: scale(1.2);
     -webkit-transform: scale(1.2);

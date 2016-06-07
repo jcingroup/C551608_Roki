@@ -143,10 +143,10 @@ namespace Product {
         }
         componentDidUpdate(prevProps, prevState) {
             if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
-                CKEDITOR.replace('description');
+                CKEDITOR.replace('description', { customConfig: '../ckeditor/Config.js?v=' + CommFunc.uniqid() });
                 //CKEDITOR.disableAutoInline = true;
             }
-        }
+        } 
 
         getCategoryByLang(lang: string): Array<CategoryL1> {
 
@@ -636,6 +636,7 @@ namespace Product {
                                     <label className="col-xs-3 control-label">型號(Model) </label>
                                     <div className="col-xs-9">
                                         <input type="text" className="form-control" onChange={this.changeFDValue.bind(this, 'modal') } value={field.modal} maxLength={1024} required />
+                                        <small className="help-block">字數最多 1000 字</small>
                                     </div>
                                 </div>
 
@@ -646,7 +647,7 @@ namespace Product {
                                             className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'standard') }
                                             value={field.standard} maxLength={4000} required />
-
+                                        <small className="help-block">字數最多 4000 字</small>
                                     </div>
                                 </div>
 
@@ -688,13 +689,13 @@ namespace Product {
                             <div className="col-xs-12">
                                 <div className="form-action">
                                     <div className="col-xs-4 col-xs-offset-2">
-                                        {/*  
+                                        {/*
                                         <button type="button" className="btn-primary"
                                             onClick={this.copyToNewItem}
                                             disabled={this.state.edit_type != IEditType.update}                                            >
                                             <i className="fa-check"></i> Copy New
                                         </button>
-                                        
+
 */}
  { }
                                         <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }

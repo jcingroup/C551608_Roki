@@ -249,6 +249,9 @@
     <Compile Include="Areas\Base\Controllers\UsersController.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
     <Content Include="ckeditor\inlineConfig.js" />
+    <Content Include="ckeditor\themes\ckeditor_templates.js" />
+    <Content Include="ckeditor\themes\images\template1.gif" />
+    <Content Include="ckeditor\themes\images\template2.gif" />
     <Content Include="ckfinder\ckfinder.js" />
     <Content Include="ckfinder\ckfinder_v1.js" />
     <Content Include="ckfinder\config.ascx" />
