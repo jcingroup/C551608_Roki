@@ -215,11 +215,14 @@ namespace DotWeb.Api
                         Product getCopyData = db0.Product.Find(product_id);
                         Product newData = new Product();
 
-                        string[] test = new string[] { "Product_Category_L1", "Product_Category_L2" };
+                        //string[] test = new string[] { "Product_Category_L1", "Product_Category_L2" };
                         foreach (var prop in getCopyData.GetType().GetProperties())
                         {
-                            if (!test.Contains(prop.Name))
+                            Type val_type = newData.GetType().GetProperty(prop.Name).PropertyType;
+                            if (val_type.BaseType.Name != typeof(Object).Name)
+                            {
                                 newData.GetType().GetProperty(prop.Name).SetValue(newData, prop.GetValue(getCopyData, null));
+                            }
                         }
                         newData.product_id = GetNewId(CodeTable.Product);
                         newData.i_InsertDateTime = DateTime.Now;
