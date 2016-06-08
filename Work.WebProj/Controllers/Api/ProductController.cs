@@ -32,7 +32,8 @@ namespace DotWeb.Api
             using (db0 = getDB0())
             {
                 var items = db0.Product
-                    .OrderByDescending(x => x.sort)
+                    .OrderBy(x => x.modal)
+                    //.OrderByDescending(x => x.sort)
                     .Select(x => new m_Product()
                     {
                         product_id = x.product_id,
