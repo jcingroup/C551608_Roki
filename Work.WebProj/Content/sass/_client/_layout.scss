@@ -148,6 +148,7 @@ html, body {
         font-size: em(24px);
         margin-bottom: $gutter;
     }
+    &.en h4 { font-size: em(21); }
     a {
         display: block;
         margin-bottom: 25px;
@@ -169,6 +170,7 @@ html, body {
             width: percentage(1/2);
         }
     }
+    &.en a { font-size: em(17); }
     nav {
         &:last-child a {
             display: inline-block;
@@ -206,6 +208,7 @@ html, body {
             display: inline-block;
             font-size: em(23,14);
         }
+        &.en { font-size: em(21,14); }
         &:first-child,
         &:nth-child(2) {
             font-weight: 500;

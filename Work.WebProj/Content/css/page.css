@@ -554,6 +554,8 @@ html, body {
     color: #2E333C;
     font-size: 1.5em;
     margin-bottom: 15px; }
+  .foot-nav.en h4 {
+    font-size: 1.3125em; }
   .foot-nav a {
     display: block;
     margin-bottom: 25px;
@@ -579,6 +581,8 @@ html, body {
     @media (max-width: 20em) {
       .foot-nav a {
         width: 50%; } }
+  .foot-nav.en a {
+    font-size: 1.0625em; }
   .foot-nav nav:last-child a {
     display: inline-block;
     margin-right: -4px;
@@ -607,6 +611,8 @@ html, body {
     .foot-contact li:first-child, .foot-contact li:nth-child(2), .foot-contact li:nth-child(3) {
       display: inline-block;
       font-size: 1.64286em; }
+    .foot-contact li.en {
+      font-size: 1.5em; }
     .foot-contact li:first-child, .foot-contact li:nth-child(2) {
       font-weight: 500;
       color: #2E333C;
@@ -1043,7 +1049,7 @@ figure {
 .collapse-title {
   cursor: pointer;
   cursor: hand;
-  font-size: 1.3125em;
+  font-size: 1.1875em;
   color: #8BBE44; }
   .collapse-title::after {
     content: "";
@@ -1281,7 +1287,8 @@ h2.title {
 
 .sidebar {
   width: 16.66667%;
-  margin-top: -90px; }
+  margin-top: -90px;
+  padding-right: 15px; }
   @media (max-width: 61.1875em) {
     .sidebar {
       display: none;
