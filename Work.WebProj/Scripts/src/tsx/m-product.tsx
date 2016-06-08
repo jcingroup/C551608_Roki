@@ -145,8 +145,8 @@ namespace Product {
             if ((prevState.edit_type == 0 && (this.state.edit_type == 1 || this.state.edit_type == 2))) {
                 CKEDITOR.replace('description', { customConfig: '../ckeditor/Config.js?v=' + CommFunc.uniqid() });
                 //CKEDITOR.disableAutoInline = true;
-            }
-        } 
+            } 
+        }
 
         getCategoryByLang(lang: string): Array<CategoryL1> {
 
@@ -653,7 +653,7 @@ namespace Product {
 
 
                                 <div className="form-group">
-                                    <label className="col-xs-3 control-label">新品</label>
+                                    <label className="col-xs-3 control-label">首頁強打新品</label>
                                     <div className="col-xs-6">
                                         <select className="form-control"
                                             onChange={this.changeFDValue.bind(this, 'is_new') }
@@ -661,7 +661,7 @@ namespace Product {
                                             <option value="false">否</option>
                                             <option value="true">是</option>
                                         </select>
-                                        <small className="help-block">顯示於最新商品列表(取最新2筆) ，以及首頁最新商品輪播(取最新6筆) </small>
+                                        <small className="help-block">顯示於首頁最新商品輪播(最多顯示6筆，超過時只取最新6筆)</small>
                                     </div>
                                 </div>
 

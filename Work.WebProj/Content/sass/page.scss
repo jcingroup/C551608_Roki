@@ -118,6 +118,7 @@ h2.title {
     @include make-col-span(2,12);
 
     margin-top: -90px;
+    padding-right: $gutter;
 
     // 行動版時隱藏
     @include mq-max(break(desktop,-1)) {
