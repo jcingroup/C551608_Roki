@@ -43,6 +43,7 @@ namespace DotWeb.Api
                         l2_name = x.Product_Category_L2.l2_name,
                         modal = x.modal,
                         sort = x.sort,
+                        is_new = x.is_new,
                         i_Hide = x.i_Hide,
                         i_Lang = x.i_Lang
                     });
@@ -53,6 +54,10 @@ namespace DotWeb.Api
                 if (q.i_Lang != null)
                 {
                     items = items.Where(x => x.i_Lang == q.i_Lang);
+                }
+                if (q.is_New != null)
+                {
+                    items = items.Where(x => x.is_new == q.is_New);
                 }
 
                 //if (q.category_l1 != null)
@@ -225,6 +230,7 @@ namespace DotWeb.Api
         public bool? i_Hide { get; set; }
         public int? category_l1 { get; set; }
         public int? category_l2 { get; set; }
+        public bool? is_New { get; set; }
     }
 
     public partial class m_Product
@@ -255,7 +261,7 @@ namespace DotWeb.Api
         public Nullable<System.DateTime> i_UpdateDateTime { get; set; }
         public string i_Lang { get; set; }
 
-
+        public bool is_new { get; set; }
         public string product_name { get; set; }
         public string modal { get; set; }
         public string standard { get; set; }

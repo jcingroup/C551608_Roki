@@ -18,6 +18,7 @@ namespace Product {
         l2_name?: string;
         modal?: string;
         sort?: number;
+        is_new?: boolean;
         i_Hide?: boolean;
         i_Lang: string;
     }
@@ -28,6 +29,7 @@ namespace Product {
             category_l1: number
             category_l2: number
             i_Hide: boolean
+            is_New: boolean
         },
         option_category_l1?: Array<CategoryL1>;
         option_category_l2?: Array<CategoryL2>;
@@ -80,7 +82,8 @@ namespace Product {
                 <td>{this.props.itemData.l2_name}</td>
                 <td>{this.props.itemData.modal}</td>
                 <td>{this.props.itemData.sort }</td>
-                <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}</td>
+                {/*<td>{this.props.itemData.is_new ? <span className="label label-danger">新品</span> : null}</td>*/}
+                <td>{this.props.itemData.i_Hide ? <span className="label label-default">隱藏</span> : <span className="label label-primary">顯示</span>}{this.props.itemData.is_new ? <span className="label label-danger">新品</span> : null}</td>
                 <td>{text_lang }</td>
             </tr>;
 
@@ -119,7 +122,7 @@ namespace Product {
                 fieldData: {},
                 gridData: { rows: [], page: 1 },
                 edit_type: 0,
-                searchData: { keyword: null, i_Lang: null, category_l1: null, category_l2: null, i_Hide: null },
+                searchData: { keyword: null, i_Lang: null, category_l1: null, category_l2: null, i_Hide: null, is_New: null },
                 option_category_l1: [],
                 option_category_l2: []
             }
@@ -146,7 +149,7 @@ namespace Product {
                 CKEDITOR.replace('description', { customConfig: '../ckeditor/Config.js?v=' + CommFunc.uniqid() });
                 //CKEDITOR.disableAutoInline = true;
             }
-        } 
+        }
 
         getCategoryByLang(lang: string): Array<CategoryL1> {
 
@@ -446,9 +449,17 @@ namespace Product {
                                                         <option value="false">顯示</option>
                                                         <option value="true">隱藏</option>
                                                     </select> { }
+                                                    <label>新品</label> { }
+                                                    <select className="form-control"
+                                                        onChange={this.changeGDValue.bind(this, 'is_New') }
+                                                        value={searchData.is_New} >
+                                                        <option value="">全部</option>
+                                                        <option value="false">否</option>
+                                                        <option value="true">是</option>
+                                                    </select> { }
                                                     <label>語系</label> { }
                                                     <select className="form-control"
-                                                        onChange={this.changeGDValue.bind(this, this.props.gdName, 'i_Lang') }
+                                                        onChange={this.changeGDValue.bind(this, 'i_Lang') }
                                                         value={searchData.i_Lang} >
                                                         <option value="">全部</option>
                                                         <option value="zh-TW">中文</option>
@@ -697,7 +708,7 @@ namespace Product {
                                         </button>
 
 */}
- { }
+                                        { }
                                         <button type="submit" className="btn-primary"><i className="fa-check"></i> 儲存</button> { }
                                         <button type="button" onClick={this.noneType}><i className="fa-times"></i> 回前頁</button>
                                     </div>
