@@ -185,6 +185,7 @@ namespace DotWeb.WebApp.Controllers
         }
         public ActionResult search(string keyword)
         {
+            var lang = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
             var w = keyword.Trim();
             ViewBag.keyword = w;
             db0 = getDB0();
@@ -193,6 +194,7 @@ namespace DotWeb.WebApp.Controllers
             {
                 items = db0.Product
                     .Where(x => x.modal.Contains(w)
+                    && x.i_Lang == lang
                     || x.standard.Contains(w)
                     || x.Product_Category_L1.l1_name.Contains(keyword)
                     || x.Product_Category_L2.l2_name.Contains(keyword)

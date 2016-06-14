@@ -59,7 +59,14 @@ namespace DotWeb.Api
                 {
                     items = items.Where(x => x.is_new == q.is_New);
                 }
-
+                if (q.category_l1 !=null)
+                {
+                    items = items.Where(x => x.l1_id == q.category_l1);
+                }
+                if (q.category_l2 !=null)
+                {
+                    items = items.Where(x => x.l2_id == q.category_l2);
+                }
                 //if (q.category_l1 != null)
                 //{
                 //    items = items.Where(x => x.l1_id == q.category_l1);

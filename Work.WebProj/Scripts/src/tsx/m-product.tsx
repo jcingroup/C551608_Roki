@@ -383,6 +383,20 @@ namespace Product {
             });
 
         }
+        changeLang_L1(collentName: string, name: string, e: React.SyntheticEvent) {
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+
+            let obj = this.state[collentName];
+            obj[name] = input.value;
+            var category = this.getCategoryByLang(input.value);
+
+            this.setState({
+                searchData: obj,
+                option_category_l1: category,
+                option_category_l2: []
+            });
+
+        }
         changeCategoryL1(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
 
@@ -396,6 +410,21 @@ namespace Product {
                 this.setState({ fieldData: obj, option_category_l2: get_category_l2 });
             } else {
                 this.setState({ fieldData: obj, option_category_l2: [] });
+            }
+        }
+        changeCategoryL1_L2(collentName: string, name: string, e: React.SyntheticEvent) {
+            let input: HTMLInputElement = e.target as HTMLInputElement;
+
+            let obj = this.state[collentName];
+            obj[name] = input.value;
+            obj['l2_id'] = '';
+
+            if (input.value != '' && this.state.searchData.i_Lang != '') {
+
+                var get_category_l2 = this.getL2(parseInt(input.value, 10), this.category);
+                this.setState({ searchData: obj, option_category_l2: get_category_l2 });
+            } else {
+                this.setState({ searchData: obj, option_category_l2: [] });
             }
         }
         copyToNewItem() {
@@ -419,6 +448,8 @@ namespace Product {
         render() {
 
             var outHtml: JSX.Element = null;
+            let C_L1 = this.state.option_category_l1;
+            let C_L2 = this.state.option_category_l2
 
             if (this.state.edit_type == 0) {
                 let searchData = this.state.searchData;
@@ -459,11 +490,29 @@ namespace Product {
                                                     </select> { }
                                                     <label>語系</label> { }
                                                     <select className="form-control"
-                                                        onChange={this.changeGDValue.bind(this, 'i_Lang') }
+                                                    onChange={this.changeLang_L1.bind(this, this.props.gdName,'i_Lang') }
                                                         value={searchData.i_Lang} >
                                                         <option value="">全部</option>
                                                         <option value="zh-TW">中文</option>
                                                         <option value="en-US">英文</option>
+                                                    </select> { }
+                                                    <label>第一層分類</label> { }
+                                                    <select className="form-control"
+                                                        onChange={this.changeCategoryL1_L2.bind(this, this.props.gdName, 'category_l1') }
+                                                        value={searchData.category_l1} >
+                                                        <option value="">全部</option>
+                                                        {
+                                                            C_L1.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.name}</option>)
+                                                        }
+                                                    </select> { }
+                                                    <label>第二層</label> { }
+                                                    <select className="form-control"
+                                                        onChange={this.changeGDValue.bind(this,  'category_l2') }
+                                                        value={searchData.category_l2} >
+                                                        <option value="">全部</option>
+                                                        {
+                                                            C_L2.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.name}</option>)
+                                                        }
                                                     </select> { }
                                                     <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
@@ -672,7 +721,7 @@ namespace Product {
                                             <option value="false">否</option>
                                             <option value="true">是</option>
                                         </select>
-                                        <small className="help-block">顯示於首頁最新商品輪播(最多顯示6筆，超過時只取最新6筆)</small>
+                                        <small className="help-block">顯示於首頁最新商品輪播(最多顯示6筆，超過時只取最新6筆) </small>
                                     </div>
                                 </div>
 
