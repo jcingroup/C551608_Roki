@@ -518,7 +518,7 @@ namespace Product {
                                                         <option value="false">否</option>
                                                         <option value="true">是</option>
                                                     </select> { }
-                                                    {/*<button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>*/}
+                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
                                             </div>
                                         </div>
