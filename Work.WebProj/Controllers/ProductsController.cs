@@ -194,10 +194,11 @@ namespace DotWeb.WebApp.Controllers
             {
                 items = db0.Product
                     .Where(x => x.modal.Contains(w)
-                    && x.i_Lang == lang
                     || x.standard.Contains(w)
                     || x.Product_Category_L1.l1_name.Contains(keyword)
                     || x.Product_Category_L2.l2_name.Contains(keyword)
+                    )
+                    .Where(x => x.i_Lang == lang
                     )
                     .OrderByDescending(x => x.modal)
                     .Select(x => new ProductIntro()
