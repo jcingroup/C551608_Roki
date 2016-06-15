@@ -354,9 +354,9 @@ namespace Product {
                 obj[name] = input.value;
             }
             this.setState({ fieldData: obj });
-            //if (collentName == this.props.gdName) {
-            //    this.queryGridData(1);
-            //}
+            if (collentName == this.props.gdName) {
+                this.queryGridData(1);
+            }
         }
         setLangVal(collentName: string, name: string, e: React.SyntheticEvent) {
             let input: HTMLInputElement = e.target as HTMLInputElement;
@@ -395,6 +395,24 @@ namespace Product {
                 option_category_l1: category,
                 option_category_l2: []
             });
+            if (collentName == this.props.gdName)
+            {
+                this.state.option_category_l2 = [];
+                this.state.option_category_l1.forEach((item, i) => {
+                    if (item.id == parseInt(input.value)) {
+                        this.state.option_category_l2 = item.l2;
+                    }
+                });
+                obj['category_l1'] = null;
+                obj['category_l2'] = null;
+                $("#search-category-l1 option:first").attr("selected", "true");
+                $("#search-category-l2 option:first").attr("selected", "true");
+                this.setState(this.state.option_category_l1);
+                this.setState(this.state.option_category_l2);
+            }
+            if (collentName == this.props.gdName) {
+                this.queryGridData(1);
+            }
 
         }
         changeCategoryL1(collentName: string, name: string, e: React.SyntheticEvent) {
@@ -425,6 +443,14 @@ namespace Product {
                 this.setState({ searchData: obj, option_category_l2: get_category_l2 });
             } else {
                 this.setState({ searchData: obj, option_category_l2: [] });
+            }
+            if (collentName == this.props.gdName) {
+                obj['category_l2'] = null;
+                $("#search-category-l2 option:first").attr("selected", "true");
+                this.setState(this.state.option_category_l2);
+            }
+            if (collentName == this.props.gdName) {
+                this.queryGridData(1);
             }
         }
         copyToNewItem() {
