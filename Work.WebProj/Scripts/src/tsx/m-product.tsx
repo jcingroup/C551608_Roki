@@ -151,7 +151,7 @@ namespace Product {
             }
         }
 
-        getCategoryByLang(lang: string): Array<CategoryL1> {
+        getCategoryByLang(lang: string): Array<CategoryL1> { 
 
             var data: Array<CategoryL1> = [];
             if (this.category != null) {
@@ -472,6 +472,24 @@ namespace Product {
                                                         onChange={this.changeGDValue.bind(this, 'keyword') }
                                                         value={searchData.keyword}
                                                         placeholder="請輸入關鍵字..." /> { }
+                                                    <label>第一層分類</label> { }
+                                                    <select className="form-control"
+                                                        onChange={this.changeCategoryL1_L2.bind(this, this.props.gdName, 'category_l1') }
+                                                        value={searchData.category_l1} >
+                                                        <option value="">全部</option>
+                                                        {
+                                                            C_L1.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.name}</option>)
+                                                        }
+                                                    </select> { }
+                                                    <label>第二層分類</label> { }
+                                                    <select className="form-control"
+                                                        onChange={this.changeGDValue.bind(this,  'category_l2') }
+                                                        value={searchData.category_l2} >
+                                                        <option value="">全部</option>
+                                                        {
+                                                            C_L2.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.name}</option>)
+                                                        }
+                                                    </select> { }
                                                     <label>狀態</label> { }
                                                     <select className="form-control"
                                                         onChange={this.changeGDValue.bind(this, 'i_Hide') }
@@ -495,24 +513,6 @@ namespace Product {
                                                         <option value="">全部</option>
                                                         <option value="zh-TW">中文</option>
                                                         <option value="en-US">英文</option>
-                                                    </select> { }
-                                                    <label>第一層分類</label> { }
-                                                    <select className="form-control"
-                                                        onChange={this.changeCategoryL1_L2.bind(this, this.props.gdName, 'category_l1') }
-                                                        value={searchData.category_l1} >
-                                                        <option value="">全部</option>
-                                                        {
-                                                            C_L1.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.name}</option>)
-                                                        }
-                                                    </select> { }
-                                                    <label>第二層</label> { }
-                                                    <select className="form-control"
-                                                        onChange={this.changeGDValue.bind(this,  'category_l2') }
-                                                        value={searchData.category_l2} >
-                                                        <option value="">全部</option>
-                                                        {
-                                                            C_L2.map((itemData, i) => <option key={i} value={itemData.id}>{itemData.name}</option>)
-                                                        }
                                                     </select> { }
                                                     <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
                                                 </div>
