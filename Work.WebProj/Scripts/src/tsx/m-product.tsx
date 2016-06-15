@@ -461,6 +461,10 @@ namespace Product {
                             <h3 className="title">
                                 {this.props.caption}
                             </h3>
+                            <div className="alert alert-warning alert-dismissible" role="alert">
+                                <strong>搜尋注意事項</strong><br/>
+                                請先選擇要搜尋的語系後，再點選產品分類
+                            </div>
                             <form onSubmit={this.handleSearch}>
                                 <div className="table-responsive">
                                     <div className="table-header">
@@ -472,6 +476,14 @@ namespace Product {
                                                         onChange={this.changeGDValue.bind(this, 'keyword') }
                                                         value={searchData.keyword}
                                                         placeholder="請輸入關鍵字..." /> { }
+                                                    <label>語系</label> { }
+                                                    <select className="form-control"
+                                                    onChange={this.changeLang_L1.bind(this, this.props.gdName,'i_Lang') }
+                                                        value={searchData.i_Lang} >
+                                                        <option value="">全部</option>
+                                                        <option value="zh-TW">中文</option>
+                                                        <option value="en-US">英文</option>
+                                                    </select> { }
                                                     <label>第一層分類</label> { }
                                                     <select className="form-control"
                                                         onChange={this.changeCategoryL1_L2.bind(this, this.props.gdName, 'category_l1') }
@@ -506,15 +518,7 @@ namespace Product {
                                                         <option value="false">否</option>
                                                         <option value="true">是</option>
                                                     </select> { }
-                                                    <label>語系</label> { }
-                                                    <select className="form-control"
-                                                    onChange={this.changeLang_L1.bind(this, this.props.gdName,'i_Lang') }
-                                                        value={searchData.i_Lang} >
-                                                        <option value="">全部</option>
-                                                        <option value="zh-TW">中文</option>
-                                                        <option value="en-US">英文</option>
-                                                    </select> { }
-                                                    <button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>
+                                                    {/*<button className="btn-primary" type="submit"><i className="fa-search"></i> 搜尋</button>*/}
                                                 </div>
                                             </div>
                                         </div>
