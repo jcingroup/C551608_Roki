@@ -88,8 +88,10 @@
             <nav class="lang-nav dropdown">
                 <button data-dropdown="btn">@lang_name</button>
                 <div data-dropdown="content">
-                    <a href="@Url.Action("SetLanguage")?L=zh-TW&A=index" class="current">中文</a>
-                    <a href="@Url.Action("SetLanguage")?L=en-US&A=index">English</a>
+                    <a href="@Url.Action("index")?lang=zh-TW" class="current">中文</a>
+                    <a href="@Url.Action("index")?lang=en-US">English</a>
+                    @*<a href="@Url.Action("SetLanguage")?L=zh-TW&A=index" class="current">中文</a>
+                        <a href="@Url.Action("SetLanguage")?L=en-US&A=index">English</a>*@
                 </div>
             </nav>
             <form action="~/Products/search" class="input-group search" method="get">
