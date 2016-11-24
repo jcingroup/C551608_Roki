@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+@import "basic/normalize"; // 重置復位
+@import "basic/print";  // 列印樣式
+
+/*      basic elements
+-----------------------------------------------------------------------*/
+// 自定Reset
+h1,h2,h3,h4,h5,h6,p,figure,form,blockquote{margin:0;}
+ul,ol,li,dl,dt,dd{margin:0;padding:0;}
+button{outline:none;border:none;}
+
+// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@at-root {
+  @-moz-viewport      { width: device-width; }
+  @-ms-viewport       { width: device-width; }
+  @-o-viewport        { width: device-width; }
+  @-webkit-viewport   { width: device-width; }
+  @viewport           { width: device-width; }
+}
+
+//
+// Reset HTML, body, and more
+//
+html {
+  // Sets a specific default `font-size` for user with `rem` type scales.
+  font-size: $font-size-root;
+  // Changes the default tap highlight to be completely transparent in iOS.
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height;
+    color: $body-color;
+    background: $body-bg;
+
+    // 手機版選單動畫
+    // position: relative;
+    // overflow-x: hidden;
+    // left: 0;
+    // @include prefix(transition, left .35s);
+}
+
+// Credit: https://github.com/suitcss/base
+[tabindex="-1"]:focus {
+    outline: none !important;
+}
+
+a {
+    color: $link-color;
+    text-decoration: $link-decoration;
+    blur: expression(this.onFocus=this.blur()); // 清除虛線框
+
+    @include prefix(transition, 'color .35s, background .3s');
+
+    &:hover, &:active, &.active { color: $link-hover-color; }
+    &:focus {
+        // @include tab-focus(thin dotted $info);
+        outline: none;
+    }
+}
+
+img {
+    vertical-align: middle;
+    // @include mq-max(break(tablet, -1)) { min-width: 100%; }
+}
+
+// @font-face {
+//     font-family: 'NeutraText';
+//     src: url('../font/Neutraface2Text-Book.eot'); // IE9
+//     src: url('../font/Neutraface2Text-Book.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+//          local('Neutraface2Text-Book'),
+//          url('../font/Neutraface2Text-Book.otf') format("opentype");
+// }
+
+// .font-sp { font-family: $font-sp; }
+
+
+
+// Headings
+// -----------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: $headings-margin-bottom;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+    color: $headings-color;
+}
+
+@for $i from 1 through 6 {
+    $headings: $font-size-h1 $font-size-h2 $font-size-h3 $font-size-h4 $font-size-h5 $font-size-h6;
+
+    h#{$i} { font-size: nth($headings, $i); }
+}
+
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
+
+// Body text
+// -----------------------------------------------
+// p {
+//     margin: 0 0 em($line-height-computed / 2);
+//     line-height: 1.5;
+// }
+
+strong {
+    font-size: em(17px);
+    color: $brand-primary;
+}
+
+small {
+    font-size: 80%;
+    font-weight: normal;
+}
+
+// 螢光筆註記
+mark {
+    background-color: lighten($brand-warning, 30%);
+    padding: .2em;
+}
+
+hr {
+    // margin-top: $spacer-y;
+    // margin-bottom: $spacer-y;
+    border: 0;
+    // border-top: $hr-border-width solid $hr-border-color;
+}
+
+
+// Lists
+// -----------------------------------------------
+// ul, ol {
+//     margin-bottom: ($line-height-computed / 2);
+
+//     ul, ol { margin-bottom: 0; }
+// }
+
+// address {
+//     margin-bottom: $line-height-computed;
+//     font-style: normal;
+//     line-height: $line-height-base;
+// }

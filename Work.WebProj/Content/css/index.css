@@ -584,6 +584,7 @@ html, body {
     font-size: 1.0625em; }
   .foot-nav nav:last-child a {
     display: inline-block;
+    vertical-align: top;
     margin-right: -4px;
     width: 33.33333%; }
     @media (max-width: 20em) {

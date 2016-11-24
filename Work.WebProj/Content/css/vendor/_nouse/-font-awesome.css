@@ -1,0 +1,56 @@
+/*
+Error: File to import not found or unreadable: vendor/fa/variables.
+       Load path: D:/VSTF2/C551608_Roki/Work.WebProj/Content/sass/vendor/_nouse
+        on line 8 of D:\VSTF2\C551608_Roki\Work.WebProj\Content\sass\vendor\_nouse\-font-awesome.scss
+
+3:  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+4:  *\/
+5: 
+6: $fa-font-path:        "../font/fa";
+7: 
+8: @import "vendor/fa/variables";
+9: @import "vendor/fa/mixins";
+10: @import "vendor/fa/path";
+11: @import "vendor/fa/core";
+12: @import "vendor/fa/larger";
+13: @import "vendor/fa/fixed-width";
+
+Backtrace:
+D:\VSTF2\C551608_Roki\Work.WebProj\Content\sass\vendor\_nouse\-font-awesome.scss:8
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:66:in `rescue in import'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:45:in `import'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:28:in `imported_file'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:37:in `css_import?'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:20:in `render'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:269:in `render'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:404:in `run'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+D:/S_Tool/koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+D:/S_Tool/koala/bin/sass:18:in `load'
+D:/S_Tool/koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: vendor/fa/variables.\A        Load path: D:/VSTF2/C551608_Roki/Work.WebProj/Content/sass/vendor/_nouse\A         on line 8 of D:\VSTF2\C551608_Roki\Work.WebProj\Content\sass\vendor\_nouse\-font-awesome.scss\A \A 3:  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)\A 4:  */\A 5: \A 6: $fa-font-path:        \"../font/fa\";\A 7: \A 8: @import \"vendor/fa/variables\";\A 9: @import \"vendor/fa/mixins\";\A 10: @import \"vendor/fa/path\";\A 11: @import \"vendor/fa/core\";\A 12: @import \"vendor/fa/larger\";\A 13: @import \"vendor/fa/fixed-width\";"; }
